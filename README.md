@@ -14,7 +14,7 @@
 
 按照新的双谷目标，12组真实七参数随机样本中找到主双谷候选：P=667.282、L=167.037、H=369.490、dX=97.049、dY=118.955 nm，奇数角−4.965°、偶数角41.233°，Au背板。初始1000点光谱的两个主谷位于838.138/924.224 nm，R=0.0442/0.0340；改进As₂Se₃损耗拟合后的3000点光谱仍保留约838.046/925.075 nm双谷，R=0.0358/0.0258。全波段还存在其他光谱特征。
 
-这些是候选筛选结果，**尚未证明最终网格收敛、金属材料拟合精度或模态来源**。七输出网络与数据接口通过45项软件测试。12组初筛真实样本完成两轮训练、10次优化更新及权重重载审计；这是流程验证，测试误差尚未优于均值基线，不能视为可靠逆向设计模型。
+这些是候选筛选结果，**尚未证明最终网格收敛、金属材料拟合精度或模态来源**。七输出网络与数据接口通过46项软件测试。12组初筛真实样本完成两轮训练、10次优化更新及权重重载审计；这是流程验证，测试误差尚未优于均值基线，不能视为可靠逆向设计模型。
 
 ![双谷候选](research_results/seven_parameter_pilot/double_dip_candidate.png)
 
@@ -46,6 +46,10 @@ python explore_double_dips.py plan
 python explore_double_dips.py run
 # 5 nm空间网格复核，使用独立输出目录；可断点续算
 python explore_double_dips.py run --case-id Au_full_difference --mesh-nm 5 --output data/double_dip_fine5
+# 完成求解后：独立重载原生项目，并同时比较两处谷的网格稳定性
+python audit_double_native.py
+python export_double_results.py
+python compare_double_mesh.py
 ```
 
 `configs/as2se3_ag_fine8.json` 用于 Ag 正式数据采集；`*_pilot.json`和`as2se3_au_refit.json`仅保留已计算粗网格结果的原始配置与指纹。更改结构、材料、网格、波段或采样计划时使用新的输出目录，避免混合不兼容数据。
