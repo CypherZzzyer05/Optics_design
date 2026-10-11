@@ -121,6 +121,7 @@ class SimulationSettings:
     material_fit_tolerance: float | None = None
     material_imaginary_weight: float = 1.0
     research_grid: bool = False
+    maximum_mesh_nm: float | None = None
 
     def __post_init__(self):
         positive = (self.wavelength_start_nm, self.wavelength_stop_nm, self.mesh_nm,
@@ -151,6 +152,11 @@ class SimulationSettings:
         for value in (self.metal_thickness_nm, self.metal_mesh_nm, self.bottom_padding_nm):
             if not np.isfinite(value) or value <= 0:
                 raise ValueError("Metal and bottom padding lengths must be positive")
+        if self.maximum_mesh_nm is not None:
+            if not np.isfinite(self.maximum_mesh_nm) or not 0 < self.maximum_mesh_nm < 10:
+                raise ValueError('Formal near-IR maximum mesh must be strictly below 10 nm')
+            if self.mesh_nm > self.maximum_mesh_nm or self.metal_mesh_nm > self.maximum_mesh_nm:
+                raise ValueError('Local mesh steps must not exceed the maximum mesh')
         if not np.isfinite(self.material_max_extension_nm) or self.material_max_extension_nm < 0:
             raise ValueError("Material extension allowance must be nonnegative")
         if not np.isfinite(self.polarization_deg):
@@ -272,7 +278,7 @@ class PipelineConfig:
         # Preserve fingerprints for untouched legacy configurations.
         for key in ("resonator_material", "resonator_nk_csv", "material_max_extension_nm",
                     "metal_material", "metal_thickness_nm", "metal_mesh_nm", "bottom_padding_nm", "polarization_deg",
-                    "material_fit_tolerance", "material_imaginary_weight", "research_grid"):
+                    "material_fit_tolerance", "material_imaginary_weight", "research_grid", "maximum_mesh_nm"):
             if getattr(self.simulation, key) == SimulationSettings.__dataclass_fields__[key].default:
                 data["simulation"].pop(key)
         if self.simulation.resonator_nk_csv:

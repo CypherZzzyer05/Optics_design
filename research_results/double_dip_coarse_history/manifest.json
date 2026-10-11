@@ -1,0 +1,233 @@
+{
+  "source_candidate": {
+    "sample_id": 3,
+    "sha256": "9bf478e0518ee9e293d975ec9780fb37e73479dfde1a9e60421509cdca8c92c3",
+    "source_config_fingerprint": "f088bc4fc0e47ce78c6830e8438184c309fc1477bb58793daf7e2bdc82318de4",
+    "dips": [
+      {
+        "wavelength_nm": 924.2242242242243,
+        "reflectance_min": 0.033988085510233836,
+        "prominence": 0.8772559046961865,
+        "half_prominence_width_nm": 6.036697175403106,
+        "width_samples": 6.03066047822756,
+        "resolved": true,
+        "lambda_over_width": 153.10097514747514
+      },
+      {
+        "wavelength_nm": 838.1381381381382,
+        "reflectance_min": 0.04418068280761725,
+        "prominence": 0.762638910840671,
+        "half_prominence_width_nm": 5.499986841424743,
+        "width_samples": 5.494486854583357,
+        "resolved": true,
+        "lambda_over_width": 152.38911697487313
+      },
+      {
+        "wavelength_nm": 1038.3383383383384,
+        "reflectance_min": 0.4264074217210595,
+        "prominence": 0.5319036097445259,
+        "half_prominence_width_nm": 7.679503407470065,
+        "width_samples": 7.671823904062762,
+        "resolved": true,
+        "lambda_over_width": 135.20904715379356
+      },
+      {
+        "wavelength_nm": 709.009009009009,
+        "reflectance_min": 0.003967173988894968,
+        "prominence": 0.4222911394073693,
+        "half_prominence_width_nm": 11.654405386531266,
+        "width_samples": 11.642750981144825,
+        "resolved": true,
+        "lambda_over_width": 60.83613753717498
+      },
+      {
+        "wavelength_nm": 733.033033033033,
+        "reflectance_min": 0.10531857221042613,
+        "prominence": 0.17138212571299116,
+        "half_prominence_width_nm": 7.207070047695652,
+        "width_samples": 7.199862977647978,
+        "resolved": true,
+        "lambda_over_width": 101.7102689694835
+      },
+      {
+        "wavelength_nm": 720.0200200200201,
+        "reflectance_min": 0.0956748554937479,
+        "prominence": 0.14774627185437836,
+        "half_prominence_width_nm": 2.6500325732114334,
+        "width_samples": 2.6473825406381053,
+        "resolved": false,
+        "lambda_over_width": 271.70232822740974
+      }
+    ],
+    "dominant_pair": {
+      "dips": [
+        {
+          "wavelength_nm": 838.1381381381382,
+          "reflectance_min": 0.04418068280761725,
+          "prominence": 0.762638910840671,
+          "half_prominence_width_nm": 5.499986841424743,
+          "width_samples": 5.494486854583357,
+          "resolved": true,
+          "lambda_over_width": 152.38911697487313
+        },
+        {
+          "wavelength_nm": 924.2242242242243,
+          "reflectance_min": 0.033988085510233836,
+          "prominence": 0.8772559046961865,
+          "half_prominence_width_nm": 6.036697175403106,
+          "width_samples": 6.03066047822756,
+          "resolved": true,
+          "lambda_over_width": 153.10097514747514
+        }
+      ],
+      "separation_nm": 86.08608608608608,
+      "intervening_max_reflectance": 0.9112439902064203,
+      "score": 0.762638910840671
+    }
+  },
+  "simulation": {
+    "wavelength_start_nm": 700,
+    "wavelength_stop_nm": 1700,
+    "spectrum_points": 3000,
+    "mesh_accuracy": 3,
+    "mesh_nm": 20,
+    "simulation_time_ps": 2,
+    "auto_shutoff_min": 1E-05,
+    "air_padding_nm": 1200,
+    "substrate_depth_nm": 350,
+    "background_index": 1,
+    "silicon_material": "Si (Silicon) - Palik",
+    "substrate_material": "SiO2 (Glass) - Palik",
+    "processes": 1,
+    "threads": 8,
+    "hide_fdtd": true,
+    "save_projects": true,
+    "quality_tolerance": 0.03,
+    "require_auto_shutoff": true,
+    "resonator_material": "As2Se3 - Joseph 700nm film (2020)",
+    "resonator_nk_csv": "D:\\projects\\Metaformer_As2Se3_dev\\materials\\as2se3_joseph_700nm.csv",
+    "material_max_extension_nm": 12,
+    "metal_material": "Au (Gold) - Palik",
+    "metal_thickness_nm": 150,
+    "metal_mesh_nm": 5,
+    "bottom_padding_nm": 1200,
+    "polarization_deg": 0.0,
+    "material_fit_tolerance": 0,
+    "material_imaginary_weight": 2,
+    "research_grid": true
+  },
+  "cases": [
+    {
+      "id": "Au_full_difference",
+      "metal": "Au",
+      "mean_angle_deg": 18.134130646058647,
+      "half_difference_deg": -23.09903639552751,
+      "geometry_values": [
+        667.2817648945917,
+        167.03697293849132,
+        369.4900803132179,
+        97.04945218123429,
+        118.95531822839662,
+        -4.964905749468862,
+        41.23316704158616
+      ],
+      "state": "success",
+      "metal_material": "Au (Gold) - Palik",
+      "sha256": "0da095a27fb049ce6b9e2698cfef421f4aed8e7f28e5acf5de4af68ebacb86b7",
+      "status": 2
+    },
+    {
+      "id": "Au_half_difference",
+      "metal": "Au",
+      "mean_angle_deg": 18.134130646058647,
+      "half_difference_deg": -11.549518197763755,
+      "geometry_values": [
+        667.2817648945917,
+        167.03697293849132,
+        369.4900803132179,
+        97.04945218123429,
+        118.95531822839662,
+        6.584612448294893,
+        29.683648843822404
+      ],
+      "state": "success",
+      "metal_material": "Au (Gold) - Palik",
+      "sha256": "d9f610e0e0b525d0e47a1cab4f925ffa2b56afaa45bbcb8b390486a2042989dd",
+      "status": 2
+    },
+    {
+      "id": "Au_common_angle",
+      "metal": "Au",
+      "mean_angle_deg": 18.134130646058647,
+      "half_difference_deg": -0.0,
+      "geometry_values": [
+        667.2817648945917,
+        167.03697293849132,
+        369.4900803132179,
+        97.04945218123429,
+        118.95531822839662,
+        18.134130646058647,
+        18.134130646058647
+      ],
+      "state": "success",
+      "metal_material": "Au (Gold) - Palik",
+      "sha256": "b8a639af170ceac119ebb5320c6faf7815495a1b531a703029694622484da162",
+      "status": 2
+    },
+    {
+      "id": "Ag_full_difference",
+      "metal": "Ag",
+      "mean_angle_deg": 18.134130646058647,
+      "half_difference_deg": -23.09903639552751,
+      "geometry_values": [
+        667.2817648945917,
+        167.03697293849132,
+        369.4900803132179,
+        97.04945218123429,
+        118.95531822839662,
+        -4.964905749468862,
+        41.23316704158616
+      ],
+      "state": "success",
+      "metal_material": "Ag (Silver) - Palik (0-2um)",
+      "sha256": "12147abd991691477b5aa61a05cf2ac1bb34f33fc7b5ce38799c98c44d79eea1",
+      "status": 2
+    },
+    {
+      "id": "Ag_half_difference",
+      "metal": "Ag",
+      "mean_angle_deg": 18.134130646058647,
+      "half_difference_deg": -11.549518197763755,
+      "geometry_values": [
+        667.2817648945917,
+        167.03697293849132,
+        369.4900803132179,
+        97.04945218123429,
+        118.95531822839662,
+        6.584612448294893,
+        29.683648843822404
+      ],
+      "state": "interrupted",
+      "metal_material": "Ag (Silver) - Palik (0-2um)",
+      "interruption_reason": "User requires mesh below 10 nm; unfinished coarse calculations stopped"
+    },
+    {
+      "id": "Ag_common_angle",
+      "metal": "Ag",
+      "mean_angle_deg": 18.134130646058647,
+      "half_difference_deg": -0.0,
+      "geometry_values": [
+        667.2817648945917,
+        167.03697293849132,
+        369.4900803132179,
+        97.04945218123429,
+        118.95531822839662,
+        18.134130646058647,
+        18.134130646058647
+      ],
+      "state": "pending"
+    }
+  ],
+  "material_csv_sha256": "9e6ee6d3b584f33226d7201e2b2e12490726cb3b8256726754e5aca9cae64ce9",
+  "config_fingerprint": "d1312fc065f618781cda0b9968850692d7d89f4926fa077d353feb410c19f12c"
+}

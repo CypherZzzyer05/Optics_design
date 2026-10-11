@@ -119,9 +119,11 @@ def rank(output, manifest):
     return report
 
 
-def run(config, output, sample_id=3, mesh_nm=20, points=3000, case_id=None, limit=None):
+def run(config, output, sample_id=3, mesh_nm=8, points=3000, case_id=None, limit=None):
     if limit is not None and limit < 1:
         raise ValueError('limit must be positive')
+    if not 0 < mesh_nm < 10:
+        raise ValueError('Formal double-dip calculations require a mesh strictly below 10 nm')
     values, source = source_candidate(config, sample_id)
     plan = control_plan(values)
     if case_id:
@@ -129,6 +131,7 @@ def run(config, output, sample_id=3, mesh_nm=20, points=3000, case_id=None, limi
         if not plan:
             raise ValueError('Unknown control case')
     base = replace(config.simulation, research_grid=True, spectrum_points=points, mesh_nm=mesh_nm,
+                   maximum_mesh_nm=mesh_nm,
                    mesh_accuracy=4 if mesh_nm < 20 else 3,
                    metal_mesh_nm=2.5 if mesh_nm < 20 else 5,
                    simulation_time_ps=4 if mesh_nm < 20 else 2,
@@ -183,9 +186,9 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('command', choices=('plan', 'run', 'rank'))
     parser.add_argument('--config', type=Path, default=PROJECT_ROOT / 'configs/as2se3_au_pilot.json')
-    parser.add_argument('--output', type=Path, default=PROJECT_ROOT / 'data/double_dip_controls')
+    parser.add_argument('--output', type=Path, default=PROJECT_ROOT / 'data/double_dip_controls8')
     parser.add_argument('--sample-id', type=int, default=3)
-    parser.add_argument('--mesh-nm', type=float, default=20)
+    parser.add_argument('--mesh-nm', type=float, default=8)
     parser.add_argument('--points', type=int, default=3000)
     parser.add_argument('--case-id')
     parser.add_argument('--limit', type=int)

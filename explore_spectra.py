@@ -180,8 +180,8 @@ def run(config, output, limit=None, target_csv=None):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('command', choices=('plan', 'run', 'rank'))
-    parser.add_argument('--config', type=Path, default=PROJECT_ROOT/'configs/as2se3_au_pilot.json')
-    parser.add_argument('--output', type=Path, default=PROJECT_ROOT/'data/near_ir_study')
+    parser.add_argument('--config', type=Path, default=PROJECT_ROOT/'configs/as2se3_au_fine8.json')
+    parser.add_argument('--output', type=Path, default=PROJECT_ROOT/'data/near_ir_study8')
     parser.add_argument('--limit', type=int)
     parser.add_argument('--target-csv', type=Path)
     args = parser.parse_args()

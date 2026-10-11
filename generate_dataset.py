@@ -78,7 +78,7 @@ def run_reference(config):
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("command", choices=("doctor", "plan", "reference", "generate"), nargs="?", default="generate")
-    parser.add_argument("--config", type=Path, default=PROJECT_ROOT / "configs/as2se3_au_pilot.json")
+    parser.add_argument("--config", type=Path, default=PROJECT_ROOT / "configs/as2se3_au_fine8.json")
     parser.add_argument("--limit", type=int, help="Run at most this many missing/failed samples; resumes the same plan")
     parser.add_argument("--fail-fast", action="store_true")
     args = parser.parse_args(argv)

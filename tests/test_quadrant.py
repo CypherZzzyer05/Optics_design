@@ -9,7 +9,7 @@ import numpy as np
 import torch
 
 from fdtd_pipeline.config import Geometry, PROJECT_ROOT, QUADRANT_PARAMETER_NAMES, load_config
-from fdtd_pipeline.lumerical import FDTDSimulator
+from fdtd_pipeline.lumerical import FDTDSimulator, mesh_grid_summary
 from fdtd_pipeline.pipeline import generate_dataset
 from metaformer import MetaformerConfig, InverseMetaformer, geometry_mse
 from spectrum_dataset import SpectrumGeometryDataset
@@ -20,6 +20,38 @@ from test_fdtd_pipeline import FakeSimulator
 
 
 class QuadrantTests(unittest.TestCase):
+    def test_strict_mesh_limit_covers_full_domain_and_checks_actual_cells(self):
+        config = load_config(PROJECT_ROOT/'configs/as2se3_au_pilot.json')
+        for metal in ('au', 'ag'):
+            formal = load_config(PROJECT_ROOT/f'configs/as2se3_{metal}_fine8.json')
+            self.assertEqual(formal.simulation.maximum_mesh_nm, 8)
+            self.assertEqual(formal.simulation.mesh_nm, 8)
+            self.assertEqual(formal.simulation.metal_mesh_nm, 2.5)
+            self.assertEqual(formal.parameter_names, QUADRANT_PARAMETER_NAMES)
+        self.assertNotIn('maximum_mesh_nm', config.metadata()['simulation'])
+        for value in (10, 20, 0, float('nan')):
+            with self.assertRaises(ValueError):
+                replace(config.simulation, mesh_nm=8, maximum_mesh_nm=value)
+        settings = replace(config.simulation, mesh_nm=8, metal_mesh_nm=2.5, maximum_mesh_nm=8)
+        simulator = object.__new__(FDTDSimulator)
+        simulator.settings, simulator.fdtd = settings, MagicMock()
+        g = Geometry(667, 167, 369, 97, 119, theta_odd_deg=-5, theta_even_deg=41)
+        simulator.build(g)
+        mesh = {c.kwargs['name']: c.kwargs for c in simulator.fdtd.addmesh.call_args_list}['global_mesh_limit']
+        self.assertAlmostEqual(mesh['z_min'], -1700e-9)
+        self.assertAlmostEqual(mesh['z_max'], (369+1200)*1e-9)
+        for axis in ('x', 'y', 'z'):
+            self.assertAlmostEqual(mesh['d'+axis], 8e-9)
+            self.assertTrue(mesh['override_'+axis+'_mesh'])
+        grids = {axis: np.array([-16, -8, 0, 8, 16])*1e-9 for axis in ('x', 'y', 'z')}
+        summary = mesh_grid_summary(grids, 8)
+        self.assertAlmostEqual(summary['z']['maximum_step_nm'], 8)
+        grids['z'] = np.array([-16, -8, 0, 12])*1e-9
+        with self.assertRaisesRegex(ValueError, 'Actual z mesh'):
+            mesh_grid_summary(grids, 8)
+        grids['z'] = np.array([0, 0, 8])*1e-9
+        with self.assertRaisesRegex(ValueError, 'Invalid'):
+            mesh_grid_summary(grids, 8)
     def test_double_pair_rejects_single_unresolved_and_edge_dips(self):
         w = np.linspace(700, 1700, 3000)
         def trough(center, width=3):

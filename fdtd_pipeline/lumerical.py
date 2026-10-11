@@ -18,6 +18,22 @@ from .config import Geometry, SimulationSettings
 LOG = logging.getLogger(__name__)
 
 
+def mesh_grid_summary(grids, maximum_nm):
+    """Check solver-generated coordinates, including every returned grid cell."""
+    summary = {}
+    for axis in ('x', 'y', 'z'):
+        positions = np.asarray(grids[axis], dtype=float).reshape(-1)
+        steps_nm = np.diff(positions) * 1e9
+        if len(steps_nm) < 1 or not np.isfinite(positions).all() or np.any(steps_nm <= 0):
+            raise ValueError(f'Invalid solver-generated {axis} mesh')
+        largest = float(steps_nm.max())
+        if largest > maximum_nm + 1e-6 or largest >= 10:
+            raise ValueError(f'Actual {axis} mesh exceeds the strict limit: {largest:.9f} nm')
+        summary[axis] = {'points': len(positions), 'maximum_step_nm': largest,
+                         'minimum_step_nm': float(steps_nm.min())}
+    return summary
+
+
 def locate_lumapi(explicit=None):
     """Prefer the installed v241 API; never silently use a newer PyLumerical package."""
     # 优先使用配置/环境变量明确指定的本机 API，保持与已安装 2024 R1 的版本一致。
@@ -181,6 +197,13 @@ class FDTDSimulator:
             ("simulation time", s.simulation_time_ps * 1e-12),
             ("auto shutoff min", s.auto_shutoff_min), ("pml profile", 3)
         ]))
+        if s.maximum_mesh_nm is not None:
+            # Cover the complete simulation volume, including substrate, metal,
+            # air and PML boundaries. A local pillar override alone is insufficient.
+            f.addmesh(name='global_mesh_limit', x=0., y=0., x_span=p, y_span=p,
+                      z_min=bottom, z_max=top, override_x_mesh=True,
+                      override_y_mesh=True, override_z_mesh=True,
+                      dx=s.maximum_mesh_nm*nm, dy=s.maximum_mesh_nm*nm, dz=s.maximum_mesh_nm*nm)
         # 金属背板模式使用有限厚衬底；无背板时衬底延伸进入底部 PML。
         material = s.substrate_material if substrate_index is None else "<Object defined dielectric>"
         f.addrect(name="substrate", x=0., y=0., x_span=3*p, y_span=3*p,
@@ -237,6 +260,15 @@ class FDTDSimulator:
         self.build(geometry, include_silicon, substrate_index)
         project_path = Path(project_path).resolve()
         project_path.parent.mkdir(parents=True, exist_ok=True)
+        mesh_grids = {}
+        mesh_summary = None
+        if self.settings.maximum_mesh_nm is not None:
+            mesh_grids = {axis: np.asarray(self.fdtd.getresult('FDTD', axis)).reshape(-1)
+                          for axis in ('x', 'y', 'z')}
+            mesh_summary = mesh_grid_summary(mesh_grids, self.settings.maximum_mesh_nm)
+            project_path.with_suffix('.mesh.json').write_text(json.dumps({
+                'maximum_mesh_nm': self.settings.maximum_mesh_nm, 'actual_grid': mesh_summary,
+                'all_returned_cells_below_10_nm': True}, indent=2), encoding='utf-8')
         attempts = []
         elapsed = 0.0
         # 未自动关断时仅延长时间上限，最多四次；几何、网格与波长设置保持相同。
@@ -271,4 +303,7 @@ class FDTDSimulator:
         result.update(status=status, elapsed_seconds=elapsed, fdtd_version=self.version,
                       simulation_time_ps=time_limit_ps, run_attempts=len(attempts),
                       attempts_json=json.dumps(attempts))
+        if mesh_summary is not None:
+            result.update({f'mesh_{axis}_nm': positions * 1e9 for axis, positions in mesh_grids.items()})
+            result['mesh_summary_json'] = json.dumps(mesh_summary)
         return result
