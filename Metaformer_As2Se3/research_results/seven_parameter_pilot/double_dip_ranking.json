@@ -1,0 +1,549 @@
+{
+  "criteria_source": "explore_double_dips.double_pair",
+  "successful": 12,
+  "ranking": [
+    {
+      "sample_id": 3,
+      "geometry_values": [
+        667.2817648945917,
+        167.03697293849132,
+        369.4900803132179,
+        97.04945218123429,
+        118.95531822839662,
+        -4.964905749468862,
+        41.23316704158616
+      ],
+      "sha256": "9bf478e0518ee9e293d975ec9780fb37e73479dfde1a9e60421509cdca8c92c3",
+      "status": 2,
+      "dips": [
+        {
+          "wavelength_nm": 924.2242242242243,
+          "reflectance_min": 0.033988085510233836,
+          "prominence": 0.8772559046961865,
+          "half_prominence_width_nm": 6.036697175403106,
+          "width_samples": 6.03066047822756,
+          "resolved": true,
+          "lambda_over_width": 153.10097514747514
+        },
+        {
+          "wavelength_nm": 838.1381381381382,
+          "reflectance_min": 0.04418068280761725,
+          "prominence": 0.762638910840671,
+          "half_prominence_width_nm": 5.499986841424743,
+          "width_samples": 5.494486854583357,
+          "resolved": true,
+          "lambda_over_width": 152.38911697487313
+        },
+        {
+          "wavelength_nm": 1038.3383383383384,
+          "reflectance_min": 0.4264074217210595,
+          "prominence": 0.5319036097445259,
+          "half_prominence_width_nm": 7.679503407470065,
+          "width_samples": 7.671823904062762,
+          "resolved": true,
+          "lambda_over_width": 135.20904715379356
+        },
+        {
+          "wavelength_nm": 709.009009009009,
+          "reflectance_min": 0.003967173988894968,
+          "prominence": 0.4222911394073693,
+          "half_prominence_width_nm": 11.654405386531266,
+          "width_samples": 11.642750981144825,
+          "resolved": true,
+          "lambda_over_width": 60.83613753717498
+        },
+        {
+          "wavelength_nm": 733.033033033033,
+          "reflectance_min": 0.10531857221042613,
+          "prominence": 0.17138212571299116,
+          "half_prominence_width_nm": 7.207070047695652,
+          "width_samples": 7.199862977647978,
+          "resolved": true,
+          "lambda_over_width": 101.7102689694835
+        },
+        {
+          "wavelength_nm": 720.0200200200201,
+          "reflectance_min": 0.0956748554937479,
+          "prominence": 0.14774627185437836,
+          "half_prominence_width_nm": 2.6500325732114334,
+          "width_samples": 2.6473825406381053,
+          "resolved": false,
+          "lambda_over_width": 271.70232822740974
+        }
+      ],
+      "dominant_pair": {
+        "dips": [
+          {
+            "wavelength_nm": 838.1381381381382,
+            "reflectance_min": 0.04418068280761725,
+            "prominence": 0.762638910840671,
+            "half_prominence_width_nm": 5.499986841424743,
+            "width_samples": 5.494486854583357,
+            "resolved": true,
+            "lambda_over_width": 152.38911697487313
+          },
+          {
+            "wavelength_nm": 924.2242242242243,
+            "reflectance_min": 0.033988085510233836,
+            "prominence": 0.8772559046961865,
+            "half_prominence_width_nm": 6.036697175403106,
+            "width_samples": 6.03066047822756,
+            "resolved": true,
+            "lambda_over_width": 153.10097514747514
+          }
+        ],
+        "separation_nm": 86.08608608608608,
+        "intervening_max_reflectance": 0.9112439902064203,
+        "score": 0.762638910840671
+      }
+    },
+    {
+      "sample_id": 0,
+      "geometry_values": [
+        649.7604076511419,
+        161.1566330153756,
+        284.88377288849,
+        133.54673339593725,
+        116.4992120505661,
+        -33.64481402341028,
+        39.36335222367701
+      ],
+      "sha256": "1586abe49de3dace9278a4e698d5f63f8ffe4124c28e5746b0cf2600ff5d2635",
+      "status": 2,
+      "dips": [
+        {
+          "wavelength_nm": 816.1161161161161,
+          "reflectance_min": 0.14871650307377543,
+          "prominence": 0.6854254904554464,
+          "half_prominence_width_nm": 5.323525938776243,
+          "width_samples": 5.3182024128375645,
+          "resolved": true,
+          "lambda_over_width": 153.30367983587257
+        },
+        {
+          "wavelength_nm": 988.2882882882883,
+          "reflectance_min": 0.6711512886049532,
+          "prominence": 0.30070858551093327,
+          "half_prominence_width_nm": 4.211355092976191,
+          "width_samples": 4.207143737883143,
+          "resolved": false,
+          "lambda_over_width": 234.67227684898418
+        }
+      ],
+      "dominant_pair": null
+    },
+    {
+      "sample_id": 1,
+      "geometry_values": [
+        677.2483520483926,
+        194.10668331871256,
+        330.2341232024514,
+        93.40944569998089,
+        130.22699888523445,
+        34.03729516048678,
+        24.451891283676858
+      ],
+      "sha256": "fc127a44ef583f91fcca9648850ff0cac4a4ad9d57f7395a340ee608108d9a2e",
+      "status": 2,
+      "dips": [
+        {
+          "wavelength_nm": 935.2352352352352,
+          "reflectance_min": 0.01818766895151577,
+          "prominence": 0.8817392371763614,
+          "half_prominence_width_nm": 5.072412789787336,
+          "width_samples": 5.067340376997606,
+          "resolved": true,
+          "lambda_over_width": 184.37679936424212
+        },
+        {
+          "wavelength_nm": 1068.3683683683685,
+          "reflectance_min": 0.28330372719410024,
+          "prominence": 0.6722803648854383,
+          "half_prominence_width_nm": 8.677080883171811,
+          "width_samples": 8.668403802288765,
+          "resolved": true,
+          "lambda_over_width": 123.12532091758469
+        },
+        {
+          "wavelength_nm": 711.011011011011,
+          "reflectance_min": 0.02089156400379034,
+          "prominence": 0.3447025269677483,
+          "half_prominence_width_nm": 12.02145593123521,
+          "width_samples": 12.009434475303985,
+          "resolved": true,
+          "lambda_over_width": 59.14516636571443
+        },
+        {
+          "wavelength_nm": 874.1741741741741,
+          "reflectance_min": 0.5009824077380768,
+          "prominence": 0.2553722482770914,
+          "half_prominence_width_nm": 4.5923141191231025,
+          "width_samples": 4.587721805003952,
+          "resolved": false,
+          "lambda_over_width": 190.35591893289234
+        }
+      ],
+      "dominant_pair": null
+    },
+    {
+      "sample_id": 2,
+      "geometry_values": [
+        650.3926446381838,
+        196.03499585910492,
+        331.8801999953635,
+        137.17895606782525,
+        105.89430266076923,
+        -26.508639290362485,
+        19.36041131988624
+      ],
+      "sha256": "a891cba2d7f1b4513be83c13779b69de0f831dfa242107886db8634cf84cf0c0",
+      "status": 2,
+      "dips": [
+        {
+          "wavelength_nm": 862.1621621621622,
+          "reflectance_min": 0.31386694004441995,
+          "prominence": 0.44831833886503625,
+          "half_prominence_width_nm": 7.6997642502648205,
+          "width_samples": 7.692064486014516,
+          "resolved": true,
+          "lambda_over_width": 111.97254021543706
+        },
+        {
+          "wavelength_nm": 756.056056056056,
+          "reflectance_min": 0.358722061606818,
+          "prominence": 0.2576946138622666,
+          "half_prominence_width_nm": 6.981767098268506,
+          "width_samples": 6.97478533117016,
+          "resolved": true,
+          "lambda_over_width": 108.29007118320513
+        },
+        {
+          "wavelength_nm": 910.2102102102102,
+          "reflectance_min": 0.5834727636056779,
+          "prominence": 0.24199060239607195,
+          "half_prominence_width_nm": 2.395611336069578,
+          "width_samples": 2.393215724733608,
+          "resolved": false,
+          "lambda_over_width": 379.9490328441884
+        }
+      ],
+      "dominant_pair": null
+    },
+    {
+      "sample_id": 4,
+      "geometry_values": [
+        669.6063230566876,
+        178.9142548361015,
+        332.09912369534914,
+        100.14333532075145,
+        148.13021620122223,
+        9.132978428091178,
+        8.628321228183424
+      ],
+      "sha256": "79cbccb3e9d2bd2c0825d7b2fc6d84bc9175983bad0bae19e4b48d9289ff04e6",
+      "status": 2,
+      "dips": [
+        {
+          "wavelength_nm": 919.2192192192192,
+          "reflectance_min": 0.12105082914589183,
+          "prominence": 0.800828927278494,
+          "half_prominence_width_nm": 4.2860468362679285,
+          "width_samples": 4.281760789431672,
+          "resolved": false,
+          "lambda_over_width": 214.46784282451486
+        },
+        {
+          "wavelength_nm": 1040.3403403403404,
+          "reflectance_min": 0.35569985376896673,
+          "prominence": 0.608186311303984,
+          "half_prominence_width_nm": 7.008043453916571,
+          "width_samples": 7.001035410462748,
+          "resolved": true,
+          "lambda_over_width": 148.449470552145
+        },
+        {
+          "wavelength_nm": 855.1551551551552,
+          "reflectance_min": 0.6895174701828407,
+          "prominence": 0.11623681018035648,
+          "half_prominence_width_nm": 3.5282358100998863,
+          "width_samples": 3.5247075742897778,
+          "resolved": false,
+          "lambda_over_width": 242.37471676558525
+        }
+      ],
+      "dominant_pair": null
+    },
+    {
+      "sample_id": 5,
+      "geometry_values": [
+        687.3466123165493,
+        188.82373197460197,
+        349.02331595662076,
+        129.77077515026667,
+        115.69899668761639,
+        -2.0778907747755184,
+        34.55977291713678
+      ],
+      "sha256": "f2d87f0cc32b965b6202eb16b490d1379ad56be381117af95e9ae779ca5cb929",
+      "status": 2,
+      "dips": [
+        {
+          "wavelength_nm": 877.1771771771772,
+          "reflectance_min": 0.021510811740969752,
+          "prominence": 0.7194114101891271,
+          "half_prominence_width_nm": 7.858236016944147,
+          "width_samples": 7.850377780927261,
+          "resolved": true,
+          "lambda_over_width": 111.62520129018566
+        },
+        {
+          "wavelength_nm": 943.2432432432432,
+          "reflectance_min": 0.4531846899328078,
+          "prominence": 0.4527719594856817,
+          "half_prominence_width_nm": 3.3508716040875015,
+          "width_samples": 3.347520732483389,
+          "resolved": false,
+          "lambda_over_width": 281.4919085806346
+        },
+        {
+          "wavelength_nm": 767.0670670670671,
+          "reflectance_min": 0.19687477582572355,
+          "prominence": 0.39384561345002933,
+          "half_prominence_width_nm": 10.393454779265085,
+          "width_samples": 10.38306132448593,
+          "resolved": true,
+          "lambda_over_width": 73.80289647263044
+        },
+        {
+          "wavelength_nm": 1083.3833833833835,
+          "reflectance_min": 0.7650219923122247,
+          "prominence": 0.19864865454502723,
+          "half_prominence_width_nm": 7.869264552310597,
+          "width_samples": 7.861395287758228,
+          "resolved": true,
+          "lambda_over_width": 137.67276168969022
+        },
+        {
+          "wavelength_nm": 711.011011011011,
+          "reflectance_min": 0.043456819250020394,
+          "prominence": 0.12084438194121153,
+          "half_prominence_width_nm": 6.446025755060305,
+          "width_samples": 6.439579729305252,
+          "resolved": true,
+          "lambda_over_width": 110.30222931592355
+        }
+      ],
+      "dominant_pair": null
+    },
+    {
+      "sample_id": 6,
+      "geometry_values": [
+        669.2716275118424,
+        201.63850896970206,
+        278.2327998246738,
+        91.16271964147066,
+        139.7350591328934,
+        16.83774704271199,
+        26.433349868906248
+      ],
+      "sha256": "1b2a4f9a4f56ce0019979fc45eea67e9c756a5313622af04653e5f7547c05d65",
+      "status": 2,
+      "dips": [
+        {
+          "wavelength_nm": 1040.3403403403404,
+          "reflectance_min": 0.2048727507894416,
+          "prominence": 0.7546924979475884,
+          "half_prominence_width_nm": 6.673983958655526,
+          "width_samples": 6.667309974696934,
+          "resolved": true,
+          "lambda_over_width": 155.87995817567366
+        },
+        {
+          "wavelength_nm": 911.2112112112112,
+          "reflectance_min": 0.29225386420799593,
+          "prominence": 0.6258470459221162,
+          "half_prominence_width_nm": 3.7906941167993864,
+          "width_samples": 3.786903422682485,
+          "resolved": false,
+          "lambda_over_width": 240.38109727001086
+        }
+      ],
+      "dominant_pair": null
+    },
+    {
+      "sample_id": 7,
+      "geometry_values": [
+        620.3174704046496,
+        174.20668420606884,
+        336.0548887039623,
+        134.619348143328,
+        127.37484262918014,
+        26.155793019788604,
+        15.848777586959756
+      ],
+      "sha256": "e16a9e5393b08d609360f5e877b22104c7209f16e98140ef727636249b4683b4",
+      "status": 2,
+      "dips": [],
+      "dominant_pair": null
+    },
+    {
+      "sample_id": 8,
+      "geometry_values": [
+        655.0109383181385,
+        203.73022563345802,
+        258.5319798996374,
+        106.34221781315007,
+        108.73651681214002,
+        34.06940332034851,
+        -8.407171640505076
+      ],
+      "sha256": "89a0a980fa836271152968d414463ee56da20a235cbddada75c37f8f90bb9076",
+      "status": 2,
+      "dips": [
+        {
+          "wavelength_nm": 871.1711711711712,
+          "reflectance_min": 0.5233397787626072,
+          "prominence": 0.3070599220592575,
+          "half_prominence_width_nm": 5.990226876628071,
+          "width_samples": 5.984236649751551,
+          "resolved": true,
+          "lambda_over_width": 145.43208280978462
+        },
+        {
+          "wavelength_nm": 1018.3183183183183,
+          "reflectance_min": 0.7457372111652784,
+          "prominence": 0.21490102702425717,
+          "half_prominence_width_nm": 5.974156237343436,
+          "width_samples": 5.968182081105965,
+          "resolved": true,
+          "lambda_over_width": 170.45391480607478
+        },
+        {
+          "wavelength_nm": 892.1921921921922,
+          "reflectance_min": 0.7245975072571207,
+          "prominence": 0.1664897131335935,
+          "half_prominence_width_nm": 3.520032041335753,
+          "width_samples": 3.516512009294388,
+          "resolved": false,
+          "lambda_over_width": 253.46138379286754
+        },
+        {
+          "wavelength_nm": 745.0450450450451,
+          "reflectance_min": 0.5400799540276612,
+          "prominence": 0.11446870813139176,
+          "half_prominence_width_nm": 8.123233135108762,
+          "width_samples": 8.115109901973653,
+          "resolved": true,
+          "lambda_over_width": 91.71779667691018
+        }
+      ],
+      "dominant_pair": null
+    },
+    {
+      "sample_id": 9,
+      "geometry_values": [
+        657.565810953652,
+        163.26748382115477,
+        309.5027947843788,
+        127.46406967742516,
+        137.62125149686472,
+        -36.37282116124037,
+        8.914449297764989
+      ],
+      "sha256": "7ce844e5c946ce531a8645f45d1baede610399b144407d81568f903ad7e3a361",
+      "status": 2,
+      "dips": [
+        {
+          "wavelength_nm": 825.1251251251251,
+          "reflectance_min": 0.0984068551983312,
+          "prominence": 0.731958649291029,
+          "half_prominence_width_nm": 3.481707212437982,
+          "width_samples": 3.478225505225609,
+          "resolved": false,
+          "lambda_over_width": 236.98865952239305
+        },
+        {
+          "wavelength_nm": 1005.3053053053054,
+          "reflectance_min": 0.623896727117138,
+          "prominence": 0.3479947382624773,
+          "half_prominence_width_nm": 4.801807600363304,
+          "width_samples": 4.797005792762889,
+          "resolved": false,
+          "lambda_over_width": 209.35976385835286
+        },
+        {
+          "wavelength_nm": 892.1921921921922,
+          "reflectance_min": 0.7133351169414305,
+          "prominence": 0.2304387823792573,
+          "half_prominence_width_nm": 3.626635671891222,
+          "width_samples": 3.6230090362193152,
+          "resolved": false,
+          "lambda_over_width": 246.01097902037975
+        }
+      ],
+      "dominant_pair": null
+    },
+    {
+      "sample_id": 10,
+      "geometry_values": [
+        632.6682654313678,
+        169.11155287768466,
+        241.72830611170411,
+        105.25756027789603,
+        148.33078613680357,
+        -32.740147051099484,
+        -9.758860982487072
+      ],
+      "sha256": "c7690c9ac8d18a486b43fcf6a2868a1f892b15f2b984f4baa19af7e6d068f5cf",
+      "status": 2,
+      "dips": [
+        {
+          "wavelength_nm": 958.2582582582584,
+          "reflectance_min": 0.2354429074827252,
+          "prominence": 0.7348308263649792,
+          "half_prominence_width_nm": 3.5565436117059335,
+          "width_samples": 3.552987068094069,
+          "resolved": false,
+          "lambda_over_width": 269.43526155682923
+        },
+        {
+          "wavelength_nm": 847.1471471471472,
+          "reflectance_min": 0.7992577217283909,
+          "prominence": 0.14108543297912035,
+          "half_prominence_width_nm": 3.6621415043504157,
+          "width_samples": 3.658479362846151,
+          "resolved": false,
+          "lambda_over_width": 231.32561812283456
+        }
+      ],
+      "dominant_pair": null
+    },
+    {
+      "sample_id": 11,
+      "geometry_values": [
+        663.7993048009791,
+        201.93557666218754,
+        331.0093001892657,
+        116.67141325910706,
+        131.64504355851068,
+        9.189445848705141,
+        22.089966065279782
+      ],
+      "sha256": "5a1af7b90d647c43e8f23692dfdad31072c7331eb6cca3502cbec81053efb717",
+      "status": 2,
+      "dips": [
+        {
+          "wavelength_nm": 923.2232232232233,
+          "reflectance_min": 0.44394164207356196,
+          "prominence": 0.4032149967946695,
+          "half_prominence_width_nm": 2.7161621092003543,
+          "width_samples": 2.7134459470911736,
+          "resolved": false,
+          "lambda_over_width": 339.89989776236985
+        }
+      ],
+      "dominant_pair": null
+    }
+  ],
+  "note": "Exploratory 20 nm mesh, initial material fit. Two main dips do not imply only two features."
+}

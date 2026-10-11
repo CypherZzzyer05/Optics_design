@@ -23,11 +23,14 @@ test_mouse_drag_rotates_all_squares_without_changing_spectrum_or_labels (test_pr
 test_sample_mouse_click_and_reset_restore_the_real_sample_angle (test_preview_interaction.PreviewInteractionTests) ... ok
 test_single_sample_angle_preview_and_legacy_five_parameter_browser (test_preview_interaction.PreviewInteractionTests) ... ok
 test_angles_and_self_centers_preserve_C2 (test_quadrant.QuadrantTests) ... ok
+test_double_pair_rejects_single_unresolved_and_edge_dips (test_quadrant.QuadrantTests) ... ok
 test_material_coverage_extension_and_content_fingerprint (test_quadrant.QuadrantTests) ... ok
 test_metal_layer_is_below_finite_substrate_and_T_below_metal (test_quadrant.QuadrantTests) ... ok
 test_periodic_angles_do_not_independently_discard_signs (test_quadrant.QuadrantTests) ... ok
+test_research_resolution_cannot_enter_training_pipeline (test_quadrant.QuadrantTests) ... ok
 test_resume_pack_seven_outputs_and_optimizer_updates (test_quadrant.QuadrantTests) ... ok
 test_spectral_scoring_and_control_plan (test_quadrant.QuadrantTests) ... ok
+test_strict_mesh_limit_covers_full_domain_and_checks_actual_cells (test_quadrant.QuadrantTests) ... ok
 test_attention_outputs_and_gradients_match_independent_sdpa (test_resnet_attention.ResidualAttentionTests) ... ok
 test_legacy_model_defaults_are_compatible_but_resnet_resume_is_rejected (test_resnet_attention.ResidualAttentionTests) ... ok
 test_residual_block_starts_as_identity_and_preserves_input_gradient (test_resnet_attention.ResidualAttentionTests) ... ok
@@ -46,6 +49,6 @@ test_training_changes_parameters_with_real_backward_and_optimizer (test_training
 test_validation_permission_does_not_allow_unconverged_training (test_training.TrainingIntegrityTests) ... ok
 
 ----------------------------------------------------------------------
-Ran 42 tests in 21.544s
+Ran 45 tests in 19.428s
 
 OK

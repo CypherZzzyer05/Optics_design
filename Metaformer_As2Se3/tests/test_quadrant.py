@@ -9,16 +9,75 @@ import numpy as np
 import torch
 
 from fdtd_pipeline.config import Geometry, PROJECT_ROOT, QUADRANT_PARAMETER_NAMES, load_config
-from fdtd_pipeline.lumerical import FDTDSimulator
+from fdtd_pipeline.lumerical import FDTDSimulator, mesh_grid_summary
 from fdtd_pipeline.pipeline import generate_dataset
 from metaformer import MetaformerConfig, InverseMetaformer, geometry_mse
 from spectrum_dataset import SpectrumGeometryDataset
 from train_metaformer import TrainingConfig, train, regression_metrics
 from explore_spectra import features, study_plan
+from explore_double_dips import double_pair, control_plan
 from test_fdtd_pipeline import FakeSimulator
 
 
 class QuadrantTests(unittest.TestCase):
+    def test_strict_mesh_limit_covers_full_domain_and_checks_actual_cells(self):
+        config = load_config(PROJECT_ROOT/'configs/as2se3_au_pilot.json')
+        for metal in ('au', 'ag'):
+            formal = load_config(PROJECT_ROOT/f'configs/as2se3_{metal}_fine8.json')
+            self.assertEqual(formal.simulation.maximum_mesh_nm, 8)
+            self.assertEqual(formal.simulation.mesh_nm, 8)
+            self.assertEqual(formal.simulation.metal_mesh_nm, 2.5)
+            self.assertEqual(formal.parameter_names, QUADRANT_PARAMETER_NAMES)
+        self.assertNotIn('maximum_mesh_nm', config.metadata()['simulation'])
+        for value in (10, 20, 0, float('nan')):
+            with self.assertRaises(ValueError):
+                replace(config.simulation, mesh_nm=8, maximum_mesh_nm=value)
+        settings = replace(config.simulation, mesh_nm=8, metal_mesh_nm=2.5, maximum_mesh_nm=8)
+        simulator = object.__new__(FDTDSimulator)
+        simulator.settings, simulator.fdtd = settings, MagicMock()
+        g = Geometry(667, 167, 369, 97, 119, theta_odd_deg=-5, theta_even_deg=41)
+        simulator.build(g)
+        mesh = {c.kwargs['name']: c.kwargs for c in simulator.fdtd.addmesh.call_args_list}['global_mesh_limit']
+        self.assertAlmostEqual(mesh['z_min'], -1700e-9)
+        self.assertAlmostEqual(mesh['z_max'], (369+1200)*1e-9)
+        for axis in ('x', 'y', 'z'):
+            self.assertAlmostEqual(mesh['d'+axis], 8e-9)
+            self.assertTrue(mesh['override_'+axis+'_mesh'])
+        grids = {axis: np.array([-16, -8, 0, 8, 16])*1e-9 for axis in ('x', 'y', 'z')}
+        summary = mesh_grid_summary(grids, 8)
+        self.assertAlmostEqual(summary['z']['maximum_step_nm'], 8)
+        grids['z'] = np.array([-16, -8, 0, 12])*1e-9
+        with self.assertRaisesRegex(ValueError, 'Actual z mesh'):
+            mesh_grid_summary(grids, 8)
+        grids['z'] = np.array([0, 0, 8])*1e-9
+        with self.assertRaisesRegex(ValueError, 'Invalid'):
+            mesh_grid_summary(grids, 8)
+    def test_double_pair_rejects_single_unresolved_and_edge_dips(self):
+        w = np.linspace(700, 1700, 3000)
+        def trough(center, width=3):
+            return .9*np.exp(-.5*((w-center)/width)**2)
+        r = .95-trough(838)-trough(924)
+        pair = double_pair(w, r)['dominant_pair']
+        self.assertIsNotNone(pair)
+        self.assertAlmostEqual(pair['separation_nm'], 86, delta=.7)
+        self.assertIsNone(double_pair(w, .95-trough(838))['dominant_pair'])
+        self.assertIsNone(double_pair(w, .95-trough(838)-trough(924, .2))['dominant_pair'])
+        self.assertIsNone(double_pair(w, .95-trough(710)-trough(924))['dominant_pair'])
+        values = [667, 167, 369, 97, 119, -5, 41]
+        plan = control_plan(values)
+        self.assertEqual(len(plan), 6)
+        for entry in plan:
+            self.assertEqual(entry['geometry_values'][:5], values[:5])
+            self.assertAlmostEqual(sum(entry['geometry_values'][5:])/2, 18)
+
+    def test_research_resolution_cannot_enter_training_pipeline(self):
+        config = load_config(PROJECT_ROOT/'configs/as2se3_au_pilot.json')
+        simulation = replace(config.simulation, research_grid=True, spectrum_points=3000)
+        self.assertEqual(len(simulation.wavelength_grid()), 3000)
+        with self.assertRaisesRegex(ValueError, 'cannot be packed'):
+            replace(config, simulation=simulation)
+        self.assertNotIn('research_grid', config.metadata()['simulation'])
+
     def test_angles_and_self_centers_preserve_C2(self):
         g = Geometry(660, 190, 300, 120, 120, theta_odd_deg=20, theta_even_deg=-10)
         self.assertEqual(g.angles(), [20, -10, -10, 20])

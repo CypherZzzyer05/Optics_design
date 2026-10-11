@@ -1,0 +1,60 @@
+{
+  "sample_id": 0,
+  "project_sha256": "4c547183ff8c51f289dcc6c4dc02ff09b49fd06738a056a8217540b102ff035f",
+  "objects": [
+    {
+      "name": "si_0",
+      "center_nm": [
+        -147.35168320565646,
+        -138.8279225329709
+      ],
+      "project_angle_deg": -33.64481402341028,
+      "native_rotation_deg": 33.64481402341028,
+      "material": "As2Se3 - Joseph 700nm film (2020)",
+      "axis": "z"
+    },
+    {
+      "name": "si_1",
+      "center_nm": [
+        -147.35168320565646,
+        138.8279225329709
+      ],
+      "project_angle_deg": 39.36335222367701,
+      "native_rotation_deg": -39.36335222367701,
+      "material": "As2Se3 - Joseph 700nm film (2020)",
+      "axis": "z"
+    },
+    {
+      "name": "si_2",
+      "center_nm": [
+        147.35168320565646,
+        -138.8279225329709
+      ],
+      "project_angle_deg": 39.36335222367701,
+      "native_rotation_deg": -39.36335222367701,
+      "material": "As2Se3 - Joseph 700nm film (2020)",
+      "axis": "z"
+    },
+    {
+      "name": "si_3",
+      "center_nm": [
+        147.35168320565646,
+        138.8279225329709
+      ],
+      "project_angle_deg": -33.64481402341028,
+      "native_rotation_deg": 33.64481402341028,
+      "material": "As2Se3 - Joseph 700nm film (2020)",
+      "axis": "z"
+    }
+  ],
+  "substrate": {
+    "z min": -350.00000000000006,
+    "z max": 0.0
+  },
+  "metal": {
+    "z min": -500.00000000000006,
+    "z max": -350.00000000000006,
+    "material": "Au (Gold) - Palik"
+  },
+  "native_geometry_verified": true
+}

@@ -120,6 +120,8 @@ class SimulationSettings:
     polarization_deg: float = 0.0
     material_fit_tolerance: float | None = None
     material_imaginary_weight: float = 1.0
+    research_grid: bool = False
+    maximum_mesh_nm: float | None = None
 
     def __post_init__(self):
         positive = (self.wavelength_start_nm, self.wavelength_stop_nm, self.mesh_nm,
@@ -129,7 +131,11 @@ class SimulationSettings:
             raise ValueError("Simulation lengths, time and refractive index must be positive")
         if self.wavelength_stop_nm <= self.wavelength_start_nm:
             raise ValueError("wavelength_stop_nm must exceed wavelength_start_nm")
-        if self.spectrum_points != 1000:
+        if not isinstance(self.research_grid, bool):
+            raise ValueError("research_grid must be a boolean")
+        if isinstance(self.spectrum_points, bool) or not isinstance(self.spectrum_points, int) or self.spectrum_points < 32:
+            raise ValueError("spectrum_points must be an integer of at least 32")
+        if self.spectrum_points != 1000 and not self.research_grid:
             raise ValueError("The existing Metaformer requires exactly 1000 spectral points")
         if not 1 <= self.mesh_accuracy <= 8 or int(self.mesh_accuracy) != self.mesh_accuracy:
             raise ValueError("mesh_accuracy must be an integer in [1, 8]")
@@ -146,6 +152,11 @@ class SimulationSettings:
         for value in (self.metal_thickness_nm, self.metal_mesh_nm, self.bottom_padding_nm):
             if not np.isfinite(value) or value <= 0:
                 raise ValueError("Metal and bottom padding lengths must be positive")
+        if self.maximum_mesh_nm is not None:
+            if not np.isfinite(self.maximum_mesh_nm) or not 0 < self.maximum_mesh_nm < 10:
+                raise ValueError('Formal near-IR maximum mesh must be strictly below 10 nm')
+            if self.mesh_nm > self.maximum_mesh_nm or self.metal_mesh_nm > self.maximum_mesh_nm:
+                raise ValueError('Local mesh steps must not exceed the maximum mesh')
         if not np.isfinite(self.material_max_extension_nm) or self.material_max_extension_nm < 0:
             raise ValueError("Material extension allowance must be nonnegative")
         if not np.isfinite(self.polarization_deg):
@@ -158,7 +169,7 @@ class SimulationSettings:
             raise ValueError("Sampled nk data requires a resonator material name")
 
     def wavelength_grid(self):
-        # 1000 点按波长均匀排列，包含两端；神经网络的位置编码依赖固定采样顺序。
+        # 按波长均匀排列；训练固定1000点，独立研究可显式采用更密网格。
         return np.linspace(self.wavelength_start_nm, self.wavelength_stop_nm, self.spectrum_points)
 
 
@@ -176,6 +187,8 @@ class PipelineConfig:
     quadrant_rotation_bounds_deg: dict | None = None
 
     def __post_init__(self):
+        if self.simulation.research_grid:
+            raise ValueError("Research spectral grids cannot be packed into Metaformer training datasets")
         if isinstance(self.sample_count, bool) or not isinstance(self.sample_count, int) or self.sample_count < 1:
             raise ValueError("sample_count must be a positive integer")
         if isinstance(self.seed, bool) or not isinstance(self.seed, int) or self.seed < 0:
@@ -265,7 +278,7 @@ class PipelineConfig:
         # Preserve fingerprints for untouched legacy configurations.
         for key in ("resonator_material", "resonator_nk_csv", "material_max_extension_nm",
                     "metal_material", "metal_thickness_nm", "metal_mesh_nm", "bottom_padding_nm", "polarization_deg",
-                    "material_fit_tolerance", "material_imaginary_weight"):
+                    "material_fit_tolerance", "material_imaginary_weight", "research_grid", "maximum_mesh_nm"):
             if getattr(self.simulation, key) == SimulationSettings.__dataclass_fields__[key].default:
                 data["simulation"].pop(key)
         if self.simulation.resonator_nk_csv:

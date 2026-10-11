@@ -1,0 +1,245 @@
+{
+  "successful_real_samples": 12,
+  "statuses": [
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2
+  ],
+  "spectra_shape": [
+    12,
+    1000
+  ],
+  "geometry_shape": [
+    12,
+    7
+  ],
+  "parameter_names": [
+    "p",
+    "l",
+    "h",
+    "alpha_x",
+    "alpha_y",
+    "theta_odd_deg",
+    "theta_even_deg"
+  ],
+  "parameter_units": [
+    "nm",
+    "nm",
+    "nm",
+    "nm",
+    "nm",
+    "deg",
+    "deg"
+  ],
+  "split_sizes": {
+    "train": 10,
+    "val": 1,
+    "test": 1
+  },
+  "dataset_sha256": "4c4137ee7707b633fac4215f205160daeb992f147a9ce8a33a82e79eddfd5e8a",
+  "best_checkpoint_sha256": "081506953eb5e8cd371e7ed3f35e70d1f0b99ebf097d779cbad8b4cf2424f163",
+  "epochs_completed": 2,
+  "optimizer_steps": 10,
+  "seven_output_row_weight_changes": [
+    0.01157709863036871,
+    0.014283540658652782,
+    0.008570323698222637,
+    0.016477443277835846,
+    0.012118359096348286,
+    0.021208731457591057,
+    0.017186271026730537
+  ],
+  "reloaded_prediction_max_abs_errors": {
+    "train": 1.0133014404223317e-06,
+    "val": 8.940368102505758e-07,
+    "test": 9.536597350701115e-07
+  },
+  "metrics": {
+    "train": {
+      "samples": 10,
+      "normalized_mse": 0.07168855380280233,
+      "normalized_rmse": 0.26774718262346353,
+      "normalized_mae": 0.23266242891550065,
+      "mae_nm": {
+        "p": 14.386860359460115,
+        "l": 13.43715451657772,
+        "h": 34.56556939706206,
+        "alpha_x": 16.2627428881824,
+        "alpha_y": 13.758235573768616
+      },
+      "rmse_nm": {
+        "p": 18.457098723882005,
+        "l": 15.378434263626103,
+        "h": 39.669276915315386,
+        "alpha_x": 17.20999666103484,
+        "alpha_y": 15.129616093721427
+      },
+      "mae_deg": {
+        "theta_odd_deg": 21.973114907741547,
+        "theta_even_deg": 14.667754411697388
+      },
+      "rmse_deg": {
+        "theta_odd_deg": 24.496827667349095,
+        "theta_even_deg": 17.42047405636259
+      },
+      "angle_symmetry": "square_periodic"
+    },
+    "val": {
+      "samples": 1,
+      "normalized_mse": 0.044505284751088066,
+      "normalized_rmse": 0.21096275678680365,
+      "normalized_mae": 0.17354388215712138,
+      "mae_nm": {
+        "p": 19.181492924690247,
+        "l": 15.804976224899292,
+        "h": 18.14328908920288,
+        "alpha_x": 19.653794914484024,
+        "alpha_y": 1.766728162765503
+      },
+      "rmse_nm": {
+        "p": 19.181492924690247,
+        "l": 15.804976224899292,
+        "h": 18.14328908920288,
+        "alpha_x": 19.653794914484024,
+        "alpha_y": 1.766728162765503
+      },
+      "mae_deg": {
+        "theta_odd_deg": 3.341168761253357,
+        "theta_even_deg": 9.086272716522217
+      },
+      "rmse_deg": {
+        "theta_odd_deg": 3.341168761253357,
+        "theta_even_deg": 9.086272716522217
+      },
+      "angle_symmetry": "square_periodic"
+    },
+    "test": {
+      "samples": 1,
+      "normalized_mse": 0.04535706106782581,
+      "normalized_rmse": 0.21297197249362604,
+      "normalized_mae": 0.15953509296689714,
+      "mae_nm": {
+        "p": 5.7356953620910645,
+        "l": 23.632438480854034,
+        "h": 18.916746377944946,
+        "alpha_x": 3.609761595726013,
+        "alpha_y": 3.1893503665924072
+      },
+      "rmse_nm": {
+        "p": 5.7356953620910645,
+        "l": 23.632438480854034,
+        "h": 18.916746377944946,
+        "alpha_x": 3.609761595726013,
+        "alpha_y": 3.1893503665924072
+      },
+      "mae_deg": {
+        "theta_odd_deg": 21.505104303359985,
+        "theta_even_deg": 6.729716062545776
+      },
+      "rmse_deg": {
+        "theta_odd_deg": 21.505104303359985,
+        "theta_even_deg": 6.729716062545776
+      },
+      "angle_symmetry": "square_periodic"
+    }
+  },
+  "train_mean_baseline": {
+    "train": {
+      "samples": 10,
+      "normalized_mse": 0.07101294912606607,
+      "normalized_rmse": 0.2664825493837562,
+      "normalized_mae": 0.23251164151089532,
+      "mae_nm": {
+        "p": 14.292240787297487,
+        "l": 13.731808885931969,
+        "h": 34.638808723539114,
+        "alpha_x": 16.262459468096495,
+        "alpha_y": 13.540780663490295
+      },
+      "rmse_nm": {
+        "p": 18.33715801707131,
+        "l": 15.23541880393756,
+        "h": 39.56098970936885,
+        "alpha_x": 16.91050811433464,
+        "alpha_y": 15.024676234468568
+      },
+      "mae_deg": {
+        "theta_odd_deg": 21.844220280647278,
+        "theta_even_deg": 14.572453916072845
+      },
+      "rmse_deg": {
+        "theta_odd_deg": 24.938294482603446,
+        "theta_even_deg": 17.276587910911754
+      },
+      "angle_symmetry": "square_periodic"
+    },
+    "val": {
+      "samples": 1,
+      "normalized_mse": 0.07616873361052422,
+      "normalized_rmse": 0.2759868359370139,
+      "normalized_mae": 0.2398530745080539,
+      "mae_nm": {
+        "p": 21.32616400718689,
+        "l": 13.714580237865448,
+        "h": 21.091399788856506,
+        "alpha_x": 22.844069749116898,
+        "alpha_y": 3.5293471813201904
+      },
+      "rmse_nm": {
+        "p": 21.32616400718689,
+        "l": 13.714580237865448,
+        "h": 21.091399788856506,
+        "alpha_x": 22.844069749116898,
+        "alpha_y": 3.5293471813201904
+      },
+      "mae_deg": {
+        "theta_odd_deg": 39.04862344264984,
+        "theta_even_deg": 6.8343329429626465
+      },
+      "rmse_deg": {
+        "theta_odd_deg": 39.04862344264984,
+        "theta_even_deg": 6.8343329429626465
+      },
+      "angle_symmetry": "square_periodic"
+    },
+    "test": {
+      "samples": 1,
+      "normalized_mse": 0.036702913672234896,
+      "normalized_rmse": 0.19158004507838206,
+      "normalized_mae": 0.14235582947731018,
+      "mae_nm": {
+        "p": 7.8771162033081055,
+        "l": 21.54347449541092,
+        "h": 21.866576075553894,
+        "alpha_x": 0.41789710521698,
+        "alpha_y": 4.947391748428345
+      },
+      "rmse_nm": {
+        "p": 7.8771162033081055,
+        "l": 21.54347449541092,
+        "h": 21.866576075553894,
+        "alpha_x": 0.41789710521698,
+        "alpha_y": 4.947391748428345
+      },
+      "mae_deg": {
+        "theta_odd_deg": 14.200773239135742,
+        "theta_even_deg": 4.472406506538391
+      },
+      "rmse_deg": {
+        "theta_odd_deg": 14.200773239135742,
+        "theta_even_deg": 4.472406506538391
+      },
+      "angle_symmetry": "square_periodic"
+    }
+  },
+  "note": "Real-data pipeline check only; small pilot does not establish inverse-design accuracy or mesh convergence."
+}

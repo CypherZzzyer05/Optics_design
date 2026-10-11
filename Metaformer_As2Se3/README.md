@@ -8,9 +8,15 @@
 
 ## 已完成的真实结果
 
+**正式计算网格要求：全部低于10 nm。** 新数据采集默认使用`as2se3_au_fine8.json` / `as2se3_ag_fine8.json`，整个计算域的网格最大步长设为8 nm，金属z方向2.5 nm；求解前读取真实x/y/z网格坐标，若任一单元超限就拒绝运行。双谷正式复核已启动，实际x/y最大7.944 nm、z最大7.987 nm。以下20 nm结果仅为要求提出前的初筛记录，尚不能替代8/5 nm验证。
+
 14组 Au/Ag/裸基板对照和5组 As₂Se₃ 材料重拟合对照均已由本机 Lumerical FDTD 求解。固定 P=660、L=190、H=300、dX=dY=120 nm，角度从0/0到+10/−10、+20/−20时，约860 nm的反射谷加深并略微蓝移。20 nm网格下，Au主谷R约0.366→0.255→0.220，Ag约0.362→0.256→0.219。材料重拟合改变绝对谷深，但保留这组趋势。
 
-这些是候选筛选结果，**尚未证明最终网格收敛、材料拟合精度或模态来源**。七输出网络与数据接口已实现并通过42项软件测试；尚未训练具有可靠泛化精度的七参数模型。
+按照新的双谷目标，12组真实七参数随机样本中找到主双谷候选：P=667.282、L=167.037、H=369.490、dX=97.049、dY=118.955 nm，奇数角−4.965°、偶数角41.233°，Au背板。初始1000点光谱的两个主谷位于838.138/924.224 nm，R=0.0442/0.0340；改进As₂Se₃损耗拟合后的3000点光谱仍保留约838.046/925.075 nm双谷，R=0.0358/0.0258。全波段还存在其他光谱特征。
+
+这些是候选筛选结果，**尚未证明最终网格收敛、金属材料拟合精度或模态来源**。七输出网络与数据接口通过45项软件测试。12组初筛真实样本完成两轮训练、10次优化更新及权重重载审计；这是流程验证，测试误差尚未优于均值基线，不能视为可靠逆向设计模型。
+
+![双谷候选](research_results/seven_parameter_pilot/double_dip_candidate.png)
 
 ![候选结构光谱](docs/figures/candidate_comparison.png)
 
@@ -22,7 +28,7 @@
 
 ```powershell
 # 检查真实 FDTD 接口及材料
-python generate_dataset.py doctor --config configs/as2se3_au_pilot.json
+python generate_dataset.py doctor --config configs/as2se3_au_fine8.json
 # 固定尺寸的 Au/Ag 角度对照；可断点续算
 python explore_spectra.py plan
 python explore_spectra.py run
@@ -30,15 +36,19 @@ python explore_spectra.py run
 python plot_research_summary.py
 # 检查七输出网络并保存结构图；不依赖尚未采集的训练数据
 python draw_metaformer.py --sampling-config configs/as2se3_au_pilot.json --output-dir docs/figures/as2se3
-# 随机七参数数据采集及两轮训练流程检查
-python generate_dataset.py generate --config configs/as2se3_au_pilot.json
-python train_metaformer.py --config configs/train_as2se3_pilot.json
-python plot_training.py --output-root runs/as2se3_au_pilot
-# 更细网格验证单个候选；可能需要较长求解时间
-python verify_candidate.py --case Au_opposite_20 --mesh 10 5
+# 8 nm整个计算域：随机七参数数据采集及两轮训练流程检查
+python generate_dataset.py generate --config configs/as2se3_au_fine8.json
+python train_metaformer.py --config configs/train_as2se3_fine8.json
+python audit_quadrant_pilot.py --sampling-config configs/as2se3_au_fine8.json --training-config configs/train_as2se3_fine8.json
+python plot_training.py --output-root runs/as2se3_au_fine8
+# 双谷候选：固定尺寸和平均角，扫描奇偶象限角差，比较Au/Ag
+python explore_double_dips.py plan
+python explore_double_dips.py run
+# 5 nm空间网格复核，使用独立输出目录；可断点续算
+python explore_double_dips.py run --case-id Au_full_difference --mesh-nm 5 --output data/double_dip_fine5
 ```
 
-`configs/as2se3_ag_pilot.json` 用于 Ag 数据采集；`configs/as2se3_au_refit.json` 用于 As₂Se₃ 损耗拟合对照。更改结构、材料、网格、波段或采样计划时使用新的输出目录，避免混合不兼容数据。
+`configs/as2se3_ag_fine8.json` 用于 Ag 正式数据采集；`*_pilot.json`和`as2se3_au_refit.json`仅保留已计算粗网格结果的原始配置与指纹。更改结构、材料、网格、波段或采样计划时使用新的输出目录，避免混合不兼容数据。
 
 已加入专用于本项目的 PyCharm `.run/` 入口。数据生成前先完成环境检查；训练入口需要先生成七参数数据集。两轮训练配置用于接口验证。
 
@@ -46,6 +56,6 @@ python verify_candidate.py --case Au_opposite_20 --mesh 10 5
 
 As₂Se₃ 使用 Joseph 等实测薄膜 n/k，来源与许可见 [materials/README.md](materials/README.md)。数据覆盖至1688 nm，1688–1700 nm采用显式端点延拓。当前350 nm基板为薄膜结构；若实物使用毫米厚基片，必须重新设置基板和背面金属传播模型。
 
-研究流程、角度均值/差值扫描、尺寸扫描及目标谱导入方法见[近红外研究计划](docs/near_ir_research_plan.md)。用户尚未给出目标谱的具体形状、中心和线宽，因此当前筛选明显反射谷。支持用 `explore_spectra.py --target-csv` 比较指定目标。
+研究流程、角度均值/差值扫描、尺寸扫描及目标谱导入方法见[近红外研究计划](docs/near_ir_research_plan.md)。当前目标为双谷或其他明显特征谱，尚未限定中心和线宽。双谷的判据、原始数据、训练审计见[双谷研究记录](docs/double_dip_research.md)。支持用 `explore_spectra.py --target-csv` 比较后续指定目标。
 
 原五/六参数模型的历史说明归档至 [legacy_metaformer_readme.md](docs/legacy_metaformer_readme.md)；其中原项目的数据、训练记录和4–8 μm结果属于历史参考。本项目没有复制其大型数据及权重。

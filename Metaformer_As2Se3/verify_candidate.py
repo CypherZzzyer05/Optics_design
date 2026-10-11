@@ -12,7 +12,9 @@ from fdtd_pipeline.pipeline import atomic_json, atomic_npz, checksum, directory_
 from explore_spectra import features
 
 
-def verify(config, study, case_id, output, meshes=(10., 5.)):
+def verify(config, study, case_id, output, meshes=(8., 5.)):
+    if any(not np.isfinite(mesh) or not 0 < mesh < 10 for mesh in meshes):
+        raise ValueError('All formal verification meshes must be strictly below 10 nm')
     manifest=json.loads((study/'manifest.json').read_text(encoding='utf-8'))
     entry=next(e for e in manifest['cases'] if e['id']==case_id)
     if entry['state']!='success':
@@ -32,7 +34,7 @@ def verify(config, study, case_id, output, meshes=(10., 5.)):
     with directory_lock(output):
         for mesh in meshes:
             material='Au (Gold) - Palik' if entry['metal']=='Au' else 'Ag (Silver) - Palik (0-2um)'
-            settings=replace(config.simulation,mesh_nm=mesh,metal_mesh_nm=min(2.5,mesh/2),
+            settings=replace(config.simulation,mesh_nm=mesh,maximum_mesh_nm=mesh,metal_mesh_nm=min(2.5,mesh/2),
                              mesh_accuracy=max(4,config.simulation.mesh_accuracy),metal_material=material,
                              auto_shutoff_min=1e-6,simulation_time_ps=max(4,config.simulation.simulation_time_ps))
             signature=hashlib.sha256(json.dumps({'config':config.metadata(),'case':entry['geometry_values'],
@@ -82,7 +84,7 @@ if __name__=='__main__':
     parser.add_argument('--config',type=Path,default=PROJECT_ROOT/'configs/as2se3_au_pilot.json')
     parser.add_argument('--study',type=Path,default=PROJECT_ROOT/'data/near_ir_study')
     parser.add_argument('--case',required=True)
-    parser.add_argument('--mesh',type=float,nargs='+',default=[10,5])
+    parser.add_argument('--mesh',type=float,nargs='+',default=[8,5])
     parser.add_argument('--output',type=Path,default=PROJECT_ROOT/'data/candidate_verification')
     args=parser.parse_args()
     print(json.dumps(verify(load_config(args.config),args.study,args.case,args.output.resolve(),tuple(args.mesh)),indent=2))

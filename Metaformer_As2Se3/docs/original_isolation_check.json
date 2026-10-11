@@ -1,7 +1,8 @@
 {
   "checked_source_files": 43,
   "changed_source_files": [],
+  "comparison": "Git snapshot comparison normalizes CRLF/LF serialization",
   "original_git_status_matches_snapshot": true,
   "original_root": "D:\\projects\\LumOpt_test",
-  "new_repository": "D:\\projects\\Metaformer_As2Se3"
+  "new_repository": "D:/projects/Metaformer_As2Se3"
 }

@@ -1,0 +1,18 @@
+[
+  {
+    "epoch": 1,
+    "train_mse": 0.08850990533828736,
+    "val_mse": 0.06900862604379654,
+    "learning_rate": 0.0003,
+    "optimizer_steps": 5,
+    "epoch_seconds": 0.7029999999995198
+  },
+  {
+    "epoch": 2,
+    "train_mse": 0.07506765946745872,
+    "val_mse": 0.0445052906870842,
+    "learning_rate": 0.0003,
+    "optimizer_steps": 5,
+    "epoch_seconds": 0.18800000000010186
+  }
+]
