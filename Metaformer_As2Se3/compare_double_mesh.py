@@ -10,7 +10,7 @@ import numpy as np
 
 from explore_double_dips import double_pair
 from fdtd_pipeline.config import PROJECT_ROOT, SimulationSettings
-from fdtd_pipeline.lumerical import mesh_grid_summary, validate_spectrum
+from fdtd_pipeline.lumerical import mesh_grid_summary, validate_spectrum, validate_power_integration
 from fdtd_pipeline.pipeline import atomic_json, checksum
 
 
@@ -61,8 +61,18 @@ def read_case(directory, case_id):
     validate_spectrum(data['wavelength_nm'], data['reflectance'], data['transmittance'], settings, int(data['status']))
     mesh = mesh_grid_summary({axis: data[f'mesh_{axis}_nm']*1e-9 for axis in ('x', 'y', 'z')},
                              settings.maximum_mesh_nm)
+    recording_bound = max(mesh[axis]['maximum_step_nm'] for axis in ('x', 'y'))*settings.monitor_downsample_xy
+    if recording_bound >= 10:
+        raise ValueError('Actual monitor recording spacing reaches the strict 10 nm limit')
+    integration = None
+    if settings.monitor_downsample_xy > 1:
+        integration, check_w, _, _ = validate_power_integration(data['wavelength_nm'], data['reflectance'], data['transmittance'],
+            data['power_check_wavelength_nm'], data['power_check_reflectance'], data['power_check_transmittance'])
+        if not np.allclose(check_w, settings.power_validation_wavelengths_nm, rtol=0, atol=1e-5):
+            raise ValueError('Full-spatial checks differ from the specified validation wavelengths')
     return {'directory': directory, 'path': path, 'manifest': manifest, 'entry': entry,
-            'settings': settings, 'data': data, 'actual_mesh': mesh}
+            'settings': settings, 'data': data, 'actual_mesh': mesh,
+            'power_integration_validation': integration, 'monitor_recording_spacing_bound_nm': recording_bound}
 
 
 def compare(reference_dir, fine_dir, case_id, output):
@@ -76,6 +86,7 @@ def compare(reference_dir, fine_dir, case_id, output):
     differences = [key for key, value in vars(reference['settings']).items()
                    if key not in ('mesh_nm', 'maximum_mesh_nm', 'metal_mesh_nm', 'mesh_accuracy',
                                   'processes', 'threads', 'hide_fdtd', 'save_projects')
+                   and key not in ('monitor_downsample_xy', 'power_validation_wavelengths_nm')
                    and value != getattr(fine['settings'], key)]
     if differences:
         raise ValueError(f'Physical or spectral settings changed: {differences}')
@@ -87,6 +98,9 @@ def compare(reference_dir, fine_dir, case_id, output):
                   fine_mesh_nm=fine['settings'].maximum_mesh_nm,
                   reference_sha256=checksum(reference['path']), fine_sha256=checksum(fine['path']),
                   reference_actual_mesh=reference['actual_mesh'], fine_actual_mesh=fine['actual_mesh'],
+                  reference_power_integration_check=reference['power_integration_validation'],
+                  fine_power_integration_check=fine['power_integration_validation'],
+                  monitor_recording_spacing_bounds_nm=[reference['monitor_recording_spacing_bound_nm'], fine['monitor_recording_spacing_bound_nm']],
                   statuses=[int(reference['data']['status']), int(fine['data']['status'])],
                   comparison_kind='Two-mesh stability check for both dominant troughs',
                   material_fit_validated=False,
@@ -117,7 +131,7 @@ def compare(reference_dir, fine_dir, case_id, output):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--reference', type=Path, default=PROJECT_ROOT / 'data/double_dip_controls8')
-    parser.add_argument('--fine', type=Path, default=PROJECT_ROOT / 'data/double_dip_fine5')
+    parser.add_argument('--fine', type=Path, default=PROJECT_ROOT / 'data/double_dip_fine5_checked')
     parser.add_argument('--case-id', default='Au_full_difference')
     parser.add_argument('--output', type=Path, default=PROJECT_ROOT / 'research_results/double_dip_mesh_comparison')
     args = parser.parse_args()

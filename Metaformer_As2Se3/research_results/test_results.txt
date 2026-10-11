@@ -1,3 +1,4 @@
+test_reduced_monitor_storage_requires_and_passes_independent_power_checks (test_double_mesh.DoubleMeshTests) ... ok
 test_tracks_both_dips_even_when_prominence_rank_changes (test_double_mesh.DoubleMeshTests) ... ok
 test_divergence_is_not_retried (test_fdtd_pipeline.ConvergenceRetryTests) ... ok
 test_retry_is_bounded_and_never_accepts_nonconvergence (test_fdtd_pipeline.ConvergenceRetryTests) ... Auto-shutoff not reached; retrying sample.fsp with 20.0 ps time limit
@@ -50,6 +51,6 @@ test_training_changes_parameters_with_real_backward_and_optimizer (test_training
 test_validation_permission_does_not_allow_unconverged_training (test_training.TrainingIntegrityTests) ... ok
 
 ----------------------------------------------------------------------
-Ran 46 tests in 17.749s
+Ran 47 tests in 21.505s
 
 OK

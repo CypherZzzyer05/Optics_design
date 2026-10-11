@@ -34,6 +34,25 @@ def mesh_grid_summary(grids, maximum_nm):
     return summary
 
 
+def validate_power_integration(wavelength, reflection, transmission, check_wavelength, check_r, check_t):
+    """Reject reduced spatial storage when full-spatial integrated powers disagree."""
+    check_wavelength = np.asarray(check_wavelength).reshape(-1)
+    check_r, check_t = np.asarray(check_r).reshape(-1), np.asarray(check_t).reshape(-1)
+    if (len(check_wavelength) < 3 or check_r.shape != check_wavelength.shape or check_t.shape != check_wavelength.shape
+            or not np.isfinite(np.column_stack([check_wavelength, check_r, check_t])).all()):
+        raise ValueError('Invalid full-spatial power-check data')
+    order = np.argsort(check_wavelength)
+    check_wavelength, check_r, check_t = check_wavelength[order], check_r[order], check_t[order]
+    if np.any(np.diff(check_wavelength) <= 0) or check_wavelength[0] < wavelength[0]-1e-5 or check_wavelength[-1] > wavelength[-1]+1e-5:
+        raise ValueError('Power-check wavelengths are outside the main spectrum or duplicated')
+    errors = {'maximum_R_error': float(np.max(np.abs(np.interp(check_wavelength, wavelength, reflection)-check_r))),
+              'maximum_T_error': float(np.max(np.abs(np.interp(check_wavelength, wavelength, transmission)-check_t))),
+              'check_points': len(check_wavelength), 'maximum_allowed_R_error': .002, 'maximum_allowed_T_error': 1e-5}
+    if errors['maximum_R_error'] > .002 or errors['maximum_T_error'] > 1e-5:
+        raise ValueError(f'Reduced monitor storage failed full-spatial power validation: {errors}')
+    return errors, check_wavelength, check_r, check_t
+
+
 def locate_lumapi(explicit=None):
     """Prefer the installed v241 API; never silently use a newer PyLumerical package."""
     # 优先使用配置/环境变量明确指定的本机 API，保持与已安装 2024 R1 的版本一致。
@@ -251,10 +270,23 @@ class FDTDSimulator:
                         ("T", metal_bottom-0.5*s.bottom_padding_nm*nm if metal_enabled else -0.5*s.substrate_depth_nm*nm)):
             f.addpower(name=name, monitor_type="2D Z-normal", x=0., y=0.,
                        x_span=p, y_span=p, z=z)
+            if s.monitor_downsample_xy > 1:
+                f.set('down sample x', s.monitor_downsample_xy)
+                f.set('down sample y', s.monitor_downsample_xy)
             # Only accumulated power is needed. Full 1000-frequency E/H fields are large.
             for field in ("Ex", "Ey", "Ez", "Hx", "Hy", "Hz", "Px", "Py", "Pz"):
                 f.set("output " + field, False)
             f.set("output power", True)
+            if s.power_validation_wavelengths_nm:
+                f.addpower(name=name+'_powercheck', monitor_type='2D Z-normal', x=0., y=0., x_span=p, y_span=p, z=z)
+                f.set('down sample x', 1)
+                f.set('down sample y', 1)
+                f.set('override global monitor settings', True)
+                f.set('sample spacing', 'custom')
+                f.set('custom frequency samples', (299792458/(np.asarray(s.power_validation_wavelengths_nm)*nm))[::-1])
+                for field in ('Ex', 'Ey', 'Ez', 'Hx', 'Hy', 'Hz', 'Px', 'Py', 'Pz'):
+                    f.set('output '+field, False)
+                f.set('output power', True)
 
     def run(self, geometry, project_path, include_silicon=True, substrate_index=None):
         self.build(geometry, include_silicon, substrate_index)
@@ -266,6 +298,10 @@ class FDTDSimulator:
             mesh_grids = {axis: np.asarray(self.fdtd.getresult('FDTD', axis)).reshape(-1)
                           for axis in ('x', 'y', 'z')}
             mesh_summary = mesh_grid_summary(mesh_grids, self.settings.maximum_mesh_nm)
+            if self.settings.monitor_downsample_xy > 1:
+                bound = max(mesh_summary[axis]['maximum_step_nm'] for axis in ('x', 'y'))*self.settings.monitor_downsample_xy
+                if bound >= 10:
+                    raise ValueError('Monitor recording spacing must also remain strictly below 10 nm')
             project_path.with_suffix('.mesh.json').write_text(json.dumps({
                 'maximum_mesh_nm': self.settings.maximum_mesh_nm, 'actual_grid': mesh_summary,
                 'all_returned_cells_below_10_nm': True}, indent=2), encoding='utf-8')
@@ -299,6 +335,14 @@ class FDTDSimulator:
         # Downward incidence: reflected power flows +z; transmitted power flows -z.
         # 法向参考为 +z：反射功率为正，向 -z 传播的透射原始值为负，故只对 T 取负。
         result = validate_spectrum(np.asarray(r["lambda"])*1e9, r["T"], -np.asarray(t["T"]), self.settings, status)
+        if self.settings.power_validation_wavelengths_nm:
+            full_r, full_t = self.fdtd.getresult('R_powercheck', 'T'), self.fdtd.getresult('T_powercheck', 'T')
+            if not np.allclose(full_r['lambda'], full_t['lambda'], rtol=1e-10, atol=1e-15):
+                raise ValueError('Full-spatial R/T validation grids differ')
+            errors, check_w, check_r, check_t = validate_power_integration(result['wavelength_nm'], result['reflectance'],
+                result['transmittance'], np.asarray(full_r['lambda'])*1e9, full_r['T'], -np.asarray(full_t['T']))
+            result.update(power_integration_validation_json=json.dumps(errors), power_check_wavelength_nm=check_w,
+                          power_check_reflectance=check_r, power_check_transmittance=check_t)
         # 将最终时间上限、尝试次数和求解器版本一起保存，保留每条光谱的来源记录。
         result.update(status=status, elapsed_seconds=elapsed, fdtd_version=self.version,
                       simulation_time_ps=time_limit_ps, run_attempts=len(attempts),

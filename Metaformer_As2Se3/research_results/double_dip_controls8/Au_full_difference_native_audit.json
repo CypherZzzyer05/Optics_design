@@ -1,0 +1,99 @@
+{
+  "case_id": "Au_full_difference",
+  "project_sha256": "e8d97cb3f3cdb741d01ed84e3523968bb4c8b3ac96438b355e291f128097bdfc",
+  "sample_sha256": "8421fcf56aa044aea1c5d7413389ad27fa6fb0f5f4f11e9c9d540882da9d8370",
+  "native_geometry_verified": true,
+  "native_spectra_match_export": true,
+  "all_actual_mesh_cells_below_10_nm": true,
+  "status": 2,
+  "objects": [
+    {
+      "name": "si_0",
+      "x": -132.04321255986284,
+      "y": -142.99614558344396,
+      "x span": 167.0369729384913,
+      "y span": 167.03697293849135,
+      "z min": 0.0,
+      "z max": 369.49008031321796,
+      "project_angle_deg": -4.964905749468862,
+      "native_rotation_deg": 4.964905749468862,
+      "material": "As2Se3 - Joseph 700nm film (2020)",
+      "axis": "z"
+    },
+    {
+      "name": "si_1",
+      "x": -132.04321255986284,
+      "y": 142.99614558344396,
+      "x span": 167.0369729384913,
+      "y span": 167.03697293849135,
+      "z min": 0.0,
+      "z max": 369.49008031321796,
+      "project_angle_deg": 41.23316704158616,
+      "native_rotation_deg": -41.23316704158616,
+      "material": "As2Se3 - Joseph 700nm film (2020)",
+      "axis": "z"
+    },
+    {
+      "name": "si_2",
+      "x": 132.04321255986284,
+      "y": -142.99614558344396,
+      "x span": 167.0369729384913,
+      "y span": 167.03697293849135,
+      "z min": 0.0,
+      "z max": 369.49008031321796,
+      "project_angle_deg": 41.23316704158616,
+      "native_rotation_deg": -41.23316704158616,
+      "material": "As2Se3 - Joseph 700nm film (2020)",
+      "axis": "z"
+    },
+    {
+      "name": "si_3",
+      "x": 132.04321255986284,
+      "y": 142.99614558344396,
+      "x span": 167.0369729384913,
+      "y span": 167.03697293849135,
+      "z min": 0.0,
+      "z max": 369.49008031321796,
+      "project_angle_deg": -4.964905749468862,
+      "native_rotation_deg": 4.964905749468862,
+      "material": "As2Se3 - Joseph 700nm film (2020)",
+      "axis": "z"
+    }
+  ],
+  "substrate": {
+    "z min": -350.00000000000006,
+    "z max": 0.0,
+    "material": "SiO2 (Glass) - Palik"
+  },
+  "metal": {
+    "z min": -500.00000000000006,
+    "z max": -350.00000000000006,
+    "material": "Au (Gold) - Palik"
+  },
+  "actual_mesh": {
+    "x": {
+      "points": 85,
+      "maximum_step_nm": 7.943830534459447,
+      "minimum_step_nm": 7.943830534459182
+    },
+    "y": {
+      "points": 85,
+      "maximum_step_nm": 7.943830534459447,
+      "minimum_step_nm": 7.943830534459182
+    },
+    "z": {
+      "points": 457,
+      "maximum_step_nm": 7.987458667975686,
+      "minimum_step_nm": 2.4999999999984936
+    }
+  },
+  "power_integration_validation": null,
+  "monitor_recording_spacing_bound_nm": 7.943830534459499,
+  "native_vs_export_max_abs_errors": {
+    "wavelength_nm": 0.0,
+    "reflectance": 0.0,
+    "transmittance": 0.0,
+    "absorptance": 0.0
+  },
+  "note": "Independent native reload verifies the saved result, not material accuracy or mesh convergence."
+}

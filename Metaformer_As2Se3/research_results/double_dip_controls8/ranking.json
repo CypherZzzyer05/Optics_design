@@ -1,0 +1,234 @@
+{
+  "successful": 1,
+  "planned": 6,
+  "quality_level": "exploratory_not_mesh_converged",
+  "pair_criteria": {
+    "max_R": 0.2,
+    "minimum_prominence": 0.4,
+    "minimum_width_samples": 5,
+    "minimum_separation_nm": 30,
+    "band_edge_exclusion_nm": 30,
+    "minimum_intervening_contrast": 0.2
+  },
+  "ranking": [
+    {
+      "id": "Au_full_difference",
+      "metal": "Au",
+      "mean_angle_deg": 18.134130646058647,
+      "half_difference_deg": -23.09903639552751,
+      "geometry_values": [
+        667.2817648945917,
+        167.03697293849132,
+        369.4900803132179,
+        97.04945218123429,
+        118.95531822839662,
+        -4.964905749468862,
+        41.23316704158616
+      ],
+      "state": "success",
+      "metal_material": "Au (Gold) - Palik",
+      "sha256": "8421fcf56aa044aea1c5d7413389ad27fa6fb0f5f4f11e9c9d540882da9d8370",
+      "status": 2,
+      "dips": [
+        {
+          "wavelength_nm": 927.0756918972991,
+          "reflectance_min": 0.03848895484580142,
+          "prominence": 0.8545963994190309,
+          "half_prominence_width_nm": 6.598374893913729,
+          "width_samples": 19.78852630684753,
+          "resolved": true,
+          "lambda_over_width": 140.50060913520144
+        },
+        {
+          "wavelength_nm": 839.0463487829277,
+          "reflectance_min": 0.047065843394082825,
+          "prominence": 0.7809811764487224,
+          "half_prominence_width_nm": 5.83207310808632,
+          "width_samples": 17.49038725115099,
+          "resolved": true,
+          "lambda_over_width": 143.86759789063143
+        },
+        {
+          "wavelength_nm": 1039.4464821607203,
+          "reflectance_min": 0.4495440746508003,
+          "prominence": 0.5049434870748588,
+          "half_prominence_width_nm": 7.79007576222466,
+          "width_samples": 23.362437210912276,
+          "resolved": true,
+          "lambda_over_width": 133.4321403138548
+        },
+        {
+          "wavelength_nm": 709.6698899633211,
+          "reflectance_min": 0.0020471604160611683,
+          "prominence": 0.3586071127065882,
+          "half_prominence_width_nm": 11.414290673494179,
+          "width_samples": 34.23145772980896,
+          "resolved": true,
+          "lambda_over_width": 62.17380564972722
+        },
+        {
+          "wavelength_nm": 735.0116705568523,
+          "reflectance_min": 0.07305666878541732,
+          "prominence": 0.2621816374470581,
+          "half_prominence_width_nm": 7.201132637643809,
+          "width_samples": 21.596196780293397,
+          "resolved": true,
+          "lambda_over_width": 102.06889770570122
+        },
+        {
+          "wavelength_nm": 721.6738912970991,
+          "reflectance_min": 0.13483797094368793,
+          "prominence": 0.15516189285221327,
+          "half_prominence_width_nm": 2.359145725893427,
+          "width_samples": 7.075078031954554,
+          "resolved": true,
+          "lambda_over_width": 305.90475330802025
+        }
+      ],
+      "dominant_pair": {
+        "dips": [
+          {
+            "wavelength_nm": 839.0463487829277,
+            "reflectance_min": 0.047065843394082825,
+            "prominence": 0.7809811764487224,
+            "half_prominence_width_nm": 5.83207310808632,
+            "width_samples": 17.49038725115099,
+            "resolved": true,
+            "lambda_over_width": 143.86759789063143
+          },
+          {
+            "wavelength_nm": 927.0756918972991,
+            "reflectance_min": 0.03848895484580142,
+            "prominence": 0.8545963994190309,
+            "half_prominence_width_nm": 6.598374893913729,
+            "width_samples": 19.78852630684753,
+            "resolved": true,
+            "lambda_over_width": 140.50060913520144
+          }
+        ],
+        "separation_nm": 88.02934311437139,
+        "intervening_max_reflectance": 0.8930853542648323,
+        "score": 0.7809811764487224
+      }
+    }
+  ],
+  "source_candidate": {
+    "sample_id": 3,
+    "sha256": "9bf478e0518ee9e293d975ec9780fb37e73479dfde1a9e60421509cdca8c92c3",
+    "source_config_fingerprint": "f088bc4fc0e47ce78c6830e8438184c309fc1477bb58793daf7e2bdc82318de4",
+    "dips": [
+      {
+        "wavelength_nm": 924.2242242242243,
+        "reflectance_min": 0.033988085510233836,
+        "prominence": 0.8772559046961865,
+        "half_prominence_width_nm": 6.036697175403106,
+        "width_samples": 6.03066047822756,
+        "resolved": true,
+        "lambda_over_width": 153.10097514747514
+      },
+      {
+        "wavelength_nm": 838.1381381381382,
+        "reflectance_min": 0.04418068280761725,
+        "prominence": 0.762638910840671,
+        "half_prominence_width_nm": 5.499986841424743,
+        "width_samples": 5.494486854583357,
+        "resolved": true,
+        "lambda_over_width": 152.38911697487313
+      },
+      {
+        "wavelength_nm": 1038.3383383383384,
+        "reflectance_min": 0.4264074217210595,
+        "prominence": 0.5319036097445259,
+        "half_prominence_width_nm": 7.679503407470065,
+        "width_samples": 7.671823904062762,
+        "resolved": true,
+        "lambda_over_width": 135.20904715379356
+      },
+      {
+        "wavelength_nm": 709.009009009009,
+        "reflectance_min": 0.003967173988894968,
+        "prominence": 0.4222911394073693,
+        "half_prominence_width_nm": 11.654405386531266,
+        "width_samples": 11.642750981144825,
+        "resolved": true,
+        "lambda_over_width": 60.83613753717498
+      },
+      {
+        "wavelength_nm": 733.033033033033,
+        "reflectance_min": 0.10531857221042613,
+        "prominence": 0.17138212571299116,
+        "half_prominence_width_nm": 7.207070047695652,
+        "width_samples": 7.199862977647978,
+        "resolved": true,
+        "lambda_over_width": 101.7102689694835
+      },
+      {
+        "wavelength_nm": 720.0200200200201,
+        "reflectance_min": 0.0956748554937479,
+        "prominence": 0.14774627185437836,
+        "half_prominence_width_nm": 2.6500325732114334,
+        "width_samples": 2.6473825406381053,
+        "resolved": false,
+        "lambda_over_width": 271.70232822740974
+      }
+    ],
+    "dominant_pair": {
+      "dips": [
+        {
+          "wavelength_nm": 838.1381381381382,
+          "reflectance_min": 0.04418068280761725,
+          "prominence": 0.762638910840671,
+          "half_prominence_width_nm": 5.499986841424743,
+          "width_samples": 5.494486854583357,
+          "resolved": true,
+          "lambda_over_width": 152.38911697487313
+        },
+        {
+          "wavelength_nm": 924.2242242242243,
+          "reflectance_min": 0.033988085510233836,
+          "prominence": 0.8772559046961865,
+          "half_prominence_width_nm": 6.036697175403106,
+          "width_samples": 6.03066047822756,
+          "resolved": true,
+          "lambda_over_width": 153.10097514747514
+        }
+      ],
+      "separation_nm": 86.08608608608608,
+      "intervening_max_reflectance": 0.9112439902064203,
+      "score": 0.762638910840671
+    }
+  },
+  "simulation": {
+    "wavelength_start_nm": 700,
+    "wavelength_stop_nm": 1700,
+    "spectrum_points": 3000,
+    "mesh_accuracy": 4,
+    "mesh_nm": 8,
+    "simulation_time_ps": 4,
+    "auto_shutoff_min": 1e-05,
+    "air_padding_nm": 1200,
+    "substrate_depth_nm": 350,
+    "background_index": 1,
+    "silicon_material": "Si (Silicon) - Palik",
+    "substrate_material": "SiO2 (Glass) - Palik",
+    "processes": 1,
+    "threads": 8,
+    "hide_fdtd": true,
+    "save_projects": true,
+    "quality_tolerance": 0.03,
+    "require_auto_shutoff": true,
+    "resonator_material": "As2Se3 - Joseph 700nm film (2020)",
+    "resonator_nk_csv": "D:\\projects\\Metaformer_As2Se3_dev\\materials\\as2se3_joseph_700nm.csv",
+    "material_max_extension_nm": 12,
+    "metal_material": "Au (Gold) - Palik",
+    "metal_thickness_nm": 150,
+    "metal_mesh_nm": 2.5,
+    "bottom_padding_nm": 1200,
+    "polarization_deg": 0.0,
+    "material_fit_tolerance": 0,
+    "material_imaginary_weight": 2,
+    "research_grid": true,
+    "maximum_mesh_nm": 8
+  },
+  "note": "Two dominant dips may coexist with other spectral features. One mesh is not a mesh-convergence study."
+}
