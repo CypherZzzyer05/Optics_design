@@ -1,0 +1,9 @@
+{
+  "archive_status.json": "01ea84ae558dd17a2fc3aba263527b7421939bd8b78931d72a88955ff271f0b2",
+  "Au_full_difference_native_audit.json": "c6827582b1f864a11f72a4fd07e5bfbd2b752d171adc6f9d9c0b9d4d8f788506",
+  "manifest.json": "2f956129af92c6d703bb64291561924b26164e79c38155d7c1b5f16f3c91caf1",
+  "ranking.json": "642f5f492b1ab6e646133078f6f796eb80abc1ad550215c0c6f4a5d225ddd85b",
+  "samples\\Au_full_difference.csv": "19fd84ceaf606353c831414310516f4f7c56db3eef162b24334e9830fa22e735",
+  "samples\\Au_full_difference.npz": "8071de5aaf0af7b2f5b70549aedad7a64c25cb982f58b28b0a253603c717909d",
+  "spectra.png": "e336d22e8f7854cd1f4808d2b37335dbe0803c79c7143dda6a154e3136fcab48"
+}

@@ -1,0 +1,8 @@
+{
+  "verified_real_cases": 1,
+  "planned": 1,
+  "complete_study": true,
+  "all_native_projects_verified": true,
+  "all_actual_mesh_cells_below_10_nm": true,
+  "note": "Only successful, native-audited cases are archived; a partial snapshot does not complete the planned study."
+}

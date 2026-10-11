@@ -1,0 +1,206 @@
+{
+  "reference_pair": {
+    "dips": [
+      {
+        "wavelength_nm": 839.3797932644214,
+        "reflectance_min": 0.0780777554369031,
+        "prominence": 0.7498087864984064,
+        "half_prominence_width_nm": 6.220679354008894,
+        "width_samples": 18.655817382672552,
+        "resolved": true,
+        "lambda_over_width": 134.9337822280594
+      },
+      {
+        "wavelength_nm": 927.0756918972991,
+        "reflectance_min": 0.04084974395165391,
+        "prominence": 0.8510911911859749,
+        "half_prominence_width_nm": 6.693888104080315,
+        "width_samples": 20.074970424136666,
+        "resolved": true,
+        "lambda_over_width": 138.495845386509
+      }
+    ],
+    "separation_nm": 87.69589863287763,
+    "intervening_max_reflectance": 0.8919409351376287,
+    "score": 0.7498087864984064
+  },
+  "fine_pair": {
+    "dips": [
+      {
+        "wavelength_nm": 839.3797932644214,
+        "reflectance_min": 0.0880694224987432,
+        "prominence": 0.7394516717954873,
+        "half_prominence_width_nm": 6.357263365156086,
+        "width_samples": 19.065432832103056,
+        "resolved": true,
+        "lambda_over_width": 132.03476795770794
+      },
+      {
+        "wavelength_nm": 927.0756918972991,
+        "reflectance_min": 0.04091355726594519,
+        "prominence": 0.8505227777879204,
+        "half_prominence_width_nm": 6.691994752550954,
+        "width_samples": 20.069292262900547,
+        "resolved": true,
+        "lambda_over_width": 138.53502971500427
+      }
+    ],
+    "separation_nm": 87.69589863287763,
+    "intervening_max_reflectance": 0.8914363350538655,
+    "score": 0.7394516717954873
+  },
+  "matched_dips": [
+    {
+      "reference_dip": {
+        "wavelength_nm": 839.3797932644214,
+        "reflectance_min": 0.0780777554369031,
+        "prominence": 0.7498087864984064,
+        "half_prominence_width_nm": 6.220679354008894,
+        "width_samples": 18.655817382672552,
+        "resolved": true,
+        "lambda_over_width": 134.9337822280594
+      },
+      "fine_dip": {
+        "wavelength_nm": 839.3797932644214,
+        "reflectance_min": 0.0880694224987432,
+        "prominence": 0.7394516717954873,
+        "half_prominence_width_nm": 6.357263365156086,
+        "width_samples": 19.065432832103056,
+        "resolved": true,
+        "lambda_over_width": 132.03476795770794
+      },
+      "shift_nm": 0.0,
+      "absolute_R_min_change": 0.009991667061840098,
+      "relative_width_change": 0.021956446133037044,
+      "feature_preserved": true,
+      "passes_thresholds": true
+    },
+    {
+      "reference_dip": {
+        "wavelength_nm": 927.0756918972991,
+        "reflectance_min": 0.04084974395165391,
+        "prominence": 0.8510911911859749,
+        "half_prominence_width_nm": 6.693888104080315,
+        "width_samples": 20.074970424136666,
+        "resolved": true,
+        "lambda_over_width": 138.495845386509
+      },
+      "fine_dip": {
+        "wavelength_nm": 927.0756918972991,
+        "reflectance_min": 0.04091355726594519,
+        "prominence": 0.8505227777879204,
+        "half_prominence_width_nm": 6.691994752550954,
+        "width_samples": 20.069292262900547,
+        "resolved": true,
+        "lambda_over_width": 138.53502971500427
+      },
+      "shift_nm": 0.0,
+      "absolute_R_min_change": 6.381331429128334e-05,
+      "relative_width_change": 0.000282847800847863,
+      "feature_preserved": true,
+      "passes_thresholds": true
+    }
+  ],
+  "both_dips_stable": true,
+  "thresholds": {
+    "peak_shift_nm": 2,
+    "absolute_R_min_change": 0.03,
+    "relative_width_change": 0.1
+  },
+  "maximum_R_difference": 0.013831588029954545,
+  "rms_R_difference": 0.0036729526281510756,
+  "case_id": "Au_full_difference",
+  "geometry_values": [
+    667.2817648945917,
+    167.03697293849132,
+    369.4900803132179,
+    97.04945218123429,
+    118.95531822839662,
+    -4.964905749468862,
+    41.23316704158616
+  ],
+  "reference_mesh_nm": 5.0,
+  "fine_mesh_nm": 4.0,
+  "reference_sha256": "66649a8de5086b095f97e6db9569d2d52042fea1678ffde146cb14470b4e55cd",
+  "fine_sha256": "8071de5aaf0af7b2f5b70549aedad7a64c25cb982f58b28b0a253603c717909d",
+  "reference_actual_mesh": {
+    "x": {
+      "points": 135,
+      "maximum_step_nm": 4.97971466339335,
+      "minimum_step_nm": 4.9797146633923965
+    },
+    "y": {
+      "points": 135,
+      "maximum_step_nm": 4.97971466339335,
+      "minimum_step_nm": 4.9797146633923965
+    },
+    "z": {
+      "points": 689,
+      "maximum_step_nm": 4.992161667493089,
+      "minimum_step_nm": 2.499999999998441
+    }
+  },
+  "fine_actual_mesh": {
+    "x": {
+      "points": 168,
+      "maximum_step_nm": 3.995699190985652,
+      "minimum_step_nm": 3.9956991909851753
+    },
+    "y": {
+      "points": 168,
+      "maximum_step_nm": 3.995699190985652,
+      "minimum_step_nm": 3.9956991909851753
+    },
+    "z": {
+      "points": 845,
+      "maximum_step_nm": 3.9937293339951485,
+      "minimum_step_nm": 2.4999999999908704
+    }
+  },
+  "reference_power_integration_check": {
+    "maximum_R_error": 2.4792699448994426e-08,
+    "maximum_T_error": 3.6864188795066337e-11,
+    "check_points": 173,
+    "maximum_allowed_R_error": 0.002,
+    "maximum_allowed_T_error": 1e-05
+  },
+  "fine_power_integration_check": {
+    "maximum_R_error": 9.143961279822754e-08,
+    "maximum_T_error": 9.053858449465074e-11,
+    "check_points": 173,
+    "maximum_allowed_R_error": 0.002,
+    "maximum_allowed_T_error": 1e-05
+  },
+  "monitor_recording_spacing_bounds_nm": [
+    9.9594293267867,
+    7.991398381971304
+  ],
+  "statuses": [
+    2,
+    2
+  ],
+  "comparison_kind": "Two-mesh stability check for both dominant troughs",
+  "spectral_sampling_comparison": {
+    "kind": "direct_subset_with_dense_trough_windows",
+    "reference_points": 3000,
+    "shared_points": 474,
+    "maximum_wavelength_matching_error_nm": 0.0,
+    "reference_sampling_bias_by_trough": [
+      {
+        "center_change_nm": 0.0,
+        "R_min_change": 0.0,
+        "relative_width_change": 0.0,
+        "prominence_change": 0.0
+      },
+      {
+        "center_change_nm": 0.0,
+        "R_min_change": 0.0,
+        "relative_width_change": 0.0,
+        "prominence_change": 0.0
+      }
+    ],
+    "scope": "Both dense trough windows and selected full-band samples; whole-spectrum differences apply only to shared points"
+  },
+  "material_fit_validated": false,
+  "note": "Agreement at these thresholds does not establish material accuracy, modal identity, or infinite-resolution convergence."
+}
