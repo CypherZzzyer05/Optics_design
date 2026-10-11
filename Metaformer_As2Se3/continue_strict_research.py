@@ -40,6 +40,7 @@ def continue_research():
             for entry in manifest['cases']:
                 step('native_audit_'+entry['id'], 'audit_double_native.py', '--case-id', entry['id'])
             step('archive_six_8nm_controls', 'export_double_results.py')
+            step('track_both_troughs_across_angle_and_metal_controls', 'analyze_angle_controls.py')
             step('generate_twelve_real_8nm_seven_parameter_samples', 'generate_dataset.py', 'generate',
                  '--config', 'configs/as2se3_au_fine8.json')
             sampling_args = ('--sampling-config', 'configs/as2se3_au_fine8.json',
