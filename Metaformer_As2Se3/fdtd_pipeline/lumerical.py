@@ -102,14 +102,14 @@ def validate_spectrum(wavelength_nm, reflectance, transmittance, settings, statu
     transmittance = np.asarray(transmittance, dtype=np.float64).reshape(-1)
     grid = settings.wavelength_grid()
     if any(x.shape != grid.shape for x in (wavelength_nm, reflectance, transmittance)):
-        raise ValueError("Monitor must return exactly 1000 wavelength/R/T points")
+        raise ValueError("Monitor must return the configured number of wavelength/R/T points")
     if not all(np.isfinite(x).all() for x in (wavelength_nm, reflectance, transmittance)):
         raise ValueError("Nonfinite monitor values")
     # 按波长统一升序，同步排列 R 和 T，使网络第 i 个输入始终对应同一波长。
     order = np.argsort(wavelength_nm)
     wavelength_nm, reflectance, transmittance = [x[order] for x in (wavelength_nm, reflectance, transmittance)]
     if not np.allclose(wavelength_nm, grid, atol=1e-5, rtol=1e-8):
-        raise ValueError("Monitor wavelength grid does not match the configured uniform grid")
+        raise ValueError("Monitor wavelength grid does not match the configured grid")
     if status not in (1, 2):
         raise ValueError(f"FDTD failed or diverged (status={status})")
     # status=1 表示到达时间上限；status=2 表示自动关断，严格采样要求后者。
@@ -270,6 +270,10 @@ class FDTDSimulator:
                         ("T", metal_bottom-0.5*s.bottom_padding_nm*nm if metal_enabled else -0.5*s.substrate_depth_nm*nm)):
             f.addpower(name=name, monitor_type="2D Z-normal", x=0., y=0.,
                        x_span=p, y_span=p, z=z)
+            if s.research_wavelengths_nm:
+                f.set('override global monitor settings', True)
+                f.set('sample spacing', 'custom')
+                f.set('custom frequency samples', (299792458/(s.wavelength_grid()*nm))[::-1])
             if s.monitor_downsample_xy > 1:
                 f.set('down sample x', s.monitor_downsample_xy)
                 f.set('down sample y', s.monitor_downsample_xy)

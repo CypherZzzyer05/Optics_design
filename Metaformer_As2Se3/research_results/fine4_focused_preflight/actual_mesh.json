@@ -1,0 +1,21 @@
+{
+  "maximum_mesh_nm": 4.0,
+  "actual_grid": {
+    "x": {
+      "points": 168,
+      "maximum_step_nm": 3.995699190985599,
+      "minimum_step_nm": 3.9956991909852286
+    },
+    "y": {
+      "points": 168,
+      "maximum_step_nm": 3.995699190985599,
+      "minimum_step_nm": 3.9956991909852286
+    },
+    "z": {
+      "points": 845,
+      "maximum_step_nm": 3.9937293339951485,
+      "minimum_step_nm": 2.4999999999908704
+    }
+  },
+  "all_returned_cells_below_10_nm": true
+}

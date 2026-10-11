@@ -15,11 +15,23 @@ from metaformer import MetaformerConfig, InverseMetaformer, geometry_mse
 from spectrum_dataset import SpectrumGeometryDataset
 from train_metaformer import TrainingConfig, train, regression_metrics
 from explore_spectra import features, study_plan
-from explore_double_dips import double_pair, control_plan
+from explore_double_dips import double_pair, control_plan, source_candidate
 from test_fdtd_pipeline import FakeSimulator
 
 
 class QuadrantTests(unittest.TestCase):
+    def test_fresh_project_can_read_committed_real_candidate_without_coarse_generation(self):
+        config = load_config(PROJECT_ROOT/'configs/as2se3_au_pilot.json')
+        with TemporaryDirectory() as directory:
+            fresh = replace(config, output_dir=Path(directory)/'as2se3_au_pilot')
+            values, source = source_candidate(fresh, 3)
+            self.assertEqual(len(values), 7)
+            self.assertIsNotNone(source['dominant_pair'])
+            self.assertFalse(fresh.output_dir.exists())
+            wrong = replace(config, output_dir=Path(directory)/'different_user_dataset')
+            with self.assertRaises(FileNotFoundError):
+                source_candidate(wrong, 3)
+
     def test_strict_mesh_limit_covers_full_domain_and_checks_actual_cells(self):
         config = load_config(PROJECT_ROOT/'configs/as2se3_au_pilot.json')
         for metal in ('au', 'ag'):

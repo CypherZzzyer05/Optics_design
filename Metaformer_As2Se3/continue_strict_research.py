@@ -1,5 +1,6 @@
 """Sequential strict-mesh research after the active 5 nm job has finished."""
 import json
+import argparse
 from pathlib import Path
 import subprocess
 import sys
@@ -10,11 +11,16 @@ from fdtd_pipeline.pipeline import atomic_json, directory_lock
 from compare_double_mesh import read_case
 
 
-def continue_research():
+def continue_research(reference_dir=PROJECT_ROOT/'data/double_dip_controls8',
+                      fine_dir=PROJECT_ROOT/'data/double_dip_fine5_checked',
+                      comparison_output=PROJECT_ROOT/'research_results/double_dip_mesh_comparison',
+                      allow_focused=False):
     state_dir = PROJECT_ROOT/'data/strict_research_workflow'
     state_dir.mkdir(parents=True, exist_ok=True)
     state_path = state_dir/'status.json'
-    state = {'state': 'running', 'steps': [], 'started_at': datetime.now(timezone.utc).isoformat()}
+    state = {'state': 'running', 'steps': [], 'started_at': datetime.now(timezone.utc).isoformat(),
+             'reference_directory': str(reference_dir), 'fine_directory': str(fine_dir),
+             'comparison_output': str(comparison_output), 'allow_focused': allow_focused}
     def step(name, script, *arguments):
         state['current_step'] = name
         state['updated_at'] = datetime.now(timezone.utc).isoformat()
@@ -27,14 +33,18 @@ def continue_research():
         try:
             # This validates successful state, checksum, actual meshes and the
             # full-spatial power check; a stale running manifest is insufficient.
-            read_case(PROJECT_ROOT/'data/double_dip_fine5_checked', 'Au_full_difference')
-            step('native_audit_5nm', 'audit_double_native.py', '--directory', 'data/double_dip_fine5_checked')
-            step('archive_5nm', 'export_double_results.py', '--directory', 'data/double_dip_fine5_checked',
-                 '--output', 'research_results/double_dip_fine5_checked')
-            step('compare_both_troughs_8nm_5nm', 'compare_double_mesh.py')
-            comparison = json.loads((PROJECT_ROOT/'research_results/double_dip_mesh_comparison/comparison.json').read_text(encoding='utf-8'))
+            fine = read_case(fine_dir, 'Au_full_difference')
+            mesh = fine['settings'].maximum_mesh_nm
+            step(f'native_audit_{mesh:g}nm', 'audit_double_native.py', '--directory', fine_dir)
+            step(f'archive_{mesh:g}nm', 'export_double_results.py', '--directory', fine_dir,
+                 '--output', PROJECT_ROOT/'research_results'/fine_dir.name)
+            comparison_args = ['--reference', reference_dir, '--fine', fine_dir, '--output', comparison_output]
+            if allow_focused:
+                comparison_args.append('--allow-focused')
+            step('compare_both_troughs', 'compare_double_mesh.py', *comparison_args)
+            comparison = json.loads((comparison_output/'comparison.json').read_text(encoding='utf-8'))
             if not comparison['both_dips_stable']:
-                raise RuntimeError('Both troughs did not pass the 8/5 nm stability thresholds; inspect before scheduling further work')
+                raise RuntimeError('Both troughs did not pass the fixed mesh-stability thresholds; inspect before scheduling further work')
             step('complete_six_8nm_Au_Ag_angle_controls', 'explore_double_dips.py', 'run')
             manifest = json.loads((PROJECT_ROOT/'data/double_dip_controls8/manifest.json').read_text(encoding='utf-8'))
             for entry in manifest['cases']:
@@ -69,4 +79,10 @@ def continue_research():
 
 
 if __name__ == '__main__':
-    continue_research()
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--reference-dir', type=Path, default=PROJECT_ROOT/'data/double_dip_controls8')
+    parser.add_argument('--fine-dir', type=Path, default=PROJECT_ROOT/'data/double_dip_fine5_checked')
+    parser.add_argument('--comparison-output', type=Path, default=PROJECT_ROOT/'research_results/double_dip_mesh_comparison')
+    parser.add_argument('--allow-focused', action='store_true')
+    args = parser.parse_args()
+    continue_research(args.reference_dir, args.fine_dir, args.comparison_output, args.allow_focused)

@@ -1,0 +1,14 @@
+{
+  "state": "real_solver_running",
+  "case_id": "Au_full_difference",
+  "maximum_mesh_nm": 4,
+  "actual_4nm_result_available": false,
+  "planned_focused_samples": 474,
+  "source_band_nm": [
+    700,
+    1700
+  ],
+  "solver_python_pid": 23324,
+  "solver_engine_pid": 31764,
+  "recorded_at": "2026-10-11T08:35:17.565283+00:00"
+}

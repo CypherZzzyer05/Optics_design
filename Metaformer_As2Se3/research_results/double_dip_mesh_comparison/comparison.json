@@ -1,0 +1,183 @@
+{
+  "reference_pair": {
+    "dips": [
+      {
+        "wavelength_nm": 839.0463487829277,
+        "reflectance_min": 0.047065843394082825,
+        "prominence": 0.7809811764487224,
+        "half_prominence_width_nm": 5.83207310808632,
+        "width_samples": 17.49038725115099,
+        "resolved": true,
+        "lambda_over_width": 143.86759789063143
+      },
+      {
+        "wavelength_nm": 927.0756918972991,
+        "reflectance_min": 0.03848895484580142,
+        "prominence": 0.8545963994190309,
+        "half_prominence_width_nm": 6.598374893913729,
+        "width_samples": 19.78852630684753,
+        "resolved": true,
+        "lambda_over_width": 140.50060913520144
+      }
+    ],
+    "separation_nm": 88.02934311437139,
+    "intervening_max_reflectance": 0.8930853542648323,
+    "score": 0.7809811764487224
+  },
+  "fine_pair": {
+    "dips": [
+      {
+        "wavelength_nm": 839.3797932644214,
+        "reflectance_min": 0.0780777554369031,
+        "prominence": 0.7498087864984064,
+        "half_prominence_width_nm": 6.220679354008894,
+        "width_samples": 18.65581738267258,
+        "resolved": true,
+        "lambda_over_width": 134.9337822280594
+      },
+      {
+        "wavelength_nm": 927.0756918972991,
+        "reflectance_min": 0.04084974395165391,
+        "prominence": 0.8510911911859749,
+        "half_prominence_width_nm": 6.693888104080315,
+        "width_samples": 20.074970424136723,
+        "resolved": true,
+        "lambda_over_width": 138.495845386509
+      }
+    ],
+    "separation_nm": 87.69589863287763,
+    "intervening_max_reflectance": 0.8919409351376287,
+    "score": 0.7498087864984064
+  },
+  "matched_dips": [
+    {
+      "reference_dip": {
+        "wavelength_nm": 839.0463487829277,
+        "reflectance_min": 0.047065843394082825,
+        "prominence": 0.7809811764487224,
+        "half_prominence_width_nm": 5.83207310808632,
+        "width_samples": 17.49038725115099,
+        "resolved": true,
+        "lambda_over_width": 143.86759789063143
+      },
+      "fine_dip": {
+        "wavelength_nm": 839.3797932644214,
+        "reflectance_min": 0.0780777554369031,
+        "prominence": 0.7498087864984064,
+        "half_prominence_width_nm": 6.220679354008894,
+        "width_samples": 18.65581738267258,
+        "resolved": true,
+        "lambda_over_width": 134.9337822280594
+      },
+      "shift_nm": 0.33344448149375694,
+      "absolute_R_min_change": 0.03101191204282027,
+      "relative_width_change": 0.06663260880316502,
+      "feature_preserved": true,
+      "passes_thresholds": false
+    },
+    {
+      "reference_dip": {
+        "wavelength_nm": 927.0756918972991,
+        "reflectance_min": 0.03848895484580142,
+        "prominence": 0.8545963994190309,
+        "half_prominence_width_nm": 6.598374893913729,
+        "width_samples": 19.78852630684753,
+        "resolved": true,
+        "lambda_over_width": 140.50060913520144
+      },
+      "fine_dip": {
+        "wavelength_nm": 927.0756918972991,
+        "reflectance_min": 0.04084974395165391,
+        "prominence": 0.8510911911859749,
+        "half_prominence_width_nm": 6.693888104080315,
+        "width_samples": 20.074970424136723,
+        "resolved": true,
+        "lambda_over_width": 138.495845386509
+      },
+      "shift_nm": 0.0,
+      "absolute_R_min_change": 0.0023607891058524885,
+      "relative_width_change": 0.014475262727901006,
+      "feature_preserved": true,
+      "passes_thresholds": true
+    }
+  ],
+  "both_dips_stable": false,
+  "thresholds": {
+    "peak_shift_nm": 2,
+    "absolute_R_min_change": 0.03,
+    "relative_width_change": 0.1
+  },
+  "maximum_R_difference": 0.03946291320868263,
+  "rms_R_difference": 0.003952846992815061,
+  "case_id": "Au_full_difference",
+  "geometry_values": [
+    667.2817648945917,
+    167.03697293849132,
+    369.4900803132179,
+    97.04945218123429,
+    118.95531822839662,
+    -4.964905749468862,
+    41.23316704158616
+  ],
+  "reference_mesh_nm": 8,
+  "fine_mesh_nm": 5.0,
+  "reference_sha256": "8421fcf56aa044aea1c5d7413389ad27fa6fb0f5f4f11e9c9d540882da9d8370",
+  "fine_sha256": "66649a8de5086b095f97e6db9569d2d52042fea1678ffde146cb14470b4e55cd",
+  "reference_actual_mesh": {
+    "x": {
+      "points": 85,
+      "maximum_step_nm": 7.943830534459499,
+      "minimum_step_nm": 7.943830534459129
+    },
+    "y": {
+      "points": 85,
+      "maximum_step_nm": 7.943830534459499,
+      "minimum_step_nm": 7.943830534459129
+    },
+    "z": {
+      "points": 457,
+      "maximum_step_nm": 7.987458667975686,
+      "minimum_step_nm": 2.499999999998441
+    }
+  },
+  "fine_actual_mesh": {
+    "x": {
+      "points": 135,
+      "maximum_step_nm": 4.97971466339335,
+      "minimum_step_nm": 4.9797146633923965
+    },
+    "y": {
+      "points": 135,
+      "maximum_step_nm": 4.97971466339335,
+      "minimum_step_nm": 4.9797146633923965
+    },
+    "z": {
+      "points": 689,
+      "maximum_step_nm": 4.992161667493089,
+      "minimum_step_nm": 2.499999999998441
+    }
+  },
+  "reference_power_integration_check": null,
+  "fine_power_integration_check": {
+    "maximum_R_error": 2.4792699448994426e-08,
+    "maximum_T_error": 3.6864188795066337e-11,
+    "check_points": 173,
+    "maximum_allowed_R_error": 0.002,
+    "maximum_allowed_T_error": 1e-05
+  },
+  "monitor_recording_spacing_bounds_nm": [
+    7.943830534459499,
+    9.9594293267867
+  ],
+  "statuses": [
+    2,
+    2
+  ],
+  "comparison_kind": "Two-mesh stability check for both dominant troughs",
+  "spectral_sampling_comparison": {
+    "kind": "identical_full_grid",
+    "points": 3000
+  },
+  "material_fit_validated": false,
+  "note": "Agreement at these thresholds does not establish material accuracy, modal identity, or infinite-resolution convergence."
+}

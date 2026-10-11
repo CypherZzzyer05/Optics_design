@@ -1,0 +1,21 @@
+{
+  "state": "needs_attention",
+  "steps": [
+    {
+      "name": "native_audit_5nm",
+      "state": "completed"
+    },
+    {
+      "name": "archive_5nm",
+      "state": "completed"
+    },
+    {
+      "name": "compare_both_troughs_8nm_5nm",
+      "state": "completed"
+    }
+  ],
+  "started_at": "2026-10-11T08:21:08.034533+00:00",
+  "current_step": "compare_both_troughs_8nm_5nm",
+  "updated_at": "2026-10-11T08:21:14.943228+00:00",
+  "error": "Both troughs did not pass the 8/5 nm stability thresholds; inspect before scheduling further work"
+}

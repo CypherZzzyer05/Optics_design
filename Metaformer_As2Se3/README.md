@@ -8,9 +8,9 @@
 
 ## 已完成的真实结果
 
-**正式计算网格要求：全部低于10 nm。** 新数据采集默认使用`as2se3_au_fine8.json` / `as2se3_ag_fine8.json`，整个计算域的网格最大步长设为8 nm，金属z方向2.5 nm；求解前读取真实x/y/z网格坐标，若任一单元超限就拒绝运行。8 nm双谷候选已完成，实际x/y最大7.944 nm、z最大7.987 nm；5 nm进一步复核正在计算。以下20 nm结果仅为要求提出前的初筛记录。
+**正式计算网格要求：全部低于10 nm。** 新数据采集默认使用`as2se3_au_fine8.json` / `as2se3_ag_fine8.json`，整个计算域的网格最大步长设为8 nm，金属z方向2.5 nm；求解前读取真实x/y/z网格坐标，若任一单元超限就拒绝运行。8 nm及5 nm双谷计算已完成；8→5 nm第一谷谷深变化3.101个百分点，未通过预设3个百分点阈值，正在继续4 nm复核。4 nm实际x/y最大3.99570 nm、z最大3.99373 nm。以下20 nm结果仅为要求提出前的初筛记录。
 
-已完成8 nm、3000点真实光谱：两处主谷**839.046 nm / R=0.04707**、**927.076 nm / R=0.03849**，间隔88.029 nm。原生FSP独立重载后，四柱尺寸/奇偶角/材料、有限基板与底部Au层、源与网格均通过核对，导出R/T/A与原生光谱逐点一致。证据见`research_results/double_dip_controls8/`。目前该六组正式对照只完成1/6，不能宣称完整角度/Au/Ag对照或最终网格收敛。
+已完成8 nm、3000点真实光谱：两处主谷**839.046 nm / R=0.04707**、**927.076 nm / R=0.03849**，间隔88.029 nm。5 nm复核得到**839.380 nm / R=0.07808**、**927.076 nm / R=0.04085**；两谷均保留，但第一谷谷深尚不满足既定稳定性要求。原生FSP独立重载后，四柱尺寸/奇偶角/材料、有限基板与底部Au层、源与网格均通过核对，导出R/T/A与原生光谱逐点一致。证据见`research_results/double_dip_controls8/`、`double_dip_fine5_checked/`及`double_dip_mesh_comparison/`。目前六组正式角度/金属对照只完成1/6，不能宣称完整对照或最终网格收敛。
 
 ![8 nm真实双谷结构与光谱](research_results/double_dip_controls8/candidate.png)
 
@@ -18,7 +18,7 @@
 
 按照新的双谷目标，12组真实七参数随机样本中找到主双谷候选：P=667.282、L=167.037、H=369.490、dX=97.049、dY=118.955 nm，奇数角−4.965°、偶数角41.233°，Au背板。初始1000点光谱的两个主谷位于838.138/924.224 nm，R=0.0442/0.0340；改进As₂Se₃损耗拟合后的3000点光谱仍保留约838.046/925.075 nm双谷，R=0.0358/0.0258。全波段还存在其他光谱特征。
 
-这些是候选筛选结果，**尚未证明最终网格收敛、金属材料拟合精度或模态来源**。七输出网络与数据接口通过48项软件测试。12组初筛真实样本完成两轮训练、10次优化更新及权重重载审计；这是流程验证，测试误差尚未优于均值基线，不能视为可靠逆向设计模型。
+这些是候选筛选结果，**尚未证明最终网格收敛、金属材料拟合精度或模态来源**。七输出网络与数据接口通过50项软件测试。12组初筛真实样本完成两轮训练、10次优化更新及权重重载审计；这是流程验证，测试误差尚未优于均值基线，不能视为可靠逆向设计模型。
 
 ![双谷候选](research_results/seven_parameter_pilot/double_dip_candidate.png)
 
@@ -29,6 +29,8 @@
 ## 使用
 
 在 PyCharm 中打开本项目工作树，选择 `D:\Anaconda3\envs\transformer_env\python.exe`，或安装 `requirements.txt`。Lumerical 路径在配置的 `lumapi_path` 中；迁移机器时需要修改。以下命令在本项目根目录运行。
+
+首次克隆仓库、尚无本机初筛数据时，双谷入口从已提交的`research_results/seven_parameter_pilot`读取真实候选，核对NPZ校验值、来源、几何和光谱。它仅作为候选来源；新仿真仍使用8 nm或指定更细网格，不要求重新采集20 nm初筛数据。
 
 ```powershell
 # 检查真实 FDTD 接口及材料
@@ -50,17 +52,19 @@ python explore_double_dips.py plan
 python explore_double_dips.py run
 # 5 nm空间网格复核，使用独立输出目录；可断点续算
 python explore_double_dips.py run --case-id Au_full_difference --mesh-nm 5 --monitor-downsample-xy 2 --output data/double_dip_fine5_checked
-# 完成求解后：独立重载原生项目，并同时比较两处谷的网格稳定性
-python audit_double_native.py
-python export_double_results.py
+# 完成求解后：独立重载5 nm原生项目，并同时比较两处谷的网格稳定性
+python audit_double_native.py --directory data/double_dip_fine5_checked
+python export_double_results.py --directory data/double_dip_fine5_checked --output research_results/double_dip_fine5_checked
 python compare_double_mesh.py
+# 8→5 nm第一谷谷深未通过；继续4 nm，在双谷附近保留密集频率采样
+python explore_double_dips.py run --case-id Au_full_difference --mesh-nm 4 --monitor-downsample-xy 2 --focused-reference data/double_dip_fine5_checked --output data/double_dip_fine4_focused
 # 六组全部完成且原生审计通过后，逐谷比较角度与背板材料的影响
 python analyze_angle_controls.py
-# 5 nm求解完成后，顺序执行原生审计、两谷比较、六组8 nm对照和真实8 nm训练流程
-python continue_strict_research.py
+# 4 nm求解完成后：原生审计、5→4 nm两谷比较通过后，才继续六组8 nm对照及训练流程
+python continue_strict_research.py --reference-dir data/double_dip_fine5_checked --fine-dir data/double_dip_fine4_focused --comparison-output research_results/double_dip_mesh_5_4 --allow-focused
 ```
 
-5 nm复核保留3000个完整波段采样点。为适应本机内存，主远场监测器每两个空间网格点记录一次，记录间距仍低于10 nm；同时增加全空间采样监测器，在两谷附近及全波段检查点核对积分功率，R误差超过0.002或T误差超过10⁻⁵就拒绝结果。求解网格不被此存储选项改变，详见[双谷研究记录](docs/double_dip_research.md)。
+5 nm复核保留3000个完整波段采样点。为适应本机内存，主远场监测器每两个空间网格点记录一次，记录间距仍低于10 nm；同时增加全空间采样监测器，173点积分核对实际最大R差2.48×10⁻⁸、T差3.69×10⁻¹¹，均通过既定阈值。4 nm保持原宽带光源、材料与关断条件，直接计算474个频率点，在两个谷各±24 nm及参考极值附近保留密集采样，另外记录全波段检查点；不通过插值生成4 nm光谱。5→4比较只使用直接对应的共同计算点，并要求缩减采样不改变参考谷中心/深度，谷宽相对偏差≤1%、突出度绝对偏差≤0.01。实际5 nm采样检查中四项偏差均为0。474点研究数据被训练入口拒绝。当前4 nm尚未完成，不能预称两谷稳定；详见[双谷研究记录](docs/double_dip_research.md)。
 
 `configs/as2se3_ag_fine8.json` 用于 Ag 正式数据采集；`*_pilot.json`和`as2se3_au_refit.json`仅保留已计算粗网格结果的原始配置与指纹。更改结构、材料、网格、波段或采样计划时使用新的输出目录，避免混合不兼容数据。
 

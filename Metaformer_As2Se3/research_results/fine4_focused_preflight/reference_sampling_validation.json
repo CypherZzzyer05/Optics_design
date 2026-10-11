@@ -1,0 +1,23 @@
+{
+  "reference_sample_sha256": "66649a8de5086b095f97e6db9569d2d52042fea1678ffde146cb14470b4e55cd",
+  "kind": "direct_subset_with_dense_trough_windows",
+  "reference_points": 3000,
+  "shared_points": 474,
+  "maximum_wavelength_matching_error_nm": 0.0,
+  "reference_sampling_bias_by_trough": [
+    {
+      "center_change_nm": 0.0,
+      "R_min_change": 0.0,
+      "relative_width_change": 0.0,
+      "prominence_change": 0.0
+    },
+    {
+      "center_change_nm": 0.0,
+      "R_min_change": 0.0,
+      "relative_width_change": 0.0,
+      "prominence_change": 0.0
+    }
+  ],
+  "scope": "Both dense trough windows and selected full-band samples; whole-spectrum differences apply only to shared points",
+  "note": "This validates selection on the completed 5nm reference. It is not a completed 4nm spectrum."
+}

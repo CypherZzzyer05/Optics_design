@@ -6,6 +6,7 @@ from compare_double_mesh import compare_curves
 from fdtd_pipeline.lumerical import validate_power_integration
 from fdtd_pipeline.config import load_config, PROJECT_ROOT
 from dataclasses import replace
+from focused_spectra import focused_indices, common_spectra
 
 
 class DoubleMeshTests(unittest.TestCase):
@@ -28,6 +29,31 @@ class DoubleMeshTests(unittest.TestCase):
             validate_power_integration(w, r, t, checks, np.full(4, .8), np.full(4, .001))
         self.assertNotIn('monitor_downsample_xy', config.metadata()['simulation'])
         self.assertNotIn('power_validation_wavelengths_nm', config.metadata()['simulation'])
+        self.assertNotIn('research_wavelengths_nm', config.metadata()['simulation'])
+
+    def test_focused_comparison_preserves_samples_and_cannot_hide_one_changing_trough(self):
+        w = np.linspace(700, 1700, 3000)
+        r = .95-.88*np.exp(-.5*((w-838)/3)**2)-.90*np.exp(-.5*((w-927)/3)**2)
+        indices = focused_indices(w, r)
+        selected_w, selected_r, _, proof = common_spectra(w, r, w[indices], r[indices], True)
+        self.assertEqual(proof['maximum_wavelength_matching_error_nm'], 0)
+        np.testing.assert_array_equal(selected_r, r[indices])
+        config = load_config(PROJECT_ROOT/'configs/as2se3_au_pilot.json')
+        settings = replace(config.simulation, research_grid=True, spectrum_points=len(indices),
+                           research_wavelengths_nm=tuple(selected_w))
+        np.testing.assert_array_equal(settings.wavelength_grid(), selected_w)
+        with self.assertRaises(ValueError):
+            replace(settings, research_grid=False)
+        with self.assertRaisesRegex(ValueError, 'same spectral grid'):
+            common_spectra(w, r, selected_w, selected_r)
+        with self.assertRaisesRegex(ValueError, 'direct full-band subset'):
+            common_spectra(w, r, selected_w+.01, selected_r, True)
+        thinned = indices[::2]
+        thinned = np.unique(np.append(thinned, len(w)-1))
+        with self.assertRaisesRegex(ValueError, 'dense samples'):
+            common_spectra(w, r, w[thinned], r[thinned], True)
+        changed = selected_r+.04*np.exp(-.5*((selected_w-838)/3)**2)
+        self.assertFalse(compare_curves(selected_w, selected_r, changed)['both_dips_stable'])
 
     def test_tracks_both_dips_even_when_prominence_rank_changes(self):
         w = np.linspace(700, 1700, 3000)
