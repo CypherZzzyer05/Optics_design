@@ -1,0 +1,283 @@
+{
+  "band_nm": [
+    700,
+    1700
+  ],
+  "quality_level": "exploratory_not_mesh_converged",
+  "ranking_metric": "resolved reflection-dip prominence",
+  "material_extension_nm": 12,
+  "comparisons": [
+    {
+      "metal": "Au",
+      "comparison": "tetramer_vs_bare_stack",
+      "rms_reflection_change": 0.15261023383772565
+    }
+  ],
+  "ranking": [
+    {
+      "id": "Au_opposite_20",
+      "metal": "Au",
+      "case": "opposite_20",
+      "include_resonators": true,
+      "geometry_values": [
+        660.0,
+        190.0,
+        300.0,
+        120.0,
+        120.0,
+        20.0,
+        -20.0
+      ],
+      "state": "success",
+      "metal_material": "Au (Gold) - Palik",
+      "sha256": "accf93960e060542d126788ba23522650246ad5e8e3f29e3c0c033c46f905a55",
+      "status": 2,
+      "dips": [
+        {
+          "wavelength_nm": 859.1591591591591,
+          "reflectance_min": 0.23770801869436473,
+          "prominence": 0.5129453287927205,
+          "half_prominence_width_nm": 6.372543009983588,
+          "width_samples": 6.366170466973614,
+          "resolved": true,
+          "lambda_over_width": 134.82202596563909
+        },
+        {
+          "wavelength_nm": 907.2072072072073,
+          "reflectance_min": 0.6168728818497298,
+          "prominence": 0.2663861119679195,
+          "half_prominence_width_nm": 3.8077443799456887,
+          "width_samples": 3.8039366355657194,
+          "resolved": false,
+          "lambda_over_width": 238.25318001523704
+        },
+        {
+          "wavelength_nm": 745.0450450450451,
+          "reflectance_min": 0.45464514867006817,
+          "prominence": 0.21179526025169654,
+          "half_prominence_width_nm": 6.372177150731545,
+          "width_samples": 6.365804973580772,
+          "resolved": true,
+          "lambda_over_width": 116.92158385137043
+        },
+        {
+          "wavelength_nm": 1035.3353353353355,
+          "reflectance_min": 0.7627431770183712,
+          "prominence": 0.19546842677537934,
+          "half_prominence_width_nm": 6.197526131580844,
+          "width_samples": 6.191328605449371,
+          "resolved": true,
+          "lambda_over_width": 167.05622749367024
+        }
+      ],
+      "resolved_dip_count": 3,
+      "score": 0.5129453287927205,
+      "max_absorptance": 0.7622878108109261
+    },
+    {
+      "id": "Au_opposite_10",
+      "metal": "Au",
+      "case": "opposite_10",
+      "include_resonators": true,
+      "geometry_values": [
+        660.0,
+        190.0,
+        300.0,
+        120.0,
+        120.0,
+        10.0,
+        -10.0
+      ],
+      "state": "success",
+      "metal_material": "Au (Gold) - Palik",
+      "sha256": "20f3eadc9c24f2dbc0b15e47b871fc1a902f52e98274db64cc25319ef80be913",
+      "status": 2,
+      "dips": [
+        {
+          "wavelength_nm": 863.1631631631632,
+          "reflectance_min": 0.28024331990649504,
+          "prominence": 0.46885287192859343,
+          "half_prominence_width_nm": 6.415894251984582,
+          "width_samples": 6.409478357732468,
+          "resolved": true,
+          "lambda_over_width": 134.53512936192288
+        },
+        {
+          "wavelength_nm": 907.2072072072073,
+          "reflectance_min": 0.644579546524112,
+          "prominence": 0.23972683432582298,
+          "half_prominence_width_nm": 3.7183640485714022,
+          "width_samples": 3.714645684522793,
+          "resolved": false,
+          "lambda_over_width": 243.98020079711046
+        },
+        {
+          "wavelength_nm": 748.048048048048,
+          "reflectance_min": 0.46062426602408163,
+          "prominence": 0.21353548161129682,
+          "half_prominence_width_nm": 6.349711098355215,
+          "width_samples": 6.343361387256884,
+          "resolved": true,
+          "lambda_over_width": 117.80820205218741
+        },
+        {
+          "wavelength_nm": 1034.3343343343345,
+          "reflectance_min": 0.7593107800483636,
+          "prominence": 0.20004675327030563,
+          "half_prominence_width_nm": 6.20217362219978,
+          "width_samples": 6.195971448577382,
+          "resolved": true,
+          "lambda_over_width": 166.76965163182226
+        }
+      ],
+      "resolved_dip_count": 3,
+      "score": 0.46885287192859343,
+      "max_absorptance": 0.719752451086613
+    },
+    {
+      "id": "Au_common_15",
+      "metal": "Au",
+      "case": "common_15",
+      "include_resonators": true,
+      "geometry_values": [
+        660.0,
+        190.0,
+        300.0,
+        120.0,
+        120.0,
+        15.0,
+        15.0
+      ],
+      "state": "success",
+      "metal_material": "Au (Gold) - Palik",
+      "sha256": "3a2ef36fe3af5d70a4bdb5eeff218a4a031beaa55ecd8ffe4fb835089108e0af",
+      "status": 2,
+      "dips": [
+        {
+          "wavelength_nm": 861.1611611611612,
+          "reflectance_min": 0.31732903078903474,
+          "prominence": 0.43532446689823834,
+          "half_prominence_width_nm": 6.028035112079351,
+          "width_samples": 6.0220070769671565,
+          "resolved": true,
+          "lambda_over_width": 142.8593472250208
+        },
+        {
+          "wavelength_nm": 907.2072072072073,
+          "reflectance_min": 0.64533856421987,
+          "prominence": 0.24175283315986906,
+          "half_prominence_width_nm": 3.62803317131295,
+          "width_samples": 3.6244051381416114,
+          "resolved": false,
+          "lambda_over_width": 250.05482705630772
+        },
+        {
+          "wavelength_nm": 746.0460460460461,
+          "reflectance_min": 0.5077846509947469,
+          "prominence": 0.167389140919722,
+          "half_prominence_width_nm": 6.068029248061862,
+          "width_samples": 6.061961218813877,
+          "resolved": true,
+          "lambda_over_width": 122.9470089130395
+        },
+        {
+          "wavelength_nm": 1034.3343343343345,
+          "reflectance_min": 0.7959285548969548,
+          "prominence": 0.16334869632028626,
+          "half_prominence_width_nm": 6.121827640221227,
+          "width_samples": 6.115705812580757,
+          "resolved": true,
+          "lambda_over_width": 168.95842142608188
+        }
+      ],
+      "resolved_dip_count": 3,
+      "score": 0.43532446689823834,
+      "max_absorptance": 0.6826664960089605
+    },
+    {
+      "id": "Au_aligned",
+      "metal": "Au",
+      "case": "aligned",
+      "include_resonators": true,
+      "geometry_values": [
+        660.0,
+        190.0,
+        300.0,
+        120.0,
+        120.0,
+        0.0,
+        0.0
+      ],
+      "state": "success",
+      "metal_material": "Au (Gold) - Palik",
+      "sha256": "b33585a789b55ed1b496c0f7a86042505836d6ed32825ecdbd50855b2d658d0d",
+      "status": 2,
+      "dips": [
+        {
+          "wavelength_nm": 866.1661661661662,
+          "reflectance_min": 0.3918717133945045,
+          "prominence": 0.3598275083592673,
+          "half_prominence_width_nm": 6.27883730945382,
+          "width_samples": 6.272558472144283,
+          "resolved": true,
+          "lambda_over_width": 137.95008908130347
+        },
+        {
+          "wavelength_nm": 907.2072072072073,
+          "reflectance_min": 0.6598003901776531,
+          "prominence": 0.22194150094346454,
+          "half_prominence_width_nm": 3.576620100437708,
+          "width_samples": 3.573043480337134,
+          "resolved": false,
+          "lambda_over_width": 253.649306253181
+        },
+        {
+          "wavelength_nm": 749.049049049049,
+          "reflectance_min": 0.48130975879091803,
+          "prominence": 0.19874029561113932,
+          "half_prominence_width_nm": 6.338139706909487,
+          "width_samples": 6.331801567202575,
+          "resolved": true,
+          "lambda_over_width": 118.1812146287147
+        },
+        {
+          "wavelength_nm": 1035.3353353353355,
+          "reflectance_min": 0.8249018467812328,
+          "prominence": 0.13532698096340168,
+          "half_prominence_width_nm": 6.088949195967416,
+          "width_samples": 6.082860246771702,
+          "resolved": true,
+          "lambda_over_width": 170.03514104223706
+        }
+      ],
+      "resolved_dip_count": 3,
+      "score": 0.3598275083592673,
+      "max_absorptance": 0.625467963902101
+    },
+    {
+      "id": "Au_bare_stack",
+      "metal": "Au",
+      "case": "bare_stack",
+      "include_resonators": false,
+      "geometry_values": [
+        660.0,
+        190.0,
+        300.0,
+        120.0,
+        120.0,
+        0.0,
+        0.0
+      ],
+      "state": "success",
+      "metal_material": "Au (Gold) - Palik",
+      "sha256": "55dc9e1491d72d0a0bb0bbb402e1231877c7b9233bee2bb7c62532f1ded557e4",
+      "status": 2,
+      "dips": [],
+      "resolved_dip_count": 0,
+      "score": 0.0,
+      "max_absorptance": 0.003314647514955588
+    }
+  ],
+  "successful": 5,
+  "planned": 14
+}

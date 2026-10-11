@@ -1,0 +1,97 @@
+{
+  "config": {
+    "simulation": {
+      "wavelength_start_nm": 700,
+      "wavelength_stop_nm": 1700,
+      "spectrum_points": 1000,
+      "mesh_accuracy": 3,
+      "mesh_nm": 20,
+      "simulation_time_ps": 2,
+      "auto_shutoff_min": 1e-05,
+      "air_padding_nm": 1200,
+      "substrate_depth_nm": 350,
+      "background_index": 1,
+      "silicon_material": "Si (Silicon) - Palik",
+      "substrate_material": "SiO2 (Glass) - Palik",
+      "processes": 1,
+      "threads": 8,
+      "hide_fdtd": true,
+      "save_projects": true,
+      "quality_tolerance": 0.03,
+      "require_auto_shutoff": true,
+      "resonator_material": "As2Se3 - Joseph 700nm film (2020)",
+      "resonator_nk_csv": "D:\\projects\\Metaformer_As2Se3_dev\\materials\\as2se3_joseph_700nm.csv",
+      "material_max_extension_nm": 12,
+      "metal_material": "Au (Gold) - Palik",
+      "bottom_padding_nm": 1200,
+      "material_fit_tolerance": 0.0,
+      "material_imaginary_weight": 2.0
+    },
+    "bounds_nm": {
+      "p": [
+        620,
+        690
+      ],
+      "l": [
+        160,
+        210
+      ],
+      "h": [
+        240,
+        380
+      ],
+      "alpha_x": [
+        90,
+        150
+      ],
+      "alpha_y": [
+        90,
+        150
+      ]
+    },
+    "sample_count": 12,
+    "seed": 20261011,
+    "output_dir": "D:\\projects\\Metaformer_As2Se3_dev\\data\\as2se3_au_refit",
+    "lumapi_path": "D:/Program Files/Lumerical/v241/api/python/lumapi.py",
+    "parameter_range_source": "Exploratory near-IR engineering bounds; not validated fabrication bounds",
+    "quality_level": "pipeline_validation",
+    "quadrant_rotation_bounds_deg": {
+      "theta_odd_deg": [
+        -45,
+        45
+      ],
+      "theta_even_deg": [
+        -45,
+        45
+      ]
+    },
+    "resonator_nk_sha256": "9e6ee6d3b584f33226d7201e2b2e12490726cb3b8256726754e5aca9cae64ce9"
+  },
+  "fits": {
+    "As2Se3 - Joseph 700nm film (2020)": {
+      "max_n_error": 0.0068060458615883945,
+      "max_k_error": 0.0017094041668339333,
+      "rms_n_error": 0.0037778545229268374,
+      "rms_k_error": 0.0008286235483133774,
+      "minimum_fit_k": 0.025431260623283377,
+      "csv": "D:\\projects\\Metaformer_As2Se3_dev\\data\\material_refit\\material_0.csv"
+    },
+    "SiO2 (Glass) - Palik": {
+      "max_n_error": 0.008349388224864862,
+      "max_k_error": 0.0,
+      "rms_n_error": 0.00427340609267608,
+      "rms_k_error": 0.0,
+      "minimum_fit_k": 0.0,
+      "csv": "D:\\projects\\Metaformer_As2Se3_dev\\data\\material_refit\\material_1.csv"
+    },
+    "Au (Gold) - Palik": {
+      "max_n_error": 0.6558529804086315,
+      "max_k_error": 0.9026045749913916,
+      "rms_n_error": 0.3992581662516236,
+      "rms_k_error": 0.4472670236220598,
+      "minimum_fit_k": 4.250449039086406,
+      "csv": "D:\\projects\\Metaformer_As2Se3_dev\\data\\material_refit\\material_2.csv"
+    }
+  },
+  "note": "Select tolerances for the intended loss-sensitive observable; this report alone does not certify a fit."
+}

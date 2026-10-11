@@ -1,0 +1,330 @@
+{
+  "config_fingerprint": "e4825b990ceed8aa6e81e4875ef52d4fe770ba0c652063c233bc62531fd70c02",
+  "config": {
+    "simulation": {
+      "wavelength_start_nm": 700,
+      "wavelength_stop_nm": 1700,
+      "spectrum_points": 1000,
+      "mesh_accuracy": 3,
+      "mesh_nm": 20,
+      "simulation_time_ps": 2,
+      "auto_shutoff_min": 1e-05,
+      "air_padding_nm": 1200,
+      "substrate_depth_nm": 350,
+      "background_index": 1,
+      "silicon_material": "Si (Silicon) - Palik",
+      "substrate_material": "SiO2 (Glass) - Palik",
+      "processes": 1,
+      "threads": 8,
+      "hide_fdtd": true,
+      "save_projects": true,
+      "quality_tolerance": 0.03,
+      "require_auto_shutoff": true,
+      "resonator_material": "As2Se3 - Joseph 700nm film (2020)",
+      "resonator_nk_csv": "D:\\projects\\Metaformer_As2Se3_dev\\materials\\as2se3_joseph_700nm.csv",
+      "material_max_extension_nm": 12,
+      "metal_material": "Au (Gold) - Palik",
+      "bottom_padding_nm": 1200
+    },
+    "bounds_nm": {
+      "p": [
+        620,
+        690
+      ],
+      "l": [
+        160,
+        210
+      ],
+      "h": [
+        240,
+        380
+      ],
+      "alpha_x": [
+        90,
+        150
+      ],
+      "alpha_y": [
+        90,
+        150
+      ]
+    },
+    "sample_count": 12,
+    "seed": 20261011,
+    "output_dir": "D:\\projects\\Metaformer_As2Se3_dev\\data\\as2se3_au_pilot",
+    "lumapi_path": "D:/Program Files/Lumerical/v241/api/python/lumapi.py",
+    "parameter_range_source": "Exploratory near-IR engineering bounds; not validated fabrication bounds",
+    "quality_level": "pipeline_validation",
+    "quadrant_rotation_bounds_deg": {
+      "theta_odd_deg": [
+        -45,
+        45
+      ],
+      "theta_even_deg": [
+        -45,
+        45
+      ]
+    },
+    "resonator_nk_sha256": "9e6ee6d3b584f33226d7201e2b2e12490726cb3b8256726754e5aca9cae64ce9"
+  },
+  "cases": [
+    {
+      "id": "Au_bare_stack",
+      "metal": "Au",
+      "case": "bare_stack",
+      "include_resonators": false,
+      "geometry_values": [
+        660.0,
+        190.0,
+        300.0,
+        120.0,
+        120.0,
+        0.0,
+        0.0
+      ],
+      "state": "success",
+      "sha256": "9692b9350d5f551035952e6ef884699f540e594e0ab9ae94784a29d9d4998e9d",
+      "status": 2
+    },
+    {
+      "id": "Au_aligned",
+      "metal": "Au",
+      "case": "aligned",
+      "include_resonators": true,
+      "geometry_values": [
+        660.0,
+        190.0,
+        300.0,
+        120.0,
+        120.0,
+        0.0,
+        0.0
+      ],
+      "state": "success",
+      "sha256": "faa8b24f9458a91a032b98c1176b8085b383dcd29e94048a69f0d77cf884a918",
+      "status": 2
+    },
+    {
+      "id": "Au_common_15",
+      "metal": "Au",
+      "case": "common_15",
+      "include_resonators": true,
+      "geometry_values": [
+        660.0,
+        190.0,
+        300.0,
+        120.0,
+        120.0,
+        15.0,
+        15.0
+      ],
+      "state": "success",
+      "sha256": "43fded7baf21c5c3188d9432a5d4482495b5ba3d09bac568fd61d22690056219",
+      "status": 2
+    },
+    {
+      "id": "Au_opposite_10",
+      "metal": "Au",
+      "case": "opposite_10",
+      "include_resonators": true,
+      "geometry_values": [
+        660.0,
+        190.0,
+        300.0,
+        120.0,
+        120.0,
+        10.0,
+        -10.0
+      ],
+      "state": "success",
+      "sha256": "3732d28142426bd30aefaedfdb805bf42d28a484ace2e2dbfece6b57e4a80af1",
+      "status": 2
+    },
+    {
+      "id": "Au_opposite_20",
+      "metal": "Au",
+      "case": "opposite_20",
+      "include_resonators": true,
+      "geometry_values": [
+        660.0,
+        190.0,
+        300.0,
+        120.0,
+        120.0,
+        20.0,
+        -20.0
+      ],
+      "state": "success",
+      "sha256": "7365f5974e56fe1b8d210bcf55e5c70889c5eb0774ca0e1b5caa99801259ae9b",
+      "status": 2
+    },
+    {
+      "id": "Au_odd_only_20",
+      "metal": "Au",
+      "case": "odd_only_20",
+      "include_resonators": true,
+      "geometry_values": [
+        660.0,
+        190.0,
+        300.0,
+        120.0,
+        120.0,
+        20.0,
+        0.0
+      ],
+      "state": "success",
+      "sha256": "30f29cf2413cc87b32a15082fbd0a55765320ec34aade029852a11a0b0dfbf45",
+      "status": 2
+    },
+    {
+      "id": "Au_mirror_opposite_20",
+      "metal": "Au",
+      "case": "mirror_opposite_20",
+      "include_resonators": true,
+      "geometry_values": [
+        660.0,
+        190.0,
+        300.0,
+        120.0,
+        120.0,
+        -20.0,
+        20.0
+      ],
+      "state": "success",
+      "sha256": "23f60956616854f825e7a58e11ed5119c7e5fd668a800ff84fa454da7a656eeb",
+      "status": 2
+    },
+    {
+      "id": "Ag_bare_stack",
+      "metal": "Ag",
+      "case": "bare_stack",
+      "include_resonators": false,
+      "geometry_values": [
+        660.0,
+        190.0,
+        300.0,
+        120.0,
+        120.0,
+        0.0,
+        0.0
+      ],
+      "state": "success",
+      "metal_material": "Ag (Silver) - Palik (0-2um)",
+      "sha256": "5f8210a4991c0fbde26f5d4be361dc8cd2f76367963249ff1c5af6ecd40936ca",
+      "status": 2
+    },
+    {
+      "id": "Ag_aligned",
+      "metal": "Ag",
+      "case": "aligned",
+      "include_resonators": true,
+      "geometry_values": [
+        660.0,
+        190.0,
+        300.0,
+        120.0,
+        120.0,
+        0.0,
+        0.0
+      ],
+      "state": "success",
+      "metal_material": "Ag (Silver) - Palik (0-2um)",
+      "sha256": "b5b859c977e20f87dddac068bd98290604d98d365da3f1e89bccbb1e0b7d755a",
+      "status": 2
+    },
+    {
+      "id": "Ag_common_15",
+      "metal": "Ag",
+      "case": "common_15",
+      "include_resonators": true,
+      "geometry_values": [
+        660.0,
+        190.0,
+        300.0,
+        120.0,
+        120.0,
+        15.0,
+        15.0
+      ],
+      "state": "success",
+      "metal_material": "Ag (Silver) - Palik (0-2um)",
+      "sha256": "7fd7af3d49a34d5112ad452f99aa06c4096b0cd378fe5c8f374f1d921eae549d",
+      "status": 2
+    },
+    {
+      "id": "Ag_opposite_10",
+      "metal": "Ag",
+      "case": "opposite_10",
+      "include_resonators": true,
+      "geometry_values": [
+        660.0,
+        190.0,
+        300.0,
+        120.0,
+        120.0,
+        10.0,
+        -10.0
+      ],
+      "state": "success",
+      "metal_material": "Ag (Silver) - Palik (0-2um)",
+      "sha256": "bc7d74eb251be310f9e688123661a6b3f997d613a3530d12b269c58104cefb29",
+      "status": 2
+    },
+    {
+      "id": "Ag_opposite_20",
+      "metal": "Ag",
+      "case": "opposite_20",
+      "include_resonators": true,
+      "geometry_values": [
+        660.0,
+        190.0,
+        300.0,
+        120.0,
+        120.0,
+        20.0,
+        -20.0
+      ],
+      "state": "success",
+      "metal_material": "Ag (Silver) - Palik (0-2um)",
+      "sha256": "247accc74c60e4ef39f105603dc71cf80d2f8339a09071be07b04c48ecd4323d",
+      "status": 2
+    },
+    {
+      "id": "Ag_odd_only_20",
+      "metal": "Ag",
+      "case": "odd_only_20",
+      "include_resonators": true,
+      "geometry_values": [
+        660.0,
+        190.0,
+        300.0,
+        120.0,
+        120.0,
+        20.0,
+        0.0
+      ],
+      "state": "success",
+      "metal_material": "Ag (Silver) - Palik (0-2um)",
+      "sha256": "1f755b1f682771efe4ecf53786260734c309495cdcac8436e47984350c81d4cf",
+      "status": 2
+    },
+    {
+      "id": "Ag_mirror_opposite_20",
+      "metal": "Ag",
+      "case": "mirror_opposite_20",
+      "include_resonators": true,
+      "geometry_values": [
+        660.0,
+        190.0,
+        300.0,
+        120.0,
+        120.0,
+        -20.0,
+        20.0
+      ],
+      "state": "success",
+      "metal_material": "Ag (Silver) - Palik (0-2um)",
+      "sha256": "acfecc7329e8fb26e976db995a2ffc8fc95238887146c74c2cccc1b918c301ad",
+      "status": 2
+    }
+  ]
+}
