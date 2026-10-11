@@ -41,6 +41,15 @@ class FakeSimulator:
 
 
 class ConvergenceRetryTests(unittest.TestCase):
+    def test_real_seven_parameter_run_cannot_use_a_historical_unbounded_mesh(self):
+        simulator = self.make_simulator([2])
+        geometry = Geometry(3200, 900, 1000, 200, 300, theta_odd_deg=0, theta_even_deg=0)
+        with TemporaryDirectory() as directory:
+            with self.assertRaisesRegex(ValueError, 'whole-domain maximum mesh strictly below 10'):
+                simulator.run(geometry, Path(directory)/'historical.fsp')
+        simulator.build.assert_not_called()
+        simulator.fdtd.run.assert_not_called()
+
     def make_simulator(self, statuses):
         simulator = object.__new__(FDTDSimulator)
         simulator.settings = SimulationSettings(simulation_time_ps=10)

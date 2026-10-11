@@ -293,6 +293,9 @@ class FDTDSimulator:
                 f.set('output power', True)
 
     def run(self, geometry, project_path, include_silicon=True, substrate_index=None):
+        if geometry.theta_odd_deg is not None and (self.settings.maximum_mesh_nm is None
+                or not 0 < self.settings.maximum_mesh_nm < 10):
+            raise ValueError('Real seven-parameter simulations require a whole-domain maximum mesh strictly below 10 nm; use the fine8 configuration or a finer research mesh')
         self.build(geometry, include_silicon, substrate_index)
         project_path = Path(project_path).resolve()
         project_path.parent.mkdir(parents=True, exist_ok=True)

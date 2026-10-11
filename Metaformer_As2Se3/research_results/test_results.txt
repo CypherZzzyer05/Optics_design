@@ -2,6 +2,7 @@ test_focused_comparison_preserves_samples_and_cannot_hide_one_changing_trough (t
 test_reduced_monitor_storage_requires_and_passes_independent_power_checks (test_double_mesh.DoubleMeshTests) ... ok
 test_tracks_both_dips_even_when_prominence_rank_changes (test_double_mesh.DoubleMeshTests) ... ok
 test_divergence_is_not_retried (test_fdtd_pipeline.ConvergenceRetryTests) ... ok
+test_real_seven_parameter_run_cannot_use_a_historical_unbounded_mesh (test_fdtd_pipeline.ConvergenceRetryTests) ... ok
 test_retry_is_bounded_and_never_accepts_nonconvergence (test_fdtd_pipeline.ConvergenceRetryTests) ... Auto-shutoff not reached; retrying sample.fsp with 20.0 ps time limit
 Auto-shutoff not reached; retrying sample.fsp with 40.0 ps time limit
 Auto-shutoff not reached; retrying sample.fsp with 80.0 ps time limit
@@ -45,16 +46,4 @@ test_degree_metrics_are_separate_from_nanometers (test_rotation.RotationTests) .
 test_fdtd_sets_native_angle_without_moving_centers (test_rotation.RotationTests) ... ok
 test_legacy_configuration_fingerprint_excludes_rotation_default (test_rotation.RotationTests) ... ok
 test_mirror_equivalent_loss_has_correct_error_and_gradient (test_rotation.RotationTests) ... ok
-test_mixed_unit_dataset_resume_and_six_output_training (test_rotation.RotationTests) ... ok
-test_overlap_and_periodic_cell_escape_are_rejected (test_rotation.RotationTests) ... ok
-test_self_center_rotation_and_mirror_vertices (test_rotation.RotationTests) ... ok
-test_interrupted_training_resumes_with_same_weights_and_history (test_training.TrainingIntegrityTests) ... ok
-test_physical_error_metrics_use_parameter_ranges (test_training.TrainingIntegrityTests) ... ok
-test_split_overlap_and_omissions_are_rejected (test_training.TrainingIntegrityTests) ... ok
-test_training_changes_parameters_with_real_backward_and_optimizer (test_training.TrainingIntegrityTests) ... ok
-test_validation_permission_does_not_allow_unconverged_training (test_training.TrainingIntegrityTests) ... ok
-
-----------------------------------------------------------------------
-Ran 50 tests in 20.209s
-
-OK
+test_mixed_unit_dataset_resume_and_six_output_training (test_rotation.RotationTests) ... 
