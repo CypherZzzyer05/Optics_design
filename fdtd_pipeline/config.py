@@ -1,4 +1,4 @@
-"""Validated settings: lengths/wavelengths in nm, optional common rotation in degrees."""
+"""Validated settings: nm lengths, common or independent quadrant angles in degrees."""
 # 仿真配置与几何定义：长度用 nm，在 Lumerical 接口处转换成 m；角度用 deg。
 # 五个长度参数顺序固定，旋转任务在末尾追加第六个角度参数。
 
@@ -10,6 +10,7 @@ import numpy as np
 
 PARAMETER_NAMES = ("p", "l", "h", "alpha_x", "alpha_y")
 ROTATION_PARAMETER_NAMES = (*PARAMETER_NAMES, "rotation_deg")
+QUADRANT_PARAMETER_NAMES = (*PARAMETER_NAMES, "theta_odd_deg", "theta_even_deg")
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 
 
@@ -21,6 +22,8 @@ class Geometry:
     alpha_x: float
     alpha_y: float
     rotation_deg: float = 0.0  # 各方块绕自身中心、共同绕 z 轴旋转；项目正角采用逆时针。
+    theta_odd_deg: float | None = None
+    theta_even_deg: float | None = None
 
     def __post_init__(self):
         values = self.array()
@@ -31,28 +34,51 @@ class Geometry:
             raise ValueError("Four squares must fit inside a cell: 2*l + gap < p")
         if not np.isfinite(self.rotation_deg):
             raise ValueError("rotation_deg must be finite")
+        if (self.theta_odd_deg is None) != (self.theta_even_deg is None):
+            raise ValueError("Both quadrant angles must be provided together")
+        if self.theta_odd_deg is not None and self.rotation_deg != 0:
+            raise ValueError("Common and quadrant rotation cannot be combined")
+        if not np.isfinite(self.angles()).all():
+            raise ValueError("Quadrant angles must be finite")
         vertices = self.vertices()
         if any(np.max(np.abs(v)) >= self.p / 2 for v in vertices):
             raise ValueError("Rotated squares must stay inside the periodic cell")
         # 所有方块使用同一角度，变换回共同局部坐标后用分离轴检查相交/接触。
-        centers = np.asarray(self.centers()) @ self.rotation_matrix()
-        for i in range(len(centers)):
+        for i in range(len(vertices)):
             for j in range(i):
-                if np.all(np.abs(centers[i] - centers[j]) <= self.l + 1e-8):
+                if self.polygons_touch(vertices[i], vertices[j]):
                     raise ValueError("Rotated squares overlap or touch; change gaps or rotation")
 
-    def array(self, include_rotation=False):
-        names = ROTATION_PARAMETER_NAMES if include_rotation else PARAMETER_NAMES
+    @staticmethod
+    def polygons_touch(a, b):
+        # Separating-axis theorem works for independently rotated convex polygons.
+        for polygon in (a, b):
+            edges = np.roll(polygon, -1, axis=0) - polygon
+            for edge in edges:
+                axis = np.array([-edge[1], edge[0]]) / np.linalg.norm(edge)
+                pa, pb = a @ axis, b @ axis
+                if pa.max() < pb.min() - 1e-8 or pb.max() < pa.min() - 1e-8:
+                    return False
+        return True
+
+    def array(self, include_rotation=False, include_quadrant=False):
+        names = QUADRANT_PARAMETER_NAMES if include_quadrant else (ROTATION_PARAMETER_NAMES if include_rotation else PARAMETER_NAMES)
         return np.array([getattr(self, name) for name in names], dtype=np.float64)
 
-    def rotation_matrix(self):
-        angle = np.deg2rad(self.rotation_deg)
+    def angles(self):
+        # centers() order: III, II, IV, I. Odd quadrants are I and III.
+        if self.theta_odd_deg is None:
+            return [self.rotation_deg] * 4
+        return [self.theta_odd_deg, self.theta_even_deg, self.theta_even_deg, self.theta_odd_deg]
+
+    def rotation_matrix(self, angle_deg=None):
+        angle = np.deg2rad(self.rotation_deg if angle_deg is None else angle_deg)
         return np.array([[np.cos(angle), -np.sin(angle)], [np.sin(angle), np.cos(angle)]])
 
     def vertices(self):
         corners = np.array([[-1, -1], [1, -1], [1, 1], [-1, 1]]) * self.l / 2
-        rotated = corners @ self.rotation_matrix().T
-        return [rotated + center for center in self.centers()]
+        return [corners @ self.rotation_matrix(angle).T + center
+                for center, angle in zip(self.centers(), self.angles())]
 
     def centers(self):
         """The alpha parameters denote edge-to-edge gaps, not center distances."""
@@ -84,6 +110,16 @@ class SimulationSettings:
     save_projects: bool = True
     quality_tolerance: float = 0.03
     require_auto_shutoff: bool = True
+    resonator_material: str | None = None
+    resonator_nk_csv: str | None = None
+    material_max_extension_nm: float = 0.0
+    metal_material: str | None = None
+    metal_thickness_nm: float = 150.0
+    metal_mesh_nm: float = 5.0
+    bottom_padding_nm: float = 1000.0
+    polarization_deg: float = 0.0
+    material_fit_tolerance: float | None = None
+    material_imaginary_weight: float = 1.0
 
     def __post_init__(self):
         positive = (self.wavelength_start_nm, self.wavelength_stop_nm, self.mesh_nm,
@@ -105,6 +141,21 @@ class SimulationSettings:
         for v in (self.hide_fdtd, self.save_projects, self.require_auto_shutoff):
             if not isinstance(v, bool):
                 raise ValueError("Boolean settings must use JSON true/false")
+        if self.metal_material not in (None, "Au (Gold) - Palik", "Ag (Silver) - Palik (0-2um)"):
+            raise ValueError("Use the configured Au or Ag Palik material")
+        for value in (self.metal_thickness_nm, self.metal_mesh_nm, self.bottom_padding_nm):
+            if not np.isfinite(value) or value <= 0:
+                raise ValueError("Metal and bottom padding lengths must be positive")
+        if not np.isfinite(self.material_max_extension_nm) or self.material_max_extension_nm < 0:
+            raise ValueError("Material extension allowance must be nonnegative")
+        if not np.isfinite(self.polarization_deg):
+            raise ValueError("Polarization must be finite")
+        if self.material_fit_tolerance is not None and (not np.isfinite(self.material_fit_tolerance) or self.material_fit_tolerance < 0):
+            raise ValueError("Material fit tolerance must be nonnegative")
+        if not np.isfinite(self.material_imaginary_weight) or self.material_imaginary_weight <= 0:
+            raise ValueError("Material imaginary weight must be positive")
+        if self.resonator_nk_csv and not self.resonator_material:
+            raise ValueError("Sampled nk data requires a resonator material name")
 
     def wavelength_grid(self):
         # 1000 点按波长均匀排列，包含两端；神经网络的位置编码依赖固定采样顺序。
@@ -122,6 +173,7 @@ class PipelineConfig:
     parameter_range_source: str = "Engineering example; not verified against Table S3"
     quality_level: str = "pipeline_validation"
     rotation_bounds_deg: tuple[float, float] | None = None
+    quadrant_rotation_bounds_deg: dict | None = None
 
     def __post_init__(self):
         if isinstance(self.sample_count, bool) or not isinstance(self.sample_count, int) or self.sample_count < 1:
@@ -137,17 +189,32 @@ class PipelineConfig:
             pair = self.rotation_bounds_deg
             if len(pair) != 2 or not np.isfinite(pair).all() or list(pair) != [-45, 45]:
                 raise ValueError("Common square rotation currently uses [-45,45] degrees")
+        if self.quadrant_rotation_bounds_deg is not None:
+            if self.rotation_bounds_deg is not None:
+                raise ValueError("Choose common or quadrant rotations")
+            if set(self.quadrant_rotation_bounds_deg) != set(QUADRANT_PARAMETER_NAMES[5:]):
+                raise ValueError("Quadrant bounds need theta_odd_deg and theta_even_deg")
+            if any(list(v) != [-45, 45] for v in self.quadrant_rotation_bounds_deg.values()):
+                raise ValueError("Square quadrant angles use [-45,45] degrees")
 
     @property
     def parameter_names(self):
+        if self.quadrant_rotation_bounds_deg is not None:
+            return QUADRANT_PARAMETER_NAMES
         return ROTATION_PARAMETER_NAMES if self.rotation_bounds_deg is not None else PARAMETER_NAMES
 
     @property
     def parameter_units(self):
-        return ("nm",) * 5 + (("deg",) if self.rotation_bounds_deg is not None else ())
+        return ("nm",) * 5 + ("deg",) * (len(self.parameter_names) - 5)
 
     def geometry_values(self, geometry):
-        return geometry.array(include_rotation=self.rotation_bounds_deg is not None)
+        return geometry.array(include_rotation=self.rotation_bounds_deg is not None,
+                              include_quadrant=self.quadrant_rotation_bounds_deg is not None)
+
+    def make_geometry(self, values):
+        if self.quadrant_rotation_bounds_deg is not None:
+            return Geometry(*values[:5], theta_odd_deg=values[5], theta_even_deg=values[6])
+        return Geometry(*values)
 
     @property
     def lower(self):
@@ -155,6 +222,8 @@ class PipelineConfig:
         values = [self.bounds_nm[k][0] for k in PARAMETER_NAMES]
         if self.rotation_bounds_deg is not None:
             values.append(self.rotation_bounds_deg[0])
+        if self.quadrant_rotation_bounds_deg is not None:
+            values.extend(self.quadrant_rotation_bounds_deg[k][0] for k in QUADRANT_PARAMETER_NAMES[5:])
         return np.array(values, dtype=np.float64)
 
     @property
@@ -162,6 +231,8 @@ class PipelineConfig:
         values = [self.bounds_nm[k][1] for k in PARAMETER_NAMES]
         if self.rotation_bounds_deg is not None:
             values.append(self.rotation_bounds_deg[1])
+        if self.quadrant_rotation_bounds_deg is not None:
+            values.extend(self.quadrant_rotation_bounds_deg[k][1] for k in QUADRANT_PARAMETER_NAMES[5:])
         return np.array(values, dtype=np.float64)
 
     def normalize(self, geometry_nm):
@@ -175,7 +246,7 @@ class PipelineConfig:
         result = []
         for _ in range(max(10000, self.sample_count * 1000)):
             try:
-                geometry = Geometry(*rng.uniform(self.lower, self.upper))
+                geometry = self.make_geometry(rng.uniform(self.lower, self.upper))
             except ValueError:
                 continue
             result.append(geometry)
@@ -189,6 +260,17 @@ class PipelineConfig:
         # 未启用旋转时保持旧配置序列化形式，已有五参数 manifest 指纹仍可复用。
         if self.rotation_bounds_deg is None:
             data.pop("rotation_bounds_deg")
+        if self.quadrant_rotation_bounds_deg is None:
+            data.pop("quadrant_rotation_bounds_deg")
+        # Preserve fingerprints for untouched legacy configurations.
+        for key in ("resonator_material", "resonator_nk_csv", "material_max_extension_nm",
+                    "metal_material", "metal_thickness_nm", "metal_mesh_nm", "bottom_padding_nm", "polarization_deg",
+                    "material_fit_tolerance", "material_imaginary_weight"):
+            if getattr(self.simulation, key) == SimulationSettings.__dataclass_fields__[key].default:
+                data["simulation"].pop(key)
+        if self.simulation.resonator_nk_csv:
+            import hashlib
+            data["resonator_nk_sha256"] = hashlib.sha256(Path(self.simulation.resonator_nk_csv).read_bytes()).hexdigest()
         return data
 
 
@@ -199,6 +281,9 @@ def load_config(path):
     if set(data) - known:
         raise ValueError(f"Unknown config keys: {sorted(set(data) - known)}")
     # 将仿真子配置转换为经过校验的对象，输出路径相对于 JSON 所在目录解析。
-    data["simulation"] = SimulationSettings(**data.get("simulation", {}))
+    simulation = data.get("simulation", {})
+    if simulation.get("resonator_nk_csv"):
+        simulation["resonator_nk_csv"] = str((path.parent / simulation["resonator_nk_csv"]).resolve())
+    data["simulation"] = SimulationSettings(**simulation)
     data["output_dir"] = (path.parent / data.get("output_dir", "../data/fdtd")).resolve()
     return PipelineConfig(**data)

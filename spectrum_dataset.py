@@ -1,5 +1,5 @@
 """PyTorch dataset adapter for real FDTD spectra -> normalized geometry labels."""
-# 数据桥接层：读取真实反射光谱、五个尺寸及可选的第六个旋转角标签。
+# 数据桥接层：读取真实反射光谱、五个尺寸及一个公共角或两个象限角。
 # spectra 使用原始反射率；结构参数按各自采样上下界归一化到 0～1。
 
 import json
@@ -9,7 +9,7 @@ import numpy as np
 import torch
 from torch.utils.data import Dataset
 
-from fdtd_pipeline.config import PARAMETER_NAMES, ROTATION_PARAMETER_NAMES
+from fdtd_pipeline.config import PARAMETER_NAMES, ROTATION_PARAMETER_NAMES, QUADRANT_PARAMETER_NAMES
 
 
 class SpectrumGeometryDataset(Dataset):
@@ -20,11 +20,11 @@ class SpectrumGeometryDataset(Dataset):
             self.metadata = json.loads(str(data["metadata_json"].item()))
             # 标签顺序必须与网络输出一致，避免把 p 的预测与 l 等其他尺寸比较。
             self.parameter_names = tuple(str(name) for name in data["parameter_names"])
-            if self.parameter_names not in (PARAMETER_NAMES, ROTATION_PARAMETER_NAMES):
+            if self.parameter_names not in (PARAMETER_NAMES, ROTATION_PARAMETER_NAMES, QUADRANT_PARAMETER_NAMES):
                 raise ValueError("Dataset geometry parameter order differs from Metaformer")
-            rotated = self.parameter_names == ROTATION_PARAMETER_NAMES
+            rotated = len(self.parameter_names) > 5
             self.parameter_units = tuple(str(unit) for unit in data["parameter_units"]) if rotated else ("nm",) * 5
-            if self.parameter_units != ("nm",) * 5 + (("deg",) if rotated else ()):
+            if self.parameter_units != ("nm",) * 5 + ("deg",) * (len(self.parameter_names)-5):
                 raise ValueError("Dataset parameter units must be five nm lengths and optional degree angle")
             if self.metadata["config"]["quality_level"] == "pipeline_validation" and not allow_validation_data:
                 raise ValueError("This is a pipeline-validation dataset. Explicitly allow it for a smoke test only.")
@@ -41,9 +41,11 @@ class SpectrumGeometryDataset(Dataset):
             self.sample_ids = data["sample_ids"].copy()
             self.geometry_nm = data["geometry_nm"].copy()
             self.geometry_values = data["geometry_values"].copy() if rotated else self.geometry_nm.copy()
-            if rotated and (not np.array_equal(self.geometry_values[:, :5], self.geometry_nm)
+            if self.parameter_names == ROTATION_PARAMETER_NAMES and (not np.array_equal(self.geometry_values[:, :5], self.geometry_nm)
                             or not np.array_equal(self.geometry_values[:, 5], data["rotation_deg"])):
                 raise ValueError("Mixed-unit geometry disagrees with length/angle fields")
+            if rotated and not np.array_equal(self.geometry_values[:, :5], self.geometry_nm):
+                raise ValueError("Mixed-unit geometry disagrees with lengths")
             # 复用文件中已保存的划分索引；all 仅用于完整数据检查或结果展示。
             indices = np.arange(len(spectra)) if split == "all" else data[split + "_indices"].copy()
             if np.any(data["status"] != 2) and not allow_validation_data:
@@ -65,7 +67,7 @@ class SpectrumGeometryDataset(Dataset):
                 or not np.isfinite(self.lower_values).all() or not np.isfinite(self.upper_values).all()
                 or np.any(self.upper_values <= self.lower_values)):
             raise ValueError("Invalid normalization bounds")
-        if rotated and (self.lower_values[-1] != -45 or self.upper_values[-1] != 45):
+        if rotated and (np.any(self.lower_values[5:] != -45) or np.any(self.upper_values[5:] != 45)):
             raise ValueError("Rotation labels must use [-45,45] degree bounds")
         # 上下界来自采样配置，而不是由训练集/验证集各自重新估计。
         # 再计算一次归一化标签，确认保存的物理尺寸与训练目标确实一一对应。

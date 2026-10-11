@@ -132,6 +132,8 @@ class RotationTests(unittest.TestCase):
 
     def test_legacy_configuration_fingerprint_excludes_rotation_default(self):
         config = load_config(PROJECT_ROOT / 'configs/smoke.json')
+        # The preserved historical fingerprint includes the original absolute output path.
+        config = replace(config, output_dir=Path(r'D:\projects\LumOpt_test\data\smoke_100'))
         self.assertNotIn('rotation_bounds_deg', config.metadata())
         fingerprint = hashlib.sha256(json.dumps(config.metadata(), sort_keys=True).encode()).hexdigest()
         # 此值来自新增旋转字段之前保存的五参数 manifest，不依赖本地数据文件存在。

@@ -24,8 +24,8 @@ def verify_model_interface(dataset_path):
     rotated = len(dataset.parameter_names) == 6
     model = InverseMetaformer(MetaformerConfig(
         geometry_dim=len(dataset.parameter_names),
-        spectral_frontend="resnet1d" if rotated else "linear",
-        angle_symmetry="square_mirror" if rotated else "none")).to(device)
+        spectral_frontend="resnet1d" if len(dataset.parameter_names) > 5 else "linear",
+        angle_symmetry="square_periodic" if len(dataset.parameter_names) == 7 else ("square_mirror" if rotated else "none"))).to(device)
     spectra, target = next(iter(DataLoader(dataset, batch_size=min(2, len(dataset)), shuffle=False)))
     prediction = model(spectra.to(device))
     loss = geometry_mse(prediction, target.to(device), model.config.angle_symmetry)
@@ -52,6 +52,8 @@ def build_dataset_figure(dataset_path):
     n = len(data["spectra"])
     if not n:
         raise ValueError("No successful samples; check manifest.json/errors.jsonl")
+    if len(data["parameter_names"]) == 7:
+        return build_quadrant_figure(data)
     metadata = json.loads(str(data["metadata_json"].item()))
     names = tuple(str(name) for name in data["parameter_names"])
     units = tuple(str(unit) for unit in data["parameter_units"]) if len(names) == 6 else ("nm",) * 5
@@ -179,6 +181,50 @@ def build_dataset_figure(dataset_path):
     return fig
 
 
+def build_quadrant_figure(data):
+    """Display the actual two-angle geometry and spectra of each saved sample."""
+    import matplotlib.pyplot as plt
+    from matplotlib.patches import Polygon, Rectangle
+    from matplotlib.widgets import Slider
+    values, names = data['geometry_values'], list(data['parameter_names'])
+    metadata=json.loads(str(data['metadata_json'].item()))
+    settings=metadata['config']['simulation']
+    fig, axes=plt.subplots(2,2,figsize=(12,8))
+    fig.subplots_adjust(bottom=.17,hspace=.4,wspace=.3)
+    spectral,cell,labels,info=axes.flat
+    state={'index':0}
+    curves=[spectral.plot(data['wavelength_nm'],data[key][0],label=name)[0]
+            for key,name in (('spectra','R'),('transmittance','T'),('absorptance','A'))]
+    spectral.set(xlabel='Wavelength (nm)',ylabel='Power',ylim=(-.05,1.05))
+    spectral.legend();spectral.grid(alpha=.2)
+    bars=labels.bar(['P','L','H','dX','dY','odd','even'],data['geometry_01'][0])
+    labels.set(ylim=(0,1.1),ylabel='Normalized parameter')
+    info.axis('off')
+    information=info.text(0,1,'',va='top',linespacing=1.6)
+    def render(index):
+        i=int(index);state['index']=i
+        g=Geometry(*values[i,:5],theta_odd_deg=values[i,5],theta_even_deg=values[i,6])
+        for curve,key in zip(curves,('spectra','transmittance','absorptance')):
+            curve.set_ydata(data[key][i])
+        spectral.set_title(f"Real FDTD sample {int(data['sample_ids'][i])}")
+        cell.clear()
+        cell.add_patch(Rectangle((-g.p/2,-g.p/2),g.p,g.p,fill=False,ls='--'))
+        for j,polygon in enumerate(g.vertices()):
+            cell.add_patch(Polygon(polygon,facecolor='#7359aa' if j in (0,3) else '#278794'))
+        cell.set(xlim=(-g.p*.55,g.p*.55),ylim=(-g.p*.55,g.p*.55),aspect='equal',xlabel='x (nm)',ylabel='y (nm)',
+                 title=f'Odd {g.theta_odd_deg:+.1f} deg / even {g.theta_even_deg:+.1f} deg')
+        for bar,height in zip(bars,data['geometry_01'][i]):bar.set_height(height)
+        text='\n'.join(f'{name}: {value:.2f} {"nm" if j<5 else "deg"}' for j,(name,value) in enumerate(zip(names,values[i])))
+        information.set_text(f"{settings.get('resonator_material','As2Se3')}\n{settings.get('metal_material')}\n\n{text}")
+        fig.canvas.draw_idle()
+    render(0)
+    if len(values)>1:
+        slider=Slider(fig.add_axes((.15,.065,.7,.025)),'Sample',0,len(values)-1,valinit=0,valstep=1)
+        slider.on_changed(render);fig._sample_slider=slider
+    fig._preview_state=state
+    return fig
+
+
 def plot_dataset(dataset_path, show=True):
     import matplotlib
     # PyCharm 的图片编辑器/内嵌静态图不运行控件。使用独立 Tk 窗口和阻塞事件循环。
@@ -199,7 +245,7 @@ def plot_dataset(dataset_path, show=True):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--dataset", type=Path, default=PROJECT_ROOT / "data/smoke_100/dataset.npz")
+    parser.add_argument("--dataset", type=Path, default=PROJECT_ROOT / "data/as2se3_au_pilot/dataset.npz")
     parser.add_argument("--no-show", action="store_true", help="Save preview without opening a window")
     parser.add_argument("--check-model", action="store_true", help="Verify real spectra through forward/backward; no training")
     args = parser.parse_args()

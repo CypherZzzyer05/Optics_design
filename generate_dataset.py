@@ -32,7 +32,7 @@ def check_installation(config):
     with FDTDSimulator(config.simulation, config.lumapi_path) as simulator:
         print(f"FDTD API connection OK; solver version: {simulator.version}")
         print(f"CPU resource: {config.simulation.processes} process(es), {config.simulation.threads} threads")
-        print(f"Materials: {config.simulation.silicon_material}; {config.simulation.substrate_material}")
+        print(f"Materials: {config.simulation.resonator_material or config.simulation.silicon_material}; {config.simulation.substrate_material}; metal={config.simulation.metal_material}")
     print("Session creation and material access verified. Run reference/generate to verify the solving license.")
 
 
@@ -78,7 +78,7 @@ def run_reference(config):
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("command", choices=("doctor", "plan", "reference", "generate"), nargs="?", default="generate")
-    parser.add_argument("--config", type=Path, default=PROJECT_ROOT / "configs/smoke.json")
+    parser.add_argument("--config", type=Path, default=PROJECT_ROOT / "configs/as2se3_au_pilot.json")
     parser.add_argument("--limit", type=int, help="Run at most this many missing/failed samples; resumes the same plan")
     parser.add_argument("--fail-fast", action="store_true")
     args = parser.parse_args(argv)

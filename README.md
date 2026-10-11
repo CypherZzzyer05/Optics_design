@@ -1,3 +1,10 @@
+# 独立 As₂Se₃ / Au、Ag / 七参数近红外项目
+
+本项目由 `D:\projects\LumOpt_test` 的当前代码快照建立，原项目未修改。
+独立仓库：`D:\projects\Metaformer_As2Se3`；开发 Git 工作树：`D:\projects\Metaformer_As2Se3_dev`；分支：`codex/as2se3-metal-quadrants`。
+
+目标波段 **700–1700 nm**。参数为 P、L、H、dX、dY、ω奇数象限、ω偶数象限；第一/第三象限一组，第二/第四象限一组。提供真实 FDTD、Au/Ag 对照扫描、特征谱筛选、七参数数据导出与 Metaformer 训练。具体结构条件、材料范围和使用方法见 [近红外研究计划](docs/near_ir_research_plan.md)。以下内容保留为原模型的参考说明。
+
 # MetaFormer：Python 控制 Lumerical FDTD 与数据集生成
 
 项目参考 Gao 等人的 [Meta-Attention Deep Learning for Smart Development of Metasurface Sensors](https://pmc.ncbi.nlm.nih.gov/articles/PMC11558086/)（DOI：10.1002/advs.202405750）。现已接入本机 **Lumerical FDTD 2024 R1**：Python 建模、调整参数、运行三维仿真、导出光谱、构建数据集，并完成 100 样本的 MetaFormer 训练流程。

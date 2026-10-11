@@ -1,4 +1,4 @@
-"""Inverse Metaformer: reflectance spectrum -> lengths and optional common rotation.
+"""Inverse Metaformer: reflectance spectrum -> lengths and common/quadrant rotations.
 
 The paper specifies 1000 spectral samples, 100 patches, a 128-dimensional
 embedding, 10 attention heads, and d_k=64. Since 128 is not divisible by 10,
@@ -29,12 +29,12 @@ class MetaformerConfig:
     encoder_layers: int = 10      # 编码层串联，层间结构相同但参数各自独立。
     mlp_dim: int = 256            # Encoder 内 MLP 和最终回归头的隐藏维度。
     dropout: float = 0.1          # 训练时随机丢弃部分元素；eval() 时关闭。
-    geometry_dim: int = 5         # 默认五个长度；旋转任务设为 6，末列追加 rotation_deg。
+    geometry_dim: int = 5         # 兼容旧五参数；新项目配置为7：五长度+奇/偶象限角。
     spectral_frontend: str = "linear"  # linear 保持原模型；resnet1d 启用新增卷积前端。
     resnet_channels: int = 32     # ResNet 保留 1000 个位置，每个位置有 32 通道特征。
     resnet_blocks: int = 3        # 三个残差块的 dilation 分别为 1、2、4。
     resnet_kernel_size: int = 7   # 奇数卷积核便于对称补零并保持序列长度。
-    angle_symmetry: str = "none"  # square_mirror：六参数角度任务将 +/-theta 视为等效。
+    angle_symmetry: str = "none"  # 七参数用square_periodic；旧六参数用square_mirror。
 
     def __post_init__(self) -> None:
         # 要求点数能被 token 数整除，防止分块时漏掉末尾的光谱点。
@@ -55,10 +55,12 @@ class MetaformerConfig:
                 raise ValueError(f"{name} must be a positive integer")
         if self.resnet_kernel_size % 2 != 1:
             raise ValueError("resnet_kernel_size must be odd to preserve spectral length")
-        if self.angle_symmetry not in ("none", "square_mirror"):
-            raise ValueError("angle_symmetry must be none or square_mirror")
-        if self.angle_symmetry != "none" and self.geometry_dim != 6:
+        if self.angle_symmetry not in ("none", "square_mirror", "square_periodic"):
+            raise ValueError("Unknown angle symmetry")
+        if self.angle_symmetry == "square_mirror" and self.geometry_dim != 6:
             raise ValueError("Square mirror angle loss requires six outputs")
+        if self.angle_symmetry == "square_periodic" and self.geometry_dim != 7:
+            raise ValueError("Quadrant periodic angle loss requires seven outputs")
 
     @property
     def patch_size(self) -> int:
@@ -207,7 +209,8 @@ class SpectralResNet(nn.Module):
 class InverseMetaformer(nn.Module):
     """Map [batch, 1000] reflectance to [batch, geometry_dim] values in [0, 1].
 
-    Geometry order: p, l, h, alpha_x, alpha_y, optionally rotation_deg.
+    Geometry order: p, l, h, alpha_x, alpha_y, then rotation_deg (six values),
+    or theta_odd_deg, theta_even_deg (seven values).
     Convert normalized outputs to physical units using training-set parameter
     bounds. This module does not infer units or perform that conversion.
     """
@@ -277,6 +280,12 @@ def geometry_mse(prediction: Tensor, target: Tensor, angle_symmetry: str = "none
         # 原始有符号标签仍保存；网络输出的是一个等效角候选，而非唯一可辨识的符号。
         prediction = torch.cat((prediction[..., :5], (2 * prediction[..., 5:] - 1).abs()), dim=-1)
         target = torch.cat((target[..., :5], (2 * target[..., 5:] - 1).abs()), dim=-1)
+    elif angle_symmetry == "square_periodic":
+        if prediction.shape[-1] != 7:
+            raise ValueError("Quadrant periodic loss requires seven values")
+        difference = prediction - target
+        angle_difference = torch.remainder(difference[..., 5:] + .5, 1.0) - .5
+        return torch.cat((difference[..., :5], angle_difference), dim=-1).square().mean()
     elif angle_symmetry != "none":
         raise ValueError("Unknown angle symmetry")
     # 对批量和全部结构参数的平方误差取平均；预测与标签使用同一套上下界。

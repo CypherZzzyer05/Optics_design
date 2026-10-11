@@ -107,7 +107,39 @@ class FDTDSimulator:
             self.version = str(self.fdtd.version())
             self.fdtd.setresource("FDTD", 1, "processes", str(self.settings.processes))
             self.fdtd.setresource("FDTD", 1, "threads", str(self.settings.threads))
-            for name in (self.settings.silicon_material, self.settings.substrate_material):
+            s = self.settings
+            if s.resonator_nk_csv:
+                data = np.loadtxt(s.resonator_nk_csv, delimiter=",", skiprows=1)
+                if (data.ndim != 2 or data.shape[1] != 3 or len(data) < 3
+                        or not np.isfinite(data).all() or np.any(data[:, :2] <= 0)
+                        or np.any(data[:, 2] < 0) or np.any(np.diff(data[:, 0]) <= 0)):
+                    raise ValueError("nk CSV must contain increasing wavelength_nm,n,k; n>0,k>=0")
+                extension = max(data[0, 0] - s.wavelength_start_nm,
+                                s.wavelength_stop_nm - data[-1, 0], 0)
+                if extension > s.material_max_extension_nm + 1e-8:
+                    raise ValueError("Measured nk data does not cover the wavelength band")
+                if extension:
+                    LOG.warning("EXPLORATORY MATERIAL EXTENSION: holding endpoint nk over %.3f nm", extension)
+                    if s.wavelength_stop_nm > data[-1, 0]:
+                        data = np.vstack([data, [s.wavelength_stop_nm, *data[-1, 1:]]])
+                    if s.wavelength_start_nm < data[0, 0]:
+                        data = np.vstack([[s.wavelength_start_nm, *data[0, 1:]], data])
+                # Use only the fitted source band plus neighboring measured knots.
+                left = max(0, np.searchsorted(data[:, 0], s.wavelength_start_nm, side='left')-1)
+                right = min(len(data), np.searchsorted(data[:, 0], s.wavelength_stop_nm, side='right')+1)
+                data = data[left:right]
+                name = s.resonator_material
+                if not self.fdtd.materialexists(name):
+                    material = self.fdtd.addmaterial("Sampled data")
+                    self.fdtd.setmaterial(material, "name", name)
+                sampled = np.column_stack([299792458 / (data[:, 0]*1e-9), (data[:, 1]+1j*data[:, 2])**2])
+                self.fdtd.setmaterial(name, "max coefficients", 12)
+                if s.material_fit_tolerance is not None:
+                    self.fdtd.setmaterial(name, "tolerance", s.material_fit_tolerance)
+                    self.fdtd.setmaterial(name, "imaginary weight", s.material_imaginary_weight)
+                self.fdtd.setmaterial(name, "sampled data", sampled[::-1].copy())
+                self.material_data = data
+            for name in filter(None, (s.resonator_material or s.silicon_material, s.substrate_material, s.metal_material)):
                 if not self.fdtd.materialexists(name):
                     raise ValueError(f"Material missing from installed FDTD library: {name}")
         except BaseException:
@@ -123,12 +155,17 @@ class FDTDSimulator:
             self.fdtd = None
 
     def build(self, geometry: Geometry, include_silicon=True, substrate_index=None):
-        """Create four Si squares on a semi-infinite substrate, with air-side incidence."""
+        """Create four configured-material squares, with an optional finite spacer/metal stack."""
         f, s = self.fdtd, self.settings
         # 项目和标签采用 nm；Lumerical 的长度属性使用 SI 单位 m。
         nm = 1e-9
         p, h = geometry.p * nm, geometry.h * nm
         top, bottom = h + s.air_padding_nm * nm, -s.substrate_depth_nm * nm
+        metal_enabled = s.metal_material is not None and substrate_index is None
+        substrate_bottom = -s.substrate_depth_nm * nm
+        metal_bottom = substrate_bottom - s.metal_thickness_nm * nm
+        if metal_enabled:
+            bottom = metal_bottom - s.bottom_padding_nm * nm
         # 每个样本重新构造几何，防止上一组结构或求解结果遗留到当前样本。
         f.switchtolayout()
         f.selectall()
@@ -147,20 +184,28 @@ class FDTDSimulator:
         # 衬底向下延伸进入底部 PML；Fresnel 对照时可换成指定折射率介质。
         material = s.substrate_material if substrate_index is None else "<Object defined dielectric>"
         f.addrect(name="substrate", x=0., y=0., x_span=3*p, y_span=3*p,
-                  z_min=bottom - p, z_max=0., material=material)
+                  z_min=substrate_bottom if metal_enabled else bottom - p, z_max=0., material=material)
         if substrate_index is not None:
             f.set("index", float(substrate_index))
+        if metal_enabled:
+            f.addrect(name="back_metal", x=0., y=0., x_span=3*p, y_span=3*p,
+                      z_min=metal_bottom, z_max=substrate_bottom, material=s.metal_material)
+            f.addmesh(name="metal_mesh", x=0., y=0., x_span=p, y_span=p,
+                      z_min=metal_bottom-s.metal_mesh_nm*nm,
+                      z_max=substrate_bottom+s.metal_mesh_nm*nm,
+                      override_x_mesh=False, override_y_mesh=False, override_z_mesh=True,
+                      dz=s.metal_mesh_nm*nm)
         if include_silicon:
             # 四个硅方块共用边长 l 和高度 h；中心位置由 alpha_x/alpha_y 间隙决定。
-            for i, (x, y) in enumerate(geometry.centers()):
+            for i, ((x, y), angle) in enumerate(zip(geometry.centers(), geometry.angles())):
                 f.addrect(name=f"si_{i}", x=x*nm, y=y*nm,
                           x_span=geometry.l*nm, y_span=geometry.l*nm,
-                          z_min=0., z_max=h, material=s.silicon_material)
-                if geometry.rotation_deg != 0:
+                          z_min=0., z_max=h, material=s.resonator_material or s.silicon_material)
+                if angle != 0:
                     # Lumerical 的 rotation 1 采用顺时针度数；项目约定正角逆时针。
                     # 只旋转刚建立的方块，自身中心不移动，光源偏振和周期单元不旋转。
                     f.set("first axis", "z")
-                    f.set("rotation 1", -float(geometry.rotation_deg))
+                    f.set("rotation 1", -float(angle))
         # 在结构及其上下邻近区域设置局部网格，控制几何和共振的离散精度。
         f.addmesh(name="structure_mesh", x=0., y=0., x_span=p, y_span=p,
                   z_min=-s.mesh_nm*nm, z_max=h + s.mesh_nm*nm,
@@ -170,7 +215,7 @@ class FDTDSimulator:
             ("name", "source"), ("injection axis", "z"), ("direction", "Backward"),
             ("x", 0.), ("y", 0.), ("x span", p), ("y span", p),
             ("z", h + 0.5*s.air_padding_nm*nm), ("angle theta", 0.),
-            ("polarization angle", 0.), ("override global source settings", True),
+            ("polarization angle", s.polarization_deg), ("override global source settings", True),
             ("wavelength start", s.wavelength_start_nm*nm),
             ("wavelength stop", s.wavelength_stop_nm*nm)
         ]))
@@ -180,7 +225,7 @@ class FDTDSimulator:
         f.setglobalmonitor("frequency points", s.spectrum_points)
         # R 在光源上方接收反射波；T 在衬底内部记录向下传播的透射功率。
         for name, z in (("R", h + 0.75*s.air_padding_nm*nm),
-                        ("T", -0.5*s.substrate_depth_nm*nm)):
+                        ("T", metal_bottom-0.5*s.bottom_padding_nm*nm if metal_enabled else -0.5*s.substrate_depth_nm*nm)):
             f.addpower(name=name, monitor_type="2D Z-normal", x=0., y=0.,
                        x_span=p, y_span=p, z=z)
             # Only accumulated power is needed. Full 1000-frequency E/H fields are large.

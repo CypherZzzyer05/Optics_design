@@ -110,7 +110,7 @@ def prepare_manifest(config):
     data = config.metadata()
     fingerprint = hashlib.sha256(json.dumps(data, sort_keys=True).encode()).hexdigest()
     path = config.output_dir / "manifest.json"
-    schema_version = 2 if config.rotation_bounds_deg is not None else SCHEMA_VERSION
+    schema_version = 3 if config.quadrant_rotation_bounds_deg is not None else (2 if config.rotation_bounds_deg is not None else SCHEMA_VERSION)
     if path.exists():
         # 续跑复用原始计划，并核对整套配置，防止混合不同网格、几何范围或样本计划。
         manifest = json.loads(path.read_text(encoding="utf-8"))
@@ -139,6 +139,12 @@ def prepare_manifest(config):
         for entry, geometry in zip(manifest["samples"], geometries):
             entry["rotation_deg"] = float(geometry.rotation_deg)
             entry["geometry_values"] = config.geometry_values(geometry).tolist()
+    if config.quadrant_rotation_bounds_deg is not None:
+        manifest.update(geometry_units="mixed; see parameter_units",
+                        parameter_units=list(config.parameter_units),
+                        rotation_mode="self_center_z_I_III_odd_II_IV_even")
+        for entry, geometry in zip(manifest["samples"], geometries):
+            entry["geometry_values"] = config.geometry_values(geometry).tolist()
     atomic_json(path, manifest)
     return manifest
 
@@ -161,6 +167,10 @@ def load_sample(path, entry, config, fingerprint):
                 or not np.array_equal(values[:5], result["geometry_nm"])
                 or values[5] != float(result["rotation_deg"])):
             raise ValueError("Sample rotation or mixed-unit geometry does not match the plan")
+    if config.quadrant_rotation_bounds_deg is not None:
+        values = result["geometry_values"]
+        if not np.array_equal(values, entry["geometry_values"]) or not np.array_equal(values[:5], result["geometry_nm"]):
+            raise ValueError("Sample quadrant geometry does not match the saved plan")
     if not np.allclose(result["geometry_01"], config.normalize(values), atol=1e-7):
         raise ValueError("Sample labels do not match normalization bounds")
     validate_spectrum(result["wavelength_nm"], result["reflectance"], result["transmittance"],
@@ -185,6 +195,8 @@ def pack_dataset(config, manifest):
     values = geometry
     if config.rotation_bounds_deg is not None:
         values = np.stack([s["geometry_values"] for s in samples]) if n else np.empty((0, 6), np.float64)
+    if config.quadrant_rotation_bounds_deg is not None:
+        values = np.stack([s["geometry_values"] for s in samples]) if n else np.empty((0, 7), np.float64)
     ids = np.array([e["id"] for e in entries], dtype=np.int64)
     splits = np.array([e["split"] for e in entries], dtype="U5")
     metadata = {
@@ -212,6 +224,12 @@ def pack_dataset(config, manifest):
                         angle_equivalence="square orientation period 90deg; +/-theta are mirror-equivalent for this x-polarized reflection task")
         arrays.update(geometry_values=values, rotation_deg=values[:, 5],
                       parameter_units=np.array(config.parameter_units),
+                      lower_values=config.lower, upper_values=config.upper,
+                      metadata_json=np.array(json.dumps(metadata, ensure_ascii=False)))
+    if config.quadrant_rotation_bounds_deg is not None:
+        metadata.update(parameter_units=list(config.parameter_units), rotation_mode=manifest["rotation_mode"],
+                        angle_equivalence="each square has 90-degree orientation period; quadrant signs are coupled")
+        arrays.update(geometry_values=values, parameter_units=np.array(config.parameter_units),
                       lower_values=config.lower, upper_values=config.upper,
                       metadata_json=np.array(json.dumps(metadata, ensure_ascii=False)))
     # 同时保存 nm 标签、归一化标签、上下界和波长网格，保证训练/推理的单位一致。
@@ -275,6 +293,8 @@ def _generate_locked(config, manifest, limit, fail_fast):
             for entry in pending:
                 i = entry["id"]
                 g = Geometry(*entry["geometry_nm"], rotation_deg=entry.get("rotation_deg", 0.0))
+                if config.quadrant_rotation_bounds_deg is not None:
+                    g = config.make_geometry(entry["geometry_values"])
                 entry.update(state="running", started_at=utc_now())
                 atomic_json(config.output_dir / "manifest.json", manifest)
                 LOG.info("Sample %d/%d: %s = %s; units=%s", i+1, config.sample_count,
@@ -287,6 +307,8 @@ def _generate_locked(config, manifest, limit, fail_fast):
                     # 单样本 NPZ 保存光谱、几何、求解信息和配置指纹，便于独立复查。
                     extra = {} if config.rotation_bounds_deg is None else {
                         "geometry_values": config.geometry_values(g), "rotation_deg": np.float64(g.rotation_deg)}
+                    if config.quadrant_rotation_bounds_deg is not None:
+                        extra = {"geometry_values": config.geometry_values(g)}
                     atomic_npz(path, **result, **extra, geometry_nm=g.array(),
                                geometry_01=config.normalize(config.geometry_values(g)).astype(np.float32),
                                sample_id=np.int64(i), config_fingerprint=np.array(manifest["config_fingerprint"]))

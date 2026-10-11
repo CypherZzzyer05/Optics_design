@@ -57,7 +57,7 @@ def plot_training(run_dir, show=True):
     ax.grid(axis='y', alpha=.2)
     ax.legend(fontsize=9)
     ax = axes[1, 0]
-    colors = ('#2667d8', '#049b86', '#d58b23', '#8b68bd', '#d96779', '#9d631c')
+    colors = ('#2667d8', '#049b86', '#d58b23', '#8b68bd', '#d96779', '#9d631c', '#146d7a')
     for p, color in zip(parameter_names, colors):
         truth, predicted = predictions['true_01_' + p], predictions['pred_01_' + p]
         if p == 'rotation_deg' and mirror:
@@ -89,6 +89,14 @@ def plot_training(run_dir, show=True):
                 f"停止原因：{report['stop_reason']}\n数据级别：{report['quality_level']}\n"
                 f"测试 {counts['test']} 个样本，精度需更多数据验证。\n"
                 f"运行：{run_dir.name}")
+    if len(parameter_names) == 7:
+        angle_errors = report['metrics']['test']['mae_deg']
+        text = (f"七参数结果\n\n测试 MSE：{model_mse:.6f}；基线：{baseline:.6f}\n"
+                f"奇数象限角 MAE：{angle_errors['theta_odd_deg']:.2f}°\n"
+                f"偶数象限角 MAE：{angle_errors['theta_even_deg']:.2f}°\n"
+                "角度误差按正方形 90° 周期计算。\n\n"
+                f"优化步骤：{report['optimizer_steps']}\n"
+                f"数据级别：{report['quality_level']}\n运行：{run_dir.name}")
     axes[1, 1].text(0, 1, text, va='top', color='#334969', linespacing=1.3 if rotated else 1.5)
     output = run_dir / 'training_preview.png'
     fig.savefig(output, dpi=160, facecolor=fig.get_facecolor())

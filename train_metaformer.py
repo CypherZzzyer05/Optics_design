@@ -18,13 +18,13 @@ import numpy as np
 import torch
 from torch.utils.data import DataLoader
 
-from fdtd_pipeline.config import PARAMETER_NAMES, ROTATION_PARAMETER_NAMES, PROJECT_ROOT
+from fdtd_pipeline.config import PARAMETER_NAMES, ROTATION_PARAMETER_NAMES, QUADRANT_PARAMETER_NAMES, PROJECT_ROOT
 from fdtd_pipeline.pipeline import atomic_json, checksum, directory_lock, utc_now
 from metaformer import InverseMetaformer, MetaformerConfig, geometry_mse
 from spectrum_dataset import SpectrumGeometryDataset
 
 LOG = logging.getLogger(__name__)
-DEFAULT_CONFIG = PROJECT_ROOT / 'configs/train_smoke_100.json'
+DEFAULT_CONFIG = PROJECT_ROOT / 'configs/train_as2se3_pilot.json'
 
 
 @dataclass(frozen=True)
@@ -65,10 +65,12 @@ class TrainingConfig:
             raise ValueError('device must be auto, cpu or cuda')
         if not isinstance(self.allow_validation_data, bool) or not isinstance(self.mixed_precision, bool):
             raise ValueError('Data permission and mixed_precision must be booleans')
-        if self.model.spectrum_points != 1000 or self.model.geometry_dim not in (5, 6):
+        if self.model.spectrum_points != 1000 or self.model.geometry_dim not in (5, 6, 7):
             raise ValueError('FDTD dataset requires 1000 inputs and five or six outputs')
         if self.model.geometry_dim == 6 and self.model.angle_symmetry != 'square_mirror':
             raise ValueError('The common-square rotation task requires square_mirror angle loss')
+        if self.model.geometry_dim == 7 and self.model.angle_symmetry != 'square_periodic':
+            raise ValueError('Quadrant rotations require square_periodic angle loss')
 
     def metadata(self):
         result = asdict(self)
@@ -139,6 +141,11 @@ def normalized_errors(prediction, target, angle_symmetry='none'):
             raise ValueError('Mirror-equivalent angle metrics require six outputs')
         difference = difference.copy()
         difference[..., 5] = np.abs(2 * prediction[..., 5] - 1) - np.abs(2 * target[..., 5] - 1)
+    elif angle_symmetry == 'square_periodic':
+        if prediction.shape[-1] != 7:
+            raise ValueError('Quadrant periodic metrics require seven outputs')
+        difference = difference.copy()
+        difference[..., 5:] = (difference[..., 5:] + .5) % 1 - .5
     elif angle_symmetry != 'none':
         raise ValueError('Unknown angle symmetry')
     return difference
@@ -147,11 +154,11 @@ def normalized_errors(prediction, target, angle_symmetry='none'):
 def regression_metrics(prediction, target, lower_nm, upper_nm, parameter_names=None, angle_symmetry='none'):
     prediction = np.asarray(prediction, dtype=np.float64)
     target = np.asarray(target, dtype=np.float64)
-    if prediction.shape != target.shape or prediction.ndim != 2 or prediction.shape[1] not in (5, 6) or not len(target):
+    if prediction.shape != target.shape or prediction.ndim != 2 or prediction.shape[1] not in (5, 6, 7) or not len(target):
         raise ValueError('Metrics require matching nonempty [N,5] or [N,6] arrays')
     names = tuple(parameter_names) if parameter_names is not None else (
-        ROTATION_PARAMETER_NAMES if prediction.shape[1] == 6 else PARAMETER_NAMES)
-    if names not in (PARAMETER_NAMES, ROTATION_PARAMETER_NAMES) or len(names) != prediction.shape[1]:
+        QUADRANT_PARAMETER_NAMES if prediction.shape[1] == 7 else (ROTATION_PARAMETER_NAMES if prediction.shape[1] == 6 else PARAMETER_NAMES))
+    if names not in (PARAMETER_NAMES, ROTATION_PARAMETER_NAMES, QUADRANT_PARAMETER_NAMES) or len(names) != prediction.shape[1]:
         raise ValueError('Metric parameter order differs from the supported schema')
     if not np.isfinite(prediction).all() or not np.isfinite(target).all():
         raise ValueError('Predictions and labels must be finite')
@@ -177,6 +184,10 @@ def regression_metrics(prediction, target, lower_nm, upper_nm, parameter_names=N
         result.update(mae_deg={'rotation_deg': float(np.mean(np.abs(physical[:, 5])))},
                       rmse_deg={'rotation_deg': float(np.sqrt(np.mean(physical[:, 5] ** 2)))},
                       raw_signed_mae_deg=float(np.mean(np.abs(raw_degrees))),
+                      angle_symmetry=angle_symmetry)
+    if len(names) == 7:
+        result.update(mae_deg=dict(zip(names[5:], np.mean(np.abs(physical[:, 5:]), axis=0).tolist())),
+                      rmse_deg=dict(zip(names[5:], np.sqrt(np.mean(physical[:, 5:]**2, axis=0)).tolist())),
                       angle_symmetry=angle_symmetry)
     return result
 
