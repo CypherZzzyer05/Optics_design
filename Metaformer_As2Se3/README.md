@@ -18,7 +18,7 @@
 
 按照新的双谷目标，12组真实七参数随机样本中找到主双谷候选：P=667.282、L=167.037、H=369.490、dX=97.049、dY=118.955 nm，奇数角−4.965°、偶数角41.233°，Au背板。初始1000点光谱的两个主谷位于838.138/924.224 nm，R=0.0442/0.0340；改进As₂Se₃损耗拟合后的3000点光谱仍保留约838.046/925.075 nm双谷，R=0.0358/0.0258。全波段还存在其他光谱特征。
 
-这些是候选筛选结果，**尚未证明最终网格收敛、金属材料拟合精度或模态来源**。七输出网络与数据接口通过47项软件测试。12组初筛真实样本完成两轮训练、10次优化更新及权重重载审计；这是流程验证，测试误差尚未优于均值基线，不能视为可靠逆向设计模型。
+这些是候选筛选结果，**尚未证明最终网格收敛、金属材料拟合精度或模态来源**。七输出网络与数据接口通过48项软件测试。12组初筛真实样本完成两轮训练、10次优化更新及权重重载审计；这是流程验证，测试误差尚未优于均值基线，不能视为可靠逆向设计模型。
 
 ![双谷候选](research_results/seven_parameter_pilot/double_dip_candidate.png)
 
@@ -39,7 +39,7 @@ python explore_spectra.py run
 # 读取已提交结果绘图，无需运行 FDTD
 python plot_research_summary.py
 # 检查七输出网络并保存结构图；不依赖尚未采集的训练数据
-python draw_metaformer.py --sampling-config configs/as2se3_au_pilot.json --output-dir docs/figures/as2se3
+python draw_metaformer.py --sampling-config configs/as2se3_au_fine8.json --output-dir docs/figures/as2se3
 # 8 nm整个计算域：随机七参数数据采集及两轮训练流程检查
 python generate_dataset.py generate --config configs/as2se3_au_fine8.json
 python train_metaformer.py --config configs/train_as2se3_fine8.json
@@ -54,6 +54,8 @@ python explore_double_dips.py run --case-id Au_full_difference --mesh-nm 5 --mon
 python audit_double_native.py
 python export_double_results.py
 python compare_double_mesh.py
+# 5 nm求解完成后，顺序执行原生审计、两谷比较、六组8 nm对照和真实8 nm训练流程
+python continue_strict_research.py
 ```
 
 5 nm复核保留3000个完整波段采样点。为适应本机内存，主远场监测器每两个空间网格点记录一次，记录间距仍低于10 nm；同时增加全空间采样监测器，在两谷附近及全波段检查点核对积分功率，R误差超过0.002或T误差超过10⁻⁵就拒绝结果。求解网格不被此存储选项改变，详见[双谷研究记录](docs/double_dip_research.md)。

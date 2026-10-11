@@ -12,7 +12,7 @@ import numpy as np
 
 from fdtd_pipeline.config import Geometry, load_config, PROJECT_ROOT, SimulationSettings
 from fdtd_pipeline.lumerical import FDTDSimulator, validate_spectrum
-from fdtd_pipeline.pipeline import generate_dataset, split_assignments, directory_lock
+from fdtd_pipeline.pipeline import generate_dataset, split_assignments, directory_lock, load_sample, checksum
 from spectrum_dataset import SpectrumGeometryDataset
 
 
@@ -148,6 +148,30 @@ class DatasetPersistenceTests(unittest.TestCase):
         np.testing.assert_array_equal(self.config.sample_geometries()[0].array(), self.config.sample_geometries()[0].array())
         self.assertEqual(split_assignments(4, 42), split_assignments(4, 42))
         self.assertEqual(sorted(split_assignments(4, 42)), ["test", "train", "train", "val"])
+
+    def test_strict_dataset_reuse_requires_actual_sub_10nm_cells(self):
+        generate_dataset(self.config, limit=1)
+        manifest = json.loads((self.config.output_dir/'manifest.json').read_text())
+        entry = manifest['samples'][0]
+        path = self.config.output_dir/'samples/sample_000000.npz'
+        with np.load(path, allow_pickle=False) as archive:
+            result = {key: archive[key].copy() for key in archive.files}
+        strict = replace(self.config, simulation=replace(self.config.simulation,
+                         mesh_nm=8, metal_mesh_nm=2.5, maximum_mesh_nm=8))
+        fingerprint = manifest['config_fingerprint']
+        with self.assertRaisesRegex(ValueError, 'actual mesh coordinates'):
+            load_sample(path, entry, strict, fingerprint)
+        for axis in ('x', 'y', 'z'):
+            result[f'mesh_{axis}_nm'] = np.array([0., 7., 14.])
+        np.savez(path, **result)
+        entry['sha256'] = checksum(path)
+        load_sample(path, entry, strict, fingerprint)
+        for invalid in (np.array([0., 9., 18.]), np.array([0., 10., 20.])):
+            result['mesh_z_nm'] = invalid
+            np.savez(path, **result)
+            entry['sha256'] = checksum(path)
+            with self.assertRaises(ValueError):
+                load_sample(path, entry, strict, fingerprint)
 
     def test_resume_and_training_shapes_and_roundtrip(self):
         a = generate_dataset(self.config, limit=2)

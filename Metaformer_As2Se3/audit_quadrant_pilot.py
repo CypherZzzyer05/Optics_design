@@ -7,8 +7,8 @@ import numpy as np
 import torch
 
 from fdtd_pipeline.config import PROJECT_ROOT, QUADRANT_PARAMETER_NAMES, load_config
-from fdtd_pipeline.lumerical import FDTDSimulator
-from fdtd_pipeline.pipeline import atomic_json, checksum, load_sample
+from fdtd_pipeline.lumerical import FDTDSimulator, mesh_grid_summary
+from fdtd_pipeline.pipeline import atomic_json, checksum, load_sample, prepare_manifest
 from metaformer import InverseMetaformer
 from train_metaformer import load_training_config, load_training_data
 
@@ -50,17 +50,24 @@ def inspect_native(config, sample_id=0):
 
 
 def audit(sampling, training, run_dir):
-    manifest = json.loads((sampling.output_dir / 'manifest.json').read_text(encoding='utf-8'))
+    manifest = prepare_manifest(sampling)
     successful = [e for e in manifest['samples'] if e['state'] == 'success']
     if len(successful) != sampling.sample_count:
         raise ValueError('Pilot sample plan is incomplete')
     datasets = load_training_data(training)
+    actual_meshes = {}
     if datasets['train'].parameter_names != QUADRANT_PARAMETER_NAMES:
         raise ValueError('Expected seven-parameter data')
     with np.load(training.dataset, allow_pickle=False) as data:
         for entry in successful:
             sample = load_sample(sampling.output_dir / 'samples' / f"sample_{entry['id']:06d}.npz",
                                  entry, sampling, manifest['config_fingerprint'])
+            if sampling.simulation.maximum_mesh_nm is not None:
+                path = sampling.output_dir/'samples'/f"sample_{entry['id']:06d}.npz"
+                with np.load(path, allow_pickle=False) as original:
+                    actual_meshes[str(entry['id'])] = mesh_grid_summary(
+                        {axis: original[f'mesh_{axis}_nm']*1e-9 for axis in ('x', 'y', 'z')},
+                        sampling.simulation.maximum_mesh_nm)
             row = int(np.flatnonzero(data['sample_ids'] == entry['id'])[0])
             if not np.array_equal(data['geometry_values'][row], sample['geometry_values']):
                 raise ValueError('Packed geometry differs from its source sample')
@@ -101,6 +108,8 @@ def audit(sampling, training, run_dir):
               'optimizer_steps': metrics['optimizer_steps'], 'seven_output_row_weight_changes': changes.tolist(),
               'reloaded_prediction_max_abs_errors': differences, 'metrics': metrics['metrics'],
               'train_mean_baseline': metrics['train_mean_baseline'],
+              'actual_mesh_by_sample': actual_meshes,
+              'all_real_sample_meshes_below_10_nm': bool(actual_meshes and len(actual_meshes)==len(successful)),
               'note': 'Real-data pipeline check only; small pilot does not establish inverse-design accuracy or mesh convergence.'}
     atomic_json(run_dir / 'validation_report.json', report)
     return report
