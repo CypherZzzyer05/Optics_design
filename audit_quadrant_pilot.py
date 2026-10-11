@@ -75,9 +75,9 @@ def audit(sampling, training, run_dir):
         raise ValueError('Selected checkpoint belongs to another dataset')
     torch.manual_seed(training.seed)
     model = InverseMetaformer(training.model).eval()
-    initial_rows = model.regressor[3].weight.detach().clone()
+    initial_rows = model.regressor[2].weight.detach().clone()
     model.load_state_dict(checkpoint['model_state'])
-    changes = torch.linalg.vector_norm(model.regressor[3].weight.detach() - initial_rows, dim=1).numpy()
+    changes = torch.linalg.vector_norm(model.regressor[2].weight.detach() - initial_rows, dim=1).numpy()
     if len(changes) != 7 or np.any(changes <= 0):
         raise ValueError('Not all seven output rows changed from initialization')
     torch.set_num_threads(4)
@@ -120,6 +120,6 @@ if __name__ == '__main__':
         training = load_training_config(args.training_config)
         run_dir = args.run_dir
         if run_dir is None:
-            run_dir = Path(json.loads((training.output_dir / 'latest.json').read_text(encoding='utf-8'))['run_dir'])
+            run_dir = Path(json.loads((training.output_dir / 'latest_run.json').read_text(encoding='utf-8'))['run_dir'])
         report = audit(sampling, training, run_dir)
     print(json.dumps(report, indent=2, ensure_ascii=False))

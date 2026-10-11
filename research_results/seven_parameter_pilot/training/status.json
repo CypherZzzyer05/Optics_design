@@ -1,0 +1,7 @@
+{
+  "state": "completed",
+  "epochs_completed": 2,
+  "best_epoch": 2,
+  "test_mse": 0.04535706106782581,
+  "time": "2026-10-11T06:16:15.967042+00:00"
+}

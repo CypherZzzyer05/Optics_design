@@ -1,0 +1,433 @@
+{
+  "schema_version": 3,
+  "created_at": "2026-10-11T05:51:38.305580+00:00",
+  "config_fingerprint": "f088bc4fc0e47ce78c6830e8438184c309fc1477bb58793daf7e2bdc82318de4",
+  "config": {
+    "simulation": {
+      "wavelength_start_nm": 700,
+      "wavelength_stop_nm": 1700,
+      "spectrum_points": 1000,
+      "mesh_accuracy": 3,
+      "mesh_nm": 20,
+      "simulation_time_ps": 2,
+      "auto_shutoff_min": 1e-05,
+      "air_padding_nm": 1200,
+      "substrate_depth_nm": 350,
+      "background_index": 1,
+      "silicon_material": "Si (Silicon) - Palik",
+      "substrate_material": "SiO2 (Glass) - Palik",
+      "processes": 1,
+      "threads": 8,
+      "hide_fdtd": true,
+      "save_projects": true,
+      "quality_tolerance": 0.03,
+      "require_auto_shutoff": true,
+      "resonator_material": "As2Se3 - Joseph 700nm film (2020)",
+      "resonator_nk_csv": "D:\\projects\\Metaformer_As2Se3_dev\\materials\\as2se3_joseph_700nm.csv",
+      "material_max_extension_nm": 12,
+      "metal_material": "Au (Gold) - Palik",
+      "bottom_padding_nm": 1200
+    },
+    "bounds_nm": {
+      "p": [
+        620,
+        690
+      ],
+      "l": [
+        160,
+        210
+      ],
+      "h": [
+        240,
+        380
+      ],
+      "alpha_x": [
+        90,
+        150
+      ],
+      "alpha_y": [
+        90,
+        150
+      ]
+    },
+    "sample_count": 12,
+    "seed": 20261011,
+    "output_dir": "D:\\projects\\Metaformer_As2Se3_dev\\data\\as2se3_au_pilot",
+    "lumapi_path": "D:/Program Files/Lumerical/v241/api/python/lumapi.py",
+    "parameter_range_source": "Exploratory near-IR engineering bounds; not validated fabrication bounds",
+    "quality_level": "pipeline_validation",
+    "quadrant_rotation_bounds_deg": {
+      "theta_odd_deg": [
+        -45,
+        45
+      ],
+      "theta_even_deg": [
+        -45,
+        45
+      ]
+    },
+    "resonator_nk_sha256": "9e6ee6d3b584f33226d7201e2b2e12490726cb3b8256726754e5aca9cae64ce9"
+  },
+  "parameter_names": [
+    "p",
+    "l",
+    "h",
+    "alpha_x",
+    "alpha_y",
+    "theta_odd_deg",
+    "theta_even_deg"
+  ],
+  "geometry_units": "mixed; see parameter_units",
+  "spectral_grid": "uniform ascending wavelength_nm; 1000 points",
+  "backend": "Lumerical FDTD lumapi (real electromagnetic simulation)",
+  "samples": [
+    {
+      "id": 0,
+      "geometry_nm": [
+        649.7604076511419,
+        161.1566330153756,
+        284.88377288849,
+        133.54673339593725,
+        116.4992120505661
+      ],
+      "split": "train",
+      "state": "success",
+      "geometry_values": [
+        649.7604076511419,
+        161.1566330153756,
+        284.88377288849,
+        133.54673339593725,
+        116.4992120505661,
+        -33.64481402341028,
+        39.36335222367701
+      ],
+      "started_at": "2026-10-11T05:51:41.644217+00:00",
+      "sha256": "1586abe49de3dace9278a4e698d5f63f8ffe4124c28e5746b0cf2600ff5d2635",
+      "elapsed_seconds": 86.625,
+      "status": 2,
+      "finished_at": "2026-10-11T05:53:10.296289+00:00",
+      "simulation_time_ps": 2.0,
+      "run_attempts": 1
+    },
+    {
+      "id": 1,
+      "geometry_nm": [
+        677.2483520483926,
+        194.10668331871256,
+        330.2341232024514,
+        93.40944569998089,
+        130.22699888523445
+      ],
+      "split": "val",
+      "state": "success",
+      "geometry_values": [
+        677.2483520483926,
+        194.10668331871256,
+        330.2341232024514,
+        93.40944569998089,
+        130.22699888523445,
+        34.03729516048678,
+        24.451891283676858
+      ],
+      "started_at": "2026-10-11T05:53:10.314284+00:00",
+      "sha256": "fc127a44ef583f91fcca9648850ff0cac4a4ad9d57f7395a340ee608108d9a2e",
+      "elapsed_seconds": 98.17200000000003,
+      "status": 2,
+      "finished_at": "2026-10-11T05:54:50.033795+00:00",
+      "simulation_time_ps": 2.0,
+      "run_attempts": 1
+    },
+    {
+      "id": 2,
+      "geometry_nm": [
+        650.3926446381838,
+        196.03499585910492,
+        331.8801999953635,
+        137.17895606782525,
+        105.89430266076923
+      ],
+      "split": "train",
+      "state": "success",
+      "geometry_values": [
+        650.3926446381838,
+        196.03499585910492,
+        331.8801999953635,
+        137.17895606782525,
+        105.89430266076923,
+        -26.508639290362485,
+        19.36041131988624
+      ],
+      "started_at": "2026-10-11T05:54:50.055959+00:00",
+      "sha256": "a891cba2d7f1b4513be83c13779b69de0f831dfa242107886db8634cf84cf0c0",
+      "elapsed_seconds": 128.96799999999985,
+      "status": 2,
+      "finished_at": "2026-10-11T05:57:00.604859+00:00",
+      "simulation_time_ps": 2.0,
+      "run_attempts": 1
+    },
+    {
+      "id": 3,
+      "geometry_nm": [
+        667.2817648945917,
+        167.03697293849132,
+        369.4900803132179,
+        97.04945218123429,
+        118.95531822839662
+      ],
+      "split": "train",
+      "state": "success",
+      "geometry_values": [
+        667.2817648945917,
+        167.03697293849132,
+        369.4900803132179,
+        97.04945218123429,
+        118.95531822839662,
+        -4.964905749468862,
+        41.23316704158616
+      ],
+      "started_at": "2026-10-11T05:57:00.635059+00:00",
+      "sha256": "9bf478e0518ee9e293d975ec9780fb37e73479dfde1a9e60421509cdca8c92c3",
+      "elapsed_seconds": 109.96799999999985,
+      "status": 2,
+      "finished_at": "2026-10-11T05:58:52.368715+00:00",
+      "simulation_time_ps": 2.0,
+      "run_attempts": 1
+    },
+    {
+      "id": 4,
+      "geometry_nm": [
+        669.6063230566876,
+        178.9142548361015,
+        332.09912369534914,
+        100.14333532075145,
+        148.13021620122223
+      ],
+      "split": "train",
+      "state": "success",
+      "geometry_values": [
+        669.6063230566876,
+        178.9142548361015,
+        332.09912369534914,
+        100.14333532075145,
+        148.13021620122223,
+        9.132978428091178,
+        8.628321228183424
+      ],
+      "started_at": "2026-10-11T05:58:52.411251+00:00",
+      "sha256": "79cbccb3e9d2bd2c0825d7b2fc6d84bc9175983bad0bae19e4b48d9289ff04e6",
+      "elapsed_seconds": 107.12500000000045,
+      "status": 2,
+      "finished_at": "2026-10-11T06:00:41.115537+00:00",
+      "simulation_time_ps": 2.0,
+      "run_attempts": 1
+    },
+    {
+      "id": 5,
+      "geometry_nm": [
+        687.3466123165493,
+        188.82373197460197,
+        349.02331595662076,
+        129.77077515026667,
+        115.69899668761639
+      ],
+      "split": "train",
+      "state": "success",
+      "geometry_values": [
+        687.3466123165493,
+        188.82373197460197,
+        349.02331595662076,
+        129.77077515026667,
+        115.69899668761639,
+        -2.0778907747755184,
+        34.55977291713678
+      ],
+      "started_at": "2026-10-11T06:00:41.149440+00:00",
+      "sha256": "f2d87f0cc32b965b6202eb16b490d1379ad56be381117af95e9ae779ca5cb929",
+      "elapsed_seconds": 153.29699999999957,
+      "status": 2,
+      "finished_at": "2026-10-11T06:03:15.847934+00:00",
+      "simulation_time_ps": 2.0,
+      "run_attempts": 1
+    },
+    {
+      "id": 6,
+      "geometry_nm": [
+        669.2716275118424,
+        201.63850896970206,
+        278.2327998246738,
+        91.16271964147066,
+        139.7350591328934
+      ],
+      "split": "train",
+      "state": "success",
+      "geometry_values": [
+        669.2716275118424,
+        201.63850896970206,
+        278.2327998246738,
+        91.16271964147066,
+        139.7350591328934,
+        16.83774704271199,
+        26.433349868906248
+      ],
+      "started_at": "2026-10-11T06:03:15.890374+00:00",
+      "sha256": "1b2a4f9a4f56ce0019979fc45eea67e9c756a5313622af04653e5f7547c05d65",
+      "elapsed_seconds": 141.29699999999957,
+      "status": 2,
+      "finished_at": "2026-10-11T06:05:38.923302+00:00",
+      "simulation_time_ps": 2.0,
+      "run_attempts": 1
+    },
+    {
+      "id": 7,
+      "geometry_nm": [
+        620.3174704046496,
+        174.20668420606884,
+        336.0548887039623,
+        134.619348143328,
+        127.37484262918014
+      ],
+      "split": "train",
+      "state": "success",
+      "geometry_values": [
+        620.3174704046496,
+        174.20668420606884,
+        336.0548887039623,
+        134.619348143328,
+        127.37484262918014,
+        26.155793019788604,
+        15.848777586959756
+      ],
+      "started_at": "2026-10-11T06:05:38.989688+00:00",
+      "sha256": "e16a9e5393b08d609360f5e877b22104c7209f16e98140ef727636249b4683b4",
+      "elapsed_seconds": 50.70399999999972,
+      "status": 2,
+      "finished_at": "2026-10-11T06:06:31.388767+00:00",
+      "simulation_time_ps": 2.0,
+      "run_attempts": 1
+    },
+    {
+      "id": 8,
+      "geometry_nm": [
+        655.0109383181385,
+        203.73022563345802,
+        258.5319798996374,
+        106.34221781315007,
+        108.73651681214002
+      ],
+      "split": "train",
+      "state": "success",
+      "geometry_values": [
+        655.0109383181385,
+        203.73022563345802,
+        258.5319798996374,
+        106.34221781315007,
+        108.73651681214002,
+        34.06940332034851,
+        -8.407171640505076
+      ],
+      "started_at": "2026-10-11T06:06:31.440560+00:00",
+      "sha256": "89a0a980fa836271152968d414463ee56da20a235cbddada75c37f8f90bb9076",
+      "elapsed_seconds": 115.35900000000038,
+      "status": 2,
+      "finished_at": "2026-10-11T06:08:28.460638+00:00",
+      "simulation_time_ps": 2.0,
+      "run_attempts": 1
+    },
+    {
+      "id": 9,
+      "geometry_nm": [
+        657.565810953652,
+        163.26748382115477,
+        309.5027947843788,
+        127.46406967742516,
+        137.62125149686472
+      ],
+      "split": "train",
+      "state": "success",
+      "geometry_values": [
+        657.565810953652,
+        163.26748382115477,
+        309.5027947843788,
+        127.46406967742516,
+        137.62125149686472,
+        -36.37282116124037,
+        8.914449297764989
+      ],
+      "started_at": "2026-10-11T06:08:28.538525+00:00",
+      "sha256": "7ce844e5c946ce531a8645f45d1baede610399b144407d81568f903ad7e3a361",
+      "elapsed_seconds": 112.9369999999999,
+      "status": 2,
+      "finished_at": "2026-10-11T06:10:23.546643+00:00",
+      "simulation_time_ps": 2.0,
+      "run_attempts": 1
+    },
+    {
+      "id": 10,
+      "geometry_nm": [
+        632.6682654313678,
+        169.11155287768466,
+        241.72830611170411,
+        105.25756027789603,
+        148.33078613680357
+      ],
+      "split": "train",
+      "state": "success",
+      "geometry_values": [
+        632.6682654313678,
+        169.11155287768466,
+        241.72830611170411,
+        105.25756027789603,
+        148.33078613680357,
+        -32.740147051099484,
+        -9.758860982487072
+      ],
+      "started_at": "2026-10-11T06:10:23.635713+00:00",
+      "sha256": "c7690c9ac8d18a486b43fcf6a2868a1f892b15f2b984f4baa19af7e6d068f5cf",
+      "elapsed_seconds": 99.04699999999957,
+      "status": 2,
+      "finished_at": "2026-10-11T06:12:04.246750+00:00",
+      "simulation_time_ps": 2.0,
+      "run_attempts": 1
+    },
+    {
+      "id": 11,
+      "geometry_nm": [
+        663.7993048009791,
+        201.93557666218754,
+        331.0093001892657,
+        116.67141325910706,
+        131.64504355851068
+      ],
+      "split": "test",
+      "state": "success",
+      "geometry_values": [
+        663.7993048009791,
+        201.93557666218754,
+        331.0093001892657,
+        116.67141325910706,
+        131.64504355851068,
+        9.189445848705141,
+        22.089966065279782
+      ],
+      "started_at": "2026-10-11T06:12:04.286890+00:00",
+      "sha256": "5a1af7b90d647c43e8f23692dfdad31072c7331eb6cca3502cbec81053efb717",
+      "elapsed_seconds": 60.53099999999995,
+      "status": 2,
+      "finished_at": "2026-10-11T06:13:05.581625+00:00",
+      "simulation_time_ps": 2.0,
+      "run_attempts": 1
+    }
+  ],
+  "parameter_units": [
+    "nm",
+    "nm",
+    "nm",
+    "nm",
+    "nm",
+    "deg",
+    "deg"
+  ],
+  "rotation_mode": "self_center_z_I_III_odd_II_IV_even",
+  "fdtd_version": "8.31.3633",
+  "lumapi_file": "D:\\Program Files\\Lumerical\\v241\\api\\python\\lumapi.py"
+}

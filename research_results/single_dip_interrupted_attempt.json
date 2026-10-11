@@ -1,0 +1,9 @@
+{
+  "case_id": "Au_opposite_20",
+  "mesh_nm": 10,
+  "auto_shutoff_min": 0.000001,
+  "completed_first_attempt": {"time_limit_ps": 4, "status": 1, "auto_shutoff_reached": false},
+  "second_attempt": {"time_limit_ps": 8, "state": "interrupted", "final_spectrum_available": false},
+  "reason": "User selected a double-dip target. Refinement resources were reassigned to the real double-dip candidate from sample_000003.",
+  "mesh_converged": false
+}

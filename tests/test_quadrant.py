@@ -15,10 +15,37 @@ from metaformer import MetaformerConfig, InverseMetaformer, geometry_mse
 from spectrum_dataset import SpectrumGeometryDataset
 from train_metaformer import TrainingConfig, train, regression_metrics
 from explore_spectra import features, study_plan
+from explore_double_dips import double_pair, control_plan
 from test_fdtd_pipeline import FakeSimulator
 
 
 class QuadrantTests(unittest.TestCase):
+    def test_double_pair_rejects_single_unresolved_and_edge_dips(self):
+        w = np.linspace(700, 1700, 3000)
+        def trough(center, width=3):
+            return .9*np.exp(-.5*((w-center)/width)**2)
+        r = .95-trough(838)-trough(924)
+        pair = double_pair(w, r)['dominant_pair']
+        self.assertIsNotNone(pair)
+        self.assertAlmostEqual(pair['separation_nm'], 86, delta=.7)
+        self.assertIsNone(double_pair(w, .95-trough(838))['dominant_pair'])
+        self.assertIsNone(double_pair(w, .95-trough(838)-trough(924, .2))['dominant_pair'])
+        self.assertIsNone(double_pair(w, .95-trough(710)-trough(924))['dominant_pair'])
+        values = [667, 167, 369, 97, 119, -5, 41]
+        plan = control_plan(values)
+        self.assertEqual(len(plan), 6)
+        for entry in plan:
+            self.assertEqual(entry['geometry_values'][:5], values[:5])
+            self.assertAlmostEqual(sum(entry['geometry_values'][5:])/2, 18)
+
+    def test_research_resolution_cannot_enter_training_pipeline(self):
+        config = load_config(PROJECT_ROOT/'configs/as2se3_au_pilot.json')
+        simulation = replace(config.simulation, research_grid=True, spectrum_points=3000)
+        self.assertEqual(len(simulation.wavelength_grid()), 3000)
+        with self.assertRaisesRegex(ValueError, 'cannot be packed'):
+            replace(config, simulation=simulation)
+        self.assertNotIn('research_grid', config.metadata()['simulation'])
+
     def test_angles_and_self_centers_preserve_C2(self):
         g = Geometry(660, 190, 300, 120, 120, theta_odd_deg=20, theta_even_deg=-10)
         self.assertEqual(g.angles(), [20, -10, -10, 20])
