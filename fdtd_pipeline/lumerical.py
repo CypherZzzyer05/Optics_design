@@ -181,7 +181,7 @@ class FDTDSimulator:
             ("simulation time", s.simulation_time_ps * 1e-12),
             ("auto shutoff min", s.auto_shutoff_min), ("pml profile", 3)
         ]))
-        # 衬底向下延伸进入底部 PML；Fresnel 对照时可换成指定折射率介质。
+        # 金属背板模式使用有限厚衬底；无背板时衬底延伸进入底部 PML。
         material = s.substrate_material if substrate_index is None else "<Object defined dielectric>"
         f.addrect(name="substrate", x=0., y=0., x_span=3*p, y_span=3*p,
                   z_min=substrate_bottom if metal_enabled else bottom - p, z_max=0., material=material)
@@ -196,7 +196,7 @@ class FDTDSimulator:
                       override_x_mesh=False, override_y_mesh=False, override_z_mesh=True,
                       dz=s.metal_mesh_nm*nm)
         if include_silicon:
-            # 四个硅方块共用边长 l 和高度 h；中心位置由 alpha_x/alpha_y 间隙决定。
+            # 四个材料方柱共用边长 l 和高度 h；中心位置由名义间隙确定。
             for i, ((x, y), angle) in enumerate(zip(geometry.centers(), geometry.angles())):
                 f.addrect(name=f"si_{i}", x=x*nm, y=y*nm,
                           x_span=geometry.l*nm, y_span=geometry.l*nm,
@@ -223,7 +223,7 @@ class FDTDSimulator:
         f.setglobalmonitor("use source limits", True)
         f.setglobalmonitor("use wavelength spacing", True)
         f.setglobalmonitor("frequency points", s.spectrum_points)
-        # R 在光源上方接收反射波；T 在衬底内部记录向下传播的透射功率。
+        # R 位于光源上方；金属背板模式的 T 位于金属下方空气中。
         for name, z in (("R", h + 0.75*s.air_padding_nm*nm),
                         ("T", metal_bottom-0.5*s.bottom_padding_nm*nm if metal_enabled else -0.5*s.substrate_depth_nm*nm)):
             f.addpower(name=name, monitor_type="2D Z-normal", x=0., y=0.,
