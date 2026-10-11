@@ -1,0 +1,8 @@
+{
+  "actual_mesh.json": "5f665ec28a463abdcd85c73c0b2e5e974c58e7346717e62571746c890ec2d9b4",
+  "manifest.json": "f97041422f91996d19cfdcd30d13d1b254c6296c5b9cb037dd104e6ce4ba1286",
+  "reference_sampling_validation.json": "45cde52a3e7b4129c0a857a333010947b85dd38970a5e6b0e97e9cdadf294cc5",
+  "resources.json": "eae9b6121258a0d0f50b2ab4cc17ee3a47da12e6a659039eea3f42424b7687f5",
+  "selected_wavelengths_nm.csv": "bd3efb16f61477a1380b6448e02891766f35bf0eb8b4d83e0b0f0d84cded667e",
+  "status.json": "e5b816cd74f48ac523369e8763886ba9dae7810a6ed2e931a62dacea442b5665"
+}

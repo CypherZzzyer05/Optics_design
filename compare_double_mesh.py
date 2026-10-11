@@ -12,6 +12,7 @@ from explore_double_dips import double_pair
 from fdtd_pipeline.config import PROJECT_ROOT, SimulationSettings
 from fdtd_pipeline.lumerical import mesh_grid_summary, validate_spectrum, validate_power_integration
 from fdtd_pipeline.pipeline import atomic_json, checksum
+from focused_spectra import common_spectra
 
 
 def compare_curves(wavelength, reference, fine):
@@ -75,7 +76,7 @@ def read_case(directory, case_id):
             'power_integration_validation': integration, 'monitor_recording_spacing_bound_nm': recording_bound}
 
 
-def compare(reference_dir, fine_dir, case_id, output):
+def compare(reference_dir, fine_dir, case_id, output, allow_focused=False):
     reference, fine = read_case(reference_dir, case_id), read_case(fine_dir, case_id)
     if not 0 < fine['settings'].maximum_mesh_nm < reference['settings'].maximum_mesh_nm < 10:
         raise ValueError('Require two decreasing meshes, both strictly below 10 nm')
@@ -87,12 +88,13 @@ def compare(reference_dir, fine_dir, case_id, output):
                    if key not in ('mesh_nm', 'maximum_mesh_nm', 'metal_mesh_nm', 'mesh_accuracy',
                                   'processes', 'threads', 'hide_fdtd', 'save_projects')
                    and key not in ('monitor_downsample_xy', 'power_validation_wavelengths_nm')
+                   and not (allow_focused and key in ('spectrum_points', 'research_wavelengths_nm'))
                    and value != getattr(fine['settings'], key)]
     if differences:
         raise ValueError(f'Physical or spectral settings changed: {differences}')
-    if not np.array_equal(reference['data']['wavelength_nm'], fine['data']['wavelength_nm']):
-        raise ValueError('Use the same spectral grid for a spatial mesh comparison')
-    report = compare_curves(reference['data']['wavelength_nm'], reference['data']['reflectance'], fine['data']['reflectance'])
+    shared_w, shared_r, fine_r, sampling = common_spectra(reference['data']['wavelength_nm'], reference['data']['reflectance'],
+        fine['data']['wavelength_nm'], fine['data']['reflectance'], allow_focused)
+    report = compare_curves(shared_w, shared_r, fine_r)
     report.update(case_id=case_id, geometry_values=reference['entry']['geometry_values'],
                   reference_mesh_nm=reference['settings'].maximum_mesh_nm,
                   fine_mesh_nm=fine['settings'].maximum_mesh_nm,
@@ -103,6 +105,7 @@ def compare(reference_dir, fine_dir, case_id, output):
                   monitor_recording_spacing_bounds_nm=[reference['monitor_recording_spacing_bound_nm'], fine['monitor_recording_spacing_bound_nm']],
                   statuses=[int(reference['data']['status']), int(fine['data']['status'])],
                   comparison_kind='Two-mesh stability check for both dominant troughs',
+                  spectral_sampling_comparison=sampling,
                   material_fit_validated=False,
                   note='Agreement at these thresholds does not establish material accuracy, modal identity, or infinite-resolution convergence.')
     output.mkdir(parents=True, exist_ok=True)
@@ -116,8 +119,9 @@ def compare(reference_dir, fine_dir, case_id, output):
     fig, axes = plt.subplots(2, 1, figsize=(10, 7))
     for ax, limits in zip(axes, ((700, 1700), (800, 980))):
         for label, case in (('Reference', reference), ('Fine', fine)):
+            suffix = f"; focused {case['settings'].spectrum_points} points" if case['settings'].research_wavelengths_nm else ''
             ax.plot(case['data']['wavelength_nm'], case['data']['reflectance'], lw=1.2,
-                    label=f"{label}: maximum {case['settings'].maximum_mesh_nm:g} nm mesh")
+                    label=f"{label}: maximum {case['settings'].maximum_mesh_nm:g} nm mesh{suffix}")
         ax.set(xlim=limits, ylim=(-.02, 1.03), xlabel='Wavelength (nm)', ylabel='Reflectance')
         ax.grid(alpha=.2)
         ax.legend()
@@ -134,5 +138,6 @@ if __name__ == '__main__':
     parser.add_argument('--fine', type=Path, default=PROJECT_ROOT / 'data/double_dip_fine5_checked')
     parser.add_argument('--case-id', default='Au_full_difference')
     parser.add_argument('--output', type=Path, default=PROJECT_ROOT / 'research_results/double_dip_mesh_comparison')
+    parser.add_argument('--allow-focused', action='store_true')
     args = parser.parse_args()
-    print(json.dumps(compare(args.reference, args.fine, args.case_id, args.output), indent=2))
+    print(json.dumps(compare(args.reference, args.fine, args.case_id, args.output, args.allow_focused), indent=2))

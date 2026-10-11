@@ -1,0 +1,9 @@
+{
+  "comparison.json": "0f8d6efa226fa000c6fcccde0735c915dd99c1c4a68c42f609888ee483614f69",
+  "comparison.png": "e67e9641964edfa7e6adcc803e10d983449f8c2dac785f34d2ca795544092f4e",
+  "fine.npz": "66649a8de5086b095f97e6db9569d2d52042fea1678ffde146cb14470b4e55cd",
+  "fine_manifest.json": "306440e5357f0925d5b806d595135c33c45a6d2c6c5676c22f8633ec5d7a9855",
+  "reference.npz": "8421fcf56aa044aea1c5d7413389ad27fa6fb0f5f4f11e9c9d540882da9d8370",
+  "reference_manifest.json": "790b355df887d81f27f43aebc285574b40615663f36504d433f11dacd44eaeb1",
+  "workflow_status.json": "837ac9ece543cd6721444dd0151d1211dbb4ad6eedfec14b15e7a25b1126119d"
+}

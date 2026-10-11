@@ -124,6 +124,7 @@ class SimulationSettings:
     maximum_mesh_nm: float | None = None
     monitor_downsample_xy: int = 1
     power_validation_wavelengths_nm: tuple = ()
+    research_wavelengths_nm: tuple = ()
 
     def __post_init__(self):
         positive = (self.wavelength_start_nm, self.wavelength_stop_nm, self.mesh_nm,
@@ -139,6 +140,13 @@ class SimulationSettings:
             raise ValueError("spectrum_points must be an integer of at least 32")
         if self.spectrum_points != 1000 and not self.research_grid:
             raise ValueError("The existing Metaformer requires exactly 1000 spectral points")
+        if self.research_wavelengths_nm:
+            values = np.asarray(self.research_wavelengths_nm)
+            if (not self.research_grid or values.ndim != 1 or len(values) != self.spectrum_points
+                    or not np.isfinite(values).all() or np.any(np.diff(values) <= 0)
+                    or not np.isclose(values[0], self.wavelength_start_nm, rtol=0, atol=1e-5)
+                    or not np.isclose(values[-1], self.wavelength_stop_nm, rtol=0, atol=1e-5)):
+                raise ValueError('Focused wavelength samples require an explicit research grid spanning the source band')
         if not 1 <= self.mesh_accuracy <= 8 or int(self.mesh_accuracy) != self.mesh_accuracy:
             raise ValueError("mesh_accuracy must be an integer in [1, 8]")
         if not 0 < self.auto_shutoff_min < 1 or not 0 < self.quality_tolerance < 0.2:
@@ -182,6 +190,8 @@ class SimulationSettings:
 
     def wavelength_grid(self):
         # 按波长均匀排列；训练固定1000点，独立研究可显式采用更密网格。
+        if self.research_wavelengths_nm:
+            return np.asarray(self.research_wavelengths_nm, dtype=np.float64)
         return np.linspace(self.wavelength_start_nm, self.wavelength_stop_nm, self.spectrum_points)
 
 
@@ -291,7 +301,7 @@ class PipelineConfig:
         for key in ("resonator_material", "resonator_nk_csv", "material_max_extension_nm",
                     "metal_material", "metal_thickness_nm", "metal_mesh_nm", "bottom_padding_nm", "polarization_deg",
                     "material_fit_tolerance", "material_imaginary_weight", "research_grid", "maximum_mesh_nm",
-                    "monitor_downsample_xy", "power_validation_wavelengths_nm"):
+                    "monitor_downsample_xy", "power_validation_wavelengths_nm", "research_wavelengths_nm"):
             if getattr(self.simulation, key) == SimulationSettings.__dataclass_fields__[key].default:
                 data["simulation"].pop(key)
         if self.simulation.resonator_nk_csv:

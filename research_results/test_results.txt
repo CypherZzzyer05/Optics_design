@@ -1,3 +1,4 @@
+test_focused_comparison_preserves_samples_and_cannot_hide_one_changing_trough (test_double_mesh.DoubleMeshTests) ... ok
 test_reduced_monitor_storage_requires_and_passes_independent_power_checks (test_double_mesh.DoubleMeshTests) ... ok
 test_tracks_both_dips_even_when_prominence_rank_changes (test_double_mesh.DoubleMeshTests) ... ok
 test_divergence_is_not_retried (test_fdtd_pipeline.ConvergenceRetryTests) ... ok
@@ -27,6 +28,8 @@ test_sample_mouse_click_and_reset_restore_the_real_sample_angle (test_preview_in
 test_single_sample_angle_preview_and_legacy_five_parameter_browser (test_preview_interaction.PreviewInteractionTests) ... ok
 test_angles_and_self_centers_preserve_C2 (test_quadrant.QuadrantTests) ... ok
 test_double_pair_rejects_single_unresolved_and_edge_dips (test_quadrant.QuadrantTests) ... ok
+Using committed real pilot candidate archive; new simulations still use the selected strict mesh
+test_fresh_project_can_read_committed_real_candidate_without_coarse_generation (test_quadrant.QuadrantTests) ... ok
 test_material_coverage_extension_and_content_fingerprint (test_quadrant.QuadrantTests) ... ok
 test_metal_layer_is_below_finite_substrate_and_T_below_metal (test_quadrant.QuadrantTests) ... ok
 test_periodic_angles_do_not_independently_discard_signs (test_quadrant.QuadrantTests) ... ok
@@ -52,6 +55,6 @@ test_training_changes_parameters_with_real_backward_and_optimizer (test_training
 test_validation_permission_does_not_allow_unconverged_training (test_training.TrainingIntegrityTests) ... ok
 
 ----------------------------------------------------------------------
-Ran 48 tests in 20.719s
+Ran 50 tests in 20.209s
 
 OK

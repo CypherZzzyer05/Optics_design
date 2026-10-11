@@ -11,7 +11,7 @@ import numpy as np
 from explore_spectra import features
 from fdtd_pipeline.config import PROJECT_ROOT, load_config
 from fdtd_pipeline.lumerical import FDTDSimulator
-from fdtd_pipeline.pipeline import atomic_json, atomic_npz, checksum, directory_lock
+from fdtd_pipeline.pipeline import atomic_json, atomic_npz, checksum, directory_lock, load_sample
 
 
 def double_pair(wavelength, reflection):
@@ -56,14 +56,18 @@ def control_plan(values):
 
 
 def source_candidate(config, sample_id):
-    manifest = json.loads((config.output_dir / 'manifest.json').read_text(encoding='utf-8'))
+    directory = config.output_dir
+    if not (directory/'manifest.json').exists() and directory.name == 'as2se3_au_pilot':
+        directory = PROJECT_ROOT/'research_results/seven_parameter_pilot'
+        print('Using committed real pilot candidate archive; new simulations still use the selected strict mesh', flush=True)
+    manifest = json.loads((directory / 'manifest.json').read_text(encoding='utf-8'))
     entry = next(e for e in manifest['samples'] if e['id'] == sample_id)
-    path = config.output_dir / 'samples' / f'sample_{sample_id:06d}.npz'
+    path = directory / 'samples' / f'sample_{sample_id:06d}.npz'
     if entry['state'] != 'success' or checksum(path) != entry['sha256']:
         raise ValueError('Candidate must be a verified successful real FDTD sample')
-    with np.load(path, allow_pickle=False) as data:
-        values = data['geometry_values'].tolist()
-        original = double_pair(data['wavelength_nm'], data['reflectance'])
+    data = load_sample(path, entry, config, manifest['config_fingerprint'])
+    values = data['geometry_values'].tolist()
+    original = double_pair(data['wavelength_nm'], data['reflectance'])
     if len(values) != 7:
         raise ValueError('Expected seven independent geometry parameters')
     return values, {'sample_id': sample_id, 'sha256': checksum(path),
@@ -119,7 +123,7 @@ def rank(output, manifest):
     return report
 
 
-def run(config, output, sample_id=3, mesh_nm=8, points=3000, case_id=None, limit=None, monitor_downsample_xy=1):
+def run(config, output, sample_id=3, mesh_nm=8, points=3000, case_id=None, limit=None, monitor_downsample_xy=1, focused_reference=None):
     if limit is not None and limit < 1:
         raise ValueError('limit must be positive')
     if not 0 < mesh_nm < 10:
@@ -138,21 +142,45 @@ def run(config, output, sample_id=3, mesh_nm=8, points=3000, case_id=None, limit
         for dip in source['dominant_pair']['dips']:
             mask |= np.abs(grid-dip['wavelength_nm']) <= 12
         check_wavelengths = tuple(grid[mask].tolist())
+    custom_wavelengths = ()
+    focused_source = None
+    if focused_reference is not None:
+        from compare_double_mesh import read_case
+        from focused_spectra import focused_indices
+        if case_id is None:
+            raise ValueError('Focused refinement requires one explicit case ID')
+        reference = read_case(focused_reference, case_id)
+        if reference['entry']['geometry_values'] != plan[0]['geometry_values']:
+            raise ValueError('Focused refinement must preserve the reference geometry')
+        data = reference['data']
+        if len(data['wavelength_nm']) != points:
+            raise ValueError('Focused reference size differs from the base spectral grid')
+        indices = focused_indices(data['wavelength_nm'], data['reflectance'], check_wavelengths)
+        custom_wavelengths = tuple(data['wavelength_nm'][indices].tolist())
+        points = len(custom_wavelengths)
+        focused_source = {'sample_sha256': checksum(reference['path']), 'case_id': case_id,
+                          'reference_config_fingerprint': reference['manifest']['config_fingerprint'],
+                          'reference_points': len(data['wavelength_nm']), 'focused_points': points}
     base = replace(config.simulation, research_grid=True, spectrum_points=points, mesh_nm=mesh_nm,
                    maximum_mesh_nm=mesh_nm,
                    mesh_accuracy=4 if mesh_nm < 20 else 3,
                    metal_mesh_nm=min(2.5, mesh_nm),
                    simulation_time_ps=4 if mesh_nm < 20 else 2,
                    material_fit_tolerance=0, material_imaginary_weight=2,
-                   monitor_downsample_xy=monitor_downsample_xy, power_validation_wavelengths_nm=check_wavelengths)
+                   monitor_downsample_xy=monitor_downsample_xy, power_validation_wavelengths_nm=check_wavelengths,
+                   research_wavelengths_nm=custom_wavelengths)
     simulation_metadata = asdict(base)
     # Preserve fingerprints for existing full-spatial studies when new defaults are unused.
     if monitor_downsample_xy == 1:
         simulation_metadata.pop('monitor_downsample_xy')
     if not check_wavelengths:
         simulation_metadata.pop('power_validation_wavelengths_nm')
+    if not custom_wavelengths:
+        simulation_metadata.pop('research_wavelengths_nm')
     metadata = {'source_candidate': source, 'simulation': simulation_metadata, 'cases': plan,
                 'material_csv_sha256': checksum(Path(base.resonator_nk_csv))}
+    if focused_source is not None:
+        metadata['focused_reference'] = focused_source
     fingerprint = hashlib.sha256(json.dumps(metadata, sort_keys=True).encode()).hexdigest()
     with directory_lock(output):
         path = output / 'manifest.json'
@@ -208,6 +236,7 @@ if __name__ == '__main__':
     parser.add_argument('--case-id')
     parser.add_argument('--limit', type=int)
     parser.add_argument('--monitor-downsample-xy', type=int, default=1)
+    parser.add_argument('--focused-reference', type=Path)
     args = parser.parse_args()
     config = load_config(args.config)
     if args.command == 'plan':
@@ -216,5 +245,5 @@ if __name__ == '__main__':
     elif args.command == 'rank':
         print(json.dumps(rank(args.output, json.loads((args.output / 'manifest.json').read_text(encoding='utf-8'))), indent=2))
     else:
-        result = run(config, args.output.resolve(), args.sample_id, args.mesh_nm, args.points, args.case_id, args.limit, args.monitor_downsample_xy)
+        result = run(config, args.output.resolve(), args.sample_id, args.mesh_nm, args.points, args.case_id, args.limit, args.monitor_downsample_xy, args.focused_reference)
         print(f"Solved {result['successful']}/{result['planned']}")
