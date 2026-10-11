@@ -1,0 +1,50 @@
+{
+  "lumapi_path": "D:/Program Files/Lumerical/v241/api/python/lumapi.py",
+  "output_dir": "../data/rotation_pilot",
+  "sample_count": 6,
+  "seed": 20240909,
+  "parameter_range_source": "Engineering example with common self-center square rotation; original Table S3 bounds unverified",
+  "quality_level": "pipeline_validation",
+  "bounds_nm": {
+    "p": [
+      3000,
+      3400
+    ],
+    "l": [
+      850,
+      1050
+    ],
+    "h": [
+      800,
+      1100
+    ],
+    "alpha_x": [
+      150,
+      350
+    ],
+    "alpha_y": [
+      150,
+      350
+    ]
+  },
+  "simulation": {
+    "wavelength_start_nm": 4000,
+    "wavelength_stop_nm": 8000,
+    "spectrum_points": 1000,
+    "mesh_accuracy": 4,
+    "mesh_nm": 80,
+    "simulation_time_ps": 10,
+    "auto_shutoff_min": 1e-05,
+    "air_padding_nm": 8000,
+    "substrate_depth_nm": 8000,
+    "processes": 1,
+    "threads": 4,
+    "hide_fdtd": true,
+    "save_projects": true,
+    "require_auto_shutoff": true
+  },
+  "rotation_bounds_deg": [
+    -45,
+    45
+  ]
+}

@@ -1,0 +1,274 @@
+{
+  "model_config": {
+    "spectrum_points": 1000,
+    "patch_count": 100,
+    "embedding_dim": 128,
+    "attention_heads": 10,
+    "head_dim": 64,
+    "encoder_layers": 10,
+    "mlp_dim": 256,
+    "dropout": 0.1,
+    "geometry_dim": 6,
+    "spectral_frontend": "resnet1d",
+    "resnet_channels": 32,
+    "resnet_blocks": 3,
+    "resnet_kernel_size": 7,
+    "angle_symmetry": "square_mirror"
+  },
+  "probe_mode": "eval / inference_mode; synthetic zeros for shape checks only",
+  "probe_input_shape": [
+    8,
+    1000
+  ],
+  "module_output_shapes": {
+    "spectral_frontend.stem": [
+      8,
+      32,
+      1000
+    ],
+    "spectral_frontend.blocks.0": [
+      8,
+      32,
+      1000
+    ],
+    "spectral_frontend.blocks.1": [
+      8,
+      32,
+      1000
+    ],
+    "spectral_frontend.blocks.2": [
+      8,
+      32,
+      1000
+    ],
+    "spectral_frontend": [
+      8,
+      32,
+      1000
+    ],
+    "patch_embedding": [
+      8,
+      128,
+      100
+    ],
+    "position_encoding": [
+      8,
+      100,
+      128
+    ],
+    "blocks.0": [
+      8,
+      100,
+      128
+    ],
+    "blocks.1": [
+      8,
+      100,
+      128
+    ],
+    "blocks.2": [
+      8,
+      100,
+      128
+    ],
+    "blocks.3": [
+      8,
+      100,
+      128
+    ],
+    "blocks.4": [
+      8,
+      100,
+      128
+    ],
+    "blocks.5": [
+      8,
+      100,
+      128
+    ],
+    "blocks.6": [
+      8,
+      100,
+      128
+    ],
+    "blocks.7": [
+      8,
+      100,
+      128
+    ],
+    "blocks.8": [
+      8,
+      100,
+      128
+    ],
+    "blocks.9": [
+      8,
+      100,
+      128
+    ],
+    "final_norm": [
+      8,
+      100,
+      128
+    ],
+    "regressor.0": [
+      8,
+      256
+    ],
+    "regressor.1": [
+      8,
+      256
+    ],
+    "regressor.2": [
+      8,
+      6
+    ],
+    "regressor.3": [
+      8,
+      6
+    ]
+  },
+  "mean_pool_shape": [
+    8,
+    128
+  ],
+  "prediction_shape": [
+    8,
+    6
+  ],
+  "attention_shapes": [
+    [
+      8,
+      10,
+      100,
+      100
+    ],
+    [
+      8,
+      10,
+      100,
+      100
+    ],
+    [
+      8,
+      10,
+      100,
+      100
+    ],
+    [
+      8,
+      10,
+      100,
+      100
+    ],
+    [
+      8,
+      10,
+      100,
+      100
+    ],
+    [
+      8,
+      10,
+      100,
+      100
+    ],
+    [
+      8,
+      10,
+      100,
+      100
+    ],
+    [
+      8,
+      10,
+      100,
+      100
+    ],
+    [
+      8,
+      10,
+      100,
+      100
+    ],
+    [
+      8,
+      10,
+      100,
+      100
+    ]
+  ],
+  "parameter_count": 4081158,
+  "baseline_parameter_count": 3997830,
+  "source": "metaformer.py",
+  "source_sha256": "9503dc43024703535f9765f564fe2dc00bdd5cd0807193ddb7517257a8e22fc2",
+  "training_config": "D:\\projects\\LumOpt_test\\configs\\train_rotation_pilot.json",
+  "dataset": "D:\\projects\\LumOpt_test\\data\\rotation_pilot\\dataset.npz",
+  "split_sizes": {
+    "train": 4,
+    "val": 1,
+    "test": 1
+  },
+  "parameter_bounds_nm": [
+    [
+      3000.0,
+      3400.0
+    ],
+    [
+      850.0,
+      1050.0
+    ],
+    [
+      800.0,
+      1100.0
+    ],
+    [
+      150.0,
+      350.0
+    ],
+    [
+      150.0,
+      350.0
+    ]
+  ],
+  "parameter_bounds_values": [
+    [
+      3000.0,
+      3400.0
+    ],
+    [
+      850.0,
+      1050.0
+    ],
+    [
+      800.0,
+      1100.0
+    ],
+    [
+      150.0,
+      350.0
+    ],
+    [
+      150.0,
+      350.0
+    ],
+    [
+      -45.0,
+      45.0
+    ]
+  ],
+  "parameter_units": [
+    "nm",
+    "nm",
+    "nm",
+    "nm",
+    "nm",
+    "deg"
+  ],
+  "wavelength_range_nm": [
+    4000.0,
+    8000.0
+  ],
+  "input_scaling": "raw reflectance on the dataset wavelength grid; no per-curve min-max scaling",
+  "loss": "MSE on normalized lengths and mirror-equivalent |theta|/45"
+}

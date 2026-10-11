@@ -1,0 +1,36 @@
+{
+  "source_path": "D:\\projects\\LumOpt_test",
+  "source_status": [
+    " M .gitignore",
+    " M README.md",
+    " M metaformer.py",
+    " M requirements.txt",
+    "?? .codex-ppt-build/",
+    "?? .run/",
+    "?? compare_training.py",
+    "?? configs/",
+    "?? docs/",
+    "?? draw_metaformer.py",
+    "?? fdtd_pipeline/",
+    "?? generate_dataset.py",
+    "?? output/",
+    "?? plot_positive_rotation.py",
+    "?? plot_sample_comparison.py",
+    "?? plot_training.py",
+    "?? pycharm_demo.py",
+    "?? spectrum_dataset.py",
+    "?? tests/",
+    "?? train_metaformer.py",
+    "?? validate_rotation.py"
+  ],
+  "source_commit": "ca60c7b8810f9e7d46719e45e5fd867c4d0cfd3c",
+  "snapshot_time": "2026-10-11T13:02:30.8805116+08:00",
+  "excluded": [
+    "data",
+    "runs",
+    "output",
+    ".idea",
+    ".git",
+    "tmp"
+  ]
+}

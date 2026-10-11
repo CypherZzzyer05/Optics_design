@@ -1,0 +1,33 @@
+{
+  "dataset": "../data/smoke_100/dataset.npz",
+  "output_dir": "../runs/metaformer_resnet_100",
+  "allow_validation_data": true,
+  "seed": 42,
+  "device": "auto",
+  "epochs": 200,
+  "batch_size": 8,
+  "learning_rate": 0.0003,
+  "weight_decay": 0.001,
+  "gradient_clip_norm": 1.0,
+  "early_stopping_patience": 35,
+  "min_delta": 0.00001,
+  "lr_patience": 10,
+  "lr_factor": 0.5,
+  "min_learning_rate": 0.000001,
+  "mixed_precision": true,
+  "model": {
+    "spectrum_points": 1000,
+    "patch_count": 100,
+    "embedding_dim": 128,
+    "attention_heads": 10,
+    "head_dim": 64,
+    "encoder_layers": 10,
+    "mlp_dim": 256,
+    "dropout": 0.1,
+    "geometry_dim": 5,
+    "spectral_frontend": "resnet1d",
+    "resnet_channels": 32,
+    "resnet_blocks": 3,
+    "resnet_kernel_size": 7
+  }
+}
