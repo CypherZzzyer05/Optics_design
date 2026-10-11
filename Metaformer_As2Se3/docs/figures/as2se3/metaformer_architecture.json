@@ -1,0 +1,277 @@
+{
+  "model_config": {
+    "spectrum_points": 1000,
+    "patch_count": 100,
+    "embedding_dim": 128,
+    "attention_heads": 10,
+    "head_dim": 64,
+    "encoder_layers": 10,
+    "mlp_dim": 256,
+    "dropout": 0.1,
+    "geometry_dim": 7,
+    "spectral_frontend": "resnet1d",
+    "resnet_channels": 32,
+    "resnet_blocks": 3,
+    "resnet_kernel_size": 7,
+    "angle_symmetry": "square_periodic"
+  },
+  "probe_mode": "eval / inference_mode; synthetic zeros for shape checks only",
+  "probe_input_shape": [
+    8,
+    1000
+  ],
+  "module_output_shapes": {
+    "spectral_frontend.stem": [
+      8,
+      32,
+      1000
+    ],
+    "spectral_frontend.blocks.0": [
+      8,
+      32,
+      1000
+    ],
+    "spectral_frontend.blocks.1": [
+      8,
+      32,
+      1000
+    ],
+    "spectral_frontend.blocks.2": [
+      8,
+      32,
+      1000
+    ],
+    "spectral_frontend": [
+      8,
+      32,
+      1000
+    ],
+    "patch_embedding": [
+      8,
+      128,
+      100
+    ],
+    "position_encoding": [
+      8,
+      100,
+      128
+    ],
+    "blocks.0": [
+      8,
+      100,
+      128
+    ],
+    "blocks.1": [
+      8,
+      100,
+      128
+    ],
+    "blocks.2": [
+      8,
+      100,
+      128
+    ],
+    "blocks.3": [
+      8,
+      100,
+      128
+    ],
+    "blocks.4": [
+      8,
+      100,
+      128
+    ],
+    "blocks.5": [
+      8,
+      100,
+      128
+    ],
+    "blocks.6": [
+      8,
+      100,
+      128
+    ],
+    "blocks.7": [
+      8,
+      100,
+      128
+    ],
+    "blocks.8": [
+      8,
+      100,
+      128
+    ],
+    "blocks.9": [
+      8,
+      100,
+      128
+    ],
+    "final_norm": [
+      8,
+      100,
+      128
+    ],
+    "regressor.0": [
+      8,
+      256
+    ],
+    "regressor.1": [
+      8,
+      256
+    ],
+    "regressor.2": [
+      8,
+      7
+    ],
+    "regressor.3": [
+      8,
+      7
+    ]
+  },
+  "mean_pool_shape": [
+    8,
+    128
+  ],
+  "prediction_shape": [
+    8,
+    7
+  ],
+  "attention_shapes": [
+    [
+      8,
+      10,
+      100,
+      100
+    ],
+    [
+      8,
+      10,
+      100,
+      100
+    ],
+    [
+      8,
+      10,
+      100,
+      100
+    ],
+    [
+      8,
+      10,
+      100,
+      100
+    ],
+    [
+      8,
+      10,
+      100,
+      100
+    ],
+    [
+      8,
+      10,
+      100,
+      100
+    ],
+    [
+      8,
+      10,
+      100,
+      100
+    ],
+    [
+      8,
+      10,
+      100,
+      100
+    ],
+    [
+      8,
+      10,
+      100,
+      100
+    ],
+    [
+      8,
+      10,
+      100,
+      100
+    ]
+  ],
+  "parameter_count": 4081415,
+  "baseline_parameter_count": 3998087,
+  "source": "metaformer.py",
+  "source_sha256": "2fac5d58cef3d2b429938782c43bc90bb0c4ec1c1d7d4d129863bec76e129ba7",
+  "training_config": "D:\\projects\\Metaformer_As2Se3_dev\\configs\\train_as2se3_pilot.json",
+  "dataset": "D:\\projects\\Metaformer_As2Se3_dev\\data\\as2se3_au_pilot\\dataset.npz",
+  "split_sizes": null,
+  "planned_sample_count": 12,
+  "dataset_available": false,
+  "parameter_bounds_nm": [
+    [
+      620.0,
+      690.0
+    ],
+    [
+      160.0,
+      210.0
+    ],
+    [
+      240.0,
+      380.0
+    ],
+    [
+      90.0,
+      150.0
+    ],
+    [
+      90.0,
+      150.0
+    ]
+  ],
+  "parameter_bounds_values": [
+    [
+      620.0,
+      690.0
+    ],
+    [
+      160.0,
+      210.0
+    ],
+    [
+      240.0,
+      380.0
+    ],
+    [
+      90.0,
+      150.0
+    ],
+    [
+      90.0,
+      150.0
+    ],
+    [
+      -45.0,
+      45.0
+    ],
+    [
+      -45.0,
+      45.0
+    ]
+  ],
+  "parameter_units": [
+    "nm",
+    "nm",
+    "nm",
+    "nm",
+    "nm",
+    "deg",
+    "deg"
+  ],
+  "wavelength_range_nm": [
+    700.0,
+    1700.0
+  ],
+  "input_scaling": "raw reflectance on the dataset wavelength grid; no per-curve min-max scaling",
+  "loss": "MSE on normalized lengths and independent 90-degree periodic quadrant angles"
+}

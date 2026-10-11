@@ -28,6 +28,8 @@ python explore_spectra.py plan
 python explore_spectra.py run
 # 读取已提交结果绘图，无需运行 FDTD
 python plot_research_summary.py
+# 检查七输出网络并保存结构图；不依赖尚未采集的训练数据
+python draw_metaformer.py --sampling-config configs/as2se3_au_pilot.json --output-dir docs/figures/as2se3
 # 随机七参数数据采集及两轮训练流程检查
 python generate_dataset.py generate --config configs/as2se3_au_pilot.json
 python train_metaformer.py --config configs/train_as2se3_pilot.json

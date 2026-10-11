@@ -135,9 +135,13 @@ def draw(config: MetaformerConfig, training: dict, bounds: np.ndarray,
         label(x + 40, 117, title, 14, "bold")
 
     label(130, 170, "ResNet + MetaFormer 逆向设计网络 · 实际实现结构", 23, "bold")
-    rotated = c.geometry_dim == 6
+    rotated = c.geometry_dim >= 6
+    quadrant = c.geometry_dim == 7
+    angle_description = ' + 奇/偶象限两个旋转角' if quadrant else (' + 共同旋转角' if rotated else '')
+    angle_names = '，θ奇，θ偶' if quadrant else ('，θ' if rotated else '')
+    units = 'nm ×5 + deg ×2' if quadrant else ('nm ×5 + deg' if rotated else 'nm')
     label(130, 164,
-          f"光谱 → 五个尺寸{' + 共同旋转角' if rotated else ''}   |   B 为批量大小（训练 B={training['batch_size']}）"
+          f"光谱 → 五个尺寸{angle_description}   |   B 为批量大小（训练 B={training['batch_size']}）"
           f"   |   参数量 {report['parameter_count']:,}   |   ResNet 为本项目增加的前端", 11,
           color=COLORS["muted"])
 
@@ -151,7 +155,7 @@ def draw(config: MetaformerConfig, training: dict, bounds: np.ndarray,
         ("blue", f"LayerNorm\n按每个 token 的\n{c.embedding_dim} 个特征归一化\n[B, {c.patch_count}, {c.embedding_dim}]"),
         ("blue", f"Mean Pool\n对 {c.patch_count} 个 token\n沿序列轴取平均\n[B, {c.embedding_dim}]"),
         ("green", f"尺寸回归头\nLinear {c.embedding_dim}→{c.mlp_dim}\nGELU → Linear {c.mlp_dim}→{c.geometry_dim}\nSigmoid；[B, {c.geometry_dim}]"),
-        ("gray", f"单位还原（网络外）\np, l, h, αₓ, αᵧ{'，θ' if rotated else ''}\n[B, {c.geometry_dim}]；{'nm ×5 + deg' if rotated else 'nm'}\ng = lower + ĝ₀₁ × range"),
+        ("gray", f"单位还原（网络外）\np, l, h, αₓ, αᵧ{angle_names}\n[B, {c.geometry_dim}]；{units}\ng = lower + ĝ₀₁ × range"),
     ]
     for i, (fill, text) in enumerate(stages):
         x = 4 + i * 28
@@ -162,7 +166,7 @@ def draw(config: MetaformerConfig, training: dict, bounds: np.ndarray,
     arrow([(16, 137), (16, 132.5), (72, 132.5), (72, 137)], True)
     label(44, 128, f"基线版本跳过 ResNet；Patch Conv 改为 1→{c.embedding_dim}", 9,
           color=COLORS["muted"])
-    names = ["p", "l", "h", "αₓ", "αᵧ"] + (["θ"] if rotated else [])
+    names = ["p", "l", "h", "αₓ", "αᵧ"] + (["θ奇", "θ偶"] if quadrant else (["θ"] if rotated else []))
     ranges = "；".join(f"{name} {lo:g}–{hi:g}" for name, (lo, hi) in zip(names, bounds))
     label(169, 128, f"范围（前五个 nm{'；θ 用 deg' if rotated else ''}）：{ranges}", 9 if rotated else 9.5, color=COLORS["muted"])
 
@@ -246,11 +250,15 @@ def draw(config: MetaformerConfig, training: dict, bounds: np.ndarray,
     label(18, 11.5, "训练支路\n（网络外）", 11, "bold")
     box(34, 6, 55, 11, f"预测 ĝ₀₁ + 标签 g₀₁\n两者均为 [B, {c.geometry_dim}]，范围 0–1", "blue", 10.5)
     arrow([(89.4, 11.5), (97.6, 11.5)])
-    box(98, 6, 43, 11, "MSE + 镜像等效角\n角度项比较 |θ| / 45°" if rotated else "MSE Loss\n在归一化尺寸上计算", "purple", 10.5)
+    loss_label = ("尺寸 MSE + 周期角损失\n奇/偶角各按90°周期" if quadrant else
+                  ("MSE + 镜像等效角\n角度项比较 |θ| / 45°" if rotated else "MSE Loss\n在归一化尺寸上计算"))
+    box(98, 6, 43, 11, loss_label, "purple", 10.5)
     arrow([(141.4, 11.5), (149.6, 11.5)])
     box(150, 6, 53, 11, f"反向传播 + AdamW\n学习率 {training['learning_rate']:g}；更新权重", "green", 10.5)
     splits = report['split_sizes']
-    label(230, 11.5, f"当前数据 {sum(splits.values())} 个\n训练 / 验证 / 测试\n{splits['train']} / {splits['val']} / {splits['test']}", 10)
+    data_label = (f"当前数据 {sum(splits.values())} 个\n训练 / 验证 / 测试\n{splits['train']} / {splits['val']} / {splits['test']}"
+                  if splits else f"计划采集 {report['planned_sample_count']} 个\n尚未生成训练数据\n图示仅验证网络形状")
+    label(230, 11.5, data_label, 10)
 
     output.mkdir(parents=True, exist_ok=True)
     stem = output / "metaformer_architecture"
@@ -264,31 +272,47 @@ def draw(config: MetaformerConfig, training: dict, bounds: np.ndarray,
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--config", type=Path, default=ROOT / "configs/train_resnet_100.json")
+    parser.add_argument("--config", type=Path, default=ROOT / "configs/train_as2se3_pilot.json")
+    parser.add_argument("--sampling-config", type=Path, help="Use planned bounds and band if training data have not been generated")
     parser.add_argument("--output-dir", type=Path, default=ROOT / "docs/figures")
     args = parser.parse_args()
     config_path = args.config.resolve()
     training = json.loads(config_path.read_text(encoding="utf-8"))
     config = MetaformerConfig(**training["model"])
-    if config.spectral_frontend != "resnet1d" or config.geometry_dim not in (5, 6):
-        parser.error("This figure describes five- or six-output ResNet + Metaformer configurations.")
+    if config.spectral_frontend != "resnet1d" or config.geometry_dim not in (5, 6, 7):
+        parser.error("This figure describes five-, six- or seven-output ResNet + Metaformer configurations.")
     dataset_path = (config_path.parent / training["dataset"]).resolve()
-    with np.load(dataset_path, allow_pickle=False) as data:
-        rotated = config.geometry_dim == 6
-        bounds = np.stack([data["lower_values" if rotated else "lower_nm"],
-                           data["upper_values" if rotated else "upper_nm"]], axis=1)
-        wavelengths = data["wavelength_nm"].copy()
-        split_sizes = {split: int(len(data[f"{split}_indices"])) for split in ("train", "val", "test")}
+    rotated = config.geometry_dim >= 6
+    planned_sample_count = None
+    if dataset_path.exists():
+        with np.load(dataset_path, allow_pickle=False) as data:
+            bounds = np.stack([data["lower_values" if rotated else "lower_nm"],
+                               data["upper_values" if rotated else "upper_nm"]], axis=1)
+            wavelengths = data["wavelength_nm"].copy()
+            split_sizes = {split: int(len(data[f"{split}_indices"])) for split in ("train", "val", "test")}
+    elif args.sampling_config:
+        from fdtd_pipeline.config import load_config
+        sampling = load_config(args.sampling_config)
+        if len(sampling.parameter_names) != config.geometry_dim or sampling.simulation.spectrum_points != config.spectrum_points:
+            parser.error("Sampling configuration and network dimensions differ")
+        bounds = np.stack([sampling.lower, sampling.upper], axis=1)
+        wavelengths = sampling.simulation.wavelength_grid()
+        split_sizes = None
+        planned_sample_count = sampling.sample_count
+    else:
+        parser.error("Training dataset is absent; provide --sampling-config to inspect planned architecture")
     report = architecture_report(config)
     report.update({
         "source": "metaformer.py",
         "source_sha256": sha256((ROOT / "metaformer.py").read_bytes()).hexdigest(),
         "training_config": str(config_path), "dataset": str(dataset_path),
-        "split_sizes": split_sizes, "parameter_bounds_nm": bounds[:5].tolist(),
-        "parameter_bounds_values": bounds.tolist(), "parameter_units": ['nm'] * 5 + (['deg'] if rotated else []),
+        "split_sizes": split_sizes, "planned_sample_count": planned_sample_count,
+        "dataset_available": dataset_path.exists(), "parameter_bounds_nm": bounds[:5].tolist(),
+        "parameter_bounds_values": bounds.tolist(), "parameter_units": ['nm'] * 5 + ['deg'] * (config.geometry_dim - 5),
         "wavelength_range_nm": [float(wavelengths[0]), float(wavelengths[-1])],
         "input_scaling": "raw reflectance on the dataset wavelength grid; no per-curve min-max scaling",
-        "loss": "MSE on normalized lengths and mirror-equivalent |theta|/45" if rotated else "MSE on normalized geometry",
+        "loss": ("MSE on normalized lengths and independent 90-degree periodic quadrant angles" if config.geometry_dim == 7 else
+                 ("MSE on normalized lengths and mirror-equivalent |theta|/45" if rotated else "MSE on normalized geometry")),
     })
     draw(config, training, bounds, wavelengths, report, args.output_dir)
     (args.output_dir / "metaformer_architecture.json").write_text(
