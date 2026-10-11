@@ -119,7 +119,7 @@ def rank(output, manifest):
     return report
 
 
-def run(config, output, sample_id=3, mesh_nm=8, points=3000, case_id=None, limit=None):
+def run(config, output, sample_id=3, mesh_nm=8, points=3000, case_id=None, limit=None, monitor_downsample_xy=1):
     if limit is not None and limit < 1:
         raise ValueError('limit must be positive')
     if not 0 < mesh_nm < 10:
@@ -130,13 +130,28 @@ def run(config, output, sample_id=3, mesh_nm=8, points=3000, case_id=None, limit
         plan = [entry for entry in plan if entry['id'] == case_id]
         if not plan:
             raise ValueError('Unknown control case')
+    check_wavelengths = ()
+    if monitor_downsample_xy > 1:
+        grid = np.linspace(config.simulation.wavelength_start_nm, config.simulation.wavelength_stop_nm, points)
+        mask = np.zeros(points, dtype=bool)
+        mask[np.linspace(0, points-1, 31, dtype=int)] = True
+        for dip in source['dominant_pair']['dips']:
+            mask |= np.abs(grid-dip['wavelength_nm']) <= 12
+        check_wavelengths = tuple(grid[mask].tolist())
     base = replace(config.simulation, research_grid=True, spectrum_points=points, mesh_nm=mesh_nm,
                    maximum_mesh_nm=mesh_nm,
                    mesh_accuracy=4 if mesh_nm < 20 else 3,
-                   metal_mesh_nm=2.5 if mesh_nm < 20 else 5,
+                   metal_mesh_nm=min(2.5, mesh_nm),
                    simulation_time_ps=4 if mesh_nm < 20 else 2,
-                   material_fit_tolerance=0, material_imaginary_weight=2)
-    metadata = {'source_candidate': source, 'simulation': asdict(base), 'cases': plan,
+                   material_fit_tolerance=0, material_imaginary_weight=2,
+                   monitor_downsample_xy=monitor_downsample_xy, power_validation_wavelengths_nm=check_wavelengths)
+    simulation_metadata = asdict(base)
+    # Preserve fingerprints for existing full-spatial studies when new defaults are unused.
+    if monitor_downsample_xy == 1:
+        simulation_metadata.pop('monitor_downsample_xy')
+    if not check_wavelengths:
+        simulation_metadata.pop('power_validation_wavelengths_nm')
+    metadata = {'source_candidate': source, 'simulation': simulation_metadata, 'cases': plan,
                 'material_csv_sha256': checksum(Path(base.resonator_nk_csv))}
     fingerprint = hashlib.sha256(json.dumps(metadata, sort_keys=True).encode()).hexdigest()
     with directory_lock(output):
@@ -192,6 +207,7 @@ if __name__ == '__main__':
     parser.add_argument('--points', type=int, default=3000)
     parser.add_argument('--case-id')
     parser.add_argument('--limit', type=int)
+    parser.add_argument('--monitor-downsample-xy', type=int, default=1)
     args = parser.parse_args()
     config = load_config(args.config)
     if args.command == 'plan':
@@ -200,5 +216,5 @@ if __name__ == '__main__':
     elif args.command == 'rank':
         print(json.dumps(rank(args.output, json.loads((args.output / 'manifest.json').read_text(encoding='utf-8'))), indent=2))
     else:
-        result = run(config, args.output.resolve(), args.sample_id, args.mesh_nm, args.points, args.case_id, args.limit)
+        result = run(config, args.output.resolve(), args.sample_id, args.mesh_nm, args.points, args.case_id, args.limit, args.monitor_downsample_xy)
         print(f"Solved {result['successful']}/{result['planned']}")

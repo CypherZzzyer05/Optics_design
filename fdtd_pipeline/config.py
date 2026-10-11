@@ -122,6 +122,8 @@ class SimulationSettings:
     material_imaginary_weight: float = 1.0
     research_grid: bool = False
     maximum_mesh_nm: float | None = None
+    monitor_downsample_xy: int = 1
+    power_validation_wavelengths_nm: tuple = ()
 
     def __post_init__(self):
         positive = (self.wavelength_start_nm, self.wavelength_stop_nm, self.mesh_nm,
@@ -157,6 +159,16 @@ class SimulationSettings:
                 raise ValueError('Formal near-IR maximum mesh must be strictly below 10 nm')
             if self.mesh_nm > self.maximum_mesh_nm or self.metal_mesh_nm > self.maximum_mesh_nm:
                 raise ValueError('Local mesh steps must not exceed the maximum mesh')
+        if isinstance(self.monitor_downsample_xy, bool) or not isinstance(self.monitor_downsample_xy, int) or self.monitor_downsample_xy < 1:
+            raise ValueError('Monitor spatial sampling factor must be a positive integer')
+        if self.monitor_downsample_xy > 1 and not self.power_validation_wavelengths_nm:
+            raise ValueError('Reduced monitor storage requires independent full-spatial power checks')
+        if self.power_validation_wavelengths_nm:
+            values = np.asarray(self.power_validation_wavelengths_nm)
+            if (values.ndim != 1 or len(values) < 3 or not np.isfinite(values).all()
+                    or np.any(np.diff(values) <= 0) or values[0] < self.wavelength_start_nm
+                    or values[-1] > self.wavelength_stop_nm):
+                raise ValueError('Invalid full-spatial validation wavelengths')
         if not np.isfinite(self.material_max_extension_nm) or self.material_max_extension_nm < 0:
             raise ValueError("Material extension allowance must be nonnegative")
         if not np.isfinite(self.polarization_deg):
@@ -278,7 +290,8 @@ class PipelineConfig:
         # Preserve fingerprints for untouched legacy configurations.
         for key in ("resonator_material", "resonator_nk_csv", "material_max_extension_nm",
                     "metal_material", "metal_thickness_nm", "metal_mesh_nm", "bottom_padding_nm", "polarization_deg",
-                    "material_fit_tolerance", "material_imaginary_weight", "research_grid", "maximum_mesh_nm"):
+                    "material_fit_tolerance", "material_imaginary_weight", "research_grid", "maximum_mesh_nm",
+                    "monitor_downsample_xy", "power_validation_wavelengths_nm"):
             if getattr(self.simulation, key) == SimulationSettings.__dataclass_fields__[key].default:
                 data["simulation"].pop(key)
         if self.simulation.resonator_nk_csv:

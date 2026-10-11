@@ -1,0 +1,39 @@
+{
+  "Memory_Recommended": 7951015874.41604,
+  "Approximate_Memory_Requirements": {
+    "Alert": "You are using conformal mesh technology and the memory report is less reliable in this case. Please do some testing if the memory report indicates you are close to the memory limits of your computer.",
+    "Data_Collection_Bytes": 13996992000.0,
+    "FSP_Saved_Monitor_Data_Bytes": 96160.0,
+    "Initialization_and_Mesh_Bytes": 167772160.0,
+    "Running_Simulation_Bytes": 7951015874.0
+  },
+  "Total_FDTD_Yee_Nodes": "13.1692",
+  "Memory_Details": {
+    "Electromagnetic_Fields_and_Refractive_Index": 866884194.0,
+    "Electromagnetic_Fields_and_Refractive_Index_Percent": 10.9,
+    "Field_Type": "Electromagnetic Fields and Refractive Index",
+    "Miscellaneous_Memory": 83886080.0,
+    "Miscellaneous_Memory_Percent": 1.1,
+    "Monitors": {
+      "Frequency_Domain_Power_Monitor_model_R": {
+        "FSP_File": 48080.0,
+        "Memory": 3499248000.0,
+        "Monitor_Name": "Frequency Domain Power Monitor, ::model::R: ",
+        "Percent": 44.0
+      },
+      "Frequency_Domain_Power_Monitor_model_T": {
+        "FSP_File": 48080.0,
+        "Memory": 3499248000.0,
+        "Monitor_Name": "Frequency Domain Power Monitor, ::model::T: ",
+        "Percent": 44.0
+      }
+    },
+    "Sources": {
+      "Planewave_Source_model_source": {
+        "Bytes": 1749600.0,
+        "Percent": 0.0,
+        "Source_Name": "Planewave Source, ::model::source: "
+      }
+    }
+  }
+}

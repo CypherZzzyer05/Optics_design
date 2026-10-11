@@ -7,7 +7,7 @@ import numpy as np
 
 from compare_double_mesh import read_case
 from fdtd_pipeline.config import PROJECT_ROOT, Geometry
-from fdtd_pipeline.lumerical import FDTDSimulator, mesh_grid_summary, validate_spectrum
+from fdtd_pipeline.lumerical import FDTDSimulator, mesh_grid_summary, validate_spectrum, validate_power_integration
 from fdtd_pipeline.pipeline import atomic_json, checksum
 
 
@@ -73,8 +73,22 @@ def audit(directory, case_id, lumapi_path, output):
         if not np.allclose(r['lambda'], t['lambda'], rtol=1e-10, atol=1e-15):
             raise ValueError('Native R/T wavelength grids differ')
         spectrum = validate_spectrum(np.asarray(r['lambda'])*1e9, r['T'], -np.asarray(t['T']), settings, status)
+        integration = None
+        for name in ('R', 'T'):
+            for axis in ('x', 'y'):
+                if int(f.getnamed(name, 'down sample '+axis)) != settings.monitor_downsample_xy:
+                    raise ValueError('Native monitor spatial sampling factor differs')
+        if settings.monitor_downsample_xy > 1:
+            for name in ('R_powercheck', 'T_powercheck'):
+                for axis in ('x', 'y'):
+                    if int(f.getnamed(name, 'down sample '+axis)) != 1:
+                        raise ValueError('Independent native power check is not full-spatial')
+            full_r, full_t = f.getresult('R_powercheck', 'T'), f.getresult('T_powercheck', 'T')
+            integration, check_w, check_r, check_t = validate_power_integration(spectrum['wavelength_nm'], spectrum['reflectance'],
+                spectrum['transmittance'], np.asarray(full_r['lambda'])*1e9, full_r['T'], -np.asarray(full_t['T']))
+            spectrum.update(power_check_wavelength_nm=check_w, power_check_reflectance=check_r, power_check_transmittance=check_t)
         errors = {}
-        for key in ('wavelength_nm', 'reflectance', 'transmittance', 'absorptance'):
+        for key in spectrum:
             errors[key] = float(np.max(np.abs(spectrum[key]-case['data'][key])))
             if not np.allclose(spectrum[key], case['data'][key], rtol=0, atol=1e-8):
                 raise ValueError(f'Exported {key} differs from the saved native simulation')
@@ -84,6 +98,8 @@ def audit(directory, case_id, lumapi_path, output):
               'native_geometry_verified': True, 'native_spectra_match_export': True,
               'all_actual_mesh_cells_below_10_nm': True, 'status': status, 'objects': objects,
               'substrate': substrate, 'metal': metal, 'actual_mesh': actual_mesh,
+              'power_integration_validation': integration,
+              'monitor_recording_spacing_bound_nm': case['monitor_recording_spacing_bound_nm'],
               'native_vs_export_max_abs_errors': errors,
               'note': 'Independent native reload verifies the saved result, not material accuracy or mesh convergence.'}
     output.parent.mkdir(parents=True, exist_ok=True)
