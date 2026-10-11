@@ -43,7 +43,7 @@ class Geometry:
         vertices = self.vertices()
         if any(np.max(np.abs(v)) >= self.p / 2 for v in vertices):
             raise ValueError("Rotated squares must stay inside the periodic cell")
-        # 所有方块使用同一角度，变换回共同局部坐标后用分离轴检查相交/接触。
+        # 各方柱可以独立旋转；用分离轴检查凸多边形相交/接触。
         for i in range(len(vertices)):
             for j in range(i):
                 if self.polygons_touch(vertices[i], vertices[j]):

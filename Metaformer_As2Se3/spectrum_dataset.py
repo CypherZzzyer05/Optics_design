@@ -78,7 +78,7 @@ class SpectrumGeometryDataset(Dataset):
             raise ValueError("Wavelength grid must have 1000 increasing points")
         if indices.ndim != 1 or np.any(indices < 0) or np.any(indices >= len(spectra)):
             raise ValueError("Invalid split indices")
-        # 按固定划分切片后转成 float32；标签为五列或六列。
+        # 按固定划分切片后转成 float32；标签为五、六或七列。
         # DataLoader 堆叠为 [B,1000] 和 [B,D]；这里不做 token 分块。
         self.spectra = torch.from_numpy(spectra[indices].astype(np.float32))
         self.labels = torch.from_numpy(labels[indices].astype(np.float32))
@@ -100,5 +100,5 @@ class SpectrumGeometryDataset(Dataset):
             upper = torch.as_tensor(self.upper_values, dtype=geometry_01.dtype, device=geometry_01.device)
         else:
             lower, upper = self.lower_values, self.upper_values
-        # 前五列还原为 nm；旋转版本第六列还原为 deg，单位由 parameter_units 标明。
+        # 前五列还原为 nm；一个或两个角度列还原为 deg。
         return lower + geometry_01 * (upper - lower)
