@@ -13,6 +13,7 @@ test_directory_lock_prevents_concurrent_writers (test_fdtd_pipeline.DatasetPersi
 test_failed_samples_excluded_and_retried (test_fdtd_pipeline.DatasetPersistenceTests) ... ok
 test_resume_and_training_shapes_and_roundtrip (test_fdtd_pipeline.DatasetPersistenceTests) ... ok
 test_seeded_sampling_and_splits (test_fdtd_pipeline.DatasetPersistenceTests) ... ok
+test_strict_dataset_reuse_requires_actual_sub_10nm_cells (test_fdtd_pipeline.DatasetPersistenceTests) ... ok
 test_1000_point_and_config_validation (test_fdtd_pipeline.PhysicalValidationTests) ... ok
 test_edge_gaps_and_nonoverlap (test_fdtd_pipeline.PhysicalValidationTests) ... ok
 test_reject_energy_creation (test_fdtd_pipeline.PhysicalValidationTests) ... ok
@@ -51,6 +52,6 @@ test_training_changes_parameters_with_real_backward_and_optimizer (test_training
 test_validation_permission_does_not_allow_unconverged_training (test_training.TrainingIntegrityTests) ... ok
 
 ----------------------------------------------------------------------
-Ran 47 tests in 21.505s
+Ran 48 tests in 20.719s
 
 OK

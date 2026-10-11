@@ -1,4 +1,5 @@
 """Export compact real pilot data, training evidence, and a candidate figure."""
+import argparse
 import json
 from pathlib import Path
 import shutil
@@ -8,12 +9,19 @@ import numpy as np
 from explore_double_dips import double_pair
 from fdtd_pipeline.config import PROJECT_ROOT, load_config
 from fdtd_pipeline.pipeline import atomic_json, checksum
+from train_metaformer import load_training_config
+from audit_quadrant_pilot import audit
 
 
-def export():
-    config = load_config(PROJECT_ROOT / 'configs/as2se3_au_pilot.json')
+def export(sampling_config=PROJECT_ROOT/'configs/as2se3_au_pilot.json',
+           training_config=PROJECT_ROOT/'configs/train_as2se3_pilot.json',
+           output=PROJECT_ROOT/'research_results/seven_parameter_pilot'):
+    config = load_config(sampling_config)
+    training_settings = load_training_config(training_config)
     source = config.output_dir
-    output = PROJECT_ROOT / 'research_results/seven_parameter_pilot'
+    run_dir = Path(json.loads((training_settings.output_dir/'latest_run.json').read_text(encoding='utf-8'))['run_dir'])
+    # Revalidate source meshes, packed rows, checkpoint and predictions before copying.
+    audit(config, training_settings, run_dir)
     output.mkdir(parents=True, exist_ok=True)
     manifest = json.loads((source / 'manifest.json').read_text(encoding='utf-8'))
     rows = []
@@ -30,7 +38,6 @@ def export():
             shutil.copy2(path.with_suffix(extension), output / 'samples' / path.with_suffix(extension).name)
     for name in ('manifest.json', 'dataset.npz', 'native_objects.json'):
         shutil.copy2(source / name, output / name)
-    run_dir = Path(json.loads((PROJECT_ROOT / 'runs/as2se3_au_pilot/latest_run.json').read_text(encoding='utf-8'))['run_dir'])
     training = output / 'training'
     training.mkdir(exist_ok=True)
     for name in ('history.json', 'metrics.json', 'run.json', 'status.json', 'validation_report.json',
@@ -39,7 +46,8 @@ def export():
     rows.sort(key=lambda row: -(row['dominant_pair']['score'] if row['dominant_pair'] else 0))
     atomic_json(output / 'double_dip_ranking.json', {'criteria_source': 'explore_double_dips.double_pair',
                 'successful': len(rows), 'ranking': rows,
-                'note': 'Exploratory 20 nm mesh, initial material fit. Two main dips do not imply only two features.'})
+                'simulation': config.metadata()['simulation'],
+                'note': 'Real pilot spectra; two main dips do not imply only two features or inverse-model accuracy.'})
     candidate = rows[0]
     geometry = config.make_geometry(candidate['geometry_values'])
     with np.load(output / 'samples' / f"sample_{candidate['sample_id']:06d}.npz", allow_pickle=False) as data:
@@ -59,7 +67,7 @@ def export():
         for row, limits in enumerate(((700, 1700), (800, 980))):
             a = fig.add_subplot(grid[row, 1])
             a.plot(w, r, lw=1.4, color='#28558b')
-            for index, dip in enumerate(candidate['dominant_pair']['dips']):
+            for index, dip in enumerate(candidate['dominant_pair']['dips'] if candidate['dominant_pair'] else []):
                 a.plot(dip['wavelength_nm'], dip['reflectance_min'], 'o', color='#c64232')
                 a.annotate(f"{dip['wavelength_nm']:.1f} nm\nR={dip['reflectance_min']:.3f}",
                            (dip['wavelength_nm'], dip['reflectance_min']),
@@ -68,7 +76,9 @@ def export():
                            textcoords='offset points', fontsize=9)
             a.set(xlim=limits, ylim=(-.02, 1.03), xlabel='Wavelength (nm)', ylabel='Reflectance')
             a.grid(alpha=.2)
-        fig.suptitle('Real FDTD candidate: 350 nm SiO2 / 150 nm Au | exploratory 20 nm mesh')
+        mesh = config.simulation.maximum_mesh_nm or config.simulation.mesh_nm
+        fig.suptitle(f'Real FDTD pilot: {config.simulation.substrate_depth_nm:g} nm SiO2 / '
+                     f'{config.simulation.metal_thickness_nm:g} nm metal | {mesh:g} nm mesh')
         fig.tight_layout()
         fig.savefig(output / 'double_dip_candidate.png', dpi=180)
         plt.close(fig)
@@ -79,4 +89,9 @@ def export():
 
 
 if __name__ == '__main__':
-    export()
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--sampling-config', type=Path, default=PROJECT_ROOT/'configs/as2se3_au_pilot.json')
+    parser.add_argument('--training-config', type=Path, default=PROJECT_ROOT/'configs/train_as2se3_pilot.json')
+    parser.add_argument('--output', type=Path, default=PROJECT_ROOT/'research_results/seven_parameter_pilot')
+    args = parser.parse_args()
+    export(args.sampling_config, args.training_config, args.output)
