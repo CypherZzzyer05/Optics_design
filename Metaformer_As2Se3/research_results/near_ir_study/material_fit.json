@@ -1,0 +1,22 @@
+{
+  "As2Se3 - Joseph 700nm film (2020)": {
+    "max_n_error": 0.006832341405560438,
+    "max_k_error": 0.02152659924029457,
+    "min_fitted_k": 0.02786007037977112
+  },
+  "Au (Gold) - Palik": {
+    "max_n_error": 0.6558529804086315,
+    "max_k_error": 0.9026045749913916,
+    "min_fitted_k": 4.250449039086406
+  },
+  "Ag (Silver) - Palik (0-2um)": {
+    "max_n_error": 0.019884433599219153,
+    "max_k_error": 0.06553763510841826,
+    "min_fitted_k": 4.554481360092321
+  },
+  "SiO2 (Glass) - Palik": {
+    "max_n_error": 0.008349388224864862,
+    "max_k_error": 0.0,
+    "min_fitted_k": 0.0
+  }
+}

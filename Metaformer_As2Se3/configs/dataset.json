@@ -1,0 +1,31 @@
+{
+  "lumapi_path": "D:/Program Files/Lumerical/v241/api/python/lumapi.py",
+  "output_dir": "../data/dataset",
+  "sample_count": 100,
+  "seed": 20240909,
+  "parameter_range_source": "Engineering example; replace with verified Table S3 bounds for paper reproduction",
+  "quality_level": "engineering_dataset_requires_mesh_convergence",
+  "bounds_nm": {
+    "p": [3000, 3400],
+    "l": [850, 1050],
+    "h": [800, 1100],
+    "alpha_x": [150, 350],
+    "alpha_y": [150, 350]
+  },
+  "simulation": {
+    "wavelength_start_nm": 4000,
+    "wavelength_stop_nm": 8000,
+    "spectrum_points": 1000,
+    "mesh_accuracy": 4,
+    "mesh_nm": 40,
+    "simulation_time_ps": 20,
+    "auto_shutoff_min": 0.000001,
+    "air_padding_nm": 8000,
+    "substrate_depth_nm": 8000,
+    "processes": 1,
+    "threads": 4,
+    "hide_fdtd": true,
+    "save_projects": false,
+    "require_auto_shutoff": true
+  }
+}

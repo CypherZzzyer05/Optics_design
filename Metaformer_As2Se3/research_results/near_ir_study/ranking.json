@@ -1,0 +1,794 @@
+{
+  "band_nm": [
+    700,
+    1700
+  ],
+  "quality_level": "exploratory_not_mesh_converged",
+  "ranking_metric": "resolved reflection-dip prominence",
+  "material_extension_nm": 12,
+  "comparisons": [
+    {
+      "metal": "Au",
+      "comparison": "tetramer_vs_bare_stack",
+      "rms_reflection_change": 0.15472455436270593
+    },
+    {
+      "metal": "Au",
+      "comparison": "quadrant_swap_90deg_rotation",
+      "max_reflection_difference": 0.12495434625028212
+    },
+    {
+      "metal": "Ag",
+      "comparison": "tetramer_vs_bare_stack",
+      "rms_reflection_change": 0.14871945988197263
+    },
+    {
+      "metal": "Ag",
+      "comparison": "quadrant_swap_90deg_rotation",
+      "max_reflection_difference": 0.06253748480132759
+    }
+  ],
+  "ranking": [
+    {
+      "id": "Au_opposite_20",
+      "metal": "Au",
+      "case": "opposite_20",
+      "include_resonators": true,
+      "geometry_values": [
+        660.0,
+        190.0,
+        300.0,
+        120.0,
+        120.0,
+        20.0,
+        -20.0
+      ],
+      "state": "success",
+      "sha256": "7365f5974e56fe1b8d210bcf55e5c70889c5eb0774ca0e1b5caa99801259ae9b",
+      "status": 2,
+      "dips": [
+        {
+          "wavelength_nm": 860.1601601601601,
+          "reflectance_min": 0.22036947351648772,
+          "prominence": 0.5172052860668758,
+          "half_prominence_width_nm": 5.73193136840257,
+          "width_samples": 5.726199437034211,
+          "resolved": true,
+          "lambda_over_width": 150.06463003060657
+        },
+        {
+          "wavelength_nm": 907.2072072072073,
+          "reflectance_min": 0.5733661359778288,
+          "prominence": 0.33226328079699397,
+          "half_prominence_width_nm": 3.122400137891759,
+          "width_samples": 3.1192777377537766,
+          "resolved": false,
+          "lambda_over_width": 290.54802944626834
+        },
+        {
+          "wavelength_nm": 1034.3343343343345,
+          "reflectance_min": 0.7544670333419847,
+          "prominence": 0.20848539833632418,
+          "half_prominence_width_nm": 5.852112153773987,
+          "width_samples": 5.846260041619985,
+          "resolved": true,
+          "lambda_over_width": 176.74547362652632
+        },
+        {
+          "wavelength_nm": 745.0450450450451,
+          "reflectance_min": 0.4625892178294215,
+          "prominence": 0.1828631789078397,
+          "half_prominence_width_nm": 7.416792121122853,
+          "width_samples": 7.409375329001762,
+          "resolved": true,
+          "lambda_over_width": 100.45381249437663
+        }
+      ],
+      "resolved_dip_count": 3,
+      "score": 0.5172052860668758,
+      "max_absorptance": 0.7796266455030139
+    },
+    {
+      "id": "Au_opposite_10",
+      "metal": "Au",
+      "case": "opposite_10",
+      "include_resonators": true,
+      "geometry_values": [
+        660.0,
+        190.0,
+        300.0,
+        120.0,
+        120.0,
+        10.0,
+        -10.0
+      ],
+      "state": "success",
+      "sha256": "3732d28142426bd30aefaedfdb805bf42d28a484ace2e2dbfece6b57e4a80af1",
+      "status": 2,
+      "dips": [
+        {
+          "wavelength_nm": 863.1631631631632,
+          "reflectance_min": 0.2549381524347272,
+          "prominence": 0.49598555741680245,
+          "half_prominence_width_nm": 5.784953391704107,
+          "width_samples": 5.779168438312354,
+          "resolved": true,
+          "lambda_over_width": 149.20831763328974
+        },
+        {
+          "wavelength_nm": 907.2072072072073,
+          "reflectance_min": 0.61887369605559,
+          "prominence": 0.28591292418763803,
+          "half_prominence_width_nm": 3.1459261744120113,
+          "width_samples": 3.142780248237443,
+          "resolved": false,
+          "lambda_over_width": 288.3752373422331
+        },
+        {
+          "wavelength_nm": 1033.3333333333335,
+          "reflectance_min": 0.7500214579691956,
+          "prominence": 0.21401191876343828,
+          "half_prominence_width_nm": 5.806744461205426,
+          "width_samples": 5.8009377167441585,
+          "resolved": true,
+          "lambda_over_width": 177.95398785618735
+        },
+        {
+          "wavelength_nm": 748.048048048048,
+          "reflectance_min": 0.46784435853435696,
+          "prominence": 0.1812342412415065,
+          "half_prominence_width_nm": 7.379988774313006,
+          "width_samples": 7.372608785538752,
+          "resolved": true,
+          "lambda_over_width": 101.36167830657479
+        }
+      ],
+      "resolved_dip_count": 3,
+      "score": 0.49598555741680245,
+      "max_absorptance": 0.7450577071315967
+    },
+    {
+      "id": "Ag_opposite_20",
+      "metal": "Ag",
+      "case": "opposite_20",
+      "include_resonators": true,
+      "geometry_values": [
+        660.0,
+        190.0,
+        300.0,
+        120.0,
+        120.0,
+        20.0,
+        -20.0
+      ],
+      "state": "success",
+      "metal_material": "Ag (Silver) - Palik (0-2um)",
+      "sha256": "247accc74c60e4ef39f105603dc71cf80d2f8339a09071be07b04c48ecd4323d",
+      "status": 2,
+      "dips": [
+        {
+          "wavelength_nm": 859.1591591591591,
+          "reflectance_min": 0.21863711570123806,
+          "prominence": 0.4825158999471683,
+          "half_prominence_width_nm": 5.859415797365955,
+          "width_samples": 5.8535563815685805,
+          "resolved": true,
+          "lambda_over_width": 146.6288088900238
+        },
+        {
+          "wavelength_nm": 745.0450450450451,
+          "reflectance_min": 0.46383421568976413,
+          "prominence": 0.1709701826369262,
+          "half_prominence_width_nm": 7.730941506121553,
+          "width_samples": 7.723210564615478,
+          "resolved": true,
+          "lambda_over_width": 96.37183834014263
+        },
+        {
+          "wavelength_nm": 903.2032032032032,
+          "reflectance_min": 0.6878798853499317,
+          "prominence": 0.1673045349393848,
+          "half_prominence_width_nm": 5.453461474135679,
+          "width_samples": 5.4480080126616315,
+          "resolved": true,
+          "lambda_over_width": 165.62016757372476
+        },
+        {
+          "wavelength_nm": 1033.3333333333335,
+          "reflectance_min": 0.7770946362811015,
+          "prominence": 0.16697689831871254,
+          "half_prominence_width_nm": 7.611947114397253,
+          "width_samples": 7.6043351672829544,
+          "resolved": true,
+          "lambda_over_width": 135.75151243219815
+        }
+      ],
+      "resolved_dip_count": 4,
+      "score": 0.4825158999471683,
+      "max_absorptance": 0.781361498578933
+    },
+    {
+      "id": "Au_mirror_opposite_20",
+      "metal": "Au",
+      "case": "mirror_opposite_20",
+      "include_resonators": true,
+      "geometry_values": [
+        660.0,
+        190.0,
+        300.0,
+        120.0,
+        120.0,
+        -20.0,
+        20.0
+      ],
+      "state": "success",
+      "sha256": "23f60956616854f825e7a58e11ed5119c7e5fd668a800ff84fa454da7a656eeb",
+      "status": 2,
+      "dips": [
+        {
+          "wavelength_nm": 859.1591591591591,
+          "reflectance_min": 0.2767336149623545,
+          "prominence": 0.4634230316756941,
+          "half_prominence_width_nm": 5.42183898584085,
+          "width_samples": 5.416417146854968,
+          "resolved": true,
+          "lambda_over_width": 158.46268422999208
+        },
+        {
+          "wavelength_nm": 907.2072072072073,
+          "reflectance_min": 0.6550964246312116,
+          "prominence": 0.2506757049765205,
+          "half_prominence_width_nm": 2.9994389268305213,
+          "width_samples": 2.996439487903615,
+          "resolved": false,
+          "lambda_over_width": 302.45896960664055
+        },
+        {
+          "wavelength_nm": 745.0450450450451,
+          "reflectance_min": 0.490992301774739,
+          "prominence": 0.15190127912110468,
+          "half_prominence_width_nm": 7.143995590291297,
+          "width_samples": 7.136851594701042,
+          "resolved": true,
+          "lambda_over_width": 104.28968434100976
+        },
+        {
+          "wavelength_nm": 1034.3343343343345,
+          "reflectance_min": 0.8152808616014516,
+          "prominence": 0.1478795685095856,
+          "half_prominence_width_nm": 5.81741378740935,
+          "width_samples": 5.8115963736217395,
+          "resolved": true,
+          "lambda_over_width": 177.79968421241549
+        }
+      ],
+      "resolved_dip_count": 3,
+      "score": 0.4634230316756941,
+      "max_absorptance": 0.723261913460001
+    },
+    {
+      "id": "Ag_opposite_10",
+      "metal": "Ag",
+      "case": "opposite_10",
+      "include_resonators": true,
+      "geometry_values": [
+        660.0,
+        190.0,
+        300.0,
+        120.0,
+        120.0,
+        10.0,
+        -10.0
+      ],
+      "state": "success",
+      "metal_material": "Ag (Silver) - Palik (0-2um)",
+      "sha256": "bc7d74eb251be310f9e688123661a6b3f997d613a3530d12b269c58104cefb29",
+      "status": 2,
+      "dips": [
+        {
+          "wavelength_nm": 863.1631631631632,
+          "reflectance_min": 0.2555245521560271,
+          "prominence": 0.45838345776179046,
+          "half_prominence_width_nm": 5.91400017707565,
+          "width_samples": 5.9080861768984505,
+          "resolved": true,
+          "lambda_over_width": 145.95250884655528
+        },
+        {
+          "wavelength_nm": 1031.3313313313313,
+          "reflectance_min": 0.7737005073487893,
+          "prominence": 0.1715536079643163,
+          "half_prominence_width_nm": 7.560239701540922,
+          "width_samples": 7.552679461839205,
+          "resolved": true,
+          "lambda_over_width": 136.41516301673954
+        },
+        {
+          "wavelength_nm": 747.047047047047,
+          "reflectance_min": 0.4673171685110962,
+          "prominence": 0.17105482636613273,
+          "half_prominence_width_nm": 7.6584738715572485,
+          "width_samples": 7.6508153976856335,
+          "resolved": true,
+          "lambda_over_width": 97.54515841876797
+        },
+        {
+          "wavelength_nm": 902.2022022022022,
+          "reflectance_min": 0.7101106422226939,
+          "prominence": 0.14488951971941755,
+          "half_prominence_width_nm": 5.369923560694588,
+          "width_samples": 5.364553637133895,
+          "resolved": true,
+          "lambda_over_width": 168.0102504262657
+        }
+      ],
+      "resolved_dip_count": 4,
+      "score": 0.45838345776179046,
+      "max_absorptance": 0.7444740582979319
+    },
+    {
+      "id": "Au_common_15",
+      "metal": "Au",
+      "case": "common_15",
+      "include_resonators": true,
+      "geometry_values": [
+        660.0,
+        190.0,
+        300.0,
+        120.0,
+        120.0,
+        15.0,
+        15.0
+      ],
+      "state": "success",
+      "sha256": "43fded7baf21c5c3188d9432a5d4482495b5ba3d09bac568fd61d22690056219",
+      "status": 2,
+      "dips": [
+        {
+          "wavelength_nm": 861.1611611611612,
+          "reflectance_min": 0.29219380828043356,
+          "prominence": 0.457616875917039,
+          "half_prominence_width_nm": 5.397843098078965,
+          "width_samples": 5.392445254980856,
+          "resolved": true,
+          "lambda_over_width": 159.53801277914863
+        },
+        {
+          "wavelength_nm": 907.2072072072073,
+          "reflectance_min": 0.6135698146064219,
+          "prominence": 0.2929485419241553,
+          "half_prominence_width_nm": 3.0838963896417226,
+          "width_samples": 3.080812493252097,
+          "resolved": false,
+          "lambda_over_width": 294.1756442448456
+        },
+        {
+          "wavelength_nm": 1033.3333333333335,
+          "reflectance_min": 0.7884494116927456,
+          "prominence": 0.1756779431047507,
+          "half_prominence_width_nm": 5.7599724450647045,
+          "width_samples": 5.7542124726195425,
+          "resolved": true,
+          "lambda_over_width": 179.399006364817
+        },
+        {
+          "wavelength_nm": 746.0460460460461,
+          "reflectance_min": 0.5085019959062168,
+          "prominence": 0.14259574202885872,
+          "half_prominence_width_nm": 7.113330961349334,
+          "width_samples": 7.106217630387988,
+          "resolved": true,
+          "lambda_over_width": 104.87998521364004
+        }
+      ],
+      "resolved_dip_count": 3,
+      "score": 0.457616875917039,
+      "max_absorptance": 0.7078018009373894
+    },
+    {
+      "id": "Au_odd_only_20",
+      "metal": "Au",
+      "case": "odd_only_20",
+      "include_resonators": true,
+      "geometry_values": [
+        660.0,
+        190.0,
+        300.0,
+        120.0,
+        120.0,
+        20.0,
+        0.0
+      ],
+      "state": "success",
+      "sha256": "30f29cf2413cc87b32a15082fbd0a55765320ec34aade029852a11a0b0dfbf45",
+      "status": 2,
+      "dips": [
+        {
+          "wavelength_nm": 863.1631631631632,
+          "reflectance_min": 0.31348944695506176,
+          "prominence": 0.43455484882133144,
+          "half_prominence_width_nm": 6.0117925109672115,
+          "width_samples": 6.00578071845618,
+          "resolved": true,
+          "lambda_over_width": 143.57833567750538
+        },
+        {
+          "wavelength_nm": 907.2072072072073,
+          "reflectance_min": 0.6308377380149504,
+          "prominence": 0.27116654394127016,
+          "half_prominence_width_nm": 3.4456653629265475,
+          "width_samples": 3.4422196975635586,
+          "resolved": false,
+          "lambda_over_width": 263.2894119574857
+        },
+        {
+          "wavelength_nm": 747.047047047047,
+          "reflectance_min": 0.4909890252152303,
+          "prominence": 0.1577347397562769,
+          "half_prominence_width_nm": 8.173330173230738,
+          "width_samples": 8.165156843057574,
+          "resolved": true,
+          "lambda_over_width": 91.40057127433477
+        },
+        {
+          "wavelength_nm": 1034.3343343343345,
+          "reflectance_min": 0.816322048747495,
+          "prominence": 0.14720143090042093,
+          "half_prominence_width_nm": 7.400587589159613,
+          "width_samples": 7.393187001570482,
+          "resolved": true,
+          "lambda_over_width": 139.7638122477502
+        }
+      ],
+      "resolved_dip_count": 3,
+      "score": 0.43455484882133144,
+      "max_absorptance": 0.6865061163934548
+    },
+    {
+      "id": "Ag_mirror_opposite_20",
+      "metal": "Ag",
+      "case": "mirror_opposite_20",
+      "include_resonators": true,
+      "geometry_values": [
+        660.0,
+        190.0,
+        300.0,
+        120.0,
+        120.0,
+        -20.0,
+        20.0
+      ],
+      "state": "success",
+      "metal_material": "Ag (Silver) - Palik (0-2um)",
+      "sha256": "acfecc7329e8fb26e976db995a2ffc8fc95238887146c74c2cccc1b918c301ad",
+      "status": 2,
+      "dips": [
+        {
+          "wavelength_nm": 859.1591591591591,
+          "reflectance_min": 0.2722868322105916,
+          "prominence": 0.4315279951808064,
+          "half_prominence_width_nm": 5.627691684851698,
+          "width_samples": 5.622063993166762,
+          "resolved": true,
+          "lambda_over_width": 152.66635190264512
+        },
+        {
+          "wavelength_nm": 744.0440440440441,
+          "reflectance_min": 0.4875636740426572,
+          "prominence": 0.14464840694304504,
+          "half_prominence_width_nm": 7.3891932744331825,
+          "width_samples": 7.381804081158755,
+          "resolved": true,
+          "lambda_over_width": 100.6935420972757
+        },
+        {
+          "wavelength_nm": 1032.3323323323325,
+          "reflectance_min": 0.8263886914004736,
+          "prominence": 0.11867040444869514,
+          "half_prominence_width_nm": 7.613846081115298,
+          "width_samples": 7.606232235034156,
+          "resolved": true,
+          "lambda_over_width": 135.58618355745818
+        },
+        {
+          "wavelength_nm": 903.2032032032032,
+          "reflectance_min": 0.7484743245102514,
+          "prominence": 0.11002385823721417,
+          "half_prominence_width_nm": 5.25643788263892,
+          "width_samples": 5.251181444756355,
+          "resolved": true,
+          "lambda_over_width": 171.82799899268718
+        }
+      ],
+      "resolved_dip_count": 4,
+      "score": 0.4315279951808064,
+      "max_absorptance": 0.7277116808640821
+    },
+    {
+      "id": "Ag_common_15",
+      "metal": "Ag",
+      "case": "common_15",
+      "include_resonators": true,
+      "geometry_values": [
+        660.0,
+        190.0,
+        300.0,
+        120.0,
+        120.0,
+        15.0,
+        15.0
+      ],
+      "state": "success",
+      "metal_material": "Ag (Silver) - Palik (0-2um)",
+      "sha256": "7fd7af3d49a34d5112ad452f99aa06c4096b0cd378fe5c8f374f1d921eae549d",
+      "status": 2,
+      "dips": [
+        {
+          "wavelength_nm": 861.1611611611612,
+          "reflectance_min": 0.2957668361477817,
+          "prominence": 0.4177777930367023,
+          "half_prominence_width_nm": 5.624653722727317,
+          "width_samples": 5.6190290690045686,
+          "resolved": true,
+          "lambda_over_width": 153.10474272958373
+        },
+        {
+          "wavelength_nm": 1032.3323323323325,
+          "reflectance_min": 0.8045856607300698,
+          "prominence": 0.14105833845497362,
+          "half_prominence_width_nm": 7.445630776447615,
+          "width_samples": 7.438185145670957,
+          "resolved": true,
+          "lambda_over_width": 138.64941243095976
+        },
+        {
+          "wavelength_nm": 902.2022022022022,
+          "reflectance_min": 0.7171590853360407,
+          "prominence": 0.13967980970945382,
+          "half_prominence_width_nm": 5.3108473830722005,
+          "width_samples": 5.305536535689214,
+          "resolved": true,
+          "lambda_over_width": 169.8791430305232
+        },
+        {
+          "wavelength_nm": 746.0460460460461,
+          "reflectance_min": 0.505964612009528,
+          "prominence": 0.1345663501418488,
+          "half_prominence_width_nm": 7.41687220358051,
+          "width_samples": 7.409455331376947,
+          "resolved": true,
+          "lambda_over_width": 100.58769054776093
+        }
+      ],
+      "resolved_dip_count": 4,
+      "score": 0.4177777930367023,
+      "max_absorptance": 0.7042316807985722
+    },
+    {
+      "id": "Ag_odd_only_20",
+      "metal": "Ag",
+      "case": "odd_only_20",
+      "include_resonators": true,
+      "geometry_values": [
+        660.0,
+        190.0,
+        300.0,
+        120.0,
+        120.0,
+        20.0,
+        0.0
+      ],
+      "state": "success",
+      "metal_material": "Ag (Silver) - Palik (0-2um)",
+      "sha256": "1f755b1f682771efe4ecf53786260734c309495cdcac8436e47984350c81d4cf",
+      "status": 2,
+      "dips": [
+        {
+          "wavelength_nm": 863.1631631631632,
+          "reflectance_min": 0.3137933356089674,
+          "prominence": 0.39676787004384684,
+          "half_prominence_width_nm": 6.267463084740598,
+          "width_samples": 6.2611956216556734,
+          "resolved": true,
+          "lambda_over_width": 137.72129990916227
+        },
+        {
+          "wavelength_nm": 747.047047047047,
+          "reflectance_min": 0.4870433720415533,
+          "prominence": 0.1509808695125367,
+          "half_prominence_width_nm": 8.373437417125956,
+          "width_samples": 8.365063979708829,
+          "resolved": true,
+          "lambda_over_width": 89.21629312224066
+        },
+        {
+          "wavelength_nm": 903.2032032032032,
+          "reflectance_min": 0.7160641325509844,
+          "prominence": 0.13787622705245528,
+          "half_prominence_width_nm": 5.629699061129941,
+          "width_samples": 5.624069362068923,
+          "resolved": true,
+          "lambda_over_width": 160.43543240869445
+        },
+        {
+          "wavelength_nm": 1032.3323323323325,
+          "reflectance_min": 0.8189779082779461,
+          "prominence": 0.12564373725527866,
+          "half_prominence_width_nm": 8.544960637496615,
+          "width_samples": 8.536415676859065,
+          "resolved": true,
+          "lambda_over_width": 120.81183005130507
+        }
+      ],
+      "resolved_dip_count": 4,
+      "score": 0.39676787004384684,
+      "max_absorptance": 0.686205168820069
+    },
+    {
+      "id": "Au_aligned",
+      "metal": "Au",
+      "case": "aligned",
+      "include_resonators": true,
+      "geometry_values": [
+        660.0,
+        190.0,
+        300.0,
+        120.0,
+        120.0,
+        0.0,
+        0.0
+      ],
+      "state": "success",
+      "sha256": "faa8b24f9458a91a032b98c1176b8085b383dcd29e94048a69f0d77cf884a918",
+      "status": 2,
+      "dips": [
+        {
+          "wavelength_nm": 867.1671671671672,
+          "reflectance_min": 0.3663726537285927,
+          "prominence": 0.39282813336475303,
+          "half_prominence_width_nm": 5.5772829712293515,
+          "width_samples": 5.571705688258078,
+          "resolved": true,
+          "lambda_over_width": 155.48201008277425
+        },
+        {
+          "wavelength_nm": 907.2072072072073,
+          "reflectance_min": 0.6255582922963976,
+          "prominence": 0.27577816573148717,
+          "half_prominence_width_nm": 3.020628212354609,
+          "width_samples": 3.017607584142212,
+          "resolved": false,
+          "lambda_over_width": 300.33726212867174
+        },
+        {
+          "wavelength_nm": 750.05005005005,
+          "reflectance_min": 0.485869134226982,
+          "prominence": 0.16609645803648437,
+          "half_prominence_width_nm": 7.355736272299168,
+          "width_samples": 7.348380536026873,
+          "resolved": true,
+          "lambda_over_width": 101.96804538447765
+        },
+        {
+          "wavelength_nm": 1034.3343343343345,
+          "reflectance_min": 0.8190264436490182,
+          "prominence": 0.1453519236275238,
+          "half_prominence_width_nm": 5.74776879583942,
+          "width_samples": 5.742021027043393,
+          "resolved": true,
+          "lambda_over_width": 179.9540606231496
+        }
+      ],
+      "resolved_dip_count": 3,
+      "score": 0.39282813336475303,
+      "max_absorptance": 0.6336228026165489
+    },
+    {
+      "id": "Ag_aligned",
+      "metal": "Ag",
+      "case": "aligned",
+      "include_resonators": true,
+      "geometry_values": [
+        660.0,
+        190.0,
+        300.0,
+        120.0,
+        120.0,
+        0.0,
+        0.0
+      ],
+      "state": "success",
+      "metal_material": "Ag (Silver) - Palik (0-2um)",
+      "sha256": "b5b859c977e20f87dddac068bd98290604d98d365da3f1e89bccbb1e0b7d755a",
+      "status": 2,
+      "dips": [
+        {
+          "wavelength_nm": 866.1661661661662,
+          "reflectance_min": 0.3619823950923962,
+          "prominence": 0.3600191392852096,
+          "half_prominence_width_nm": 5.817109247240978,
+          "width_samples": 5.8112921379937745,
+          "resolved": true,
+          "lambda_over_width": 148.8997592020442
+        },
+        {
+          "wavelength_nm": 749.049049049049,
+          "reflectance_min": 0.48134211637070884,
+          "prominence": 0.16013990232249392,
+          "half_prominence_width_nm": 7.536380941341804,
+          "width_samples": 7.5288445604005005,
+          "resolved": true,
+          "lambda_over_width": 99.39108106120837
+        },
+        {
+          "wavelength_nm": 903.2032032032032,
+          "reflectance_min": 0.7295067865289268,
+          "prominence": 0.12251083125688289,
+          "half_prominence_width_nm": 5.414767877478994,
+          "width_samples": 5.40935310960154,
+          "resolved": true,
+          "lambda_over_width": 166.80367905700814
+        },
+        {
+          "wavelength_nm": 1033.3333333333335,
+          "reflectance_min": 0.8302675134634236,
+          "prominence": 0.11546088604026583,
+          "half_prominence_width_nm": 7.542461363454095,
+          "width_samples": 7.5349189020903395,
+          "resolved": true,
+          "lambda_over_width": 137.00213810046156
+        }
+      ],
+      "resolved_dip_count": 4,
+      "score": 0.3600191392852096,
+      "max_absorptance": 0.6380160170105864
+    },
+    {
+      "id": "Au_bare_stack",
+      "metal": "Au",
+      "case": "bare_stack",
+      "include_resonators": false,
+      "geometry_values": [
+        660.0,
+        190.0,
+        300.0,
+        120.0,
+        120.0,
+        0.0,
+        0.0
+      ],
+      "state": "success",
+      "sha256": "9692b9350d5f551035952e6ef884699f540e594e0ab9ae94784a29d9d4998e9d",
+      "status": 2,
+      "dips": [],
+      "resolved_dip_count": 0,
+      "score": 0.0,
+      "max_absorptance": 0.003314647514955588
+    },
+    {
+      "id": "Ag_bare_stack",
+      "metal": "Ag",
+      "case": "bare_stack",
+      "include_resonators": false,
+      "geometry_values": [
+        660.0,
+        190.0,
+        300.0,
+        120.0,
+        120.0,
+        0.0,
+        0.0
+      ],
+      "state": "success",
+      "metal_material": "Ag (Silver) - Palik (0-2um)",
+      "sha256": "5f8210a4991c0fbde26f5d4be361dc8cd2f76367963249ff1c5af6ecd40936ca",
+      "status": 2,
+      "dips": [],
+      "resolved_dip_count": 0,
+      "score": 0.0,
+      "max_absorptance": 0.04901917594761914
+    }
+  ],
+  "successful": 14,
+  "planned": 14
+}
