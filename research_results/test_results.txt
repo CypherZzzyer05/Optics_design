@@ -29,8 +29,8 @@ test_sample_mouse_click_and_reset_restore_the_real_sample_angle (test_preview_in
 test_single_sample_angle_preview_and_legacy_five_parameter_browser (test_preview_interaction.PreviewInteractionTests) ... ok
 test_angles_and_self_centers_preserve_C2 (test_quadrant.QuadrantTests) ... ok
 test_double_pair_rejects_single_unresolved_and_edge_dips (test_quadrant.QuadrantTests) ... ok
-Using committed real pilot candidate archive; new simulations still use the selected strict mesh
-test_fresh_project_can_read_committed_real_candidate_without_coarse_generation (test_quadrant.QuadrantTests) ... ok
+test_fresh_project_can_read_committed_real_candidate_without_coarse_generation (test_quadrant.QuadrantTests) ... Using committed real pilot candidate archive; new simulations still use the selected strict mesh
+ok
 test_material_coverage_extension_and_content_fingerprint (test_quadrant.QuadrantTests) ... ok
 test_metal_layer_is_below_finite_substrate_and_T_below_metal (test_quadrant.QuadrantTests) ... ok
 test_periodic_angles_do_not_independently_discard_signs (test_quadrant.QuadrantTests) ... ok
@@ -46,4 +46,16 @@ test_degree_metrics_are_separate_from_nanometers (test_rotation.RotationTests) .
 test_fdtd_sets_native_angle_without_moving_centers (test_rotation.RotationTests) ... ok
 test_legacy_configuration_fingerprint_excludes_rotation_default (test_rotation.RotationTests) ... ok
 test_mirror_equivalent_loss_has_correct_error_and_gradient (test_rotation.RotationTests) ... ok
-test_mixed_unit_dataset_resume_and_six_output_training (test_rotation.RotationTests) ... 
+test_mixed_unit_dataset_resume_and_six_output_training (test_rotation.RotationTests) ... ok
+test_overlap_and_periodic_cell_escape_are_rejected (test_rotation.RotationTests) ... ok
+test_self_center_rotation_and_mirror_vertices (test_rotation.RotationTests) ... ok
+test_interrupted_training_resumes_with_same_weights_and_history (test_training.TrainingIntegrityTests) ... ok
+test_physical_error_metrics_use_parameter_ranges (test_training.TrainingIntegrityTests) ... ok
+test_split_overlap_and_omissions_are_rejected (test_training.TrainingIntegrityTests) ... ok
+test_training_changes_parameters_with_real_backward_and_optimizer (test_training.TrainingIntegrityTests) ... ok
+test_validation_permission_does_not_allow_unconverged_training (test_training.TrainingIntegrityTests) ... ok
+
+----------------------------------------------------------------------
+Ran 51 tests in 21.296s
+
+OK
