@@ -54,6 +54,8 @@ python explore_double_dips.py run --case-id Au_full_difference --mesh-nm 5 --mon
 python audit_double_native.py
 python export_double_results.py
 python compare_double_mesh.py
+# 六组全部完成且原生审计通过后，逐谷比较角度与背板材料的影响
+python analyze_angle_controls.py
 # 5 nm求解完成后，顺序执行原生审计、两谷比较、六组8 nm对照和真实8 nm训练流程
 python continue_strict_research.py
 ```
