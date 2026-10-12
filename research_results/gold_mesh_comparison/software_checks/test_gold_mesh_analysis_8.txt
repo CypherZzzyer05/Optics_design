@@ -1,0 +1,13 @@
+test_bare_peaks_compare_their_own_grid_response (test_gold_mesh_analysis.AnalysisTests) ... ok
+test_calibration_flag_cannot_hide_current_normalization_error (test_gold_mesh_analysis.AnalysisTests) ... ok
+test_field_difference_alone_prevents_substitution (test_gold_mesh_analysis.AnalysisTests) ... ok
+test_field_extrema_keep_actual_frequency (test_gold_mesh_analysis.AnalysisTests) ... ok
+test_nearby_field_is_not_fabricated_at_spectral_center (test_gold_mesh_analysis.AnalysisTests) ... ok
+test_old_audit_requires_every_field_and_coordinate (test_gold_mesh_analysis.AnalysisTests) ... ok
+test_matching_loss_does_not_certify_experimental_accuracy (test_gold_mesh_analysis.GoldLossInterpretationTests) ... ok
+test_positive_k_does_not_hide_missing_loss (test_gold_mesh_analysis.GoldLossInterpretationTests) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.034s
+
+OK

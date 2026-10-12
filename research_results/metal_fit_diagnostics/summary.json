@@ -1,0 +1,2524 @@
+{
+  "complete_device_validation": false,
+  "running_control_matrix_unchanged": true,
+  "experiments": [
+    {
+      "experiment": "metal_fit_probe_20261012_complete",
+      "report_sha256": "afaefa2261ce9fbd8f9ffe20998c54b20541048006432f36a2137f5fdd19d1aa",
+      "report": {
+        "scope": "Fresh in-memory library copies only; no FSP loaded/saved, no solver run, no defaults edited.",
+        "band_nm": [
+          700.0,
+          1700.0
+        ],
+        "wavelength_points": 1000,
+        "device_validation_pending": true,
+        "materials": {
+          "Au (Gold) - Palik": [
+            {
+              "settings": {
+                "library_default": true
+              },
+              "metrics": {
+                "max_n_error": 0.6558529804086315,
+                "max_k_error": 0.9026045749913916,
+                "rms_n_error": 0.3992581662516236,
+                "rms_k_error": 0.4472670236220598,
+                "minimum_fit_n": 1.9868680043950106e-08,
+                "minimum_fit_k": 4.250449039086406,
+                "maximum_imaginary_permittivity_error": 14.173032698570964,
+                "max_relative_complex_permittivity_error": 0.21516832482085965,
+                "max_relative_imaginary_permittivity_error": 0.9999998677081985,
+                "minimum_data_imaginary_permittivity": 1.2767353837037065,
+                "minimum_fit_imaginary_permittivity": 1.6890162400144594e-07
+              },
+              "passivity_check_passed": true,
+              "minimum_fit_k": 4.250449039086406,
+              "csv": "Au_0.csv",
+              "csv_sha256": "33246479e3fd4e2bda40c5b150e3d3e183116245ef807c41217dc657628b1a99"
+            },
+            {
+              "settings": {
+                "library_default": false,
+                "max coefficients": 8,
+                "tolerance": 0.0,
+                "imaginary weight": 1.0,
+                "make fit passive": 1,
+                "improve numerical stability": 1
+              },
+              "metrics": {
+                "max_n_error": 0.6558529804086315,
+                "max_k_error": 0.9026045749913916,
+                "rms_n_error": 0.3992581662516236,
+                "rms_k_error": 0.4472670236220598,
+                "minimum_fit_n": 1.9868680043950106e-08,
+                "minimum_fit_k": 4.250449039086406,
+                "maximum_imaginary_permittivity_error": 14.173032698570964,
+                "max_relative_complex_permittivity_error": 0.21516832482085965,
+                "max_relative_imaginary_permittivity_error": 0.9999998677081985,
+                "minimum_data_imaginary_permittivity": 1.2767353837037065,
+                "minimum_fit_imaginary_permittivity": 1.6890162400144594e-07
+              },
+              "passivity_check_passed": true,
+              "minimum_fit_k": 4.250449039086406,
+              "csv": "Au_1.csv",
+              "csv_sha256": "33246479e3fd4e2bda40c5b150e3d3e183116245ef807c41217dc657628b1a99"
+            },
+            {
+              "settings": {
+                "library_default": false,
+                "max coefficients": 8,
+                "tolerance": 0.0,
+                "imaginary weight": 10.0,
+                "make fit passive": 1,
+                "improve numerical stability": 1
+              },
+              "metrics": {
+                "max_n_error": 0.07167605180835651,
+                "max_k_error": 0.9228062674763686,
+                "rms_n_error": 0.040750853189479505,
+                "rms_k_error": 0.46435867215696,
+                "minimum_fit_n": 0.18095394834385506,
+                "minimum_fit_k": 4.19478122308043,
+                "maximum_imaginary_permittivity_error": 0.6132629311028861,
+                "max_relative_complex_permittivity_error": 0.20618739210506323,
+                "max_relative_imaginary_permittivity_error": 0.27366260715216606,
+                "minimum_data_imaginary_permittivity": 1.2767353837037065,
+                "minimum_fit_imaginary_permittivity": 1.5181244495101387
+              },
+              "passivity_check_passed": true,
+              "minimum_fit_k": 4.19478122308043,
+              "csv": "Au_2.csv",
+              "csv_sha256": "66353bd3b97b48191d056946a443861ebbbbd1e1a481a910691414f6d3a8764d"
+            },
+            {
+              "settings": {
+                "library_default": false,
+                "max coefficients": 12,
+                "tolerance": 0.0,
+                "imaginary weight": 1.0,
+                "make fit passive": 1,
+                "improve numerical stability": 1
+              },
+              "metrics": null,
+              "passivity_check_passed": false,
+              "minimum_fit_k": -8.138265184884196,
+              "csv": "Au_3.csv",
+              "csv_sha256": "827617efec39fa0222c4791730b3f5f352761d98cd2841f5eb0241851c332b69"
+            },
+            {
+              "settings": {
+                "library_default": false,
+                "max coefficients": 12,
+                "tolerance": 0.0,
+                "imaginary weight": 10.0,
+                "make fit passive": 1,
+                "improve numerical stability": 1
+              },
+              "metrics": {
+                "max_n_error": 0.07167605180835651,
+                "max_k_error": 0.9228062674763686,
+                "rms_n_error": 0.040750853189479505,
+                "rms_k_error": 0.46435867215696,
+                "minimum_fit_n": 0.18095394834385506,
+                "minimum_fit_k": 4.19478122308043,
+                "maximum_imaginary_permittivity_error": 0.6132629311028861,
+                "max_relative_complex_permittivity_error": 0.20618739210506323,
+                "max_relative_imaginary_permittivity_error": 0.27366260715216606,
+                "minimum_data_imaginary_permittivity": 1.2767353837037065,
+                "minimum_fit_imaginary_permittivity": 1.5181244495101387
+              },
+              "passivity_check_passed": true,
+              "minimum_fit_k": 4.19478122308043,
+              "csv": "Au_4.csv",
+              "csv_sha256": "66353bd3b97b48191d056946a443861ebbbbd1e1a481a910691414f6d3a8764d"
+            }
+          ],
+          "Ag (Silver) - Palik (0-2um)": [
+            {
+              "settings": {
+                "library_default": true
+              },
+              "metrics": {
+                "max_n_error": 0.019884433599219153,
+                "max_k_error": 0.06553763510841826,
+                "rms_n_error": 0.009902902251105968,
+                "rms_k_error": 0.029949713543357917,
+                "minimum_fit_n": 0.1309120989723354,
+                "minimum_fit_k": 4.554481360092321,
+                "maximum_imaginary_permittivity_error": 0.4354192771747538,
+                "max_relative_complex_permittivity_error": 0.018365984181230643,
+                "max_relative_imaginary_permittivity_error": 0.10712199616837562,
+                "minimum_data_imaginary_permittivity": 1.3035136587541014,
+                "minimum_fit_imaginary_permittivity": 1.1924734291601256
+              },
+              "passivity_check_passed": true,
+              "minimum_fit_k": 4.554481360092321,
+              "csv": "Ag_0.csv",
+              "csv_sha256": "9f6f3f6bb0d8541c325c8007d842520a2e611b65182030530b14e8a6be8a5344"
+            },
+            {
+              "settings": {
+                "library_default": false,
+                "max coefficients": 8,
+                "tolerance": 0.0,
+                "imaginary weight": 1.0,
+                "make fit passive": 1,
+                "improve numerical stability": 1
+              },
+              "metrics": {
+                "max_n_error": 0.019884433599219153,
+                "max_k_error": 0.06553763510841826,
+                "rms_n_error": 0.009902902251105968,
+                "rms_k_error": 0.029949713543357917,
+                "minimum_fit_n": 0.1309120989723354,
+                "minimum_fit_k": 4.554481360092321,
+                "maximum_imaginary_permittivity_error": 0.4354192771747538,
+                "max_relative_complex_permittivity_error": 0.018365984181230643,
+                "max_relative_imaginary_permittivity_error": 0.10712199616837562,
+                "minimum_data_imaginary_permittivity": 1.3035136587541014,
+                "minimum_fit_imaginary_permittivity": 1.1924734291601256
+              },
+              "passivity_check_passed": true,
+              "minimum_fit_k": 4.554481360092321,
+              "csv": "Ag_1.csv",
+              "csv_sha256": "9f6f3f6bb0d8541c325c8007d842520a2e611b65182030530b14e8a6be8a5344"
+            },
+            {
+              "settings": {
+                "library_default": false,
+                "max coefficients": 8,
+                "tolerance": 0.0,
+                "imaginary weight": 10.0,
+                "make fit passive": 1,
+                "improve numerical stability": 1
+              },
+              "metrics": {
+                "max_n_error": 0.019574696582942752,
+                "max_k_error": 0.0841265420224655,
+                "rms_n_error": 0.007860124284630659,
+                "rms_k_error": 0.03580535934229424,
+                "minimum_fit_n": 0.1327370763596927,
+                "minimum_fit_k": 4.587177164002199,
+                "maximum_imaginary_permittivity_error": 0.5674917449765928,
+                "max_relative_complex_permittivity_error": 0.016753564721683104,
+                "max_relative_imaginary_permittivity_error": 0.08589028482841846,
+                "minimum_data_imaginary_permittivity": 1.3035136587541014,
+                "minimum_fit_imaginary_permittivity": 1.217776970987197
+              },
+              "passivity_check_passed": true,
+              "minimum_fit_k": 4.587177164002199,
+              "csv": "Ag_2.csv",
+              "csv_sha256": "629b56764e68cb56f64c7206b946364153957789cb960452e027eb404886804c"
+            },
+            {
+              "settings": {
+                "library_default": false,
+                "max coefficients": 12,
+                "tolerance": 0.0,
+                "imaginary weight": 1.0,
+                "make fit passive": 1,
+                "improve numerical stability": 1
+              },
+              "metrics": {
+                "max_n_error": 0.019884433599219153,
+                "max_k_error": 0.06553763510841826,
+                "rms_n_error": 0.009902902251105968,
+                "rms_k_error": 0.029949713543357917,
+                "minimum_fit_n": 0.1309120989723354,
+                "minimum_fit_k": 4.554481360092321,
+                "maximum_imaginary_permittivity_error": 0.4354192771747538,
+                "max_relative_complex_permittivity_error": 0.018365984181230643,
+                "max_relative_imaginary_permittivity_error": 0.10712199616837562,
+                "minimum_data_imaginary_permittivity": 1.3035136587541014,
+                "minimum_fit_imaginary_permittivity": 1.1924734291601256
+              },
+              "passivity_check_passed": true,
+              "minimum_fit_k": 4.554481360092321,
+              "csv": "Ag_3.csv",
+              "csv_sha256": "9f6f3f6bb0d8541c325c8007d842520a2e611b65182030530b14e8a6be8a5344"
+            },
+            {
+              "settings": {
+                "library_default": false,
+                "max coefficients": 12,
+                "tolerance": 0.0,
+                "imaginary weight": 10.0,
+                "make fit passive": 1,
+                "improve numerical stability": 1
+              },
+              "metrics": {
+                "max_n_error": 0.019574696582942752,
+                "max_k_error": 0.0841265420224655,
+                "rms_n_error": 0.007860124284630659,
+                "rms_k_error": 0.03580535934229424,
+                "minimum_fit_n": 0.1327370763596927,
+                "minimum_fit_k": 4.587177164002199,
+                "maximum_imaginary_permittivity_error": 0.5674917449765928,
+                "max_relative_complex_permittivity_error": 0.016753564721683104,
+                "max_relative_imaginary_permittivity_error": 0.08589028482841846,
+                "minimum_data_imaginary_permittivity": 1.3035136587541014,
+                "minimum_fit_imaginary_permittivity": 1.217776970987197
+              },
+              "passivity_check_passed": true,
+              "minimum_fit_k": 4.587177164002199,
+              "csv": "Ag_4.csv",
+              "csv_sha256": "629b56764e68cb56f64c7206b946364153957789cb960452e027eb404886804c"
+            }
+          ]
+        },
+        "references": [
+          "https://optics.ansys.com/hc/en-us/articles/360034915053-Tips-for-improving-the-quality-of-optical-material-fits",
+          "https://optics.ansys.com/hc/en-us/articles/360034930033-copymaterial-Script-command"
+        ],
+        "lumerical_version": "8.31.3633"
+      }
+    },
+    {
+      "experiment": "metal_fit_dense_probe_20261012",
+      "report_sha256": "46bec6a8458b38bf7a3af0d786806d674fcf7218ad08b03f39d0225733bc6e8a",
+      "report": {
+        "scope": "Fresh in-memory library copies only; no FSP loaded/saved, no solver run, no defaults edited.",
+        "band_nm": [
+          700.0,
+          1700.0
+        ],
+        "wavelength_points": 1000,
+        "device_validation_pending": true,
+        "resample_library_data": true,
+        "materials": {
+          "Au (Gold) - Palik": [
+            {
+              "settings": {
+                "library_default": true
+              },
+              "metrics": {
+                "max_n_error": 0.6558529804086315,
+                "max_k_error": 0.9026045749913916,
+                "rms_n_error": 0.3992581662516236,
+                "rms_k_error": 0.4472670236220598,
+                "minimum_fit_n": 1.9868680043950106e-08,
+                "minimum_fit_k": 4.250449039086406,
+                "maximum_imaginary_permittivity_error": 14.173032698570964,
+                "max_relative_complex_permittivity_error": 0.21516832482085965,
+                "max_relative_imaginary_permittivity_error": 0.9999998677081985,
+                "minimum_data_imaginary_permittivity": 1.2767353837037065,
+                "minimum_fit_imaginary_permittivity": 1.6890162400144594e-07
+              },
+              "passivity_check_passed": true,
+              "minimum_fit_k": 4.250449039086406,
+              "heldout_data_preparation_max_index_error": 0.0,
+              "prepared_data_points": null,
+              "csv": "Au_0.csv",
+              "csv_sha256": "33246479e3fd4e2bda40c5b150e3d3e183116245ef807c41217dc657628b1a99"
+            },
+            {
+              "settings": {
+                "library_default": false,
+                "max coefficients": 8,
+                "tolerance": 0.0,
+                "imaginary weight": 1.0,
+                "make fit passive": 1,
+                "improve numerical stability": 1
+              },
+              "metrics": {
+                "max_n_error": 0.6558529659991765,
+                "max_k_error": 0.9304805495011301,
+                "rms_n_error": 0.3992581615095168,
+                "rms_k_error": 0.5091827648083708,
+                "minimum_fit_n": 1.9537889676663126e-08,
+                "minimum_fit_k": 4.152156166462608,
+                "maximum_imaginary_permittivity_error": 14.173032310659307,
+                "max_relative_complex_permittivity_error": 0.22312414975609624,
+                "max_relative_imaginary_permittivity_error": 0.9999998729190557,
+                "minimum_data_imaginary_permittivity": 1.2767353837037065,
+                "minimum_fit_imaginary_permittivity": 1.6224873820124586e-07
+              },
+              "passivity_check_passed": true,
+              "minimum_fit_k": 4.152156166462608,
+              "heldout_data_preparation_max_index_error": 3.5596458096434965e-15,
+              "prepared_data_points": 1020,
+              "csv": "Au_1.csv",
+              "csv_sha256": "f520a279a1209b8a7e2e0d4c6349f558c51ae736ce2a9178d4ae3e89f0d040db"
+            },
+            {
+              "settings": {
+                "library_default": false,
+                "max coefficients": 8,
+                "tolerance": 0.0,
+                "imaginary weight": 10.0,
+                "make fit passive": 1,
+                "improve numerical stability": 1
+              },
+              "metrics": {
+                "max_n_error": 0.07564623129533077,
+                "max_k_error": 0.9638875655636259,
+                "rms_n_error": 0.03263726376383438,
+                "rms_k_error": 0.5730362929709469,
+                "minimum_fit_n": 0.12964092078258593,
+                "minimum_fit_k": 4.681856045544547,
+                "maximum_imaginary_permittivity_error": 2.9983308205230585,
+                "max_relative_complex_permittivity_error": 0.3933262192652321,
+                "max_relative_imaginary_permittivity_error": 0.2187005907942836,
+                "minimum_data_imaginary_permittivity": 1.2767353837037065,
+                "minimum_fit_imaginary_permittivity": 1.2139202574318233
+              },
+              "passivity_check_passed": true,
+              "minimum_fit_k": 4.681856045544547,
+              "heldout_data_preparation_max_index_error": 3.5596458096434965e-15,
+              "prepared_data_points": 1020,
+              "csv": "Au_2.csv",
+              "csv_sha256": "efc09a7649869b13c438bbab27005439328b6327fea231c923435eea78860bea"
+            },
+            {
+              "settings": {
+                "library_default": false,
+                "max coefficients": 12,
+                "tolerance": 0.0,
+                "imaginary weight": 1.0,
+                "make fit passive": 1,
+                "improve numerical stability": 1
+              },
+              "metrics": {
+                "max_n_error": 0.6558529659991765,
+                "max_k_error": 0.9304805495011301,
+                "rms_n_error": 0.3992581615095168,
+                "rms_k_error": 0.5091827648083708,
+                "minimum_fit_n": 1.9537889676663126e-08,
+                "minimum_fit_k": 4.152156166462608,
+                "maximum_imaginary_permittivity_error": 14.173032310659307,
+                "max_relative_complex_permittivity_error": 0.22312414975609624,
+                "max_relative_imaginary_permittivity_error": 0.9999998729190557,
+                "minimum_data_imaginary_permittivity": 1.2767353837037065,
+                "minimum_fit_imaginary_permittivity": 1.6224873820124586e-07
+              },
+              "passivity_check_passed": true,
+              "minimum_fit_k": 4.152156166462608,
+              "heldout_data_preparation_max_index_error": 3.5596458096434965e-15,
+              "prepared_data_points": 1020,
+              "csv": "Au_3.csv",
+              "csv_sha256": "f520a279a1209b8a7e2e0d4c6349f558c51ae736ce2a9178d4ae3e89f0d040db"
+            },
+            {
+              "settings": {
+                "library_default": false,
+                "max coefficients": 12,
+                "tolerance": 0.0,
+                "imaginary weight": 10.0,
+                "make fit passive": 1,
+                "improve numerical stability": 1
+              },
+              "metrics": {
+                "max_n_error": 0.21380243267420201,
+                "max_k_error": 0.752271974250375,
+                "rms_n_error": 0.07549779012068318,
+                "rms_k_error": 0.3560627671448374,
+                "minimum_fit_n": 0.10687764566792271,
+                "minimum_fit_k": 4.444703198306409,
+                "maximum_imaginary_permittivity_error": 2.930252047317696,
+                "max_relative_complex_permittivity_error": 0.257127078652413,
+                "max_relative_imaginary_permittivity_error": 0.4500895383617332,
+                "minimum_data_imaginary_permittivity": 1.2767353837037065,
+                "minimum_fit_imaginary_permittivity": 0.9500788270553504
+              },
+              "passivity_check_passed": true,
+              "minimum_fit_k": 4.444703198306409,
+              "heldout_data_preparation_max_index_error": 3.5596458096434965e-15,
+              "prepared_data_points": 1020,
+              "csv": "Au_4.csv",
+              "csv_sha256": "194bea406d568d03602ed118217deb2e90dc3caabff7bba032d83ef8df03a340"
+            }
+          ],
+          "Ag (Silver) - Palik (0-2um)": [
+            {
+              "settings": {
+                "library_default": true
+              },
+              "metrics": {
+                "max_n_error": 0.019884433599219153,
+                "max_k_error": 0.06553763510841826,
+                "rms_n_error": 0.009902902251105968,
+                "rms_k_error": 0.029949713543357917,
+                "minimum_fit_n": 0.1309120989723354,
+                "minimum_fit_k": 4.554481360092321,
+                "maximum_imaginary_permittivity_error": 0.4354192771747538,
+                "max_relative_complex_permittivity_error": 0.018365984181230643,
+                "max_relative_imaginary_permittivity_error": 0.10712199616837562,
+                "minimum_data_imaginary_permittivity": 1.3035136587541014,
+                "minimum_fit_imaginary_permittivity": 1.1924734291601256
+              },
+              "passivity_check_passed": true,
+              "minimum_fit_k": 4.554481360092321,
+              "heldout_data_preparation_max_index_error": 0.0,
+              "prepared_data_points": null,
+              "csv": "Ag_0.csv",
+              "csv_sha256": "9f6f3f6bb0d8541c325c8007d842520a2e611b65182030530b14e8a6be8a5344"
+            },
+            {
+              "settings": {
+                "library_default": false,
+                "max coefficients": 8,
+                "tolerance": 0.0,
+                "imaginary weight": 1.0,
+                "make fit passive": 1,
+                "improve numerical stability": 1
+              },
+              "metrics": {
+                "max_n_error": 0.03363259711586855,
+                "max_k_error": 0.04368390668753541,
+                "rms_n_error": 0.010742968486374843,
+                "rms_k_error": 0.012785814301170675,
+                "minimum_fit_n": 0.10943700532880413,
+                "minimum_fit_k": 4.585615592176619,
+                "maximum_imaginary_permittivity_error": 0.593756294564729,
+                "max_relative_complex_permittivity_error": 0.019866808630004965,
+                "max_relative_imaginary_permittivity_error": 0.2300256546961926,
+                "minimum_data_imaginary_permittivity": 1.3035136587541014,
+                "minimum_fit_imaginary_permittivity": 1.0036720759937598
+              },
+              "passivity_check_passed": true,
+              "minimum_fit_k": 4.585615592176619,
+              "heldout_data_preparation_max_index_error": 3.580361673049448e-15,
+              "prepared_data_points": 1011,
+              "csv": "Ag_1.csv",
+              "csv_sha256": "5d9c2ce65c532bf4b9915be95846d0b3cfd80fec92cea0541c31ae2cdbcca778"
+            },
+            {
+              "settings": {
+                "library_default": false,
+                "max coefficients": 8,
+                "tolerance": 0.0,
+                "imaginary weight": 10.0,
+                "make fit passive": 1,
+                "improve numerical stability": 1
+              },
+              "metrics": {
+                "max_n_error": 0.011861370596879528,
+                "max_k_error": 0.044529603052779976,
+                "rms_n_error": 0.003375560457142509,
+                "rms_k_error": 0.017454190420203165,
+                "minimum_fit_n": 0.14256596525403764,
+                "minimum_fit_k": 4.565172310131691,
+                "maximum_imaginary_permittivity_error": 0.2928213516668752,
+                "max_relative_complex_permittivity_error": 0.014768406845863538,
+                "max_relative_imaginary_permittivity_error": 0.03827535670365546,
+                "minimum_data_imaginary_permittivity": 1.3035136587541014,
+                "minimum_fit_imaginary_permittivity": 1.3185821816247125
+              },
+              "passivity_check_passed": true,
+              "minimum_fit_k": 4.565172310131691,
+              "heldout_data_preparation_max_index_error": 3.580361673049448e-15,
+              "prepared_data_points": 1011,
+              "csv": "Ag_2.csv",
+              "csv_sha256": "0caf3471735264c2c538ec55cf4535920202fb652522118a55273c340503a67a"
+            },
+            {
+              "settings": {
+                "library_default": false,
+                "max coefficients": 12,
+                "tolerance": 0.0,
+                "imaginary weight": 1.0,
+                "make fit passive": 1,
+                "improve numerical stability": 1
+              },
+              "metrics": {
+                "max_n_error": 0.026275327294639314,
+                "max_k_error": 0.0367686273755119,
+                "rms_n_error": 0.009982586140886446,
+                "rms_k_error": 0.011909489622399978,
+                "minimum_fit_n": 0.1175388861575812,
+                "minimum_fit_k": 4.581226617175575,
+                "maximum_imaginary_permittivity_error": 0.5144459847585061,
+                "max_relative_complex_permittivity_error": 0.01594095651238735,
+                "max_relative_imaginary_permittivity_error": 0.1806470035527955,
+                "minimum_data_imaginary_permittivity": 1.3035136587541014,
+                "minimum_fit_imaginary_permittivity": 1.0769445476365613
+              },
+              "passivity_check_passed": true,
+              "minimum_fit_k": 4.581226617175575,
+              "heldout_data_preparation_max_index_error": 3.580361673049448e-15,
+              "prepared_data_points": 1011,
+              "csv": "Ag_3.csv",
+              "csv_sha256": "a2d912ac57ee4612e9466393724ec6a1acf8da53bd73e87d947ef616f9950025"
+            },
+            {
+              "settings": {
+                "library_default": false,
+                "max coefficients": 12,
+                "tolerance": 0.0,
+                "imaginary weight": 10.0,
+                "make fit passive": 1,
+                "improve numerical stability": 1
+              },
+              "metrics": {
+                "max_n_error": 0.007378829598840397,
+                "max_k_error": 0.08716402387807154,
+                "rms_n_error": 0.0024970603106662832,
+                "rms_k_error": 0.02742132890602841,
+                "minimum_fit_n": 0.14313188377365899,
+                "minimum_fit_k": 4.505221104755302,
+                "maximum_imaginary_permittivity_error": 0.20356162555192014,
+                "max_relative_complex_permittivity_error": 0.036493481756432605,
+                "max_relative_imaginary_permittivity_error": 0.04935294488247417,
+                "minimum_data_imaginary_permittivity": 1.3035136587541014,
+                "minimum_fit_imaginary_permittivity": 1.2977208534840208
+              },
+              "passivity_check_passed": true,
+              "minimum_fit_k": 4.505221104755302,
+              "heldout_data_preparation_max_index_error": 3.580361673049448e-15,
+              "prepared_data_points": 1011,
+              "csv": "Ag_4.csv",
+              "csv_sha256": "642cd6c8db2cfcdd5bc1f3ba3dad2284feb50503818ae3c763e079030defe637"
+            }
+          ]
+        },
+        "references": [
+          "https://optics.ansys.com/hc/en-us/articles/360034915053-Tips-for-improving-the-quality-of-optical-material-fits",
+          "https://optics.ansys.com/hc/en-us/articles/360034930033-copymaterial-Script-command"
+        ],
+        "lumerical_version": "8.31.3633"
+      }
+    },
+    {
+      "experiment": "metal_fit_low_order_probe_20261012",
+      "report_sha256": "927cf51b37a1f4b7bd391adc5a9c1f6ba6f3d21efb42229c7c3dd6a789a2879a",
+      "report": {
+        "scope": "Fresh in-memory library copies only; no FSP loaded/saved, no solver run, no defaults edited.",
+        "band_nm": [
+          700.0,
+          1700.0
+        ],
+        "wavelength_points": 1000,
+        "device_validation_pending": true,
+        "resample_library_data": false,
+        "improve_numerical_stability": true,
+        "materials": {
+          "Au (Gold) - Palik": [
+            {
+              "settings": {
+                "library_default": true
+              },
+              "metrics": {
+                "max_n_error": 0.6558529804086315,
+                "max_k_error": 0.9026045749913916,
+                "rms_n_error": 0.3992581662516236,
+                "rms_k_error": 0.4472670236220598,
+                "minimum_fit_n": 1.9868680043950106e-08,
+                "minimum_fit_k": 4.250449039086406,
+                "maximum_imaginary_permittivity_error": 14.173032698570964,
+                "max_relative_complex_permittivity_error": 0.21516832482085965,
+                "max_relative_imaginary_permittivity_error": 0.9999998677081985,
+                "minimum_data_imaginary_permittivity": 1.2767353837037065,
+                "minimum_fit_imaginary_permittivity": 1.6890162400144594e-07
+              },
+              "passivity_check_passed": true,
+              "minimum_fit_k": 4.250449039086406,
+              "heldout_data_preparation_max_index_error": 0.0,
+              "prepared_data_points": null,
+              "csv": "Au_0.csv",
+              "csv_sha256": "33246479e3fd4e2bda40c5b150e3d3e183116245ef807c41217dc657628b1a99"
+            },
+            {
+              "settings": {
+                "library_default": false,
+                "max coefficients": 4,
+                "tolerance": 0.0,
+                "imaginary weight": 10.0,
+                "make fit passive": 1,
+                "improve numerical stability": 1
+              },
+              "metrics": {
+                "max_n_error": 0.07167605180835651,
+                "max_k_error": 0.9228062674763686,
+                "rms_n_error": 0.040750853189479505,
+                "rms_k_error": 0.46435867215696,
+                "minimum_fit_n": 0.18095394834385506,
+                "minimum_fit_k": 4.19478122308043,
+                "maximum_imaginary_permittivity_error": 0.6132629311028861,
+                "max_relative_complex_permittivity_error": 0.20618739210506323,
+                "max_relative_imaginary_permittivity_error": 0.27366260715216606,
+                "minimum_data_imaginary_permittivity": 1.2767353837037065,
+                "minimum_fit_imaginary_permittivity": 1.5181244495101387
+              },
+              "passivity_check_passed": true,
+              "minimum_fit_k": 4.19478122308043,
+              "heldout_data_preparation_max_index_error": 0.0,
+              "prepared_data_points": null,
+              "csv": "Au_1.csv",
+              "csv_sha256": "66353bd3b97b48191d056946a443861ebbbbd1e1a481a910691414f6d3a8764d"
+            },
+            {
+              "settings": {
+                "library_default": false,
+                "max coefficients": 4,
+                "tolerance": 0.0,
+                "imaginary weight": 100.0,
+                "make fit passive": 1,
+                "improve numerical stability": 1
+              },
+              "metrics": {
+                "max_n_error": 0.8751087359055311,
+                "max_k_error": 6.164233692842001,
+                "rms_n_error": 0.5455207564987997,
+                "rms_k_error": 4.7085060597018655,
+                "minimum_fit_n": 0.38458686195702996,
+                "minimum_fit_k": 1.6616663629822415,
+                "maximum_imaginary_permittivity_error": 0.5149094853210592,
+                "max_relative_complex_permittivity_error": 0.8580684924179831,
+                "max_relative_imaginary_permittivity_error": 0.08455747078137915,
+                "minimum_data_imaginary_permittivity": 1.2767353837037065,
+                "minimum_fit_imaginary_permittivity": 1.2781101043177827
+              },
+              "passivity_check_passed": true,
+              "minimum_fit_k": 1.6616663629822415,
+              "heldout_data_preparation_max_index_error": 0.0,
+              "prepared_data_points": null,
+              "csv": "Au_2.csv",
+              "csv_sha256": "d6e678be3c147629b66a8528cdde39a8279b6e03d1c5aa2adffe7497992e2f73"
+            },
+            {
+              "settings": {
+                "library_default": false,
+                "max coefficients": 6,
+                "tolerance": 0.0,
+                "imaginary weight": 10.0,
+                "make fit passive": 1,
+                "improve numerical stability": 1
+              },
+              "metrics": {
+                "max_n_error": 0.07167605180835651,
+                "max_k_error": 0.9228062674763686,
+                "rms_n_error": 0.040750853189479505,
+                "rms_k_error": 0.46435867215696,
+                "minimum_fit_n": 0.18095394834385506,
+                "minimum_fit_k": 4.19478122308043,
+                "maximum_imaginary_permittivity_error": 0.6132629311028861,
+                "max_relative_complex_permittivity_error": 0.20618739210506323,
+                "max_relative_imaginary_permittivity_error": 0.27366260715216606,
+                "minimum_data_imaginary_permittivity": 1.2767353837037065,
+                "minimum_fit_imaginary_permittivity": 1.5181244495101387
+              },
+              "passivity_check_passed": true,
+              "minimum_fit_k": 4.19478122308043,
+              "heldout_data_preparation_max_index_error": 0.0,
+              "prepared_data_points": null,
+              "csv": "Au_3.csv",
+              "csv_sha256": "66353bd3b97b48191d056946a443861ebbbbd1e1a481a910691414f6d3a8764d"
+            },
+            {
+              "settings": {
+                "library_default": false,
+                "max coefficients": 6,
+                "tolerance": 0.0,
+                "imaginary weight": 100.0,
+                "make fit passive": 1,
+                "improve numerical stability": 1
+              },
+              "metrics": {
+                "max_n_error": 0.07754053315635778,
+                "max_k_error": 1.4769630206516853,
+                "rms_n_error": 0.041744389923760096,
+                "rms_k_error": 0.8358889756979753,
+                "minimum_fit_n": 0.16349620752376132,
+                "minimum_fit_k": 3.986992877529231,
+                "maximum_imaginary_permittivity_error": 0.29887614274578844,
+                "max_relative_complex_permittivity_error": 0.3089383417186553,
+                "max_relative_imaginary_permittivity_error": 0.022167412473103443,
+                "minimum_data_imaginary_permittivity": 1.2767353837037065,
+                "minimum_fit_imaginary_permittivity": 1.3037164298005548
+              },
+              "passivity_check_passed": true,
+              "minimum_fit_k": 3.986992877529231,
+              "heldout_data_preparation_max_index_error": 0.0,
+              "prepared_data_points": null,
+              "csv": "Au_4.csv",
+              "csv_sha256": "12a945cb06c338b2c7184c7d4572e1f135cb1abe6301aacccd014221410bab7e"
+            },
+            {
+              "settings": {
+                "library_default": false,
+                "max coefficients": 7,
+                "tolerance": 0.0,
+                "imaginary weight": 10.0,
+                "make fit passive": 1,
+                "improve numerical stability": 1
+              },
+              "metrics": {
+                "max_n_error": 0.07167605180835651,
+                "max_k_error": 0.9228062674763686,
+                "rms_n_error": 0.040750853189479505,
+                "rms_k_error": 0.46435867215696,
+                "minimum_fit_n": 0.18095394834385506,
+                "minimum_fit_k": 4.19478122308043,
+                "maximum_imaginary_permittivity_error": 0.6132629311028861,
+                "max_relative_complex_permittivity_error": 0.20618739210506323,
+                "max_relative_imaginary_permittivity_error": 0.27366260715216606,
+                "minimum_data_imaginary_permittivity": 1.2767353837037065,
+                "minimum_fit_imaginary_permittivity": 1.5181244495101387
+              },
+              "passivity_check_passed": true,
+              "minimum_fit_k": 4.19478122308043,
+              "heldout_data_preparation_max_index_error": 0.0,
+              "prepared_data_points": null,
+              "csv": "Au_5.csv",
+              "csv_sha256": "66353bd3b97b48191d056946a443861ebbbbd1e1a481a910691414f6d3a8764d"
+            },
+            {
+              "settings": {
+                "library_default": false,
+                "max coefficients": 7,
+                "tolerance": 0.0,
+                "imaginary weight": 100.0,
+                "make fit passive": 1,
+                "improve numerical stability": 1
+              },
+              "metrics": {
+                "max_n_error": 0.07754053315635778,
+                "max_k_error": 1.4769630206516853,
+                "rms_n_error": 0.041744389923760096,
+                "rms_k_error": 0.8358889756979753,
+                "minimum_fit_n": 0.16349620752376132,
+                "minimum_fit_k": 3.986992877529231,
+                "maximum_imaginary_permittivity_error": 0.29887614274578844,
+                "max_relative_complex_permittivity_error": 0.3089383417186553,
+                "max_relative_imaginary_permittivity_error": 0.022167412473103443,
+                "minimum_data_imaginary_permittivity": 1.2767353837037065,
+                "minimum_fit_imaginary_permittivity": 1.3037164298005548
+              },
+              "passivity_check_passed": true,
+              "minimum_fit_k": 3.986992877529231,
+              "heldout_data_preparation_max_index_error": 0.0,
+              "prepared_data_points": null,
+              "csv": "Au_6.csv",
+              "csv_sha256": "12a945cb06c338b2c7184c7d4572e1f135cb1abe6301aacccd014221410bab7e"
+            },
+            {
+              "settings": {
+                "library_default": false,
+                "max coefficients": 10,
+                "tolerance": 0.0,
+                "imaginary weight": 10.0,
+                "make fit passive": 1,
+                "improve numerical stability": 1
+              },
+              "metrics": {
+                "max_n_error": 0.07167605180835651,
+                "max_k_error": 0.9228062674763686,
+                "rms_n_error": 0.040750853189479505,
+                "rms_k_error": 0.46435867215696,
+                "minimum_fit_n": 0.18095394834385506,
+                "minimum_fit_k": 4.19478122308043,
+                "maximum_imaginary_permittivity_error": 0.6132629311028861,
+                "max_relative_complex_permittivity_error": 0.20618739210506323,
+                "max_relative_imaginary_permittivity_error": 0.27366260715216606,
+                "minimum_data_imaginary_permittivity": 1.2767353837037065,
+                "minimum_fit_imaginary_permittivity": 1.5181244495101387
+              },
+              "passivity_check_passed": true,
+              "minimum_fit_k": 4.19478122308043,
+              "heldout_data_preparation_max_index_error": 0.0,
+              "prepared_data_points": null,
+              "csv": "Au_7.csv",
+              "csv_sha256": "66353bd3b97b48191d056946a443861ebbbbd1e1a481a910691414f6d3a8764d"
+            },
+            {
+              "settings": {
+                "library_default": false,
+                "max coefficients": 10,
+                "tolerance": 0.0,
+                "imaginary weight": 100.0,
+                "make fit passive": 1,
+                "improve numerical stability": 1
+              },
+              "metrics": {
+                "max_n_error": 0.047312886128579534,
+                "max_k_error": 0.9215484625822441,
+                "rms_n_error": 0.022507819240501506,
+                "rms_k_error": 0.49271335438381914,
+                "minimum_fit_n": 0.15842588940573368,
+                "minimum_fit_k": 4.12530348145665,
+                "maximum_imaginary_permittivity_error": 0.20015843801136057,
+                "max_relative_complex_permittivity_error": 0.20146857990216394,
+                "max_relative_imaginary_permittivity_error": 0.025612710755434153,
+                "minimum_data_imaginary_permittivity": 1.2767353837037065,
+                "minimum_fit_imaginary_permittivity": 1.3071097462366787
+              },
+              "passivity_check_passed": true,
+              "minimum_fit_k": 4.12530348145665,
+              "heldout_data_preparation_max_index_error": 0.0,
+              "prepared_data_points": null,
+              "csv": "Au_8.csv",
+              "csv_sha256": "cbd3bb2a67df10e0141f8b9e7c401669c7f3905e85484fb944b02ebe3de8bb6e"
+            }
+          ],
+          "Ag (Silver) - Palik (0-2um)": [
+            {
+              "settings": {
+                "library_default": true
+              },
+              "metrics": {
+                "max_n_error": 0.019884433599219153,
+                "max_k_error": 0.06553763510841826,
+                "rms_n_error": 0.009902902251105968,
+                "rms_k_error": 0.029949713543357917,
+                "minimum_fit_n": 0.1309120989723354,
+                "minimum_fit_k": 4.554481360092321,
+                "maximum_imaginary_permittivity_error": 0.4354192771747538,
+                "max_relative_complex_permittivity_error": 0.018365984181230643,
+                "max_relative_imaginary_permittivity_error": 0.10712199616837562,
+                "minimum_data_imaginary_permittivity": 1.3035136587541014,
+                "minimum_fit_imaginary_permittivity": 1.1924734291601256
+              },
+              "passivity_check_passed": true,
+              "minimum_fit_k": 4.554481360092321,
+              "heldout_data_preparation_max_index_error": 0.0,
+              "prepared_data_points": null,
+              "csv": "Ag_0.csv",
+              "csv_sha256": "9f6f3f6bb0d8541c325c8007d842520a2e611b65182030530b14e8a6be8a5344"
+            },
+            {
+              "settings": {
+                "library_default": false,
+                "max coefficients": 4,
+                "tolerance": 0.0,
+                "imaginary weight": 10.0,
+                "make fit passive": 1,
+                "improve numerical stability": 1
+              },
+              "metrics": {
+                "max_n_error": 0.019574696582942752,
+                "max_k_error": 0.0841265420224655,
+                "rms_n_error": 0.007860124284630659,
+                "rms_k_error": 0.03580535934229424,
+                "minimum_fit_n": 0.1327370763596927,
+                "minimum_fit_k": 4.587177164002199,
+                "maximum_imaginary_permittivity_error": 0.5674917449765928,
+                "max_relative_complex_permittivity_error": 0.016753564721683104,
+                "max_relative_imaginary_permittivity_error": 0.08589028482841846,
+                "minimum_data_imaginary_permittivity": 1.3035136587541014,
+                "minimum_fit_imaginary_permittivity": 1.217776970987197
+              },
+              "passivity_check_passed": true,
+              "minimum_fit_k": 4.587177164002199,
+              "heldout_data_preparation_max_index_error": 0.0,
+              "prepared_data_points": null,
+              "csv": "Ag_1.csv",
+              "csv_sha256": "629b56764e68cb56f64c7206b946364153957789cb960452e027eb404886804c"
+            },
+            {
+              "settings": {
+                "library_default": false,
+                "max coefficients": 4,
+                "tolerance": 0.0,
+                "imaginary weight": 100.0,
+                "make fit passive": 1,
+                "improve numerical stability": 1
+              },
+              "metrics": {
+                "max_n_error": 0.02938348378961919,
+                "max_k_error": 0.32223014235803404,
+                "rms_n_error": 0.011989825033860957,
+                "rms_k_error": 0.18117574760952743,
+                "minimum_fit_n": 0.13108878216559014,
+                "minimum_fit_k": 4.379267275233856,
+                "maximum_imaginary_permittivity_error": 0.3745679758767846,
+                "max_relative_complex_permittivity_error": 0.0916959548047389,
+                "max_relative_imaginary_permittivity_error": 0.12794499143854104,
+                "minimum_data_imaginary_permittivity": 1.3035136587541014,
+                "minimum_fit_imaginary_permittivity": 1.1481456277760569
+              },
+              "passivity_check_passed": true,
+              "minimum_fit_k": 4.379267275233856,
+              "heldout_data_preparation_max_index_error": 0.0,
+              "prepared_data_points": null,
+              "csv": "Ag_2.csv",
+              "csv_sha256": "9ffc52fabd2176cee4d425c6b50957f29c9d73d7fbcf0219b7bf9df49d3b3bd0"
+            },
+            {
+              "settings": {
+                "library_default": false,
+                "max coefficients": 6,
+                "tolerance": 0.0,
+                "imaginary weight": 10.0,
+                "make fit passive": 1,
+                "improve numerical stability": 1
+              },
+              "metrics": {
+                "max_n_error": 0.019574696582942752,
+                "max_k_error": 0.0841265420224655,
+                "rms_n_error": 0.007860124284630659,
+                "rms_k_error": 0.03580535934229424,
+                "minimum_fit_n": 0.1327370763596927,
+                "minimum_fit_k": 4.587177164002199,
+                "maximum_imaginary_permittivity_error": 0.5674917449765928,
+                "max_relative_complex_permittivity_error": 0.016753564721683104,
+                "max_relative_imaginary_permittivity_error": 0.08589028482841846,
+                "minimum_data_imaginary_permittivity": 1.3035136587541014,
+                "minimum_fit_imaginary_permittivity": 1.217776970987197
+              },
+              "passivity_check_passed": true,
+              "minimum_fit_k": 4.587177164002199,
+              "heldout_data_preparation_max_index_error": 0.0,
+              "prepared_data_points": null,
+              "csv": "Ag_3.csv",
+              "csv_sha256": "629b56764e68cb56f64c7206b946364153957789cb960452e027eb404886804c"
+            },
+            {
+              "settings": {
+                "library_default": false,
+                "max coefficients": 6,
+                "tolerance": 0.0,
+                "imaginary weight": 100.0,
+                "make fit passive": 1,
+                "improve numerical stability": 1
+              },
+              "metrics": {
+                "max_n_error": 0.02938348378961919,
+                "max_k_error": 0.32223014235803404,
+                "rms_n_error": 0.011989825033860957,
+                "rms_k_error": 0.18117574760952743,
+                "minimum_fit_n": 0.13108878216559014,
+                "minimum_fit_k": 4.379267275233856,
+                "maximum_imaginary_permittivity_error": 0.3745679758767846,
+                "max_relative_complex_permittivity_error": 0.0916959548047389,
+                "max_relative_imaginary_permittivity_error": 0.12794499143854104,
+                "minimum_data_imaginary_permittivity": 1.3035136587541014,
+                "minimum_fit_imaginary_permittivity": 1.1481456277760569
+              },
+              "passivity_check_passed": true,
+              "minimum_fit_k": 4.379267275233856,
+              "heldout_data_preparation_max_index_error": 0.0,
+              "prepared_data_points": null,
+              "csv": "Ag_4.csv",
+              "csv_sha256": "9ffc52fabd2176cee4d425c6b50957f29c9d73d7fbcf0219b7bf9df49d3b3bd0"
+            },
+            {
+              "settings": {
+                "library_default": false,
+                "max coefficients": 7,
+                "tolerance": 0.0,
+                "imaginary weight": 10.0,
+                "make fit passive": 1,
+                "improve numerical stability": 1
+              },
+              "metrics": {
+                "max_n_error": 0.019574696582942752,
+                "max_k_error": 0.0841265420224655,
+                "rms_n_error": 0.007860124284630659,
+                "rms_k_error": 0.03580535934229424,
+                "minimum_fit_n": 0.1327370763596927,
+                "minimum_fit_k": 4.587177164002199,
+                "maximum_imaginary_permittivity_error": 0.5674917449765928,
+                "max_relative_complex_permittivity_error": 0.016753564721683104,
+                "max_relative_imaginary_permittivity_error": 0.08589028482841846,
+                "minimum_data_imaginary_permittivity": 1.3035136587541014,
+                "minimum_fit_imaginary_permittivity": 1.217776970987197
+              },
+              "passivity_check_passed": true,
+              "minimum_fit_k": 4.587177164002199,
+              "heldout_data_preparation_max_index_error": 0.0,
+              "prepared_data_points": null,
+              "csv": "Ag_5.csv",
+              "csv_sha256": "629b56764e68cb56f64c7206b946364153957789cb960452e027eb404886804c"
+            },
+            {
+              "settings": {
+                "library_default": false,
+                "max coefficients": 7,
+                "tolerance": 0.0,
+                "imaginary weight": 100.0,
+                "make fit passive": 1,
+                "improve numerical stability": 1
+              },
+              "metrics": {
+                "max_n_error": 0.02938348378961919,
+                "max_k_error": 0.32223014235803404,
+                "rms_n_error": 0.011989825033860957,
+                "rms_k_error": 0.18117574760952743,
+                "minimum_fit_n": 0.13108878216559014,
+                "minimum_fit_k": 4.379267275233856,
+                "maximum_imaginary_permittivity_error": 0.3745679758767846,
+                "max_relative_complex_permittivity_error": 0.0916959548047389,
+                "max_relative_imaginary_permittivity_error": 0.12794499143854104,
+                "minimum_data_imaginary_permittivity": 1.3035136587541014,
+                "minimum_fit_imaginary_permittivity": 1.1481456277760569
+              },
+              "passivity_check_passed": true,
+              "minimum_fit_k": 4.379267275233856,
+              "heldout_data_preparation_max_index_error": 0.0,
+              "prepared_data_points": null,
+              "csv": "Ag_6.csv",
+              "csv_sha256": "9ffc52fabd2176cee4d425c6b50957f29c9d73d7fbcf0219b7bf9df49d3b3bd0"
+            },
+            {
+              "settings": {
+                "library_default": false,
+                "max coefficients": 10,
+                "tolerance": 0.0,
+                "imaginary weight": 10.0,
+                "make fit passive": 1,
+                "improve numerical stability": 1
+              },
+              "metrics": {
+                "max_n_error": 0.019574696582942752,
+                "max_k_error": 0.0841265420224655,
+                "rms_n_error": 0.007860124284630659,
+                "rms_k_error": 0.03580535934229424,
+                "minimum_fit_n": 0.1327370763596927,
+                "minimum_fit_k": 4.587177164002199,
+                "maximum_imaginary_permittivity_error": 0.5674917449765928,
+                "max_relative_complex_permittivity_error": 0.016753564721683104,
+                "max_relative_imaginary_permittivity_error": 0.08589028482841846,
+                "minimum_data_imaginary_permittivity": 1.3035136587541014,
+                "minimum_fit_imaginary_permittivity": 1.217776970987197
+              },
+              "passivity_check_passed": true,
+              "minimum_fit_k": 4.587177164002199,
+              "heldout_data_preparation_max_index_error": 0.0,
+              "prepared_data_points": null,
+              "csv": "Ag_7.csv",
+              "csv_sha256": "629b56764e68cb56f64c7206b946364153957789cb960452e027eb404886804c"
+            },
+            {
+              "settings": {
+                "library_default": false,
+                "max coefficients": 10,
+                "tolerance": 0.0,
+                "imaginary weight": 100.0,
+                "make fit passive": 1,
+                "improve numerical stability": 1
+              },
+              "metrics": {
+                "max_n_error": 0.02938348378961919,
+                "max_k_error": 0.32223014235803404,
+                "rms_n_error": 0.011989825033860957,
+                "rms_k_error": 0.18117574760952743,
+                "minimum_fit_n": 0.13108878216559014,
+                "minimum_fit_k": 4.379267275233856,
+                "maximum_imaginary_permittivity_error": 0.3745679758767846,
+                "max_relative_complex_permittivity_error": 0.0916959548047389,
+                "max_relative_imaginary_permittivity_error": 0.12794499143854104,
+                "minimum_data_imaginary_permittivity": 1.3035136587541014,
+                "minimum_fit_imaginary_permittivity": 1.1481456277760569
+              },
+              "passivity_check_passed": true,
+              "minimum_fit_k": 4.379267275233856,
+              "heldout_data_preparation_max_index_error": 0.0,
+              "prepared_data_points": null,
+              "csv": "Ag_8.csv",
+              "csv_sha256": "9ffc52fabd2176cee4d425c6b50957f29c9d73d7fbcf0219b7bf9df49d3b3bd0"
+            }
+          ]
+        },
+        "references": [
+          "https://optics.ansys.com/hc/en-us/articles/360034915053-Tips-for-improving-the-quality-of-optical-material-fits",
+          "https://optics.ansys.com/hc/en-us/articles/360034930033-copymaterial-Script-command"
+        ],
+        "lumerical_version": "8.31.3633"
+      }
+    },
+    {
+      "experiment": "metal_fit_stability_probe_20261012",
+      "report_sha256": "3dff6ff2d52395dd395f701e28279d73832ddf57b6dc99e0ad57d65ebb13be05",
+      "report": {
+        "scope": "Fresh in-memory library copies only; no FSP loaded/saved, no solver run, no defaults edited.",
+        "band_nm": [
+          700.0,
+          1700.0
+        ],
+        "wavelength_points": 1000,
+        "device_validation_pending": true,
+        "resample_library_data": false,
+        "improve_numerical_stability": false,
+        "materials": {
+          "Au (Gold) - Palik": [
+            {
+              "settings": {
+                "library_default": true
+              },
+              "metrics": {
+                "max_n_error": 0.6558529804086315,
+                "max_k_error": 0.9026045749913916,
+                "rms_n_error": 0.3992581662516236,
+                "rms_k_error": 0.4472670236220598,
+                "minimum_fit_n": 1.9868680043950106e-08,
+                "minimum_fit_k": 4.250449039086406,
+                "maximum_imaginary_permittivity_error": 14.173032698570964,
+                "max_relative_complex_permittivity_error": 0.21516832482085965,
+                "max_relative_imaginary_permittivity_error": 0.9999998677081985,
+                "minimum_data_imaginary_permittivity": 1.2767353837037065,
+                "minimum_fit_imaginary_permittivity": 1.6890162400144594e-07
+              },
+              "passivity_check_passed": true,
+              "minimum_fit_k": 4.250449039086406,
+              "heldout_data_preparation_max_index_error": 0.0,
+              "prepared_data_points": null,
+              "csv": "Au_0.csv",
+              "csv_sha256": "33246479e3fd4e2bda40c5b150e3d3e183116245ef807c41217dc657628b1a99"
+            },
+            {
+              "settings": {
+                "library_default": false,
+                "max coefficients": 4,
+                "tolerance": 0.0,
+                "imaginary weight": 1.0,
+                "make fit passive": 1,
+                "improve numerical stability": 0
+              },
+              "metrics": {
+                "max_n_error": 0.6558529747483223,
+                "max_k_error": 0.9359146670050267,
+                "rms_n_error": 0.3992581647556307,
+                "rms_k_error": 0.4673899482657711,
+                "minimum_fit_n": 1.9115280362405795e-08,
+                "minimum_fit_k": 4.271146411035897,
+                "maximum_imaginary_permittivity_error": 14.173032562184675,
+                "max_relative_complex_permittivity_error": 0.22191017144120406,
+                "max_relative_imaginary_permittivity_error": 0.9999998721048039,
+                "minimum_data_imaginary_permittivity": 1.2767353837037065,
+                "minimum_fit_imaginary_permittivity": 1.6328832223166894e-07
+              },
+              "passivity_check_passed": true,
+              "minimum_fit_k": 4.271146411035897,
+              "heldout_data_preparation_max_index_error": 0.0,
+              "prepared_data_points": null,
+              "csv": "Au_1.csv",
+              "csv_sha256": "b1085e812569772d537c162e2f7814bf9ecdf5e05dd6a8e315fd71bfd8470ed1"
+            },
+            {
+              "settings": {
+                "library_default": false,
+                "max coefficients": 4,
+                "tolerance": 0.0,
+                "imaginary weight": 10.0,
+                "make fit passive": 1,
+                "improve numerical stability": 0
+              },
+              "metrics": {
+                "max_n_error": 0.06132076858002464,
+                "max_k_error": 0.8445261470011234,
+                "rms_n_error": 0.032491402682502855,
+                "rms_k_error": 0.4509598624554135,
+                "minimum_fit_n": 0.20098404984477095,
+                "minimum_fit_k": 4.261804438863124,
+                "maximum_imaginary_permittivity_error": 0.8167677848807076,
+                "max_relative_complex_permittivity_error": 0.19053591642614243,
+                "max_relative_imaginary_permittivity_error": 0.3479686641442559,
+                "minimum_data_imaginary_permittivity": 1.2767353837037065,
+                "minimum_fit_imaginary_permittivity": 1.7131094315382644
+              },
+              "passivity_check_passed": true,
+              "minimum_fit_k": 4.261804438863124,
+              "heldout_data_preparation_max_index_error": 0.0,
+              "prepared_data_points": null,
+              "csv": "Au_2.csv",
+              "csv_sha256": "2bed1f8e55fad1f9d0b2e099697033ce1cb958dbde80f4876b05e08e5590d75d"
+            },
+            {
+              "settings": {
+                "library_default": false,
+                "max coefficients": 6,
+                "tolerance": 0.0,
+                "imaginary weight": 1.0,
+                "make fit passive": 1,
+                "improve numerical stability": 0
+              },
+              "metrics": {
+                "max_n_error": 0.6558529747483223,
+                "max_k_error": 0.9359146670050267,
+                "rms_n_error": 0.3992581647556307,
+                "rms_k_error": 0.4673899482657711,
+                "minimum_fit_n": 1.9115280362405795e-08,
+                "minimum_fit_k": 4.271146411035897,
+                "maximum_imaginary_permittivity_error": 14.173032562184675,
+                "max_relative_complex_permittivity_error": 0.22191017144120406,
+                "max_relative_imaginary_permittivity_error": 0.9999998721048039,
+                "minimum_data_imaginary_permittivity": 1.2767353837037065,
+                "minimum_fit_imaginary_permittivity": 1.6328832223166894e-07
+              },
+              "passivity_check_passed": true,
+              "minimum_fit_k": 4.271146411035897,
+              "heldout_data_preparation_max_index_error": 0.0,
+              "prepared_data_points": null,
+              "csv": "Au_3.csv",
+              "csv_sha256": "b1085e812569772d537c162e2f7814bf9ecdf5e05dd6a8e315fd71bfd8470ed1"
+            },
+            {
+              "settings": {
+                "library_default": false,
+                "max coefficients": 6,
+                "tolerance": 0.0,
+                "imaginary weight": 10.0,
+                "make fit passive": 1,
+                "improve numerical stability": 0
+              },
+              "metrics": {
+                "max_n_error": 0.06132076858002464,
+                "max_k_error": 0.8445261470011234,
+                "rms_n_error": 0.032491402682502855,
+                "rms_k_error": 0.4509598624554135,
+                "minimum_fit_n": 0.20098404984477095,
+                "minimum_fit_k": 4.261804438863124,
+                "maximum_imaginary_permittivity_error": 0.8167677848807076,
+                "max_relative_complex_permittivity_error": 0.19053591642614243,
+                "max_relative_imaginary_permittivity_error": 0.3479686641442559,
+                "minimum_data_imaginary_permittivity": 1.2767353837037065,
+                "minimum_fit_imaginary_permittivity": 1.7131094315382644
+              },
+              "passivity_check_passed": true,
+              "minimum_fit_k": 4.261804438863124,
+              "heldout_data_preparation_max_index_error": 0.0,
+              "prepared_data_points": null,
+              "csv": "Au_4.csv",
+              "csv_sha256": "2bed1f8e55fad1f9d0b2e099697033ce1cb958dbde80f4876b05e08e5590d75d"
+            },
+            {
+              "settings": {
+                "library_default": false,
+                "max coefficients": 8,
+                "tolerance": 0.0,
+                "imaginary weight": 1.0,
+                "make fit passive": 1,
+                "improve numerical stability": 0
+              },
+              "metrics": {
+                "max_n_error": 0.6558529747483223,
+                "max_k_error": 0.9359146670050267,
+                "rms_n_error": 0.3992581647556307,
+                "rms_k_error": 0.4673899482657711,
+                "minimum_fit_n": 1.9115280362405795e-08,
+                "minimum_fit_k": 4.271146411035897,
+                "maximum_imaginary_permittivity_error": 14.173032562184675,
+                "max_relative_complex_permittivity_error": 0.22191017144120406,
+                "max_relative_imaginary_permittivity_error": 0.9999998721048039,
+                "minimum_data_imaginary_permittivity": 1.2767353837037065,
+                "minimum_fit_imaginary_permittivity": 1.6328832223166894e-07
+              },
+              "passivity_check_passed": true,
+              "minimum_fit_k": 4.271146411035897,
+              "heldout_data_preparation_max_index_error": 0.0,
+              "prepared_data_points": null,
+              "csv": "Au_5.csv",
+              "csv_sha256": "b1085e812569772d537c162e2f7814bf9ecdf5e05dd6a8e315fd71bfd8470ed1"
+            },
+            {
+              "settings": {
+                "library_default": false,
+                "max coefficients": 8,
+                "tolerance": 0.0,
+                "imaginary weight": 10.0,
+                "make fit passive": 1,
+                "improve numerical stability": 0
+              },
+              "metrics": {
+                "max_n_error": 0.06132076858002464,
+                "max_k_error": 0.8445261470011234,
+                "rms_n_error": 0.032491402682502855,
+                "rms_k_error": 0.4509598624554135,
+                "minimum_fit_n": 0.20098404984477095,
+                "minimum_fit_k": 4.261804438863124,
+                "maximum_imaginary_permittivity_error": 0.8167677848807076,
+                "max_relative_complex_permittivity_error": 0.19053591642614243,
+                "max_relative_imaginary_permittivity_error": 0.3479686641442559,
+                "minimum_data_imaginary_permittivity": 1.2767353837037065,
+                "minimum_fit_imaginary_permittivity": 1.7131094315382644
+              },
+              "passivity_check_passed": true,
+              "minimum_fit_k": 4.261804438863124,
+              "heldout_data_preparation_max_index_error": 0.0,
+              "prepared_data_points": null,
+              "csv": "Au_6.csv",
+              "csv_sha256": "2bed1f8e55fad1f9d0b2e099697033ce1cb958dbde80f4876b05e08e5590d75d"
+            },
+            {
+              "settings": {
+                "library_default": false,
+                "max coefficients": 12,
+                "tolerance": 0.0,
+                "imaginary weight": 1.0,
+                "make fit passive": 1,
+                "improve numerical stability": 0
+              },
+              "metrics": null,
+              "passivity_check_passed": false,
+              "minimum_fit_k": -8.076255240122793,
+              "heldout_data_preparation_max_index_error": 0.0,
+              "prepared_data_points": null,
+              "csv": "Au_7.csv",
+              "csv_sha256": "3259ad6050e514dfb50444264761c10c48318c80cf6060d22f894714967c5f1b"
+            },
+            {
+              "settings": {
+                "library_default": false,
+                "max coefficients": 12,
+                "tolerance": 0.0,
+                "imaginary weight": 10.0,
+                "make fit passive": 1,
+                "improve numerical stability": 0
+              },
+              "metrics": null,
+              "passivity_check_passed": false,
+              "minimum_fit_k": -7.823628470250947,
+              "heldout_data_preparation_max_index_error": 0.0,
+              "prepared_data_points": null,
+              "csv": "Au_8.csv",
+              "csv_sha256": "e39d4e24c5427956938044d3c65c26c05338f29f9ed39fcc62e57e747d18fd21"
+            }
+          ],
+          "Ag (Silver) - Palik (0-2um)": [
+            {
+              "settings": {
+                "library_default": true
+              },
+              "metrics": {
+                "max_n_error": 0.019884433599219153,
+                "max_k_error": 0.06553763510841826,
+                "rms_n_error": 0.009902902251105968,
+                "rms_k_error": 0.029949713543357917,
+                "minimum_fit_n": 0.1309120989723354,
+                "minimum_fit_k": 4.554481360092321,
+                "maximum_imaginary_permittivity_error": 0.4354192771747538,
+                "max_relative_complex_permittivity_error": 0.018365984181230643,
+                "max_relative_imaginary_permittivity_error": 0.10712199616837562,
+                "minimum_data_imaginary_permittivity": 1.3035136587541014,
+                "minimum_fit_imaginary_permittivity": 1.1924734291601256
+              },
+              "passivity_check_passed": true,
+              "minimum_fit_k": 4.554481360092321,
+              "heldout_data_preparation_max_index_error": 0.0,
+              "prepared_data_points": null,
+              "csv": "Ag_0.csv",
+              "csv_sha256": "9f6f3f6bb0d8541c325c8007d842520a2e611b65182030530b14e8a6be8a5344"
+            },
+            {
+              "settings": {
+                "library_default": false,
+                "max coefficients": 4,
+                "tolerance": 0.0,
+                "imaginary weight": 1.0,
+                "make fit passive": 1,
+                "improve numerical stability": 0
+              },
+              "metrics": {
+                "max_n_error": 0.018122139167923212,
+                "max_k_error": 0.07022915591126377,
+                "rms_n_error": 0.00847617580931877,
+                "rms_k_error": 0.033487920469969706,
+                "minimum_fit_n": 0.136983053523142,
+                "minimum_fit_k": 4.6055919374538465,
+                "maximum_imaginary_permittivity_error": 0.31225182922604944,
+                "max_relative_complex_permittivity_error": 0.022253713438860206,
+                "max_relative_imaginary_permittivity_error": 0.09957734831426007,
+                "minimum_data_imaginary_permittivity": 1.3035136587541014,
+                "minimum_fit_imaginary_permittivity": 1.261776093747983
+              },
+              "passivity_check_passed": true,
+              "minimum_fit_k": 4.6055919374538465,
+              "heldout_data_preparation_max_index_error": 0.0,
+              "prepared_data_points": null,
+              "csv": "Ag_1.csv",
+              "csv_sha256": "24cda1a039d98f5f87481f0d7a372772d72ec3f155817f99b99e081a5c5ee4c1"
+            },
+            {
+              "settings": {
+                "library_default": false,
+                "max coefficients": 4,
+                "tolerance": 0.0,
+                "imaginary weight": 10.0,
+                "make fit passive": 1,
+                "improve numerical stability": 0
+              },
+              "metrics": {
+                "max_n_error": 0.01850296888409142,
+                "max_k_error": 0.09693147208470876,
+                "rms_n_error": 0.007540211423175642,
+                "rms_k_error": 0.04493920457745085,
+                "minimum_fit_n": 0.13472905593006895,
+                "minimum_fit_k": 4.627942377364872,
+                "maximum_imaginary_permittivity_error": 0.5519170410538266,
+                "max_relative_complex_permittivity_error": 0.03224171902128893,
+                "max_relative_imaginary_permittivity_error": 0.0852960810434838,
+                "minimum_data_imaginary_permittivity": 1.3035136587541014,
+                "minimum_fit_imaginary_permittivity": 1.2470366148022562
+              },
+              "passivity_check_passed": true,
+              "minimum_fit_k": 4.627942377364872,
+              "heldout_data_preparation_max_index_error": 0.0,
+              "prepared_data_points": null,
+              "csv": "Ag_2.csv",
+              "csv_sha256": "5bc1012ebd023fd9a33331ebfbf28cd1b634b29d2b5dd93267f6400d221061ea"
+            },
+            {
+              "settings": {
+                "library_default": false,
+                "max coefficients": 6,
+                "tolerance": 0.0,
+                "imaginary weight": 1.0,
+                "make fit passive": 1,
+                "improve numerical stability": 0
+              },
+              "metrics": {
+                "max_n_error": 0.025618827620173007,
+                "max_k_error": 0.07402512582176257,
+                "rms_n_error": 0.007812011272954762,
+                "rms_k_error": 0.03156348886276965,
+                "minimum_fit_n": 0.13741909676107747,
+                "minimum_fit_k": 4.590706219879807,
+                "maximum_imaginary_permittivity_error": 0.34952610098467396,
+                "max_relative_complex_permittivity_error": 0.019173553791210413,
+                "max_relative_imaginary_permittivity_error": 0.188171707936866,
+                "minimum_data_imaginary_permittivity": 1.3035136587541014,
+                "minimum_fit_imaginary_permittivity": 1.4490288443838004
+              },
+              "passivity_check_passed": true,
+              "minimum_fit_k": 4.590706219879807,
+              "heldout_data_preparation_max_index_error": 0.0,
+              "prepared_data_points": null,
+              "csv": "Ag_3.csv",
+              "csv_sha256": "e92ed3c8f537925d0c1240bd176773b523ecc4a74667beaa3c994e03582be840"
+            },
+            {
+              "settings": {
+                "library_default": false,
+                "max coefficients": 6,
+                "tolerance": 0.0,
+                "imaginary weight": 10.0,
+                "make fit passive": 1,
+                "improve numerical stability": 0
+              },
+              "metrics": {
+                "max_n_error": 0.01471638651538909,
+                "max_k_error": 0.09038684707045253,
+                "rms_n_error": 0.007569651979530322,
+                "rms_k_error": 0.038752793624362944,
+                "minimum_fit_n": 0.14205954144433502,
+                "minimum_fit_k": 4.501960120826336,
+                "maximum_imaginary_permittivity_error": 0.43577130711294565,
+                "max_relative_complex_permittivity_error": 0.037855065513713204,
+                "max_relative_imaginary_permittivity_error": 0.05804292815559336,
+                "minimum_data_imaginary_permittivity": 1.3035136587541014,
+                "minimum_fit_imaginary_permittivity": 1.2839206125144227
+              },
+              "passivity_check_passed": true,
+              "minimum_fit_k": 4.501960120826336,
+              "heldout_data_preparation_max_index_error": 0.0,
+              "prepared_data_points": null,
+              "csv": "Ag_4.csv",
+              "csv_sha256": "c0cab24bc94fe9faf901d3104d1aa102b358ccc168b0db264ca114de2ca43bd7"
+            },
+            {
+              "settings": {
+                "library_default": false,
+                "max coefficients": 8,
+                "tolerance": 0.0,
+                "imaginary weight": 1.0,
+                "make fit passive": 1,
+                "improve numerical stability": 0
+              },
+              "metrics": {
+                "max_n_error": 0.025618827620173007,
+                "max_k_error": 0.07402512582176257,
+                "rms_n_error": 0.007812011272954762,
+                "rms_k_error": 0.03156348886276965,
+                "minimum_fit_n": 0.13741909676107747,
+                "minimum_fit_k": 4.590706219879807,
+                "maximum_imaginary_permittivity_error": 0.34952610098467396,
+                "max_relative_complex_permittivity_error": 0.019173553791210413,
+                "max_relative_imaginary_permittivity_error": 0.188171707936866,
+                "minimum_data_imaginary_permittivity": 1.3035136587541014,
+                "minimum_fit_imaginary_permittivity": 1.4490288443838004
+              },
+              "passivity_check_passed": true,
+              "minimum_fit_k": 4.590706219879807,
+              "heldout_data_preparation_max_index_error": 0.0,
+              "prepared_data_points": null,
+              "csv": "Ag_5.csv",
+              "csv_sha256": "e92ed3c8f537925d0c1240bd176773b523ecc4a74667beaa3c994e03582be840"
+            },
+            {
+              "settings": {
+                "library_default": false,
+                "max coefficients": 8,
+                "tolerance": 0.0,
+                "imaginary weight": 10.0,
+                "make fit passive": 1,
+                "improve numerical stability": 0
+              },
+              "metrics": {
+                "max_n_error": 0.01471638651538909,
+                "max_k_error": 0.09038684707045253,
+                "rms_n_error": 0.007569651979530322,
+                "rms_k_error": 0.038752793624362944,
+                "minimum_fit_n": 0.14205954144433502,
+                "minimum_fit_k": 4.501960120826336,
+                "maximum_imaginary_permittivity_error": 0.43577130711294565,
+                "max_relative_complex_permittivity_error": 0.037855065513713204,
+                "max_relative_imaginary_permittivity_error": 0.05804292815559336,
+                "minimum_data_imaginary_permittivity": 1.3035136587541014,
+                "minimum_fit_imaginary_permittivity": 1.2839206125144227
+              },
+              "passivity_check_passed": true,
+              "minimum_fit_k": 4.501960120826336,
+              "heldout_data_preparation_max_index_error": 0.0,
+              "prepared_data_points": null,
+              "csv": "Ag_6.csv",
+              "csv_sha256": "c0cab24bc94fe9faf901d3104d1aa102b358ccc168b0db264ca114de2ca43bd7"
+            },
+            {
+              "settings": {
+                "library_default": false,
+                "max coefficients": 12,
+                "tolerance": 0.0,
+                "imaginary weight": 1.0,
+                "make fit passive": 1,
+                "improve numerical stability": 0
+              },
+              "metrics": {
+                "max_n_error": 0.025618827620173007,
+                "max_k_error": 0.07402512582176257,
+                "rms_n_error": 0.007812011272954762,
+                "rms_k_error": 0.03156348886276965,
+                "minimum_fit_n": 0.13741909676107747,
+                "minimum_fit_k": 4.590706219879807,
+                "maximum_imaginary_permittivity_error": 0.34952610098467396,
+                "max_relative_complex_permittivity_error": 0.019173553791210413,
+                "max_relative_imaginary_permittivity_error": 0.188171707936866,
+                "minimum_data_imaginary_permittivity": 1.3035136587541014,
+                "minimum_fit_imaginary_permittivity": 1.4490288443838004
+              },
+              "passivity_check_passed": true,
+              "minimum_fit_k": 4.590706219879807,
+              "heldout_data_preparation_max_index_error": 0.0,
+              "prepared_data_points": null,
+              "csv": "Ag_7.csv",
+              "csv_sha256": "e92ed3c8f537925d0c1240bd176773b523ecc4a74667beaa3c994e03582be840"
+            },
+            {
+              "settings": {
+                "library_default": false,
+                "max coefficients": 12,
+                "tolerance": 0.0,
+                "imaginary weight": 10.0,
+                "make fit passive": 1,
+                "improve numerical stability": 0
+              },
+              "metrics": {
+                "max_n_error": 0.01471638651538909,
+                "max_k_error": 0.09038684707045253,
+                "rms_n_error": 0.007569651979530322,
+                "rms_k_error": 0.038752793624362944,
+                "minimum_fit_n": 0.14205954144433502,
+                "minimum_fit_k": 4.501960120826336,
+                "maximum_imaginary_permittivity_error": 0.43577130711294565,
+                "max_relative_complex_permittivity_error": 0.037855065513713204,
+                "max_relative_imaginary_permittivity_error": 0.05804292815559336,
+                "minimum_data_imaginary_permittivity": 1.3035136587541014,
+                "minimum_fit_imaginary_permittivity": 1.2839206125144227
+              },
+              "passivity_check_passed": true,
+              "minimum_fit_k": 4.501960120826336,
+              "heldout_data_preparation_max_index_error": 0.0,
+              "prepared_data_points": null,
+              "csv": "Ag_8.csv",
+              "csv_sha256": "c0cab24bc94fe9faf901d3104d1aa102b358ccc168b0db264ca114de2ca43bd7"
+            }
+          ]
+        },
+        "references": [
+          "https://optics.ansys.com/hc/en-us/articles/360034915053-Tips-for-improving-the-quality-of-optical-material-fits",
+          "https://optics.ansys.com/hc/en-us/articles/360034930033-copymaterial-Script-command"
+        ],
+        "lumerical_version": "8.31.3633"
+      }
+    },
+    {
+      "experiment": "metal_fit_crc_probe_20261012",
+      "report_sha256": "24cc81aea882ef3a891aed3ae08db9836da062548f5107703740f8ef2ce60b87",
+      "report": {
+        "scope": "Fresh in-memory library copies only; no FSP loaded/saved, no solver run, no defaults edited.",
+        "band_nm": [
+          700.0,
+          1700.0
+        ],
+        "wavelength_points": 1000,
+        "device_validation_pending": true,
+        "resample_library_data": false,
+        "improve_numerical_stability": true,
+        "materials": {
+          "Au (Gold) - CRC": [
+            {
+              "settings": {
+                "library_default": true
+              },
+              "metrics": {
+                "max_n_error": 0.014251755034258407,
+                "max_k_error": 0.11677461523721266,
+                "rms_n_error": 0.003337578692824707,
+                "rms_k_error": 0.05276459142509559,
+                "minimum_fit_n": 0.07395924801377467,
+                "minimum_fit_k": 3.9658036098028657,
+                "maximum_imaginary_permittivity_error": 0.10677429439226527,
+                "max_relative_complex_permittivity_error": 0.03180064380842719,
+                "max_relative_imaginary_permittivity_error": 0.1539888005429047,
+                "minimum_data_imaginary_permittivity": 0.6933899998949312,
+                "minimum_fit_imaginary_permittivity": 0.586615705502666
+              },
+              "passivity_check_passed": true,
+              "minimum_fit_k": 3.9658036098028657,
+              "heldout_data_preparation_max_index_error": 0.0,
+              "prepared_data_points": null,
+              "csv": "Au_0.csv",
+              "csv_sha256": "e323caef48f4ce2db134a6b12984af5e1d8ed247298113634e15a32b33cea7ab"
+            },
+            {
+              "settings": {
+                "library_default": false,
+                "max coefficients": 4,
+                "tolerance": 0.0,
+                "imaginary weight": 1.0,
+                "make fit passive": 1,
+                "improve numerical stability": 1
+              },
+              "metrics": {
+                "max_n_error": 0.014251755034258407,
+                "max_k_error": 0.11677461523721266,
+                "rms_n_error": 0.003337578692824707,
+                "rms_k_error": 0.05276459142509559,
+                "minimum_fit_n": 0.07395924801377467,
+                "minimum_fit_k": 3.9658036098028657,
+                "maximum_imaginary_permittivity_error": 0.10677429439226527,
+                "max_relative_complex_permittivity_error": 0.03180064380842719,
+                "max_relative_imaginary_permittivity_error": 0.1539888005429047,
+                "minimum_data_imaginary_permittivity": 0.6933899998949312,
+                "minimum_fit_imaginary_permittivity": 0.586615705502666
+              },
+              "passivity_check_passed": true,
+              "minimum_fit_k": 3.9658036098028657,
+              "heldout_data_preparation_max_index_error": 0.0,
+              "prepared_data_points": null,
+              "csv": "Au_1.csv",
+              "csv_sha256": "e323caef48f4ce2db134a6b12984af5e1d8ed247298113634e15a32b33cea7ab"
+            },
+            {
+              "settings": {
+                "library_default": false,
+                "max coefficients": 4,
+                "tolerance": 0.0,
+                "imaginary weight": 2.0,
+                "make fit passive": 1,
+                "improve numerical stability": 1
+              },
+              "metrics": {
+                "max_n_error": 0.014238041856500336,
+                "max_k_error": 0.11688729233859085,
+                "rms_n_error": 0.003338240927292158,
+                "rms_k_error": 0.05281680097575045,
+                "minimum_fit_n": 0.07397296119153274,
+                "minimum_fit_k": 3.9660219656262985,
+                "maximum_imaginary_permittivity_error": 0.10663322199885006,
+                "max_relative_complex_permittivity_error": 0.031830795238992925,
+                "max_relative_imaginary_permittivity_error": 0.15378534737306293,
+                "minimum_data_imaginary_permittivity": 0.6933899998949312,
+                "minimum_fit_imaginary_permittivity": 0.5867567778960812
+              },
+              "passivity_check_passed": true,
+              "minimum_fit_k": 3.9660219656262985,
+              "heldout_data_preparation_max_index_error": 0.0,
+              "prepared_data_points": null,
+              "csv": "Au_2.csv",
+              "csv_sha256": "d2f475d5f27d23ff9c295fc936af1cd0e381c6da6e582091514d6ce93f3d7b47"
+            },
+            {
+              "settings": {
+                "library_default": false,
+                "max coefficients": 4,
+                "tolerance": 0.0,
+                "imaginary weight": 10.0,
+                "make fit passive": 1,
+                "improve numerical stability": 1
+              },
+              "metrics": {
+                "max_n_error": 0.014099908776836256,
+                "max_k_error": 0.1199558800786722,
+                "rms_n_error": 0.0033467471736728887,
+                "rms_k_error": 0.05428021219718476,
+                "minimum_fit_n": 0.07411109427119682,
+                "minimum_fit_k": 3.9719490649947304,
+                "maximum_imaginary_permittivity_error": 0.10465901670249822,
+                "max_relative_complex_permittivity_error": 0.032651523992208276,
+                "max_relative_imaginary_permittivity_error": 0.15093816858962072,
+                "minimum_data_imaginary_permittivity": 0.6933899998949312,
+                "minimum_fit_imaginary_permittivity": 0.588730983192433
+              },
+              "passivity_check_passed": true,
+              "minimum_fit_k": 3.9719490649947304,
+              "heldout_data_preparation_max_index_error": 0.0,
+              "prepared_data_points": null,
+              "csv": "Au_3.csv",
+              "csv_sha256": "5667a3ddd34468ede3221cbaf75290d5e41e7daca6e925984965774c985fd405"
+            },
+            {
+              "settings": {
+                "library_default": false,
+                "max coefficients": 6,
+                "tolerance": 0.0,
+                "imaginary weight": 1.0,
+                "make fit passive": 1,
+                "improve numerical stability": 1
+              },
+              "metrics": {
+                "max_n_error": 0.014251755034258407,
+                "max_k_error": 0.11677461523721266,
+                "rms_n_error": 0.003337578692824707,
+                "rms_k_error": 0.05276459142509559,
+                "minimum_fit_n": 0.07395924801377467,
+                "minimum_fit_k": 3.9658036098028657,
+                "maximum_imaginary_permittivity_error": 0.10677429439226527,
+                "max_relative_complex_permittivity_error": 0.03180064380842719,
+                "max_relative_imaginary_permittivity_error": 0.1539888005429047,
+                "minimum_data_imaginary_permittivity": 0.6933899998949312,
+                "minimum_fit_imaginary_permittivity": 0.586615705502666
+              },
+              "passivity_check_passed": true,
+              "minimum_fit_k": 3.9658036098028657,
+              "heldout_data_preparation_max_index_error": 0.0,
+              "prepared_data_points": null,
+              "csv": "Au_4.csv",
+              "csv_sha256": "e323caef48f4ce2db134a6b12984af5e1d8ed247298113634e15a32b33cea7ab"
+            },
+            {
+              "settings": {
+                "library_default": false,
+                "max coefficients": 6,
+                "tolerance": 0.0,
+                "imaginary weight": 2.0,
+                "make fit passive": 1,
+                "improve numerical stability": 1
+              },
+              "metrics": {
+                "max_n_error": 0.014238041856500336,
+                "max_k_error": 0.11688729233859085,
+                "rms_n_error": 0.003338240927292158,
+                "rms_k_error": 0.05281680097575045,
+                "minimum_fit_n": 0.07397296119153274,
+                "minimum_fit_k": 3.9660219656262985,
+                "maximum_imaginary_permittivity_error": 0.10663322199885006,
+                "max_relative_complex_permittivity_error": 0.031830795238992925,
+                "max_relative_imaginary_permittivity_error": 0.15378534737306293,
+                "minimum_data_imaginary_permittivity": 0.6933899998949312,
+                "minimum_fit_imaginary_permittivity": 0.5867567778960812
+              },
+              "passivity_check_passed": true,
+              "minimum_fit_k": 3.9660219656262985,
+              "heldout_data_preparation_max_index_error": 0.0,
+              "prepared_data_points": null,
+              "csv": "Au_5.csv",
+              "csv_sha256": "d2f475d5f27d23ff9c295fc936af1cd0e381c6da6e582091514d6ce93f3d7b47"
+            },
+            {
+              "settings": {
+                "library_default": false,
+                "max coefficients": 6,
+                "tolerance": 0.0,
+                "imaginary weight": 10.0,
+                "make fit passive": 1,
+                "improve numerical stability": 1
+              },
+              "metrics": {
+                "max_n_error": 0.014099908776836256,
+                "max_k_error": 0.1199558800786722,
+                "rms_n_error": 0.0033467471736728887,
+                "rms_k_error": 0.05428021219718476,
+                "minimum_fit_n": 0.07411109427119682,
+                "minimum_fit_k": 3.9719490649947304,
+                "maximum_imaginary_permittivity_error": 0.10465901670249822,
+                "max_relative_complex_permittivity_error": 0.032651523992208276,
+                "max_relative_imaginary_permittivity_error": 0.15093816858962072,
+                "minimum_data_imaginary_permittivity": 0.6933899998949312,
+                "minimum_fit_imaginary_permittivity": 0.588730983192433
+              },
+              "passivity_check_passed": true,
+              "minimum_fit_k": 3.9719490649947304,
+              "heldout_data_preparation_max_index_error": 0.0,
+              "prepared_data_points": null,
+              "csv": "Au_6.csv",
+              "csv_sha256": "5667a3ddd34468ede3221cbaf75290d5e41e7daca6e925984965774c985fd405"
+            },
+            {
+              "settings": {
+                "library_default": false,
+                "max coefficients": 8,
+                "tolerance": 0.0,
+                "imaginary weight": 1.0,
+                "make fit passive": 1,
+                "improve numerical stability": 1
+              },
+              "metrics": {
+                "max_n_error": 0.014251755034258407,
+                "max_k_error": 0.11677461523721266,
+                "rms_n_error": 0.003337578692824707,
+                "rms_k_error": 0.05276459142509559,
+                "minimum_fit_n": 0.07395924801377467,
+                "minimum_fit_k": 3.9658036098028657,
+                "maximum_imaginary_permittivity_error": 0.10677429439226527,
+                "max_relative_complex_permittivity_error": 0.03180064380842719,
+                "max_relative_imaginary_permittivity_error": 0.1539888005429047,
+                "minimum_data_imaginary_permittivity": 0.6933899998949312,
+                "minimum_fit_imaginary_permittivity": 0.586615705502666
+              },
+              "passivity_check_passed": true,
+              "minimum_fit_k": 3.9658036098028657,
+              "heldout_data_preparation_max_index_error": 0.0,
+              "prepared_data_points": null,
+              "csv": "Au_7.csv",
+              "csv_sha256": "e323caef48f4ce2db134a6b12984af5e1d8ed247298113634e15a32b33cea7ab"
+            },
+            {
+              "settings": {
+                "library_default": false,
+                "max coefficients": 8,
+                "tolerance": 0.0,
+                "imaginary weight": 2.0,
+                "make fit passive": 1,
+                "improve numerical stability": 1
+              },
+              "metrics": {
+                "max_n_error": 0.014238041856500336,
+                "max_k_error": 0.11688729233859085,
+                "rms_n_error": 0.003338240927292158,
+                "rms_k_error": 0.05281680097575045,
+                "minimum_fit_n": 0.07397296119153274,
+                "minimum_fit_k": 3.9660219656262985,
+                "maximum_imaginary_permittivity_error": 0.10663322199885006,
+                "max_relative_complex_permittivity_error": 0.031830795238992925,
+                "max_relative_imaginary_permittivity_error": 0.15378534737306293,
+                "minimum_data_imaginary_permittivity": 0.6933899998949312,
+                "minimum_fit_imaginary_permittivity": 0.5867567778960812
+              },
+              "passivity_check_passed": true,
+              "minimum_fit_k": 3.9660219656262985,
+              "heldout_data_preparation_max_index_error": 0.0,
+              "prepared_data_points": null,
+              "csv": "Au_8.csv",
+              "csv_sha256": "d2f475d5f27d23ff9c295fc936af1cd0e381c6da6e582091514d6ce93f3d7b47"
+            },
+            {
+              "settings": {
+                "library_default": false,
+                "max coefficients": 8,
+                "tolerance": 0.0,
+                "imaginary weight": 10.0,
+                "make fit passive": 1,
+                "improve numerical stability": 1
+              },
+              "metrics": {
+                "max_n_error": 0.014099908776836256,
+                "max_k_error": 0.1199558800786722,
+                "rms_n_error": 0.0033467471736728887,
+                "rms_k_error": 0.05428021219718476,
+                "minimum_fit_n": 0.07411109427119682,
+                "minimum_fit_k": 3.9719490649947304,
+                "maximum_imaginary_permittivity_error": 0.10465901670249822,
+                "max_relative_complex_permittivity_error": 0.032651523992208276,
+                "max_relative_imaginary_permittivity_error": 0.15093816858962072,
+                "minimum_data_imaginary_permittivity": 0.6933899998949312,
+                "minimum_fit_imaginary_permittivity": 0.588730983192433
+              },
+              "passivity_check_passed": true,
+              "minimum_fit_k": 3.9719490649947304,
+              "heldout_data_preparation_max_index_error": 0.0,
+              "prepared_data_points": null,
+              "csv": "Au_9.csv",
+              "csv_sha256": "5667a3ddd34468ede3221cbaf75290d5e41e7daca6e925984965774c985fd405"
+            }
+          ]
+        },
+        "references": [
+          "https://optics.ansys.com/hc/en-us/articles/360034915053-Tips-for-improving-the-quality-of-optical-material-fits",
+          "https://optics.ansys.com/hc/en-us/articles/360034930033-copymaterial-Script-command"
+        ],
+        "lumerical_version": "8.31.3633"
+      }
+    },
+    {
+      "experiment": "metal_fit_crc_dense_probe_20261012",
+      "report_sha256": "d99a3234329c60d3f66e11a0cec2a77ce35963da2c73c463115260f734d08d8f",
+      "report": {
+        "scope": "Fresh in-memory library copies only; no FSP loaded/saved, no solver run, no defaults edited.",
+        "band_nm": [
+          700.0,
+          1700.0
+        ],
+        "wavelength_points": 1000,
+        "device_validation_pending": true,
+        "resample_library_data": true,
+        "improve_numerical_stability": true,
+        "materials": {
+          "Au (Gold) - CRC": [
+            {
+              "settings": {
+                "library_default": true
+              },
+              "metrics": {
+                "max_n_error": 0.014251755034258407,
+                "max_k_error": 0.11677461523721266,
+                "rms_n_error": 0.003337578692824707,
+                "rms_k_error": 0.05276459142509559,
+                "minimum_fit_n": 0.07395924801377467,
+                "minimum_fit_k": 3.9658036098028657,
+                "maximum_imaginary_permittivity_error": 0.10677429439226527,
+                "max_relative_complex_permittivity_error": 0.03180064380842719,
+                "max_relative_imaginary_permittivity_error": 0.1539888005429047,
+                "minimum_data_imaginary_permittivity": 0.6933899998949312,
+                "minimum_fit_imaginary_permittivity": 0.586615705502666
+              },
+              "passivity_check_passed": true,
+              "minimum_fit_k": 3.9658036098028657,
+              "heldout_data_preparation_max_index_error": 0.0,
+              "prepared_data_points": null,
+              "csv": "Au_0.csv",
+              "csv_sha256": "e323caef48f4ce2db134a6b12984af5e1d8ed247298113634e15a32b33cea7ab"
+            },
+            {
+              "settings": {
+                "library_default": false,
+                "max coefficients": 4,
+                "tolerance": 0.0,
+                "imaginary weight": 1.0,
+                "make fit passive": 1,
+                "improve numerical stability": 1
+              },
+              "metrics": {
+                "max_n_error": 0.035303145563071896,
+                "max_k_error": 0.06516482625499087,
+                "rms_n_error": 0.00951582269812869,
+                "rms_k_error": 0.027402912296903732,
+                "minimum_fit_n": 0.05290785748496118,
+                "minimum_fit_k": 3.995456830288565,
+                "maximum_imaginary_permittivity_error": 0.2909030091079643,
+                "max_relative_complex_permittivity_error": 0.038013369194548764,
+                "max_relative_imaginary_permittivity_error": 0.39026792830512697,
+                "minimum_data_imaginary_permittivity": 0.6933899998949312,
+                "minimum_fit_imaginary_permittivity": 0.4227821211284442
+              },
+              "passivity_check_passed": true,
+              "minimum_fit_k": 3.995456830288565,
+              "heldout_data_preparation_max_index_error": 1.7783073324607987e-15,
+              "prepared_data_points": 1006,
+              "csv": "Au_1.csv",
+              "csv_sha256": "c3c48005393b793d70592f70813ac88189eaf3eca9d6489cb4a705b344ec125e"
+            },
+            {
+              "settings": {
+                "library_default": false,
+                "max coefficients": 4,
+                "tolerance": 0.0,
+                "imaginary weight": 10.0,
+                "make fit passive": 1,
+                "improve numerical stability": 1
+              },
+              "metrics": {
+                "max_n_error": 0.004289241916636641,
+                "max_k_error": 0.05887478072626173,
+                "rms_n_error": 0.0013705040472034291,
+                "rms_k_error": 0.024123491345285478,
+                "minimum_fit_n": 0.07780151711171604,
+                "minimum_fit_k": 3.9055381290645137,
+                "maximum_imaginary_permittivity_error": 0.054168313677918856,
+                "max_relative_complex_permittivity_error": 0.016504767656642053,
+                "max_relative_imaginary_permittivity_error": 0.06223605087890815,
+                "minimum_data_imaginary_permittivity": 0.6933899998949312,
+                "minimum_fit_imaginary_permittivity": 0.6887154040076019
+              },
+              "passivity_check_passed": true,
+              "minimum_fit_k": 3.9055381290645137,
+              "heldout_data_preparation_max_index_error": 1.7783073324607987e-15,
+              "prepared_data_points": 1006,
+              "csv": "Au_2.csv",
+              "csv_sha256": "ad86e8e8de48893afff9169de71b9b486e96cc88a7efe49f0a14282fee38c7d4"
+            },
+            {
+              "settings": {
+                "library_default": false,
+                "max coefficients": 8,
+                "tolerance": 0.0,
+                "imaginary weight": 1.0,
+                "make fit passive": 1,
+                "improve numerical stability": 1
+              },
+              "metrics": {
+                "max_n_error": 0.035303145563071896,
+                "max_k_error": 0.06516482625499087,
+                "rms_n_error": 0.00951582269812869,
+                "rms_k_error": 0.027402912296903732,
+                "minimum_fit_n": 0.05290785748496118,
+                "minimum_fit_k": 3.995456830288565,
+                "maximum_imaginary_permittivity_error": 0.2909030091079643,
+                "max_relative_complex_permittivity_error": 0.038013369194548764,
+                "max_relative_imaginary_permittivity_error": 0.39026792830512697,
+                "minimum_data_imaginary_permittivity": 0.6933899998949312,
+                "minimum_fit_imaginary_permittivity": 0.4227821211284442
+              },
+              "passivity_check_passed": true,
+              "minimum_fit_k": 3.995456830288565,
+              "heldout_data_preparation_max_index_error": 1.7783073324607987e-15,
+              "prepared_data_points": 1006,
+              "csv": "Au_3.csv",
+              "csv_sha256": "c3c48005393b793d70592f70813ac88189eaf3eca9d6489cb4a705b344ec125e"
+            },
+            {
+              "settings": {
+                "library_default": false,
+                "max coefficients": 8,
+                "tolerance": 0.0,
+                "imaginary weight": 10.0,
+                "make fit passive": 1,
+                "improve numerical stability": 1
+              },
+              "metrics": {
+                "max_n_error": 0.004289241916636641,
+                "max_k_error": 0.05887478072626173,
+                "rms_n_error": 0.0013705040472034291,
+                "rms_k_error": 0.024123491345285478,
+                "minimum_fit_n": 0.07780151711171604,
+                "minimum_fit_k": 3.9055381290645137,
+                "maximum_imaginary_permittivity_error": 0.054168313677918856,
+                "max_relative_complex_permittivity_error": 0.016504767656642053,
+                "max_relative_imaginary_permittivity_error": 0.06223605087890815,
+                "minimum_data_imaginary_permittivity": 0.6933899998949312,
+                "minimum_fit_imaginary_permittivity": 0.6887154040076019
+              },
+              "passivity_check_passed": true,
+              "minimum_fit_k": 3.9055381290645137,
+              "heldout_data_preparation_max_index_error": 1.7783073324607987e-15,
+              "prepared_data_points": 1006,
+              "csv": "Au_4.csv",
+              "csv_sha256": "ad86e8e8de48893afff9169de71b9b486e96cc88a7efe49f0a14282fee38c7d4"
+            },
+            {
+              "settings": {
+                "library_default": false,
+                "max coefficients": 12,
+                "tolerance": 0.0,
+                "imaginary weight": 1.0,
+                "make fit passive": 1,
+                "improve numerical stability": 1
+              },
+              "metrics": {
+                "max_n_error": 0.035303145563071896,
+                "max_k_error": 0.06516482625499087,
+                "rms_n_error": 0.00951582269812869,
+                "rms_k_error": 0.027402912296903732,
+                "minimum_fit_n": 0.05290785748496118,
+                "minimum_fit_k": 3.995456830288565,
+                "maximum_imaginary_permittivity_error": 0.2909030091079643,
+                "max_relative_complex_permittivity_error": 0.038013369194548764,
+                "max_relative_imaginary_permittivity_error": 0.39026792830512697,
+                "minimum_data_imaginary_permittivity": 0.6933899998949312,
+                "minimum_fit_imaginary_permittivity": 0.4227821211284442
+              },
+              "passivity_check_passed": true,
+              "minimum_fit_k": 3.995456830288565,
+              "heldout_data_preparation_max_index_error": 1.7783073324607987e-15,
+              "prepared_data_points": 1006,
+              "csv": "Au_5.csv",
+              "csv_sha256": "c3c48005393b793d70592f70813ac88189eaf3eca9d6489cb4a705b344ec125e"
+            },
+            {
+              "settings": {
+                "library_default": false,
+                "max coefficients": 12,
+                "tolerance": 0.0,
+                "imaginary weight": 10.0,
+                "make fit passive": 1,
+                "improve numerical stability": 1
+              },
+              "metrics": {
+                "max_n_error": 0.004289241916636641,
+                "max_k_error": 0.05887478072626173,
+                "rms_n_error": 0.0013705040472034291,
+                "rms_k_error": 0.024123491345285478,
+                "minimum_fit_n": 0.07780151711171604,
+                "minimum_fit_k": 3.9055381290645137,
+                "maximum_imaginary_permittivity_error": 0.054168313677918856,
+                "max_relative_complex_permittivity_error": 0.016504767656642053,
+                "max_relative_imaginary_permittivity_error": 0.06223605087890815,
+                "minimum_data_imaginary_permittivity": 0.6933899998949312,
+                "minimum_fit_imaginary_permittivity": 0.6887154040076019
+              },
+              "passivity_check_passed": true,
+              "minimum_fit_k": 3.9055381290645137,
+              "heldout_data_preparation_max_index_error": 1.7783073324607987e-15,
+              "prepared_data_points": 1006,
+              "csv": "Au_6.csv",
+              "csv_sha256": "ad86e8e8de48893afff9169de71b9b486e96cc88a7efe49f0a14282fee38c7d4"
+            }
+          ]
+        },
+        "references": [
+          "https://optics.ansys.com/hc/en-us/articles/360034915053-Tips-for-improving-the-quality-of-optical-material-fits",
+          "https://optics.ansys.com/hc/en-us/articles/360034930033-copymaterial-Script-command"
+        ],
+        "lumerical_version": "8.31.3633"
+      }
+    },
+    {
+      "experiment": "metal_fit_johnson_christy_probe_20261012",
+      "report_sha256": "aa5e0ac6844a00a3791239173f1401c53dbd23660d445e8cf0c07ec3b096e3d6",
+      "report": {
+        "scope": "Fresh in-memory library copies only; no FSP loaded/saved, no solver run, no defaults edited.",
+        "band_nm": [
+          700.0,
+          1700.0
+        ],
+        "wavelength_points": 1000,
+        "device_validation_pending": true,
+        "resample_library_data": true,
+        "improve_numerical_stability": true,
+        "materials": {
+          "Au (Gold) - Johnson and Christy": [
+            {
+              "settings": {
+                "library_default": true
+              },
+              "metrics": {
+                "max_n_error": 0.07949827946893728,
+                "max_k_error": 0.14438191902278597,
+                "rms_n_error": 0.016700598829045097,
+                "rms_k_error": 0.05349162565257187,
+                "minimum_fit_n": 0.11051847282785753,
+                "minimum_fit_k": 4.0871543161285535,
+                "maximum_imaginary_permittivity_error": 2.0942484237405132,
+                "max_relative_complex_permittivity_error": 0.027097497138138006,
+                "max_relative_imaginary_permittivity_error": 0.1507437513167712,
+                "minimum_data_imaginary_permittivity": 1.0637685714545735,
+                "minimum_fit_imaginary_permittivity": 0.9034121064606283
+              },
+              "passivity_check_passed": true,
+              "minimum_fit_k": 4.0871543161285535,
+              "heldout_data_preparation_max_index_error": 0.0,
+              "prepared_data_points": null,
+              "source_data_range_nm": [
+                187.87878790000005,
+                1937.5
+              ],
+              "csv": "Au_0.csv",
+              "csv_sha256": "5166bb169b6034c03cb1d50f96d7d6d89e15e56dca0bffd9fb6f0bf77917c564"
+            },
+            {
+              "settings": {
+                "library_default": false,
+                "max coefficients": 4,
+                "tolerance": 0.0,
+                "imaginary weight": 1.0,
+                "make fit passive": 1,
+                "improve numerical stability": 1
+              },
+              "metrics": {
+                "max_n_error": 0.03300453150340943,
+                "max_k_error": 0.05086220762744098,
+                "rms_n_error": 0.013830281869837563,
+                "rms_k_error": 0.020928689979240897,
+                "minimum_fit_n": 0.13523868542435888,
+                "minimum_fit_k": 4.095404553584058,
+                "maximum_imaginary_permittivity_error": 0.832851652390632,
+                "max_relative_complex_permittivity_error": 0.01517229352690586,
+                "max_relative_imaginary_permittivity_error": 0.1324641837511459,
+                "minimum_data_imaginary_permittivity": 1.0637685714545735,
+                "minimum_fit_imaginary_permittivity": 1.1077142562152826
+              },
+              "passivity_check_passed": true,
+              "minimum_fit_k": 4.095404553584058,
+              "heldout_data_preparation_max_index_error": 3.568292035180542e-15,
+              "prepared_data_points": 1009,
+              "source_data_range_nm": [
+                187.87878790000005,
+                1937.5
+              ],
+              "csv": "Au_1.csv",
+              "csv_sha256": "e5c0d10741f6cdbaf014c5e388ab614c7dafbcc46a09602437e5b217ec2f34fb"
+            },
+            {
+              "settings": {
+                "library_default": false,
+                "max coefficients": 4,
+                "tolerance": 0.0,
+                "imaginary weight": 10.0,
+                "make fit passive": 1,
+                "improve numerical stability": 1
+              },
+              "metrics": {
+                "max_n_error": 0.027922482926547865,
+                "max_k_error": 0.08021713221108229,
+                "rms_n_error": 0.010535285456002541,
+                "rms_k_error": 0.02686889639912676,
+                "minimum_fit_n": 0.12957386858594697,
+                "minimum_fit_k": 4.048216762917517,
+                "maximum_imaginary_permittivity_error": 0.779611789666621,
+                "max_relative_complex_permittivity_error": 0.014003102975861164,
+                "max_relative_imaginary_permittivity_error": 0.11337854816591751,
+                "minimum_data_imaginary_permittivity": 1.0637685714545735,
+                "minimum_fit_imaginary_permittivity": 1.0490862136914039
+              },
+              "passivity_check_passed": true,
+              "minimum_fit_k": 4.048216762917517,
+              "heldout_data_preparation_max_index_error": 3.568292035180542e-15,
+              "prepared_data_points": 1009,
+              "source_data_range_nm": [
+                187.87878790000005,
+                1937.5
+              ],
+              "csv": "Au_2.csv",
+              "csv_sha256": "bb266fe53d8e80d410e68123e754a55465edfe10e4b11fa50d28081807a21512"
+            },
+            {
+              "settings": {
+                "library_default": false,
+                "max coefficients": 8,
+                "tolerance": 0.0,
+                "imaginary weight": 1.0,
+                "make fit passive": 1,
+                "improve numerical stability": 1
+              },
+              "metrics": {
+                "max_n_error": 0.03300453150340943,
+                "max_k_error": 0.05086220762744098,
+                "rms_n_error": 0.013830281869837563,
+                "rms_k_error": 0.020928689979240897,
+                "minimum_fit_n": 0.13523868542435888,
+                "minimum_fit_k": 4.095404553584058,
+                "maximum_imaginary_permittivity_error": 0.832851652390632,
+                "max_relative_complex_permittivity_error": 0.01517229352690586,
+                "max_relative_imaginary_permittivity_error": 0.1324641837511459,
+                "minimum_data_imaginary_permittivity": 1.0637685714545735,
+                "minimum_fit_imaginary_permittivity": 1.1077142562152826
+              },
+              "passivity_check_passed": true,
+              "minimum_fit_k": 4.095404553584058,
+              "heldout_data_preparation_max_index_error": 3.568292035180542e-15,
+              "prepared_data_points": 1009,
+              "source_data_range_nm": [
+                187.87878790000005,
+                1937.5
+              ],
+              "csv": "Au_3.csv",
+              "csv_sha256": "e5c0d10741f6cdbaf014c5e388ab614c7dafbcc46a09602437e5b217ec2f34fb"
+            },
+            {
+              "settings": {
+                "library_default": false,
+                "max coefficients": 8,
+                "tolerance": 0.0,
+                "imaginary weight": 10.0,
+                "make fit passive": 1,
+                "improve numerical stability": 1
+              },
+              "metrics": {
+                "max_n_error": 0.0164121950604309,
+                "max_k_error": 0.08899044701442982,
+                "rms_n_error": 0.0052003108199000295,
+                "rms_k_error": 0.030067591872981227,
+                "minimum_fit_n": 0.1327301858706367,
+                "minimum_fit_k": 4.0682269669175195,
+                "maximum_imaginary_permittivity_error": 0.4704138931376889,
+                "max_relative_complex_permittivity_error": 0.016193398268001688,
+                "max_relative_imaginary_permittivity_error": 0.053272810628720475,
+                "minimum_data_imaginary_permittivity": 1.0637685714545735,
+                "minimum_fit_imaginary_permittivity": 1.079953042965798
+              },
+              "passivity_check_passed": true,
+              "minimum_fit_k": 4.0682269669175195,
+              "heldout_data_preparation_max_index_error": 3.568292035180542e-15,
+              "prepared_data_points": 1009,
+              "source_data_range_nm": [
+                187.87878790000005,
+                1937.5
+              ],
+              "csv": "Au_4.csv",
+              "csv_sha256": "c26be6f6db7b56a77cd45f3cba6cf3ba060c4a5346d27a51bcecf912d5a69bc0"
+            }
+          ],
+          "Ag (Silver) - Johnson and Christy": [
+            {
+              "settings": {
+                "library_default": true
+              },
+              "metrics": {
+                "max_n_error": 0.11552002762543623,
+                "max_k_error": 0.11401870249102686,
+                "rms_n_error": 0.027130687277179,
+                "rms_k_error": 0.04840340224614177,
+                "minimum_fit_n": 0.023379507824280207,
+                "minimum_fit_k": 4.811196878467605,
+                "maximum_imaginary_permittivity_error": 2.1374109839676425,
+                "max_relative_complex_permittivity_error": 0.030202870247406994,
+                "max_relative_imaginary_permittivity_error": 1.0601502407547343,
+                "minimum_data_imaginary_permittivity": 0.31457440843473655,
+                "minimum_fit_imaginary_permittivity": 0.22496683012857177
+              },
+              "passivity_check_passed": true,
+              "minimum_fit_k": 4.811196878467605,
+              "heldout_data_preparation_max_index_error": 0.0,
+              "prepared_data_points": null,
+              "source_data_range_nm": [
+                187.87878790000005,
+                1937.5
+              ],
+              "csv": "Ag_0.csv",
+              "csv_sha256": "7173f03ef28b06b1c38cb44e0cfd91222931429bb25ac8e06a2cd4376919021c"
+            },
+            {
+              "settings": {
+                "library_default": false,
+                "max coefficients": 4,
+                "tolerance": 0.0,
+                "imaginary weight": 1.0,
+                "make fit passive": 1,
+                "improve numerical stability": 1
+              },
+              "metrics": {
+                "max_n_error": 0.044614515442619185,
+                "max_k_error": 0.044269355820445,
+                "rms_n_error": 0.022616698043867803,
+                "rms_k_error": 0.019940670464126113,
+                "minimum_fit_n": 0.03604133291903018,
+                "minimum_fit_k": 4.787353400776839,
+                "maximum_imaginary_permittivity_error": 0.8603573878052349,
+                "max_relative_complex_permittivity_error": 0.015249292831809811,
+                "max_relative_imaginary_permittivity_error": 1.125971248203583,
+                "minimum_data_imaginary_permittivity": 0.31457440843473655,
+                "minimum_fit_imaginary_permittivity": 0.34508519543689875
+              },
+              "passivity_check_passed": true,
+              "minimum_fit_k": 4.787353400776839,
+              "heldout_data_preparation_max_index_error": 5.329359630937608e-15,
+              "prepared_data_points": 1009,
+              "source_data_range_nm": [
+                187.87878790000005,
+                1937.5
+              ],
+              "csv": "Ag_1.csv",
+              "csv_sha256": "7024d1919bc3634096320cebe6d23ac83139228c6d889444c47f4a448ef50fda"
+            },
+            {
+              "settings": {
+                "library_default": false,
+                "max coefficients": 4,
+                "tolerance": 0.0,
+                "imaginary weight": 10.0,
+                "make fit passive": 1,
+                "improve numerical stability": 1
+              },
+              "metrics": {
+                "max_n_error": 0.0142447386639116,
+                "max_k_error": 0.08701190738342746,
+                "rms_n_error": 0.00547792401587939,
+                "rms_k_error": 0.02516786849932886,
+                "minimum_fit_n": 0.03151739437843098,
+                "minimum_fit_k": 4.8247890331906165,
+                "maximum_imaginary_permittivity_error": 0.28984268340700137,
+                "max_relative_complex_permittivity_error": 0.017336337452028085,
+                "max_relative_imaginary_permittivity_error": 0.36149981837018313,
+                "minimum_data_imaginary_permittivity": 0.31457440843473655,
+                "minimum_fit_imaginary_permittivity": 0.3041295575035947
+              },
+              "passivity_check_passed": true,
+              "minimum_fit_k": 4.8247890331906165,
+              "heldout_data_preparation_max_index_error": 5.329359630937608e-15,
+              "prepared_data_points": 1009,
+              "source_data_range_nm": [
+                187.87878790000005,
+                1937.5
+              ],
+              "csv": "Ag_2.csv",
+              "csv_sha256": "831bae570aa4f402d0618b01fd62afcd0c444e203900aefeaf13ad2de3c1a429"
+            },
+            {
+              "settings": {
+                "library_default": false,
+                "max coefficients": 8,
+                "tolerance": 0.0,
+                "imaginary weight": 1.0,
+                "make fit passive": 1,
+                "improve numerical stability": 1
+              },
+              "metrics": {
+                "max_n_error": 0.033748948471723966,
+                "max_k_error": 0.050688776764458154,
+                "rms_n_error": 0.012899529482438055,
+                "rms_k_error": 0.018219366781740874,
+                "minimum_fit_n": 0.03712933534328409,
+                "minimum_fit_k": 4.792089129562296,
+                "maximum_imaginary_permittivity_error": 0.7208339994199013,
+                "max_relative_complex_permittivity_error": 0.011785392266922993,
+                "max_relative_imaginary_permittivity_error": 0.4109972157917765,
+                "minimum_data_imaginary_permittivity": 0.31457440843473655,
+                "minimum_fit_imaginary_permittivity": 0.4194571509092744
+              },
+              "passivity_check_passed": true,
+              "minimum_fit_k": 4.792089129562296,
+              "heldout_data_preparation_max_index_error": 5.329359630937608e-15,
+              "prepared_data_points": 1009,
+              "source_data_range_nm": [
+                187.87878790000005,
+                1937.5
+              ],
+              "csv": "Ag_3.csv",
+              "csv_sha256": "dfa6950d8319b163b14cab5224e8e57c518f904d01e81bfcc4807ca42cb879aa"
+            },
+            {
+              "settings": {
+                "library_default": false,
+                "max coefficients": 8,
+                "tolerance": 0.0,
+                "imaginary weight": 10.0,
+                "make fit passive": 1,
+                "improve numerical stability": 1
+              },
+              "metrics": {
+                "max_n_error": 0.007761909005480544,
+                "max_k_error": 0.08898121016006932,
+                "rms_n_error": 0.002332923180926724,
+                "rms_k_error": 0.023877290476919142,
+                "minimum_fit_n": 0.035294530819017234,
+                "minimum_fit_k": 4.808487510352217,
+                "maximum_imaginary_permittivity_error": 0.17659778319504582,
+                "max_relative_complex_permittivity_error": 0.01771839385196867,
+                "max_relative_imaginary_permittivity_error": 0.18624453664205012,
+                "minimum_data_imaginary_permittivity": 0.31457440843473655,
+                "minimum_fit_imaginary_permittivity": 0.34199478450864307
+              },
+              "passivity_check_passed": true,
+              "minimum_fit_k": 4.808487510352217,
+              "heldout_data_preparation_max_index_error": 5.329359630937608e-15,
+              "prepared_data_points": 1009,
+              "source_data_range_nm": [
+                187.87878790000005,
+                1937.5
+              ],
+              "csv": "Ag_4.csv",
+              "csv_sha256": "dae0a9561785d3cf06fbf3054db592673ddff35a49747115b4f08add3335dd1b"
+            }
+          ]
+        },
+        "references": [
+          "https://optics.ansys.com/hc/en-us/articles/360034915053-Tips-for-improving-the-quality-of-optical-material-fits",
+          "https://optics.ansys.com/hc/en-us/articles/360034930033-copymaterial-Script-command"
+        ],
+        "lumerical_version": "8.31.3633"
+      }
+    }
+  ],
+  "next_candidate": {
+    "source_material": "Au (Gold) - Johnson and Christy",
+    "resample_includes_original_knots": true,
+    "dense_wavelength_samples": 1000,
+    "max_coefficients": 8,
+    "fit_tolerance": 0,
+    "imaginary_weight": 10,
+    "make_fit_passive": true,
+    "improve_numerical_stability": true,
+    "required_next_step": "Independent native time-domain device run; no replacement of current control data."
+  },
+  "source_reference": "https://optics.ansys.com/hc/en-us/articles/360034394614-Material-Database-in-FDTD-and-MODE"
+}

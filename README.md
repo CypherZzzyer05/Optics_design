@@ -30,7 +30,7 @@
 
 ## Au/无Au与8/4 nm受控对照
 
-用户已确认容差：谷中心2 nm、谷底R绝对变化0.03、半突出度宽度10%，区域平均及面积加权P95场强度增强10%。固定当前双谷几何，去金仅将150 nm Au替换为空气；有限350 nm SiO2、源、边界、R/T位置及网格保持一致。两组8 nm光谱与E/H导出已完成并通过原生FSP复读，两组4 nm仍在计算阶段。不能把部分数据写成最终网格选择。
+用户已确认容差：谷中心2 nm、谷底R绝对变化0.03、半突出度宽度10%，区域平均及面积加权P95场强度增强10%。固定当前双谷几何，去金仅将150 nm Au替换为空气；有限350 nm SiO2、源、边界、R/T位置及网格保持一致。两组8 nm及镀金4 nm光谱与E/H导出已完成并通过原生FSP复读。2026-10-12用户要求下班暂停，不镀金4 nm未完成，已停止其求解器和报告等待程序；下次重算这一组，完成组不重算。镀金8→4 nm的平均/P95场指标在两处共同目标波长通过10%阈值，但第一反射谷谷深变化4.100个百分点，整体替代检查未通过。不能把部分数据写成最终金层选择。保存清单见`research_results/end_of_day_20261012.json`。
 
 共同839/927 nm目标波长处，Au8柱内平均E强度约为无Au8的10/31倍。但无Au也有自己的增强谱峰：在已采样频率中，柱内E的最大P95约为8.46，Au约20.5，频率不同。这些数值仅限8 nm、两个XY平面及选定频率，不是全空间/连续波段极值。原始证据见`research_results/gold_mesh_comparison/raw/`，部分场统计明确标记`complete_matrix=false`。详见[受控对照协议](docs/gold_mesh_comparison_protocol.md)。
 
@@ -44,6 +44,8 @@ python finalize_gold_mesh_report.py
 PDF须逐页检查后交付。分析/绘图入口要求本机原生FSP复核，Git保存压缩NPZ和审计校验值，PDF最终版本另行提交。此前的8 nm数据不会与新网格配置混合。
 
 ## 使用
+
+按用户要求，数据生成已封装并推送至独立仓库 [Deta_Generator](https://github.com/CypherZzzyer05/Deta_Generator)，可在另一台已安装Lumerical的Windows计算机采集，支持4/8 nm、Au/Ag/有限基板无Au、迁移续算及分片合并。本项目仍保留训练和研究分析。后续批次须依照网格与材料复核结论使用新配置，不直接混合已保存的8 nm首样本。新包25项测试和Windows/Linux纯软件CI通过；原生预检通过，但新封装调度尚未另跑一个完整长时间FDTD样本。
 
 在 PyCharm 中打开本项目工作树，选择 `D:\Anaconda3\envs\transformer_env\python.exe`，或安装 `requirements.txt`。Lumerical 路径在配置的 `lumapi_path` 中；迁移机器时需要修改。以下命令在本项目根目录运行。
 
@@ -88,6 +90,8 @@ python continue_strict_research.py --reference-dir data/double_dip_fine5_checked
 已加入专用于本项目的 PyCharm `.run/` 入口。数据生成前先完成环境检查；训练入口需要先生成七参数数据集。两轮训练配置用于接口验证。
 
 ## 材料和下一步
+
+独立原生材料诊断发现Au Palik默认拟合几乎漏掉损耗。Johnson–Christy数据的加密拟合候选在700–1700 nm的复介电常数/损耗最大相对误差约1.62%/5.33%，但尚未完成该候选的器件求解；现有四组对照保持原设置。详见[金属拟合诊断](docs/metal_fit_diagnostics.md)。
 
 As₂Se₃ 使用 Joseph 等实测薄膜 n/k，来源与许可见 [materials/README.md](materials/README.md)。数据覆盖至1688 nm，1688–1700 nm采用显式端点延拓。当前350 nm基板为薄膜结构；若实物使用毫米厚基片，必须重新设置基板和背面金属传播模型。
 

@@ -43,6 +43,25 @@ def spectral_features(wavelength,signal):
 def relative_change(fine,reference):return float(abs(fine-reference)/max(abs(reference),1e-12))
 
 
+def gold_loss_interpretation(diagnostics):
+    """Flag loss omitted by the saved fit; do not certify other material models."""
+    materials=diagnostics['cases']['Au4']['materials']
+    names=[name for name in materials if name.startswith('Au (Gold)')]
+    if len(names)!=1:raise ValueError('Expected the saved Au4 metal diagnostic')
+    rows=[]
+    for point in materials[names[0]]['at_target_wavelengths']:
+        data_loss=2*point['data_n']*point['data_k']
+        fit_loss=2*point['fit_n']*point['fit_k']
+        if not np.isfinite([data_loss,fit_loss]).all() or data_loss<=0 or fit_loss < -1e-8:
+            raise ValueError('Cannot interpret invalid native Gold loss values')
+        rows.append({'wavelength_nm':point['wavelength_nm'],'data_imaginary_permittivity':data_loss,
+                     'fit_imaginary_permittivity':fit_loss,'fit_over_data_loss_fraction':fit_loss/data_loss})
+    if len(rows)!=2:raise ValueError('Both target Gold loss diagnostics are required')
+    return {'source_material':names[0],'target_loss_diagnostics':rows,
+            'near_lossless_fit_at_any_target':bool(any(row['fit_over_data_loss_fraction']<.01 for row in rows)),
+            'material_accuracy_certified':False,'interpretation':'Current saved fitted-material model only'}
+
+
 def nearest_profile(rows,wavelength):
     row=min(rows,key=lambda r:abs(r['wavelength_nm']-wavelength))
     if abs(row['wavelength_nm']-wavelength)>1e-5:raise ValueError('A required common field wavelength is missing')
@@ -171,6 +190,7 @@ def analyze(output,destination):
     material_diagnostics=audit_materials(output,destination/'materials',plan['gold_target_wavelengths_nm'])
     if not material_diagnostics['shared_fits_match']:
         raise ValueError('Shared material fits differ across controls; investigate before a final substitution decision')
+    material_interpretation=gold_loss_interpretation(material_diagnostics)
     base=cases['Au4']['state']['recipe']
     for name,case in cases.items():
         recipe=case['state']['recipe']
@@ -218,6 +238,7 @@ def analyze(output,destination):
     report={'complete_matrix':True,'geometry_values':base['geometry_values'],'criteria':criteria,'cases':summaries,
             'vacuum_calibrations':calibrations,
             'material_diagnostics':material_diagnostics,
+            'material_interpretation':material_interpretation,
             'exact_eroded_pillar_area_nm2':float(4*(geometry.l-20)**2),
             'comparisons':comparisons,'decision':{'remove_gold':remove_gold,'selected_stack':stack,
              'adopt_8nm':adopt8,'selected_final_mesh_nm':8 if adopt8 else 4},
