@@ -1,0 +1,520 @@
+{
+  "verified_controls": 6,
+  "reference_case": "Au_full_difference",
+  "reference_pair": {
+    "dips": [
+      {
+        "wavelength_nm": 839.0463487829277,
+        "reflectance_min": 0.047065843394082825,
+        "prominence": 0.7809811764487224,
+        "half_prominence_width_nm": 5.83207310808632,
+        "width_samples": 17.49038725115099,
+        "resolved": true,
+        "lambda_over_width": 143.86759789063143
+      },
+      {
+        "wavelength_nm": 927.0756918972991,
+        "reflectance_min": 0.03848895484580142,
+        "prominence": 0.8545963994190309,
+        "half_prominence_width_nm": 6.598374893913729,
+        "width_samples": 19.78852630684753,
+        "resolved": true,
+        "lambda_over_width": 140.50060913520144
+      }
+    ],
+    "separation_nm": 88.02934311437139,
+    "intervening_max_reflectance": 0.8930853542648323,
+    "score": 0.7809811764487224
+  },
+  "fixed_dimensions_nm": [
+    667.2817648945917,
+    167.03697293849132,
+    369.4900803132179,
+    97.04945218123429,
+    118.95531822839662
+  ],
+  "mean_angle_deg": 18.134130646058647,
+  "rows": [
+    {
+      "id": "Au_full_difference",
+      "metal": "Au",
+      "angle_difference_fraction": 1.0,
+      "odd_angle_deg": -4.964905749468862,
+      "even_angle_deg": 41.23316704158616,
+      "sample_sha256": "8421fcf56aa044aea1c5d7413389ad27fa6fb0f5f4f11e9c9d540882da9d8370",
+      "native_audit_sha256": "0d68055a8e44a5f2c55c6a59e36ad4a64899759495c5f8c7a63dcc51bbc59e51",
+      "actual_mesh": {
+        "x": {
+          "points": 85,
+          "maximum_step_nm": 7.943830534459499,
+          "minimum_step_nm": 7.943830534459129
+        },
+        "y": {
+          "points": 85,
+          "maximum_step_nm": 7.943830534459499,
+          "minimum_step_nm": 7.943830534459129
+        },
+        "z": {
+          "points": 457,
+          "maximum_step_nm": 7.987458667975686,
+          "minimum_step_nm": 2.499999999998441
+        }
+      },
+      "tracked_dips": [
+        {
+          "wavelength_nm": 839.0463487829277,
+          "reflectance_min": 0.047065843394082825,
+          "prominence": 0.7809811764487224,
+          "half_prominence_width_nm": 5.83207310808632,
+          "width_samples": 17.49038725115099,
+          "resolved": true,
+          "lambda_over_width": 143.86759789063143
+        },
+        {
+          "wavelength_nm": 927.0756918972991,
+          "reflectance_min": 0.03848895484580142,
+          "prominence": 0.8545963994190309,
+          "half_prominence_width_nm": 6.598374893913729,
+          "width_samples": 19.78852630684753,
+          "resolved": true,
+          "lambda_over_width": 140.50060913520144
+        }
+      ],
+      "retained": true,
+      "intervening_max_reflectance": 0.8930853542648323,
+      "dominant_pair": {
+        "dips": [
+          {
+            "wavelength_nm": 839.0463487829277,
+            "reflectance_min": 0.047065843394082825,
+            "prominence": 0.7809811764487224,
+            "half_prominence_width_nm": 5.83207310808632,
+            "width_samples": 17.49038725115099,
+            "resolved": true,
+            "lambda_over_width": 143.86759789063143
+          },
+          {
+            "wavelength_nm": 927.0756918972991,
+            "reflectance_min": 0.03848895484580142,
+            "prominence": 0.8545963994190309,
+            "half_prominence_width_nm": 6.598374893913729,
+            "width_samples": 19.78852630684753,
+            "resolved": true,
+            "lambda_over_width": 140.50060913520144
+          }
+        ],
+        "separation_nm": 88.02934311437139,
+        "intervening_max_reflectance": 0.8930853542648323,
+        "score": 0.7809811764487224
+      }
+    },
+    {
+      "id": "Au_half_difference",
+      "metal": "Au",
+      "angle_difference_fraction": 0.5,
+      "odd_angle_deg": 6.584612448294893,
+      "even_angle_deg": 29.683648843822404,
+      "sample_sha256": "8dd416e217d4e6b15eca4da7e718f7fb4d33786d2f5ecef8cf9f95851de73277",
+      "native_audit_sha256": "7bac708931da4b36e75b20d6af93a7a11b7c6a6445e603ef916320739454dd7b",
+      "actual_mesh": {
+        "x": {
+          "points": 85,
+          "maximum_step_nm": 7.943830534459499,
+          "minimum_step_nm": 7.943830534459129
+        },
+        "y": {
+          "points": 85,
+          "maximum_step_nm": 7.943830534459499,
+          "minimum_step_nm": 7.943830534459129
+        },
+        "z": {
+          "points": 457,
+          "maximum_step_nm": 7.987458667975686,
+          "minimum_step_nm": 2.499999999998441
+        }
+      },
+      "tracked_dips": [
+        {
+          "wavelength_nm": 839.7132377459153,
+          "reflectance_min": 0.027929192108814647,
+          "prominence": 0.7998332761177965,
+          "half_prominence_width_nm": 5.719486414085509,
+          "width_samples": 17.152739755842276,
+          "resolved": true,
+          "lambda_over_width": 146.81619588743746
+        },
+        {
+          "wavelength_nm": 927.0756918972991,
+          "reflectance_min": 0.03176034575815759,
+          "prominence": 0.8623227936079249,
+          "half_prominence_width_nm": 6.430785722338101,
+          "width_samples": 19.2859263812918,
+          "resolved": true,
+          "lambda_over_width": 144.16211827382014
+        }
+      ],
+      "retained": true,
+      "intervening_max_reflectance": 0.8940831393660824,
+      "dominant_pair": {
+        "dips": [
+          {
+            "wavelength_nm": 839.7132377459153,
+            "reflectance_min": 0.027929192108814647,
+            "prominence": 0.7998332761177965,
+            "half_prominence_width_nm": 5.719486414085509,
+            "width_samples": 17.152739755842276,
+            "resolved": true,
+            "lambda_over_width": 146.81619588743746
+          },
+          {
+            "wavelength_nm": 927.0756918972991,
+            "reflectance_min": 0.03176034575815759,
+            "prominence": 0.8623227936079249,
+            "half_prominence_width_nm": 6.430785722338101,
+            "width_samples": 19.2859263812918,
+            "resolved": true,
+            "lambda_over_width": 144.16211827382014
+          }
+        ],
+        "separation_nm": 87.36245415138376,
+        "intervening_max_reflectance": 0.8940831393660824,
+        "score": 0.7998332761177965
+      }
+    },
+    {
+      "id": "Au_common_angle",
+      "metal": "Au",
+      "angle_difference_fraction": 0.0,
+      "odd_angle_deg": 18.134130646058647,
+      "even_angle_deg": 18.134130646058647,
+      "sample_sha256": "1696416baa299b7595b027c34c87037386a5aa7984690566ebc7a52f6e67435b",
+      "native_audit_sha256": "9d852c467647adfc4b141dcccf48b09090757f50ea3e54372f01e6a448e1a4b2",
+      "actual_mesh": {
+        "x": {
+          "points": 85,
+          "maximum_step_nm": 7.943830534459499,
+          "minimum_step_nm": 7.943830534459129
+        },
+        "y": {
+          "points": 85,
+          "maximum_step_nm": 7.943830534459499,
+          "minimum_step_nm": 7.943830534459129
+        },
+        "z": {
+          "points": 457,
+          "maximum_step_nm": 7.987458667975686,
+          "minimum_step_nm": 2.499999999998441
+        }
+      },
+      "tracked_dips": [
+        {
+          "wavelength_nm": 839.7132377459153,
+          "reflectance_min": 0.013106566452852127,
+          "prominence": 0.815218534021539,
+          "half_prominence_width_nm": 5.660373655242893,
+          "width_samples": 16.975460592073375,
+          "resolved": true,
+          "lambda_over_width": 148.34943572464252
+        },
+        {
+          "wavelength_nm": 927.0756918972991,
+          "reflectance_min": 0.02367984993613603,
+          "prominence": 0.8697082328812628,
+          "half_prominence_width_nm": 6.3085372430921325,
+          "width_samples": 18.91930319203334,
+          "resolved": true,
+          "lambda_over_width": 146.95572938282163
+        }
+      ],
+      "retained": true,
+      "intervening_max_reflectance": 0.8933880828173988,
+      "dominant_pair": {
+        "dips": [
+          {
+            "wavelength_nm": 839.7132377459153,
+            "reflectance_min": 0.013106566452852127,
+            "prominence": 0.815218534021539,
+            "half_prominence_width_nm": 5.660373655242893,
+            "width_samples": 16.975460592073375,
+            "resolved": true,
+            "lambda_over_width": 148.34943572464252
+          },
+          {
+            "wavelength_nm": 927.0756918972991,
+            "reflectance_min": 0.02367984993613603,
+            "prominence": 0.8697082328812628,
+            "half_prominence_width_nm": 6.3085372430921325,
+            "width_samples": 18.91930319203334,
+            "resolved": true,
+            "lambda_over_width": 146.95572938282163
+          }
+        ],
+        "separation_nm": 87.36245415138376,
+        "intervening_max_reflectance": 0.8933880828173988,
+        "score": 0.815218534021539
+      }
+    },
+    {
+      "id": "Ag_full_difference",
+      "metal": "Ag",
+      "angle_difference_fraction": 1.0,
+      "odd_angle_deg": -4.964905749468862,
+      "even_angle_deg": 41.23316704158616,
+      "sample_sha256": "bbff579903a457d3fe86142a5648fca7f3743e03f28a43900a3ecff4136212c6",
+      "native_audit_sha256": "e3c213dfe2bd94994991c8c071865477abc5cdba08a69a7039fcd71799b14834",
+      "actual_mesh": {
+        "x": {
+          "points": 85,
+          "maximum_step_nm": 7.943830534459499,
+          "minimum_step_nm": 7.943830534459129
+        },
+        "y": {
+          "points": 85,
+          "maximum_step_nm": 7.943830534459499,
+          "minimum_step_nm": 7.943830534459129
+        },
+        "z": {
+          "points": 457,
+          "maximum_step_nm": 7.987458667975686,
+          "minimum_step_nm": 2.499999999998441
+        }
+      },
+      "tracked_dips": [
+        {
+          "wavelength_nm": 838.3794598199399,
+          "reflectance_min": 0.03204092340094204,
+          "prominence": 0.7703595112857284,
+          "half_prominence_width_nm": 6.296960918834202,
+          "width_samples": 18.88458579558369,
+          "resolved": true,
+          "lambda_over_width": 133.1403308082075
+        },
+        {
+          "wavelength_nm": 922.7409136378793,
+          "reflectance_min": 0.13582725698565584,
+          "prominence": 0.7000537079401945,
+          "half_prominence_width_nm": 9.341200783266231,
+          "width_samples": 28.014261149015397,
+          "resolved": true,
+          "lambda_over_width": 98.78183062833546
+        }
+      ],
+      "retained": true,
+      "intervening_max_reflectance": 0.8358809649258503,
+      "dominant_pair": {
+        "dips": [
+          {
+            "wavelength_nm": 838.3794598199399,
+            "reflectance_min": 0.03204092340094204,
+            "prominence": 0.7703595112857284,
+            "half_prominence_width_nm": 6.296960918834202,
+            "width_samples": 18.88458579558369,
+            "resolved": true,
+            "lambda_over_width": 133.1403308082075
+          },
+          {
+            "wavelength_nm": 922.7409136378793,
+            "reflectance_min": 0.13582725698565584,
+            "prominence": 0.7000537079401945,
+            "half_prominence_width_nm": 9.341200783266231,
+            "width_samples": 28.014261149015397,
+            "resolved": true,
+            "lambda_over_width": 98.78183062833546
+          }
+        ],
+        "separation_nm": 84.36145381793938,
+        "intervening_max_reflectance": 0.8358809649258503,
+        "score": 0.7000537079401945
+      }
+    },
+    {
+      "id": "Ag_half_difference",
+      "metal": "Ag",
+      "angle_difference_fraction": 0.5,
+      "odd_angle_deg": 6.584612448294893,
+      "even_angle_deg": 29.683648843822404,
+      "sample_sha256": "27648c77e779ca6a95466496480e70eb6b91912c1f332f8e8e2c4221765ddc46",
+      "native_audit_sha256": "98a5120d5300e174ff55b2e6f4e41afa16448d48d49ead01d0c39e5369b531c0",
+      "actual_mesh": {
+        "x": {
+          "points": 85,
+          "maximum_step_nm": 7.943830534459499,
+          "minimum_step_nm": 7.943830534459129
+        },
+        "y": {
+          "points": 85,
+          "maximum_step_nm": 7.943830534459499,
+          "minimum_step_nm": 7.943830534459129
+        },
+        "z": {
+          "points": 457,
+          "maximum_step_nm": 7.987458667975686,
+          "minimum_step_nm": 2.499999999998441
+        }
+      },
+      "tracked_dips": [
+        {
+          "wavelength_nm": 839.0463487829277,
+          "reflectance_min": 0.013997236524754052,
+          "prominence": 0.7880885818555725,
+          "half_prominence_width_nm": 6.176349269566003,
+          "width_samples": 18.52287145942836,
+          "resolved": true,
+          "lambda_over_width": 135.84826766797877
+        },
+        {
+          "wavelength_nm": 922.4074691563854,
+          "reflectance_min": 0.13620263606214553,
+          "prominence": 0.7006653040032512,
+          "half_prominence_width_nm": 9.229634660282613,
+          "width_samples": 27.679674346187653,
+          "resolved": true,
+          "lambda_over_width": 99.93975960129077
+        }
+      ],
+      "retained": true,
+      "intervening_max_reflectance": 0.8368679400653968,
+      "dominant_pair": {
+        "dips": [
+          {
+            "wavelength_nm": 839.0463487829277,
+            "reflectance_min": 0.013997236524754052,
+            "prominence": 0.7880885818555725,
+            "half_prominence_width_nm": 6.176349269566003,
+            "width_samples": 18.52287145942836,
+            "resolved": true,
+            "lambda_over_width": 135.84826766797877
+          },
+          {
+            "wavelength_nm": 922.4074691563854,
+            "reflectance_min": 0.13620263606214553,
+            "prominence": 0.7006653040032512,
+            "half_prominence_width_nm": 9.229634660282613,
+            "width_samples": 27.679674346187653,
+            "resolved": true,
+            "lambda_over_width": 99.93975960129077
+          }
+        ],
+        "separation_nm": 83.36112037345777,
+        "intervening_max_reflectance": 0.8368679400653968,
+        "score": 0.7006653040032512
+      }
+    },
+    {
+      "id": "Ag_common_angle",
+      "metal": "Ag",
+      "angle_difference_fraction": 0.0,
+      "odd_angle_deg": 18.134130646058647,
+      "even_angle_deg": 18.134130646058647,
+      "sample_sha256": "bfef1737a01ba480f6447f113348280ac1580f59b909baafe2e8417278143e48",
+      "native_audit_sha256": "66c26fc7d39a107cea994aa0c27e6475c199b2aa745dc4412514ac79c3a15d83",
+      "actual_mesh": {
+        "x": {
+          "points": 85,
+          "maximum_step_nm": 7.943830534459499,
+          "minimum_step_nm": 7.943830534459129
+        },
+        "y": {
+          "points": 85,
+          "maximum_step_nm": 7.943830534459499,
+          "minimum_step_nm": 7.943830534459129
+        },
+        "z": {
+          "points": 457,
+          "maximum_step_nm": 7.987458667975686,
+          "minimum_step_nm": 2.499999999998441
+        }
+      },
+      "tracked_dips": [
+        {
+          "wavelength_nm": 839.3797932644214,
+          "reflectance_min": 0.0028985373758232944,
+          "prominence": 0.798916593510855,
+          "half_prominence_width_nm": 6.157126357610764,
+          "width_samples": 18.465221946474742,
+          "resolved": true,
+          "lambda_over_width": 136.32654984039303
+        },
+        {
+          "wavelength_nm": 922.4074691563854,
+          "reflectance_min": 0.13152798316476239,
+          "prominence": 0.7046510811010611,
+          "half_prominence_width_nm": 9.160471027116046,
+          "width_samples": 27.472252610320993,
+          "resolved": true,
+          "lambda_over_width": 100.69432744516668
+        }
+      ],
+      "retained": true,
+      "intervening_max_reflectance": 0.8361790642658234,
+      "dominant_pair": {
+        "dips": [
+          {
+            "wavelength_nm": 839.3797932644214,
+            "reflectance_min": 0.0028985373758232944,
+            "prominence": 0.798916593510855,
+            "half_prominence_width_nm": 6.157126357610764,
+            "width_samples": 18.465221946474742,
+            "resolved": true,
+            "lambda_over_width": 136.32654984039303
+          },
+          {
+            "wavelength_nm": 922.4074691563854,
+            "reflectance_min": 0.13152798316476239,
+            "prominence": 0.7046510811010611,
+            "half_prominence_width_nm": 9.160471027116046,
+            "width_samples": 27.472252610320993,
+            "resolved": true,
+            "lambda_over_width": 100.69432744516668
+          }
+        ],
+        "separation_nm": 83.02767589196401,
+        "intervening_max_reflectance": 0.8361790642658234,
+        "score": 0.7046510811010611
+      }
+    }
+  ],
+  "findings": {
+    "Au": {
+      "equal_angles_retain_reference_double_dip": true,
+      "retained_control_ids": [
+        "Au_common_angle",
+        "Au_half_difference",
+        "Au_full_difference"
+      ],
+      "deepest_joint_pair_case": "Au_common_angle",
+      "tracked_centers_range_nm": [
+        [
+          839.0463487829277,
+          839.7132377459153
+        ],
+        [
+          927.0756918972991,
+          927.0756918972991
+        ]
+      ]
+    },
+    "Ag": {
+      "equal_angles_retain_reference_double_dip": true,
+      "retained_control_ids": [
+        "Ag_common_angle",
+        "Ag_half_difference",
+        "Ag_full_difference"
+      ],
+      "deepest_joint_pair_case": "Ag_common_angle",
+      "tracked_centers_range_nm": [
+        [
+          838.3794598199399,
+          839.3797932644214
+        ],
+        [
+          922.4074691563854,
+          922.7409136378793
+        ]
+      ]
+    }
+  },
+  "matching_maximum_shift_nm": 15,
+  "pair_criteria_source": "explore_double_dips.double_pair",
+  "note": "Wavelength matching tracks spectral features, not proven modal identity. Findings concern three tested angle settings at fixed dimensions and mean angle; they are not universal rotation laws or material-accuracy claims."
+}
