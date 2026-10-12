@@ -54,10 +54,15 @@ def finish():
                 lines.append(f"- {key}: 最大光谱绝对差 R={c['maximum_absolute_R_difference']:.4f}、T={c['maximum_absolute_T_difference']:.4f}、A={c['maximum_absolute_A_difference']:.4f}；"
                     f"目标频率/核心区域最大场平均值相对变化 {100*max(row['relative_mean_change'] for row in rows):.1f}%，P95 {100*max(row['relative_p95_change'] for row in rows):.1f}%；"
                     f"全部替代判据通过={c['small_effect_under_current_criteria']}。")
+            auxiliary=report['comparisons']['bare_8nm_vs_4nm']['own_peak_mesh_comparison']
+            lines.append('无金结构自身反射峰及其共同峰波长处的E/H场网格检查：'+
+                         f"同时通过={auxiliary['own_peaks_and_sampled_fields_stable']}。未保留Au目标双谷与网格误差分开判断。")
             lines.append('局限：固定结构、法向 x 偏振；总吸收不等于 As2Se3 单独吸收；场限于两个 XY 平面和选定频率；数值检查不证明材料拟合或实验精度。报告图表和原始证据见已核验的 Git 版本。')
-            (destination/'mobile_summary.md').write_text('\n\n'.join(lines)+'\n',encoding='utf-8')
+            summary=destination/'report_summary.md'
+            summary.write_text('\n\n'.join(lines)+'\n',encoding='utf-8')
             state.update(state='ready_for_visual_review',pdf=str(pdf),render_directory=str(render_directory),
-                         completed_at_unix=time.time(),not_yet_delivered=True)
+                         summary=str(summary),completed_at_unix=time.time(),not_yet_delivered=True,
+                         delivery='local desktop PDF and Optics_design repository')
             atomic_json(status_path,state)
         except BaseException as error:
             state.update(state='needs_attention',error=str(error),updated_at_unix=time.time());atomic_json(status_path,state)

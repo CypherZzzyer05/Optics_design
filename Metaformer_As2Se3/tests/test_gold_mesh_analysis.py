@@ -5,7 +5,7 @@ from pathlib import Path
 import tempfile
 from unittest.mock import patch
 import numpy as np
-from analyze_gold_mesh_results import compare_cases,sampled_field_extrema,fields_near_spectral_features,verify_calibration
+from analyze_gold_mesh_results import compare_cases,sampled_field_extrema,fields_near_spectral_features,verify_calibration,compare_own_peaks
 from gold_mesh_research import audit_has_complete_fields
 
 
@@ -27,6 +27,17 @@ def case(mean):
 
 
 class AnalysisTests(unittest.TestCase):
+    def test_bare_peaks_compare_their_own_grid_response(self):
+        wavelength=np.arange(700.,1100.,.25)
+        def signal(shift):return .05+.7*np.exp(-((wavelength-800-shift)/3)**2)+.4*np.exp(-((wavelength-900-shift)/5)**2)
+        def fixture(shift):return {'data':{'wavelength_nm':wavelength,'reflectance':signal(shift)}}
+        criteria={'center_nm':2.,'absolute_R_change':.03,'relative_width_change':.1}
+        good=compare_own_peaks(fixture(.5),fixture(0),criteria)
+        bad=compare_own_peaks(fixture(3),fixture(0),criteria)
+        self.assertTrue(good['both_peaks_stable']);self.assertFalse(bad['both_peaks_stable'])
+        self.assertEqual([row['second']['center_nm'] for row in good['tracked_peaks']],[800.,900.])
+        self.assertTrue(all(abs(row['absolute_R_change'])<1e-9 for row in bad['tracked_peaks']))
+
     def test_calibration_flag_cannot_hide_current_normalization_error(self):
         with tempfile.TemporaryDirectory() as temporary:
             root=Path(temporary);directory=root/'vacuum8';directory.mkdir()

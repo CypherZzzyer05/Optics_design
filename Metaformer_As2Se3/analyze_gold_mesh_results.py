@@ -98,20 +98,28 @@ def verify_calibration(output,case_id,geometry):
             'normalization_check_sha256':checksum(path),'maximum_deviations':calculated,'passed':True}
 
 
-def compare_cases(first,second,reference_dips,targets,criteria):
-    a,b=first['data'],second['data']
-    if not np.array_equal(a['wavelength_nm'],b['wavelength_nm']):raise ValueError('Main spectral grids differ')
-    first_pair=track_pair(a['wavelength_nm'],a['reflectance'],reference_dips)
-    second_pair=track_pair(b['wavelength_nm'],b['reflectance'],reference_dips)
-    spectral=[]
-    if first_pair['tracked_dips'] and second_pair['tracked_dips']:
-        for left,right in zip(first_pair['tracked_dips'],second_pair['tracked_dips']):
-            shift=abs(left['wavelength_nm']-right['wavelength_nm'])
-            depth=abs(left['reflectance_min']-right['reflectance_min'])
-            width=relative_change(left['half_prominence_width_nm'],right['half_prominence_width_nm'])
-            spectral.append({'first':left,'second':right,'center_shift_nm':shift,'absolute_R_change':depth,
-                             'relative_width_change':width,'passes':bool(shift<=criteria['center_nm']
-                             and depth<=criteria['absolute_R_change'] and width<=criteria['relative_width_change'])})
+def compare_own_peaks(first,second,criteria):
+    """Auxiliary bare-stack grid check; absent Au dips are not a mesh error."""
+    reference=[feature for feature in spectral_features(second['data']['wavelength_nm'],second['data']['reflectance'])
+               if feature['kind']=='maximum'][:2]
+    candidates=[feature for feature in spectral_features(first['data']['wavelength_nm'],first['data']['reflectance'])
+                if feature['kind']=='maximum']
+    rows=[];used=set()
+    for peak in reference:
+        options=[(i,value) for i,value in enumerate(candidates) if i not in used and abs(value['center_nm']-peak['center_nm'])<=25]
+        if not options:
+            rows.append({'second':peak,'first':None,'passes':False});continue
+        index,selected=min(options,key=lambda pair:abs(pair[1]['center_nm']-peak['center_nm']));used.add(index)
+        shift=abs(selected['center_nm']-peak['center_nm']);height=abs(selected['value']-peak['value'])
+        width=relative_change(selected['half_prominence_width_nm'],peak['half_prominence_width_nm'])
+        rows.append({'first':selected,'second':peak,'center_shift_nm':shift,'absolute_R_change':height,
+                     'relative_width_change':width,'passes':bool(shift<=criteria['center_nm'] and height<=criteria['absolute_R_change']
+                                                                and width<=criteria['relative_width_change'])})
+    return {'reference_peaks':reference,'tracked_peaks':rows,'both_peaks_stable':bool(len(rows)==2 and all(row['passes'] for row in rows)),
+            'scope':'Auxiliary reflection-peak comparison with the same numerical tolerances; it does not replace the accepted double-dip substitution gate.'}
+
+
+def compare_fields(first,second,targets,criteria):
     field=[]
     for name in ('nf_top_E','nf_mid_E','nf_top_H','nf_mid_H'):
         regions=('all',) if '_top_' in name else ('pillar_bulk','air_away_from_edges')
@@ -127,6 +135,24 @@ def compare_cases(first,second,reference_dips,targets,criteria):
                               'p95_ratio_first_over_second':r1['p95_intensity_enhancement']/max(r2['p95_intensity_enhancement'],1e-12),
                               'relative_mean_change':mean,'relative_p95_change':p95,
                               'passes':bool(mean<=criteria['relative_field_mean_change'] and p95<=criteria['relative_field_p95_change'])})
+    return field
+
+
+def compare_cases(first,second,reference_dips,targets,criteria):
+    a,b=first['data'],second['data']
+    if not np.array_equal(a['wavelength_nm'],b['wavelength_nm']):raise ValueError('Main spectral grids differ')
+    first_pair=track_pair(a['wavelength_nm'],a['reflectance'],reference_dips)
+    second_pair=track_pair(b['wavelength_nm'],b['reflectance'],reference_dips)
+    spectral=[]
+    if first_pair['tracked_dips'] and second_pair['tracked_dips']:
+        for left,right in zip(first_pair['tracked_dips'],second_pair['tracked_dips']):
+            shift=abs(left['wavelength_nm']-right['wavelength_nm'])
+            depth=abs(left['reflectance_min']-right['reflectance_min'])
+            width=relative_change(left['half_prominence_width_nm'],right['half_prominence_width_nm'])
+            spectral.append({'first':left,'second':right,'center_shift_nm':shift,'absolute_R_change':depth,
+                             'relative_width_change':width,'passes':bool(shift<=criteria['center_nm']
+                             and depth<=criteria['absolute_R_change'] and width<=criteria['relative_width_change'])})
+    field=compare_fields(first,second,targets,criteria)
     return {'first_case':first['state']['recipe']['case_id'],'second_case':second['state']['recipe']['case_id'],
             'reference_pair_preserved':bool(first_pair['retained'] and second_pair['retained']),
             'tracked_spectral_features':spectral,'field_at_common_wavelengths':field,
@@ -163,6 +189,11 @@ def analyze(output,destination):
     comparisons={name:compare_cases(cases[left],cases[right],reference['dips'],targets,criteria) for name,left,right in
                  (('Au_vs_bare_8nm','Au8','bare8'),('Au_vs_bare_4nm','Au4','bare4'),
                   ('Au_8nm_vs_4nm','Au8','Au4'),('bare_8nm_vs_4nm','bare8','bare4'))}
+    comparisons['bare_8nm_vs_4nm']['own_peak_mesh_comparison']=compare_own_peaks(cases['bare8'],cases['bare4'],criteria)
+    auxiliary=comparisons['bare_8nm_vs_4nm']['own_peak_mesh_comparison']
+    auxiliary['field_at_shared_preliminary_peak_wavelengths']=compare_fields(cases['bare8'],cases['bare4'],plan['bare_peak_wavelengths_nm'],criteria)
+    auxiliary['own_peaks_and_sampled_fields_stable']=bool(auxiliary['both_peaks_stable'] and len(plan['bare_peak_wavelengths_nm'])==2
+            and all(row['passes'] for row in auxiliary['field_at_shared_preliminary_peak_wavelengths']))
     remove_gold=comparisons['Au_vs_bare_4nm']['small_effect_under_current_criteria']
     stack='bare' if remove_gold else 'Au'
     adopt8=comparisons[stack+'_8nm_vs_4nm']['small_effect_under_current_criteria']

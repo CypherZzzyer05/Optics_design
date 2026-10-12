@@ -39,8 +39,10 @@ def plots(output,destination):
     targets=[row['wavelength_nm'] for row in report['comparisons']['Au_8nm_vs_4nm']['field_at_common_wavelengths'][:2]]
     targets=sorted(set(targets))
     fig,axes=plt.subplots(2,2,figsize=(10,6))
-    for col,center in enumerate(targets):
-        for row,stack in enumerate(('Au','bare')):
+    bare_peaks=report['comparisons']['bare_8nm_vs_4nm']['own_peak_mesh_comparison']['reference_peaks']
+    for row,stack in enumerate(('Au','bare')):
+        centers=targets if stack=='Au' else [peak['center_nm'] for peak in bare_peaks]
+        for col,center in enumerate(centers):
             ax=axes[row,col]
             for mesh in (8,4):
                 name=stack+str(mesh);z=cases[name]['data']
