@@ -1,0 +1,72 @@
+test_focused_comparison_preserves_samples_and_cannot_hide_one_changing_trough (test_double_mesh.DoubleMeshTests) ... ok
+test_reduced_monitor_storage_requires_and_passes_independent_power_checks (test_double_mesh.DoubleMeshTests) ... ok
+test_tracks_both_dips_even_when_prominence_rank_changes (test_double_mesh.DoubleMeshTests) ... ok
+test_divergence_is_not_retried (test_fdtd_pipeline.ConvergenceRetryTests) ... ok
+test_real_seven_parameter_run_cannot_use_a_historical_unbounded_mesh (test_fdtd_pipeline.ConvergenceRetryTests) ... ok
+test_retry_is_bounded_and_never_accepts_nonconvergence (test_fdtd_pipeline.ConvergenceRetryTests) ... Auto-shutoff not reached; retrying sample.fsp with 20.0 ps time limit
+Auto-shutoff not reached; retrying sample.fsp with 40.0 ps time limit
+Auto-shutoff not reached; retrying sample.fsp with 80.0 ps time limit
+ok
+test_retry_reaches_convergence_and_records_actual_time_limit (test_fdtd_pipeline.ConvergenceRetryTests) ... Auto-shutoff not reached; retrying sample.fsp with 20.0 ps time limit
+ok
+test_changed_configuration_cannot_mix_datasets (test_fdtd_pipeline.DatasetPersistenceTests) ... ok
+test_corrupt_multiple_samples_regenerated (test_fdtd_pipeline.DatasetPersistenceTests) ... ok
+test_directory_lock_prevents_concurrent_writers (test_fdtd_pipeline.DatasetPersistenceTests) ... ok
+test_failed_samples_excluded_and_retried (test_fdtd_pipeline.DatasetPersistenceTests) ... ok
+test_resume_and_training_shapes_and_roundtrip (test_fdtd_pipeline.DatasetPersistenceTests) ... ok
+test_seeded_sampling_and_splits (test_fdtd_pipeline.DatasetPersistenceTests) ... ok
+test_strict_dataset_reuse_requires_actual_sub_10nm_cells (test_fdtd_pipeline.DatasetPersistenceTests) ... ok
+test_1000_point_and_config_validation (test_fdtd_pipeline.PhysicalValidationTests) ... ok
+test_edge_gaps_and_nonoverlap (test_fdtd_pipeline.PhysicalValidationTests) ... ok
+test_reject_energy_creation (test_fdtd_pipeline.PhysicalValidationTests) ... ok
+test_reject_grid_not_wavelength_uniform (test_fdtd_pipeline.PhysicalValidationTests) ... ok
+test_reject_negative_transmitted_flux (test_fdtd_pipeline.PhysicalValidationTests) ... ok
+test_reject_nonconvergence_and_divergence (test_fdtd_pipeline.PhysicalValidationTests) ... ok
+test_reject_nonfinite_data (test_fdtd_pipeline.PhysicalValidationTests) ... ok
+test_reversed_grid_preserves_spectrum_alignment (test_fdtd_pipeline.PhysicalValidationTests) ... ok
+test_bare_control_changes_only_metal_presence (test_gold_mesh.GoldMeshTests) ... ok
+test_electric_and_magnetic_incident_normalization (test_gold_mesh.GoldMeshTests) ... ok
+test_field_frequency_and_vector_dimensions_cannot_be_silently_reshaped (test_gold_mesh.GoldMeshTests) ... ok
+test_native_structure_check_rejects_changed_substrate_or_gold (test_gold_mesh.GoldMeshTests) ... ok
+test_native_vector_frequency_sort_and_squared_sum (test_gold_mesh.GoldMeshTests) ... ok
+test_vacuum_reference_removes_every_physical_scatterer (test_gold_mesh.GoldMeshTests) ... ok
+test_constant_field_average_and_area_are_independent_of_grid_size (test_gold_mesh_metrics.FieldMetricTests) ... ok
+test_nonfinite_negative_and_empty_regions_are_rejected (test_gold_mesh_metrics.FieldMetricTests) ... ok
+test_physical_masks_include_pillar_centres_and_exclude_sharp_edges (test_gold_mesh_metrics.FieldMetricTests) ... ok
+test_quantile_is_area_weighted_not_a_count_of_dense_grid_nodes (test_gold_mesh_metrics.FieldMetricTests) ... ok
+test_selected_frequencies_are_real_common_points_with_dense_target_windows (test_gold_mesh_metrics.FieldMetricTests) ... ok
+test_mouse_drag_rotates_all_squares_without_changing_spectrum_or_labels (test_preview_interaction.PreviewInteractionTests) ... ok
+test_sample_mouse_click_and_reset_restore_the_real_sample_angle (test_preview_interaction.PreviewInteractionTests) ... ok
+test_single_sample_angle_preview_and_legacy_five_parameter_browser (test_preview_interaction.PreviewInteractionTests) ... ok
+test_angles_and_self_centers_preserve_C2 (test_quadrant.QuadrantTests) ... ok
+test_double_pair_rejects_single_unresolved_and_edge_dips (test_quadrant.QuadrantTests) ... ok
+test_fresh_project_can_read_committed_real_candidate_without_coarse_generation (test_quadrant.QuadrantTests) ... Using committed real pilot candidate archive; new simulations still use the selected strict mesh
+ok
+test_material_coverage_extension_and_content_fingerprint (test_quadrant.QuadrantTests) ... ok
+test_metal_layer_is_below_finite_substrate_and_T_below_metal (test_quadrant.QuadrantTests) ... ok
+test_periodic_angles_do_not_independently_discard_signs (test_quadrant.QuadrantTests) ... ok
+test_research_resolution_cannot_enter_training_pipeline (test_quadrant.QuadrantTests) ... ok
+test_resume_pack_seven_outputs_and_optimizer_updates (test_quadrant.QuadrantTests) ... ok
+test_spectral_scoring_and_control_plan (test_quadrant.QuadrantTests) ... ok
+test_strict_mesh_limit_covers_full_domain_and_checks_actual_cells (test_quadrant.QuadrantTests) ... ok
+test_attention_outputs_and_gradients_match_independent_sdpa (test_resnet_attention.ResidualAttentionTests) ... ok
+test_legacy_model_defaults_are_compatible_but_resnet_resume_is_rejected (test_resnet_attention.ResidualAttentionTests) ... ok
+test_residual_block_starts_as_identity_and_preserves_input_gradient (test_resnet_attention.ResidualAttentionTests) ... ok
+test_resnet_and_attention_receive_gradients_during_real_updates (test_resnet_attention.ResidualAttentionTests) ... ok
+test_degree_metrics_are_separate_from_nanometers (test_rotation.RotationTests) ... ok
+test_fdtd_sets_native_angle_without_moving_centers (test_rotation.RotationTests) ... ok
+test_legacy_configuration_fingerprint_excludes_rotation_default (test_rotation.RotationTests) ... ok
+test_mirror_equivalent_loss_has_correct_error_and_gradient (test_rotation.RotationTests) ... ok
+test_mixed_unit_dataset_resume_and_six_output_training (test_rotation.RotationTests) ... ok
+test_overlap_and_periodic_cell_escape_are_rejected (test_rotation.RotationTests) ... ok
+test_self_center_rotation_and_mirror_vertices (test_rotation.RotationTests) ... ok
+test_interrupted_training_resumes_with_same_weights_and_history (test_training.TrainingIntegrityTests) ... ok
+test_physical_error_metrics_use_parameter_ranges (test_training.TrainingIntegrityTests) ... ok
+test_split_overlap_and_omissions_are_rejected (test_training.TrainingIntegrityTests) ... ok
+test_training_changes_parameters_with_real_backward_and_optimizer (test_training.TrainingIntegrityTests) ... ok
+test_validation_permission_does_not_allow_unconverged_training (test_training.TrainingIntegrityTests) ... ok
+
+----------------------------------------------------------------------
+Ran 62 tests in 17.618s
+
+OK

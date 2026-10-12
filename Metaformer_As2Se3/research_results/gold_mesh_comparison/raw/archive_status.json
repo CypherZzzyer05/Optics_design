@@ -1,0 +1,12 @@
+{
+  "complete_matrix": false,
+  "completed_cases": [
+    "bare8_preliminary",
+    "vacuum8",
+    "vacuum4",
+    "Au8",
+    "bare8"
+  ],
+  "scope": "Completed native-audited exports only; large FSP projects remain local and their checksums are recorded.",
+  "no_final_decision_yet": true
+}

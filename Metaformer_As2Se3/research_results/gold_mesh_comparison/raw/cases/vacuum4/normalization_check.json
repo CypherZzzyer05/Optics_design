@@ -1,0 +1,18 @@
+{
+  "nf_mid_E": {
+    "maximum_mean_or_p95_deviation_from_unity": 0.00020116567611694336,
+    "passed": true
+  },
+  "nf_top_E": {
+    "maximum_mean_or_p95_deviation_from_unity": 0.00021159648919732987,
+    "passed": true
+  },
+  "nf_mid_H": {
+    "maximum_mean_or_p95_deviation_from_unity": 9.775161743164062e-05,
+    "passed": true
+  },
+  "nf_top_H": {
+    "maximum_mean_or_p95_deviation_from_unity": 0.00024813413619995117,
+    "passed": true
+  }
+}

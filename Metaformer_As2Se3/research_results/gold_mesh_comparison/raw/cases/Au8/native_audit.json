@@ -1,0 +1,67 @@
+{
+  "case_id": "Au8",
+  "sample_sha256": "44e115957729b915ff3b5c70ccfa2f6a6707d4b7dedd718f810ff382f624fe5f",
+  "project_sha256": "2008909a17b4f41e157499de5cd771336abca5cab177b200a94241cf5e5bd371",
+  "native_geometry_verified": true,
+  "native_spectra_match_export": true,
+  "native_fields_match_export": true,
+  "actual_mesh": {
+    "x": {
+      "points": 85,
+      "maximum_step_nm": 7.943830534459447,
+      "minimum_step_nm": 7.943830534459182
+    },
+    "y": {
+      "points": 85,
+      "maximum_step_nm": 7.943830534459447,
+      "minimum_step_nm": 7.943830534459182
+    },
+    "z": {
+      "points": 457,
+      "maximum_step_nm": 7.987458667975686,
+      "minimum_step_nm": 2.4999999999984936
+    }
+  },
+  "status": 2,
+  "structure": {
+    "gold_present": true,
+    "finite_substrate": true,
+    "geometry_verified": true,
+    "grid_matches_Au_layout": true
+  },
+  "native_vs_export_spectral_errors": {
+    "wavelength_nm": 0.0,
+    "reflectance": 0.0,
+    "transmittance": 0.0,
+    "absorptance": 0.0
+  },
+  "native_vs_export_field_errors": {
+    "nf_mid_E_enhancement": 0.0,
+    "nf_mid_E_wavelength_nm": 0.0,
+    "nf_mid_E_incident_squared": 0.0,
+    "nf_mid_E_x_nm": 0.0,
+    "nf_mid_E_y_nm": 0.0,
+    "nf_mid_E_z_nm": 0.0,
+    "nf_top_E_enhancement": 0.0,
+    "nf_top_E_wavelength_nm": 0.0,
+    "nf_top_E_incident_squared": 0.0,
+    "nf_top_E_x_nm": 0.0,
+    "nf_top_E_y_nm": 0.0,
+    "nf_top_E_z_nm": 0.0,
+    "nf_mid_H_enhancement": 0.0,
+    "nf_mid_H_wavelength_nm": 0.0,
+    "nf_mid_H_incident_squared": 0.0,
+    "nf_mid_H_x_nm": 0.0,
+    "nf_mid_H_y_nm": 0.0,
+    "nf_mid_H_z_nm": 0.0,
+    "nf_top_H_enhancement": 0.0,
+    "nf_top_H_wavelength_nm": 0.0,
+    "nf_top_H_incident_squared": 0.0,
+    "nf_top_H_x_nm": 0.0,
+    "nf_top_H_y_nm": 0.0,
+    "nf_top_H_z_nm": 0.0
+  },
+  "power_integration_validation": null,
+  "field_export_dtype": "float32 intensity enhancement; coordinates and source normalization float64",
+  "note": "Native reload verifies this saved experiment; it does not prove material accuracy or mesh convergence."
+}
