@@ -39,6 +39,6 @@ python gold_mesh_research.py run --case bare8_preliminary
 python continue_gold_mesh_study.py
 ```
 
-最终报告采用PDF并逐页渲染检查。用户已授权在GPT中新建报告对话。完成后核验可用交付入口并发送报告摘要及手机可访问的报告链接；不会把本机文件路径当成手机可访问的附件，也不会把尚未发送的报告声称为已推送。
+最终报告采用PDF并逐页渲染检查。用户已将交付方式改为在电脑查看：完成后在当前任务中打开本机PDF，并将报告、图表及证据推送到Optics_design仓库。手机GPT交付要求已取消，网页登录不再需要。
 
 方法依据：[原生场监测器](https://optics.ansys.com/hc/en-us/articles/360034902393-Frequency-domain-monitor-Simulation-object)、[源强度](https://optics.ansys.com/hc/en-us/articles/360034925373-sourceintensity-Script-command)、[Python数据维度](https://optics.ansys.com/hc/en-us/articles/39744236202771-Accessing-Simulation-Results-Python-API)、[原生资源预检](https://optics.ansys.com/hc/en-us/articles/4403937981715-runsystemcheck-Script-command)。本机2024 R1使用无参数CPU预检命令。
