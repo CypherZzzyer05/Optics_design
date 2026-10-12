@@ -176,10 +176,13 @@ def analyze(output,destination):
                          'actual_mesh':case['audit']['actual_mesh'],'sample_sha256':case['state']['sample_sha256'],
                          'native_audit_sha256':checksum(case['directory']/'native_audit.json'),
                          'spectral_features':features,'field_profiles':case['profiles'],
+                         'region_quadrature':{region:{key:value[key] for key in ('sampled_area_nm2','sampled_nodes')}
+                                              for region,value in case['profiles']['nf_mid_E'][0]['regions'].items()},
                          'sampled_field_extrema':sampled_field_extrema(case['profiles']),
                          'fields_near_own_spectral_features':fields_near_spectral_features(case['profiles'],features['reflectance'])}
     report={'complete_matrix':True,'geometry_values':base['geometry_values'],'criteria':criteria,'cases':summaries,
             'vacuum_calibrations':calibrations,
+            'exact_eroded_pillar_area_nm2':float(4*(geometry.l-20)**2),
             'comparisons':comparisons,'decision':{'remove_gold':remove_gold,'selected_stack':stack,
              'adopt_8nm':adopt8,'selected_final_mesh_nm':8 if adopt8 else 4},
             'scope':'Current fixed geometry and sampled 700-1700 nm spectra; two XY planes and selected E/H frequencies.',
