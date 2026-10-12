@@ -5,7 +5,24 @@ from pathlib import Path
 import tempfile
 from unittest.mock import patch
 import numpy as np
-from analyze_gold_mesh_results import compare_cases,sampled_field_extrema,fields_near_spectral_features,verify_calibration,compare_own_peaks
+from analyze_gold_mesh_results import compare_cases,sampled_field_extrema,fields_near_spectral_features,verify_calibration,compare_own_peaks,gold_loss_interpretation
+
+
+class GoldLossInterpretationTests(unittest.TestCase):
+    def diagnostic(self,fit_n):
+        rows=[{'wavelength_nm':w,'data_n':.2,'data_k':5.,'fit_n':fit_n,'fit_k':5.} for w in (839.,927.)]
+        return {'cases':{'Au4':{'materials':{'Au (Gold) - Palik':{'at_target_wavelengths':rows}}}}}
+
+    def test_positive_k_does_not_hide_missing_loss(self):
+        result=gold_loss_interpretation(self.diagnostic(1e-8))
+        self.assertTrue(result['near_lossless_fit_at_any_target'])
+        self.assertAlmostEqual(result['target_loss_diagnostics'][0]['data_imaginary_permittivity'],2.)
+        self.assertFalse(result['material_accuracy_certified'])
+
+    def test_matching_loss_does_not_certify_experimental_accuracy(self):
+        result=gold_loss_interpretation(self.diagnostic(.2))
+        self.assertFalse(result['near_lossless_fit_at_any_target'])
+        self.assertFalse(result['material_accuracy_certified'])
 from gold_mesh_research import audit_has_complete_fields
 
 
