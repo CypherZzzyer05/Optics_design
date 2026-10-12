@@ -155,6 +155,19 @@ def author(analysis_path,output):
         rows.append([NAMES[name],number(m['value']),f"{m['wavelength_nm']:.3f}",number(t['value']),f"{t['wavelength_nm']:.3f}"])
     table(rows,[100,115,85,100,80])
     p('这些是 94 个 E 采样频率和两个平面的统计极值，不能证明整个三维空间或连续全波段的全局最大增强。它们也包含背板导致的背景干涉，不单独证明某个共振模态。')
+    page('材料模型与拟合诊断')
+    diagnostics=report['material_diagnostics']
+    p('材料诊断：独立重载四组原生文件，按700-1700 nm源波段查询数据与FDTD拟合，不修改拟合设置或FSP。各对照共同材料的连续拟合一致='+str(diagnostics['shared_fits_match'])+'。')
+    table([['Au4 材料','max |delta n|','max |delta k|'],
+           *[[name,f"{value['max_n_error']:.5g}",f"{value['max_k_error']:.5g}"]
+             for name,value in diagnostics['cases']['Au4']['materials'].items()]],[270,105,105])
+    p('这些是拟合相对材料表的误差，不是相对真实样品的实验误差。特别是Au的损耗拟合会影响绝对吸收率与场增强；以下建议限于当前拟合材料模型，不能当作实物器件的精确性能承诺。',small)
+    gold=diagnostics['cases']['Au4']['materials']['Au (Gold) - Palik']
+    table([['目标波长 nm','材料表 n / k','FDTD 拟合 n / k'],
+           *[[f"{row['wavelength_nm']:.3f}",' / '.join(number(row[key]) for key in ('data_n','data_k')),
+              ' / '.join(number(row[key]) for key in ('fit_n','fit_k'))] for row in gold['at_target_wavelengths']]],[120,180,180])
+    p('若拟合n接近0，而材料表n非零，即使k相近，介电常数虚部2nk也会改变；不能把“无增益”当成损耗拟合准确。该诊断与8/4 nm数值网格对照分别报告。')
+    p('As2Se3 原始 n/k CSV SHA256: 9e6ee6d3b584f33226d7201e2b2e12490726cb3b8256726754e5aca9cae64ce9',small)
     page('可复核性、限制与最终采用方案')
     p('采用方案：'+('保留 Au' if not decision['remove_gold'] else '移除 Au')+f"；最终精细网格 {decision['selected_final_mesh_nm']} nm。未满足容差的具体指标见光谱和场对照表；8 nm 可作为探索阶段结果，但是否用于正式训练需按误差等级另行标识。")
     p('每组均有配置指纹、源和几何核验、实际网格坐标、自动终止状态、R/T/A 原生复读、四个 E/H 监测器复读和原始文件 SHA256。float32 场导出的复读容差远小于 10% 决策阈值。以下为原始 NPZ 校验值：')
@@ -165,7 +178,9 @@ def author(analysis_path,output):
     for name,url in [('源强度与 CW 归一化','https://optics.ansys.com/hc/en-us/articles/360034925373-sourceintensity-Script-command'),
                      ('频域场监测器','https://optics.ansys.com/hc/en-us/articles/360034902393-Frequency-domain-monitor-Simulation-object'),
                      ('Python 原生向量数据维度','https://optics.ansys.com/hc/en-us/articles/39744236202771-Accessing-Simulation-Results-Python-API'),
-                     ('网格细化方法','https://optics.ansys.com/hc/en-us/articles/360034382594-Understanding-Mesh-Refinement-and-Conformal-Mesh-in-FDTD')]:
+                     ('网格细化方法','https://optics.ansys.com/hc/en-us/articles/360034382594-Understanding-Mesh-Refinement-and-Conformal-Mesh-in-FDTD'),
+                     ('FDTD 材料拟合查询','https://optics.ansys.com/hc/en-us/articles/360034409694-getfdtdindex-Script-command'),
+                     ('As2Se3 数据来源','https://refractiveindex.info/?shelf=main&book=As2Se3&page=Joseph-700nm')]:
         story.append(Paragraph(escape(name)+': <link href="'+url+'" color="#174d78">'+escape(url)+'</link>',small))
     output.parent.mkdir(parents=True,exist_ok=True)
     def footer(canvas,doc):

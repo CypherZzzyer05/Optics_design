@@ -1,0 +1,7 @@
+test_matching_k_does_not_hide_lossless_gold_fit (test_gold_mesh_materials.MaterialDiagnosticsTests) ... ok
+test_nonfinite_gain_and_mismatched_axes_are_rejected (test_gold_mesh_materials.MaterialDiagnosticsTests) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.001s
+
+OK
