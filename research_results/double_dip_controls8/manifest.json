@@ -151,7 +151,10 @@
         6.584612448294893,
         29.683648843822404
       ],
-      "state": "pending"
+      "state": "success",
+      "metal_material": "Au (Gold) - Palik",
+      "sha256": "8dd416e217d4e6b15eca4da7e718f7fb4d33786d2f5ecef8cf9f95851de73277",
+      "status": 2
     },
     {
       "id": "Au_common_angle",
@@ -167,7 +170,10 @@
         18.134130646058647,
         18.134130646058647
       ],
-      "state": "pending"
+      "state": "success",
+      "metal_material": "Au (Gold) - Palik",
+      "sha256": "1696416baa299b7595b027c34c87037386a5aa7984690566ebc7a52f6e67435b",
+      "status": 2
     },
     {
       "id": "Ag_full_difference",
@@ -183,7 +189,10 @@
         -4.964905749468862,
         41.23316704158616
       ],
-      "state": "pending"
+      "state": "success",
+      "metal_material": "Ag (Silver) - Palik (0-2um)",
+      "sha256": "bbff579903a457d3fe86142a5648fca7f3743e03f28a43900a3ecff4136212c6",
+      "status": 2
     },
     {
       "id": "Ag_half_difference",
@@ -199,7 +208,12 @@
         6.584612448294893,
         29.683648843822404
       ],
-      "state": "pending"
+      "state": "success",
+      "metal_material": "Ag (Silver) - Palik (0-2um)",
+      "interrupted_at": "2026-10-11T12:50:00.298213+00:00",
+      "interruption_reason": "user_requested_pause",
+      "sha256": "27648c77e779ca6a95466496480e70eb6b91912c1f332f8e8e2c4221765ddc46",
+      "status": 2
     },
     {
       "id": "Ag_common_angle",
@@ -215,9 +229,13 @@
         18.134130646058647,
         18.134130646058647
       ],
-      "state": "pending"
+      "state": "success",
+      "metal_material": "Ag (Silver) - Palik (0-2um)",
+      "sha256": "bfef1737a01ba480f6447f113348280ac1580f59b909baafe2e8417278143e48",
+      "status": 2
     }
   ],
   "material_csv_sha256": "9e6ee6d3b584f33226d7201e2b2e12490726cb3b8256726754e5aca9cae64ce9",
-  "config_fingerprint": "1187585abc353a5c73d8d2edd99bcc7d57854af18f816c2e8597bf4c906152ec"
+  "config_fingerprint": "1187585abc353a5c73d8d2edd99bcc7d57854af18f816c2e8597bf4c906152ec",
+  "last_user_pause_at": "2026-10-11T12:50:00.298213+00:00"
 }
