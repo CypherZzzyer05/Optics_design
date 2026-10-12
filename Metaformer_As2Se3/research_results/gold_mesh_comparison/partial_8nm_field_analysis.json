@@ -1,0 +1,988 @@
+{
+  "complete_matrix": false,
+  "scope": "8 nm only; not a final decision",
+  "cases": {
+    "Au8": {
+      "sample_sha256": "44e115957729b915ff3b5c70ccfa2f6a6707d4b7dedd718f810ff382f624fe5f",
+      "sampled_field_extrema": {
+        "nf_mid_E": {
+          "all": {
+            "mean_intensity_enhancement": {
+              "wavelength_nm": 839.0463487829277,
+              "value": 18.253916681973497
+            },
+            "p95_intensity_enhancement": {
+              "wavelength_nm": 838.7129043014337,
+              "value": 40.71144104003906
+            },
+            "maximum_intensity_enhancement": {
+              "wavelength_nm": 838.3794598199399,
+              "value": 57.029296875
+            }
+          },
+          "pillar_bulk": {
+            "mean_intensity_enhancement": {
+              "wavelength_nm": 927.0756918972992,
+              "value": 11.583314772150807
+            },
+            "p95_intensity_enhancement": {
+              "wavelength_nm": 927.0756918972992,
+              "value": 20.517122268676758
+            },
+            "maximum_intensity_enhancement": {
+              "wavelength_nm": 926.4088029343114,
+              "value": 22.26642417907715
+            }
+          },
+          "air_away_from_edges": {
+            "mean_intensity_enhancement": {
+              "wavelength_nm": 839.0463487829277,
+              "value": 22.48040093946952
+            },
+            "p95_intensity_enhancement": {
+              "wavelength_nm": 838.7129043014337,
+              "value": 42.630638122558594
+            },
+            "maximum_intensity_enhancement": {
+              "wavelength_nm": 838.3794598199399,
+              "value": 57.029296875
+            }
+          }
+        },
+        "nf_top_E": {
+          "all": {
+            "mean_intensity_enhancement": {
+              "wavelength_nm": 927.0756918972992,
+              "value": 26.452919227461397
+            },
+            "p95_intensity_enhancement": {
+              "wavelength_nm": 927.409136378793,
+              "value": 63.00013732910156
+            },
+            "maximum_intensity_enhancement": {
+              "wavelength_nm": 927.409136378793,
+              "value": 100.649658203125
+            }
+          }
+        },
+        "nf_mid_H": {
+          "all": {
+            "mean_intensity_enhancement": {
+              "wavelength_nm": 927.0756918972992,
+              "value": 42.79161337230148
+            },
+            "p95_intensity_enhancement": {
+              "wavelength_nm": 839.3797932644214,
+              "value": 147.13731384277344
+            },
+            "maximum_intensity_enhancement": {
+              "wavelength_nm": 839.3797932644214,
+              "value": 224.79833984375
+            }
+          },
+          "pillar_bulk": {
+            "mean_intensity_enhancement": {
+              "wavelength_nm": 839.3797932644214,
+              "value": 107.0932804889859
+            },
+            "p95_intensity_enhancement": {
+              "wavelength_nm": 839.3797932644214,
+              "value": 201.2413787841797
+            },
+            "maximum_intensity_enhancement": {
+              "wavelength_nm": 839.3797932644214,
+              "value": 224.79833984375
+            }
+          },
+          "air_away_from_edges": {
+            "mean_intensity_enhancement": {
+              "wavelength_nm": 927.0756918972992,
+              "value": 36.2138009840035
+            },
+            "p95_intensity_enhancement": {
+              "wavelength_nm": 927.0756918972992,
+              "value": 99.12507629394531
+            },
+            "maximum_intensity_enhancement": {
+              "wavelength_nm": 927.0756918972992,
+              "value": 117.5001449584961
+            }
+          }
+        },
+        "nf_top_H": {
+          "all": {
+            "mean_intensity_enhancement": {
+              "wavelength_nm": 927.0756918972992,
+              "value": 8.758434582077848
+            },
+            "p95_intensity_enhancement": {
+              "wavelength_nm": 839.3797932644214,
+              "value": 18.917797088623047
+            },
+            "maximum_intensity_enhancement": {
+              "wavelength_nm": 839.3797932644214,
+              "value": 24.1091251373291
+            }
+          }
+        }
+      },
+      "own_features": [
+        {
+          "spectral_feature": {
+            "kind": "maximum",
+            "center_nm": 906.0686895631877,
+            "value": 0.8930853542648323,
+            "prominence": 0.8545963994190309,
+            "half_prominence_width_nm": 81.77272640914919
+          },
+          "nearest_measured_fields": {
+            "nf_mid_E": {
+              "actual_wavelength_nm": 900.0666888962986,
+              "offset_nm": 6.002000666889103,
+              "regions": {
+                "all": {
+                  "mean_intensity_enhancement": 2.4190530693487085,
+                  "p95_intensity_enhancement": 7.586359977722168,
+                  "maximum_intensity_enhancement": 21.71794891357422,
+                  "sampled_area_nm2": 445264.9537609155,
+                  "sampled_nodes": 7225
+                },
+                "pillar_bulk": {
+                  "mean_intensity_enhancement": 1.0966501720794417,
+                  "p95_intensity_enhancement": 1.9543933868408203,
+                  "maximum_intensity_enhancement": 3.6203317642211914,
+                  "sampled_area_nm2": 86326.87879036604,
+                  "sampled_nodes": 1368
+                },
+                "air_away_from_edges": {
+                  "mean_intensity_enhancement": 2.7447676251864244,
+                  "p95_intensity_enhancement": 8.100603103637695,
+                  "maximum_intensity_enhancement": 21.71794891357422,
+                  "sampled_area_nm2": 305425.5068314313,
+                  "sampled_nodes": 5009
+                }
+              }
+            },
+            "nf_top_E": {
+              "actual_wavelength_nm": 900.0666888962986,
+              "offset_nm": 6.002000666889103,
+              "regions": {
+                "all": {
+                  "mean_intensity_enhancement": 3.0210171735200677,
+                  "p95_intensity_enhancement": 6.025652885437012,
+                  "maximum_intensity_enhancement": 10.161052703857422,
+                  "sampled_area_nm2": 445264.953760914,
+                  "sampled_nodes": 7225
+                }
+              }
+            },
+            "nf_mid_H": {
+              "actual_wavelength_nm": 927.0756918972992,
+              "offset_nm": 21.007002334111462,
+              "regions": {
+                "all": {
+                  "mean_intensity_enhancement": 42.79161337230148,
+                  "p95_intensity_enhancement": 113.28762817382812,
+                  "maximum_intensity_enhancement": 141.31222534179688,
+                  "sampled_area_nm2": 445264.95376091794,
+                  "sampled_nodes": 7225
+                },
+                "pillar_bulk": {
+                  "mean_intensity_enhancement": 54.792380195699884,
+                  "p95_intensity_enhancement": 128.28831481933594,
+                  "maximum_intensity_enhancement": 141.31222534179688,
+                  "sampled_area_nm2": 86326.87879036606,
+                  "sampled_nodes": 1368
+                },
+                "air_away_from_edges": {
+                  "mean_intensity_enhancement": 36.2138009840035,
+                  "p95_intensity_enhancement": 99.12507629394531,
+                  "maximum_intensity_enhancement": 117.5001449584961,
+                  "sampled_area_nm2": 305425.50683143124,
+                  "sampled_nodes": 5009
+                }
+              }
+            },
+            "nf_top_H": {
+              "actual_wavelength_nm": 927.0756918972992,
+              "offset_nm": 21.007002334111462,
+              "regions": {
+                "all": {
+                  "mean_intensity_enhancement": 8.758434582077848,
+                  "p95_intensity_enhancement": 17.43868064880371,
+                  "maximum_intensity_enhancement": 18.254398345947266,
+                  "sampled_area_nm2": 445264.95376091404,
+                  "sampled_nodes": 7225
+                }
+              }
+            }
+          }
+        },
+        {
+          "spectral_feature": {
+            "kind": "minimum",
+            "center_nm": 927.0756918972991,
+            "value": 0.03848895484580142,
+            "prominence": 0.8545963994190309,
+            "half_prominence_width_nm": 6.59837489391407
+          },
+          "nearest_measured_fields": {
+            "nf_mid_E": {
+              "actual_wavelength_nm": 927.0756918972992,
+              "offset_nm": 1.1368683772161603e-13,
+              "regions": {
+                "all": {
+                  "mean_intensity_enhancement": 5.342707795898876,
+                  "p95_intensity_enhancement": 16.63808822631836,
+                  "maximum_intensity_enhancement": 21.828969955444336,
+                  "sampled_area_nm2": 445264.95376091875,
+                  "sampled_nodes": 7225
+                },
+                "pillar_bulk": {
+                  "mean_intensity_enhancement": 11.583314772150807,
+                  "p95_intensity_enhancement": 20.517122268676758,
+                  "maximum_intensity_enhancement": 21.828969955444336,
+                  "sampled_area_nm2": 86326.87879036606,
+                  "sampled_nodes": 1368
+                },
+                "air_away_from_edges": {
+                  "mean_intensity_enhancement": 3.378353707639963,
+                  "p95_intensity_enhancement": 8.56423568725586,
+                  "maximum_intensity_enhancement": 11.709312438964844,
+                  "sampled_area_nm2": 305425.5068314313,
+                  "sampled_nodes": 5009
+                }
+              }
+            },
+            "nf_top_E": {
+              "actual_wavelength_nm": 927.0756918972992,
+              "offset_nm": 1.1368683772161603e-13,
+              "regions": {
+                "all": {
+                  "mean_intensity_enhancement": 26.452919227461397,
+                  "p95_intensity_enhancement": 62.510826110839844,
+                  "maximum_intensity_enhancement": 100.6483383178711,
+                  "sampled_area_nm2": 445264.95376091875,
+                  "sampled_nodes": 7225
+                }
+              }
+            },
+            "nf_mid_H": {
+              "actual_wavelength_nm": 927.0756918972992,
+              "offset_nm": 1.1368683772161603e-13,
+              "regions": {
+                "all": {
+                  "mean_intensity_enhancement": 42.79161337230148,
+                  "p95_intensity_enhancement": 113.28762817382812,
+                  "maximum_intensity_enhancement": 141.31222534179688,
+                  "sampled_area_nm2": 445264.95376091794,
+                  "sampled_nodes": 7225
+                },
+                "pillar_bulk": {
+                  "mean_intensity_enhancement": 54.792380195699884,
+                  "p95_intensity_enhancement": 128.28831481933594,
+                  "maximum_intensity_enhancement": 141.31222534179688,
+                  "sampled_area_nm2": 86326.87879036606,
+                  "sampled_nodes": 1368
+                },
+                "air_away_from_edges": {
+                  "mean_intensity_enhancement": 36.2138009840035,
+                  "p95_intensity_enhancement": 99.12507629394531,
+                  "maximum_intensity_enhancement": 117.5001449584961,
+                  "sampled_area_nm2": 305425.50683143124,
+                  "sampled_nodes": 5009
+                }
+              }
+            },
+            "nf_top_H": {
+              "actual_wavelength_nm": 927.0756918972992,
+              "offset_nm": 1.1368683772161603e-13,
+              "regions": {
+                "all": {
+                  "mean_intensity_enhancement": 8.758434582077848,
+                  "p95_intensity_enhancement": 17.43868064880371,
+                  "maximum_intensity_enhancement": 18.254398345947266,
+                  "sampled_area_nm2": 445264.95376091404,
+                  "sampled_nodes": 7225
+                }
+              }
+            }
+          }
+        },
+        {
+          "spectral_feature": {
+            "kind": "maximum",
+            "center_nm": 794.0313437812604,
+            "value": 0.8280470198428053,
+            "prominence": 0.7809811764487219,
+            "half_prominence_width_nm": 93.64051790819121
+          },
+          "nearest_measured_fields": {
+            "nf_mid_E": {
+              "actual_wavelength_nm": 794.0313437812604,
+              "offset_nm": 0.0,
+              "regions": {
+                "all": {
+                  "mean_intensity_enhancement": 0.8294658040655476,
+                  "p95_intensity_enhancement": 2.6691782474517822,
+                  "maximum_intensity_enhancement": 4.089596271514893,
+                  "sampled_area_nm2": 445264.95376091875,
+                  "sampled_nodes": 7225
+                },
+                "pillar_bulk": {
+                  "mean_intensity_enhancement": 1.1321820783856518,
+                  "p95_intensity_enhancement": 2.864626884460449,
+                  "maximum_intensity_enhancement": 3.474818468093872,
+                  "sampled_area_nm2": 86326.87879036604,
+                  "sampled_nodes": 1368
+                },
+                "air_away_from_edges": {
+                  "mean_intensity_enhancement": 0.6015201086573428,
+                  "p95_intensity_enhancement": 1.7918086051940918,
+                  "maximum_intensity_enhancement": 3.8863089084625244,
+                  "sampled_area_nm2": 305425.50683143135,
+                  "sampled_nodes": 5009
+                }
+              }
+            },
+            "nf_top_E": {
+              "actual_wavelength_nm": 794.0313437812604,
+              "offset_nm": 0.0,
+              "regions": {
+                "all": {
+                  "mean_intensity_enhancement": 2.053857914245155,
+                  "p95_intensity_enhancement": 5.559775352478027,
+                  "maximum_intensity_enhancement": 11.959546089172363,
+                  "sampled_area_nm2": 445264.9537609158,
+                  "sampled_nodes": 7225
+                }
+              }
+            },
+            "nf_mid_H": {
+              "actual_wavelength_nm": 792.3641213737914,
+              "offset_nm": 1.667222407469012,
+              "regions": {
+                "all": {
+                  "mean_intensity_enhancement": 7.363417013515349,
+                  "p95_intensity_enhancement": 29.751068115234375,
+                  "maximum_intensity_enhancement": 40.499942779541016,
+                  "sampled_area_nm2": 445264.9537609187,
+                  "sampled_nodes": 7225
+                },
+                "pillar_bulk": {
+                  "mean_intensity_enhancement": 22.063423980136626,
+                  "p95_intensity_enhancement": 38.44584655761719,
+                  "maximum_intensity_enhancement": 40.499942779541016,
+                  "sampled_area_nm2": 86326.87879036604,
+                  "sampled_nodes": 1368
+                },
+                "air_away_from_edges": {
+                  "mean_intensity_enhancement": 3.189085279115555,
+                  "p95_intensity_enhancement": 8.19006061553955,
+                  "maximum_intensity_enhancement": 14.808762550354004,
+                  "sampled_area_nm2": 305425.5068314313,
+                  "sampled_nodes": 5009
+                }
+              }
+            },
+            "nf_top_H": {
+              "actual_wavelength_nm": 792.3641213737914,
+              "offset_nm": 1.667222407469012,
+              "regions": {
+                "all": {
+                  "mean_intensity_enhancement": 3.2782825088870307,
+                  "p95_intensity_enhancement": 7.5245232582092285,
+                  "maximum_intensity_enhancement": 8.467765808105469,
+                  "sampled_area_nm2": 445264.95376091875,
+                  "sampled_nodes": 7225
+                }
+              }
+            }
+          }
+        },
+        {
+          "spectral_feature": {
+            "kind": "minimum",
+            "center_nm": 839.0463487829277,
+            "value": 0.047065843394083415,
+            "prominence": 0.7809811764487219,
+            "half_prominence_width_nm": 5.832073108086206
+          },
+          "nearest_measured_fields": {
+            "nf_mid_E": {
+              "actual_wavelength_nm": 839.0463487829277,
+              "offset_nm": 0.0,
+              "regions": {
+                "all": {
+                  "mean_intensity_enhancement": 18.253916681973497,
+                  "p95_intensity_enhancement": 40.44355773925781,
+                  "maximum_intensity_enhancement": 54.71672058105469,
+                  "sampled_area_nm2": 445264.9537609135,
+                  "sampled_nodes": 7225
+                },
+                "pillar_bulk": {
+                  "mean_intensity_enhancement": 6.347685307514932,
+                  "p95_intensity_enhancement": 12.652680397033691,
+                  "maximum_intensity_enhancement": 17.65175437927246,
+                  "sampled_area_nm2": 86326.87879036607,
+                  "sampled_nodes": 1368
+                },
+                "air_away_from_edges": {
+                  "mean_intensity_enhancement": 22.48040093946952,
+                  "p95_intensity_enhancement": 42.17622756958008,
+                  "maximum_intensity_enhancement": 54.71672058105469,
+                  "sampled_area_nm2": 305425.50683142914,
+                  "sampled_nodes": 5009
+                }
+              }
+            },
+            "nf_top_E": {
+              "actual_wavelength_nm": 839.0463487829277,
+              "offset_nm": 0.0,
+              "regions": {
+                "all": {
+                  "mean_intensity_enhancement": 4.260604142905484,
+                  "p95_intensity_enhancement": 9.945940971374512,
+                  "maximum_intensity_enhancement": 16.192384719848633,
+                  "sampled_area_nm2": 445264.9537609133,
+                  "sampled_nodes": 7225
+                }
+              }
+            },
+            "nf_mid_H": {
+              "actual_wavelength_nm": 839.3797932644214,
+              "offset_nm": 0.33344448149375694,
+              "regions": {
+                "all": {
+                  "mean_intensity_enhancement": 33.50899020424736,
+                  "p95_intensity_enhancement": 147.13731384277344,
+                  "maximum_intensity_enhancement": 224.79833984375,
+                  "sampled_area_nm2": 445264.95376091794,
+                  "sampled_nodes": 7225
+                },
+                "pillar_bulk": {
+                  "mean_intensity_enhancement": 107.0932804889859,
+                  "p95_intensity_enhancement": 201.2413787841797,
+                  "maximum_intensity_enhancement": 224.79833984375,
+                  "sampled_area_nm2": 86326.87879036604,
+                  "sampled_nodes": 1368
+                },
+                "air_away_from_edges": {
+                  "mean_intensity_enhancement": 13.844326377505407,
+                  "p95_intensity_enhancement": 27.569908142089844,
+                  "maximum_intensity_enhancement": 40.67919158935547,
+                  "sampled_area_nm2": 305425.50683143135,
+                  "sampled_nodes": 5009
+                }
+              }
+            },
+            "nf_top_H": {
+              "actual_wavelength_nm": 839.3797932644214,
+              "offset_nm": 0.33344448149375694,
+              "regions": {
+                "all": {
+                  "mean_intensity_enhancement": 7.924884452147383,
+                  "p95_intensity_enhancement": 18.917797088623047,
+                  "maximum_intensity_enhancement": 24.1091251373291,
+                  "sampled_area_nm2": 445264.9537609187,
+                  "sampled_nodes": 7225
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "bare8": {
+      "sample_sha256": "6ffd13693de8a1f073a77418d085a314d97ff05cd63df775493b82a671763b46",
+      "sampled_field_extrema": {
+        "nf_mid_E": {
+          "all": {
+            "mean_intensity_enhancement": {
+              "wavelength_nm": 871.7239079693232,
+              "value": 5.909152412533762
+            },
+            "p95_intensity_enhancement": {
+              "wavelength_nm": 871.3904634878294,
+              "value": 13.541035652160645
+            },
+            "maximum_intensity_enhancement": {
+              "wavelength_nm": 791.6972324108036,
+              "value": 34.650726318359375
+            }
+          },
+          "pillar_bulk": {
+            "mean_intensity_enhancement": {
+              "wavelength_nm": 1020.1067022340782,
+              "value": 5.128235135597853
+            },
+            "p95_intensity_enhancement": {
+              "wavelength_nm": 1020.1067022340782,
+              "value": 8.455915451049805
+            },
+            "maximum_intensity_enhancement": {
+              "wavelength_nm": 1020.1067022340782,
+              "value": 9.188458442687988
+            }
+          },
+          "air_away_from_edges": {
+            "mean_intensity_enhancement": {
+              "wavelength_nm": 871.7239079693232,
+              "value": 7.363119903686805
+            },
+            "p95_intensity_enhancement": {
+              "wavelength_nm": 871.7239079693232,
+              "value": 13.921463012695312
+            },
+            "maximum_intensity_enhancement": {
+              "wavelength_nm": 791.6972324108036,
+              "value": 34.650726318359375
+            }
+          }
+        },
+        "nf_top_E": {
+          "all": {
+            "mean_intensity_enhancement": {
+              "wavelength_nm": 793.3644548182729,
+              "value": 9.336065433030823
+            },
+            "p95_intensity_enhancement": {
+              "wavelength_nm": 794.3647882627542,
+              "value": 25.501632690429688
+            },
+            "maximum_intensity_enhancement": {
+              "wavelength_nm": 794.6982327442482,
+              "value": 37.67873001098633
+            }
+          }
+        },
+        "nf_mid_H": {
+          "all": {
+            "mean_intensity_enhancement": {
+              "wavelength_nm": 792.3641213737914,
+              "value": 10.80231188843155
+            },
+            "p95_intensity_enhancement": {
+              "wavelength_nm": 871.3904634878294,
+              "value": 40.397762298583984
+            },
+            "maximum_intensity_enhancement": {
+              "wavelength_nm": 871.3904634878294,
+              "value": 67.90864562988281
+            }
+          },
+          "pillar_bulk": {
+            "mean_intensity_enhancement": {
+              "wavelength_nm": 871.3904634878294,
+              "value": 30.668860874504045
+            },
+            "p95_intensity_enhancement": {
+              "wavelength_nm": 871.3904634878294,
+              "value": 59.536949157714844
+            },
+            "maximum_intensity_enhancement": {
+              "wavelength_nm": 871.3904634878294,
+              "value": 67.90864562988281
+            }
+          },
+          "air_away_from_edges": {
+            "mean_intensity_enhancement": {
+              "wavelength_nm": 792.3641213737914,
+              "value": 7.941856093088553
+            },
+            "p95_intensity_enhancement": {
+              "wavelength_nm": 792.3641213737914,
+              "value": 21.613319396972656
+            },
+            "maximum_intensity_enhancement": {
+              "wavelength_nm": 792.3641213737914,
+              "value": 27.61485481262207
+            }
+          }
+        },
+        "nf_top_H": {
+          "all": {
+            "mean_intensity_enhancement": {
+              "wavelength_nm": 792.3641213737914,
+              "value": 7.220375449115682
+            },
+            "p95_intensity_enhancement": {
+              "wavelength_nm": 792.3641213737914,
+              "value": 18.079906463623047
+            },
+            "maximum_intensity_enhancement": {
+              "wavelength_nm": 792.3641213737914,
+              "value": 19.00242042541504
+            }
+          }
+        }
+      },
+      "own_features": [
+        {
+          "spectral_feature": {
+            "kind": "maximum",
+            "center_nm": 792.3641213737912,
+            "value": 0.6573609464219797,
+            "prominence": 0.6566057542458001,
+            "half_prominence_width_nm": 9.733267980428991
+          },
+          "nearest_measured_fields": {
+            "nf_mid_E": {
+              "actual_wavelength_nm": 792.3641213737914,
+              "offset_nm": 1.1368683772161603e-13,
+              "regions": {
+                "all": {
+                  "mean_intensity_enhancement": 4.713853102229408,
+                  "p95_intensity_enhancement": 12.699700355529785,
+                  "maximum_intensity_enhancement": 33.59137725830078,
+                  "sampled_area_nm2": 445264.95376091386,
+                  "sampled_nodes": 7225
+                },
+                "pillar_bulk": {
+                  "mean_intensity_enhancement": 2.582067995283195,
+                  "p95_intensity_enhancement": 5.568911075592041,
+                  "maximum_intensity_enhancement": 5.964622974395752,
+                  "sampled_area_nm2": 86326.87879036604,
+                  "sampled_nodes": 1368
+                },
+                "air_away_from_edges": {
+                  "mean_intensity_enhancement": 5.543060987965869,
+                  "p95_intensity_enhancement": 13.406899452209473,
+                  "maximum_intensity_enhancement": 33.59137725830078,
+                  "sampled_area_nm2": 305425.50683142996,
+                  "sampled_nodes": 5009
+                }
+              }
+            },
+            "nf_top_E": {
+              "actual_wavelength_nm": 792.3641213737914,
+              "offset_nm": 1.1368683772161603e-13,
+              "regions": {
+                "all": {
+                  "mean_intensity_enhancement": 8.890326319514255,
+                  "p95_intensity_enhancement": 22.379657745361328,
+                  "maximum_intensity_enhancement": 29.26390838623047,
+                  "sampled_area_nm2": 445264.95376091864,
+                  "sampled_nodes": 7225
+                }
+              }
+            },
+            "nf_mid_H": {
+              "actual_wavelength_nm": 792.3641213737914,
+              "offset_nm": 1.1368683772161603e-13,
+              "regions": {
+                "all": {
+                  "mean_intensity_enhancement": 10.80231188843155,
+                  "p95_intensity_enhancement": 29.30304527282715,
+                  "maximum_intensity_enhancement": 38.906497955322266,
+                  "sampled_area_nm2": 445264.9537609187,
+                  "sampled_nodes": 7225
+                },
+                "pillar_bulk": {
+                  "mean_intensity_enhancement": 18.382065831307997,
+                  "p95_intensity_enhancement": 36.64645004272461,
+                  "maximum_intensity_enhancement": 38.906497955322266,
+                  "sampled_area_nm2": 86326.87879036604,
+                  "sampled_nodes": 1368
+                },
+                "air_away_from_edges": {
+                  "mean_intensity_enhancement": 7.941856093088553,
+                  "p95_intensity_enhancement": 21.613319396972656,
+                  "maximum_intensity_enhancement": 27.61485481262207,
+                  "sampled_area_nm2": 305425.5068314313,
+                  "sampled_nodes": 5009
+                }
+              }
+            },
+            "nf_top_H": {
+              "actual_wavelength_nm": 792.3641213737914,
+              "offset_nm": 1.1368683772161603e-13,
+              "regions": {
+                "all": {
+                  "mean_intensity_enhancement": 7.220375449115682,
+                  "p95_intensity_enhancement": 18.079906463623047,
+                  "maximum_intensity_enhancement": 19.00242042541504,
+                  "sampled_area_nm2": 445264.95376091334,
+                  "sampled_nodes": 7225
+                }
+              }
+            }
+          }
+        },
+        {
+          "spectral_feature": {
+            "kind": "maximum",
+            "center_nm": 871.3904634878293,
+            "value": 0.33616609302723166,
+            "prominence": 0.2456644614781017,
+            "half_prominence_width_nm": 3.2940461083388755
+          },
+          "nearest_measured_fields": {
+            "nf_mid_E": {
+              "actual_wavelength_nm": 871.3904634878294,
+              "offset_nm": 1.1368683772161603e-13,
+              "regions": {
+                "all": {
+                  "mean_intensity_enhancement": 5.709588935128983,
+                  "p95_intensity_enhancement": 13.541035652160645,
+                  "maximum_intensity_enhancement": 21.44370460510254,
+                  "sampled_area_nm2": 445264.95376091293,
+                  "sampled_nodes": 7225
+                },
+                "pillar_bulk": {
+                  "mean_intensity_enhancement": 1.7650603176427027,
+                  "p95_intensity_enhancement": 3.8096377849578857,
+                  "maximum_intensity_enhancement": 6.194797992706299,
+                  "sampled_area_nm2": 86326.87879036604,
+                  "sampled_nodes": 1368
+                },
+                "air_away_from_edges": {
+                  "mean_intensity_enhancement": 7.133175876397678,
+                  "p95_intensity_enhancement": 13.911951065063477,
+                  "maximum_intensity_enhancement": 21.44370460510254,
+                  "sampled_area_nm2": 305425.506831429,
+                  "sampled_nodes": 5009
+                }
+              }
+            },
+            "nf_top_E": {
+              "actual_wavelength_nm": 871.3904634878294,
+              "offset_nm": 1.1368683772161603e-13,
+              "regions": {
+                "all": {
+                  "mean_intensity_enhancement": 1.0481767927816397,
+                  "p95_intensity_enhancement": 1.899337649345398,
+                  "maximum_intensity_enhancement": 2.9907007217407227,
+                  "sampled_area_nm2": 445264.95376091293,
+                  "sampled_nodes": 7225
+                }
+              }
+            },
+            "nf_mid_H": {
+              "actual_wavelength_nm": 871.3904634878294,
+              "offset_nm": 1.1368683772161603e-13,
+              "regions": {
+                "all": {
+                  "mean_intensity_enhancement": 10.514175786130204,
+                  "p95_intensity_enhancement": 40.397762298583984,
+                  "maximum_intensity_enhancement": 67.90864562988281,
+                  "sampled_area_nm2": 445264.9537609187,
+                  "sampled_nodes": 7225
+                },
+                "pillar_bulk": {
+                  "mean_intensity_enhancement": 30.668860874504045,
+                  "p95_intensity_enhancement": 59.536949157714844,
+                  "maximum_intensity_enhancement": 67.90864562988281,
+                  "sampled_area_nm2": 86326.87879036603,
+                  "sampled_nodes": 1368
+                },
+                "air_away_from_edges": {
+                  "mean_intensity_enhancement": 4.978635346618317,
+                  "p95_intensity_enhancement": 9.723333358764648,
+                  "maximum_intensity_enhancement": 13.5493803024292,
+                  "sampled_area_nm2": 305425.5068314313,
+                  "sampled_nodes": 5009
+                }
+              }
+            },
+            "nf_top_H": {
+              "actual_wavelength_nm": 871.3904634878294,
+              "offset_nm": 1.1368683772161603e-13,
+              "regions": {
+                "all": {
+                  "mean_intensity_enhancement": 3.7000499270351805,
+                  "p95_intensity_enhancement": 7.100116729736328,
+                  "maximum_intensity_enhancement": 8.89521598815918,
+                  "sampled_area_nm2": 445264.95376091544,
+                  "sampled_nodes": 7225
+                }
+              }
+            }
+          }
+        },
+        {
+          "spectral_feature": {
+            "kind": "minimum",
+            "center_nm": 807.3691230410136,
+            "value": 0.09050163154912996,
+            "prominence": 0.2456644614781017,
+            "half_prominence_width_nm": 71.9307453164796
+          },
+          "nearest_measured_fields": {
+            "nf_mid_E": {
+              "actual_wavelength_nm": 795.0316772257421,
+              "offset_nm": 12.337445815271508,
+              "regions": {
+                "all": {
+                  "mean_intensity_enhancement": 4.152856519083969,
+                  "p95_intensity_enhancement": 9.741316795349121,
+                  "maximum_intensity_enhancement": 21.533639907836914,
+                  "sampled_area_nm2": 445264.95376091445,
+                  "sampled_nodes": 7225
+                },
+                "pillar_bulk": {
+                  "mean_intensity_enhancement": 2.5557391046715536,
+                  "p95_intensity_enhancement": 5.890507698059082,
+                  "maximum_intensity_enhancement": 6.711052417755127,
+                  "sampled_area_nm2": 86326.87879036604,
+                  "sampled_nodes": 1368
+                },
+                "air_away_from_edges": {
+                  "mean_intensity_enhancement": 4.6928046907919505,
+                  "p95_intensity_enhancement": 10.13744068145752,
+                  "maximum_intensity_enhancement": 21.533639907836914,
+                  "sampled_area_nm2": 305425.5068314304,
+                  "sampled_nodes": 5009
+                }
+              }
+            },
+            "nf_top_E": {
+              "actual_wavelength_nm": 795.0316772257421,
+              "offset_nm": 12.337445815271508,
+              "regions": {
+                "all": {
+                  "mean_intensity_enhancement": 8.265597194685188,
+                  "p95_intensity_enhancement": 24.11383628845215,
+                  "maximum_intensity_enhancement": 37.05268096923828,
+                  "sampled_area_nm2": 445264.95376091875,
+                  "sampled_nodes": 7225
+                }
+              }
+            },
+            "nf_mid_H": {
+              "actual_wavelength_nm": 792.3641213737914,
+              "offset_nm": 15.005001667222245,
+              "regions": {
+                "all": {
+                  "mean_intensity_enhancement": 10.80231188843155,
+                  "p95_intensity_enhancement": 29.30304527282715,
+                  "maximum_intensity_enhancement": 38.906497955322266,
+                  "sampled_area_nm2": 445264.9537609187,
+                  "sampled_nodes": 7225
+                },
+                "pillar_bulk": {
+                  "mean_intensity_enhancement": 18.382065831307997,
+                  "p95_intensity_enhancement": 36.64645004272461,
+                  "maximum_intensity_enhancement": 38.906497955322266,
+                  "sampled_area_nm2": 86326.87879036604,
+                  "sampled_nodes": 1368
+                },
+                "air_away_from_edges": {
+                  "mean_intensity_enhancement": 7.941856093088553,
+                  "p95_intensity_enhancement": 21.613319396972656,
+                  "maximum_intensity_enhancement": 27.61485481262207,
+                  "sampled_area_nm2": 305425.5068314313,
+                  "sampled_nodes": 5009
+                }
+              }
+            },
+            "nf_top_H": {
+              "actual_wavelength_nm": 792.3641213737914,
+              "offset_nm": 15.005001667222245,
+              "regions": {
+                "all": {
+                  "mean_intensity_enhancement": 7.220375449115682,
+                  "p95_intensity_enhancement": 18.079906463623047,
+                  "maximum_intensity_enhancement": 19.00242042541504,
+                  "sampled_area_nm2": 445264.95376091334,
+                  "sampled_nodes": 7225
+                }
+              }
+            }
+          }
+        },
+        {
+          "spectral_feature": {
+            "kind": "minimum",
+            "center_nm": 1060.1200400133378,
+            "value": 0.0007551921761795853,
+            "prominence": 0.06741931039378128,
+            "half_prominence_width_nm": 153.33858224431663
+          },
+          "nearest_measured_fields": {
+            "nf_mid_E": {
+              "actual_wavelength_nm": 1060.120040013338,
+              "offset_nm": 2.2737367544323206e-13,
+              "regions": {
+                "all": {
+                  "mean_intensity_enhancement": 0.9776753874973387,
+                  "p95_intensity_enhancement": 2.6506800651550293,
+                  "maximum_intensity_enhancement": 7.815707683563232,
+                  "sampled_area_nm2": 445264.95376091526,
+                  "sampled_nodes": 7225
+                },
+                "pillar_bulk": {
+                  "mean_intensity_enhancement": 0.4005009544664791,
+                  "p95_intensity_enhancement": 0.7488780617713928,
+                  "maximum_intensity_enhancement": 0.9264354705810547,
+                  "sampled_area_nm2": 86326.87879036606,
+                  "sampled_nodes": 1368
+                },
+                "air_away_from_edges": {
+                  "mean_intensity_enhancement": 1.1291410666728245,
+                  "p95_intensity_enhancement": 2.8988394737243652,
+                  "maximum_intensity_enhancement": 7.815707683563232,
+                  "sampled_area_nm2": 305425.5068314313,
+                  "sampled_nodes": 5009
+                }
+              }
+            },
+            "nf_top_E": {
+              "actual_wavelength_nm": 1060.120040013338,
+              "offset_nm": 2.2737367544323206e-13,
+              "regions": {
+                "all": {
+                  "mean_intensity_enhancement": 1.2741064303541856,
+                  "p95_intensity_enhancement": 3.9534950256347656,
+                  "maximum_intensity_enhancement": 7.303584575653076,
+                  "sampled_area_nm2": 445264.9537609173,
+                  "sampled_nodes": 7225
+                }
+              }
+            },
+            "nf_mid_H": {
+              "actual_wavelength_nm": 927.0756918972992,
+              "offset_nm": 133.04434811603858,
+              "regions": {
+                "all": {
+                  "mean_intensity_enhancement": 2.0117421362866557,
+                  "p95_intensity_enhancement": 5.0197882652282715,
+                  "maximum_intensity_enhancement": 6.072035789489746,
+                  "sampled_area_nm2": 445264.95376091864,
+                  "sampled_nodes": 7225
+                },
+                "pillar_bulk": {
+                  "mean_intensity_enhancement": 4.007109444762753,
+                  "p95_intensity_enhancement": 5.850228786468506,
+                  "maximum_intensity_enhancement": 6.072035789489746,
+                  "sampled_area_nm2": 86326.87879036604,
+                  "sampled_nodes": 1368
+                },
+                "air_away_from_edges": {
+                  "mean_intensity_enhancement": 1.4205502006263069,
+                  "p95_intensity_enhancement": 2.3906726837158203,
+                  "maximum_intensity_enhancement": 3.3541336059570312,
+                  "sampled_area_nm2": 305425.50683143124,
+                  "sampled_nodes": 5009
+                }
+              }
+            },
+            "nf_top_H": {
+              "actual_wavelength_nm": 927.0756918972992,
+              "offset_nm": 133.04434811603858,
+              "regions": {
+                "all": {
+                  "mean_intensity_enhancement": 1.4205736071291244,
+                  "p95_intensity_enhancement": 2.4768714904785156,
+                  "maximum_intensity_enhancement": 2.68609356880188,
+                  "sampled_area_nm2": 445264.9537609187,
+                  "sampled_nodes": 7225
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}
