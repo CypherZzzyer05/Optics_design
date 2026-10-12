@@ -1,0 +1,373 @@
+{
+  "complete_matrix": false,
+  "pending_case": "bare4",
+  "scope": "Audited Au8/Au4 only; material accuracy and gold-removal decision still pending.",
+  "criteria": {
+    "center_nm": 2.0,
+    "absolute_R_change": 0.03,
+    "relative_width_change": 0.1,
+    "relative_field_mean_change": 0.1,
+    "relative_field_p95_change": 0.1
+  },
+  "comparison": {
+    "first_case": "Au8",
+    "second_case": "Au4",
+    "reference_pair_preserved": true,
+    "tracked_spectral_features": [
+      {
+        "first": {
+          "wavelength_nm": 839.0463487829277,
+          "reflectance_min": 0.047065843394083415,
+          "prominence": 0.7809811764487219,
+          "half_prominence_width_nm": 5.832073108086206,
+          "width_samples": 17.490387251150537,
+          "resolved": true,
+          "lambda_over_width": 143.86759789063424
+        },
+        "second": {
+          "wavelength_nm": 839.3797932644214,
+          "reflectance_min": 0.0880694224987432,
+          "prominence": 0.7394516717954873,
+          "half_prominence_width_nm": 6.357263365156086,
+          "width_samples": 19.065432832103056,
+          "resolved": true,
+          "lambda_over_width": 132.03476795770794
+        },
+        "center_shift_nm": 0.33344448149375694,
+        "absolute_R_change": 0.04100357910465978,
+        "relative_width_change": 0.08261263171012038,
+        "passes": false
+      },
+      {
+        "first": {
+          "wavelength_nm": 927.0756918972991,
+          "reflectance_min": 0.03848895484580142,
+          "prominence": 0.8545963994190309,
+          "half_prominence_width_nm": 6.59837489391407,
+          "width_samples": 19.788526306848098,
+          "resolved": true,
+          "lambda_over_width": 140.50060913519417
+        },
+        "second": {
+          "wavelength_nm": 927.0756918972991,
+          "reflectance_min": 0.04091355726594519,
+          "prominence": 0.8505227777879204,
+          "half_prominence_width_nm": 6.691994752550954,
+          "width_samples": 20.069292262900603,
+          "resolved": true,
+          "lambda_over_width": 138.53502971500427
+        },
+        "center_shift_nm": 0.0,
+        "absolute_R_change": 0.002424602420143772,
+        "relative_width_change": 0.013989828459025194,
+        "passes": true
+      }
+    ],
+    "field_at_common_wavelengths": [
+      {
+        "profile": "nf_top_E",
+        "region": "all",
+        "wavelength_nm": 839.3797932644214,
+        "first": {
+          "mean_intensity_enhancement": 4.0447080467911904,
+          "p95_intensity_enhancement": 8.586048126220703,
+          "maximum_intensity_enhancement": 14.154581069946289,
+          "sampled_area_nm2": 445264.95376091293,
+          "sampled_nodes": 7225
+        },
+        "second": {
+          "mean_intensity_enhancement": 4.1423836133524,
+          "p95_intensity_enhancement": 8.933819770812988,
+          "maximum_intensity_enhancement": 15.678380012512207,
+          "sampled_area_nm2": 445264.9537607357,
+          "sampled_nodes": 28224
+        },
+        "mean_ratio_first_over_second": 0.9764204439573473,
+        "p95_ratio_first_over_second": 0.9610724579727404,
+        "relative_mean_change": 0.023579556042652734,
+        "relative_p95_change": 0.03892754202725958,
+        "passes": true
+      },
+      {
+        "profile": "nf_top_E",
+        "region": "all",
+        "wavelength_nm": 927.0756918972991,
+        "first": {
+          "mean_intensity_enhancement": 26.452919227461397,
+          "p95_intensity_enhancement": 62.510826110839844,
+          "maximum_intensity_enhancement": 100.6483383178711,
+          "sampled_area_nm2": 445264.95376091875,
+          "sampled_nodes": 7225
+        },
+        "second": {
+          "mean_intensity_enhancement": 26.634475717469698,
+          "p95_intensity_enhancement": 62.805877685546875,
+          "maximum_intensity_enhancement": 105.38784790039062,
+          "sampled_area_nm2": 445264.9537607257,
+          "sampled_nodes": 28224
+        },
+        "mean_ratio_first_over_second": 0.9931834028972751,
+        "p95_ratio_first_over_second": 0.9953021662051396,
+        "relative_mean_change": 0.006816597102724917,
+        "relative_p95_change": 0.004697833794860407,
+        "passes": true
+      },
+      {
+        "profile": "nf_mid_E",
+        "region": "pillar_bulk",
+        "wavelength_nm": 839.3797932644214,
+        "first": {
+          "mean_intensity_enhancement": 6.27950484000633,
+          "p95_intensity_enhancement": 12.348794937133789,
+          "maximum_intensity_enhancement": 16.938440322875977,
+          "sampled_area_nm2": 86326.87879036607,
+          "sampled_nodes": 1368
+        },
+        "second": {
+          "mean_intensity_enhancement": 6.059905910780538,
+          "p95_intensity_enhancement": 12.086614608764648,
+          "maximum_intensity_enhancement": 17.08470916748047,
+          "sampled_area_nm2": 86565.54839868924,
+          "sampled_nodes": 5422
+        },
+        "mean_ratio_first_over_second": 1.0362380097082244,
+        "p95_ratio_first_over_second": 1.0216917918586583,
+        "relative_mean_change": 0.036238009708224446,
+        "relative_p95_change": 0.02169179185865823,
+        "passes": true
+      },
+      {
+        "profile": "nf_mid_E",
+        "region": "air_away_from_edges",
+        "wavelength_nm": 839.3797932644214,
+        "first": {
+          "mean_intensity_enhancement": 22.1324480020424,
+          "p95_intensity_enhancement": 40.888004302978516,
+          "maximum_intensity_enhancement": 51.809749603271484,
+          "sampled_area_nm2": 305425.50683142914,
+          "sampled_nodes": 5009
+        },
+        "second": {
+          "mean_intensity_enhancement": 21.206826095687788,
+          "p95_intensity_enhancement": 38.843196868896484,
+          "maximum_intensity_enhancement": 75.44110107421875,
+          "sampled_area_nm2": 305533.9173194519,
+          "sampled_nodes": 19472
+        },
+        "mean_ratio_first_over_second": 1.0436473568547264,
+        "p95_ratio_first_over_second": 1.0526426143806769,
+        "relative_mean_change": 0.04364735685472647,
+        "relative_p95_change": 0.05264261438067683,
+        "passes": true
+      },
+      {
+        "profile": "nf_mid_E",
+        "region": "pillar_bulk",
+        "wavelength_nm": 927.0756918972991,
+        "first": {
+          "mean_intensity_enhancement": 11.583314772150807,
+          "p95_intensity_enhancement": 20.517122268676758,
+          "maximum_intensity_enhancement": 21.828969955444336,
+          "sampled_area_nm2": 86326.87879036606,
+          "sampled_nodes": 1368
+        },
+        "second": {
+          "mean_intensity_enhancement": 11.569346272745328,
+          "p95_intensity_enhancement": 20.412500381469727,
+          "maximum_intensity_enhancement": 21.80461311340332,
+          "sampled_area_nm2": 86565.54839868924,
+          "sampled_nodes": 5422
+        },
+        "mean_ratio_first_over_second": 1.0012073715382162,
+        "p95_ratio_first_over_second": 1.0051253832334037,
+        "relative_mean_change": 0.001207371538216076,
+        "relative_p95_change": 0.005125383233403684,
+        "passes": true
+      },
+      {
+        "profile": "nf_mid_E",
+        "region": "air_away_from_edges",
+        "wavelength_nm": 927.0756918972991,
+        "first": {
+          "mean_intensity_enhancement": 3.378353707639963,
+          "p95_intensity_enhancement": 8.56423568725586,
+          "maximum_intensity_enhancement": 11.709312438964844,
+          "sampled_area_nm2": 305425.5068314313,
+          "sampled_nodes": 5009
+        },
+        "second": {
+          "mean_intensity_enhancement": 3.385910874161897,
+          "p95_intensity_enhancement": 8.552719116210938,
+          "maximum_intensity_enhancement": 15.0177640914917,
+          "sampled_area_nm2": 305533.91731945146,
+          "sampled_nodes": 19472
+        },
+        "mean_ratio_first_over_second": 0.9977680550957193,
+        "p95_ratio_first_over_second": 1.0013465391401775,
+        "relative_mean_change": 0.0022319449042807063,
+        "relative_p95_change": 0.0013465391401774453,
+        "passes": true
+      },
+      {
+        "profile": "nf_top_H",
+        "region": "all",
+        "wavelength_nm": 839.3797932644214,
+        "first": {
+          "mean_intensity_enhancement": 7.924884452147383,
+          "p95_intensity_enhancement": 18.917797088623047,
+          "maximum_intensity_enhancement": 24.1091251373291,
+          "sampled_area_nm2": 445264.9537609187,
+          "sampled_nodes": 7225
+        },
+        "second": {
+          "mean_intensity_enhancement": 7.667307234680454,
+          "p95_intensity_enhancement": 18.252134323120117,
+          "maximum_intensity_enhancement": 24.05364418029785,
+          "sampled_area_nm2": 445264.9537607184,
+          "sampled_nodes": 28224
+        },
+        "mean_ratio_first_over_second": 1.0335942214891125,
+        "p95_ratio_first_over_second": 1.036470406897002,
+        "relative_mean_change": 0.03359422148911243,
+        "relative_p95_change": 0.03647040689700216,
+        "passes": true
+      },
+      {
+        "profile": "nf_top_H",
+        "region": "all",
+        "wavelength_nm": 927.0756918972991,
+        "first": {
+          "mean_intensity_enhancement": 8.758434582077848,
+          "p95_intensity_enhancement": 17.43868064880371,
+          "maximum_intensity_enhancement": 18.254398345947266,
+          "sampled_area_nm2": 445264.95376091404,
+          "sampled_nodes": 7225
+        },
+        "second": {
+          "mean_intensity_enhancement": 8.821496963161172,
+          "p95_intensity_enhancement": 17.484996795654297,
+          "maximum_intensity_enhancement": 18.334823608398438,
+          "sampled_area_nm2": 445264.95376073295,
+          "sampled_nodes": 28224
+        },
+        "mean_ratio_first_over_second": 0.9928512834786801,
+        "p95_ratio_first_over_second": 0.9973510920595595,
+        "relative_mean_change": 0.007148716521319891,
+        "relative_p95_change": 0.0026489079404405326,
+        "passes": true
+      },
+      {
+        "profile": "nf_mid_H",
+        "region": "pillar_bulk",
+        "wavelength_nm": 839.3797932644214,
+        "first": {
+          "mean_intensity_enhancement": 107.0932804889859,
+          "p95_intensity_enhancement": 201.2413787841797,
+          "maximum_intensity_enhancement": 224.79833984375,
+          "sampled_area_nm2": 86326.87879036604,
+          "sampled_nodes": 1368
+        },
+        "second": {
+          "mean_intensity_enhancement": 103.75398242223946,
+          "p95_intensity_enhancement": 194.36639404296875,
+          "maximum_intensity_enhancement": 222.09268188476562,
+          "sampled_area_nm2": 86565.5483986892,
+          "sampled_nodes": 5422
+        },
+        "mean_ratio_first_over_second": 1.0321847700568905,
+        "p95_ratio_first_over_second": 1.0353712624811626,
+        "relative_mean_change": 0.032184770056890515,
+        "relative_p95_change": 0.03537126248116266,
+        "passes": true
+      },
+      {
+        "profile": "nf_mid_H",
+        "region": "air_away_from_edges",
+        "wavelength_nm": 839.3797932644214,
+        "first": {
+          "mean_intensity_enhancement": 13.844326377505407,
+          "p95_intensity_enhancement": 27.569908142089844,
+          "maximum_intensity_enhancement": 40.67919158935547,
+          "sampled_area_nm2": 305425.50683143135,
+          "sampled_nodes": 5009
+        },
+        "second": {
+          "mean_intensity_enhancement": 13.36560575806322,
+          "p95_intensity_enhancement": 25.810646057128906,
+          "maximum_intensity_enhancement": 38.32126998901367,
+          "sampled_area_nm2": 305533.91731944866,
+          "sampled_nodes": 19472
+        },
+        "mean_ratio_first_over_second": 1.03581735299602,
+        "p95_ratio_first_over_second": 1.068160327372938,
+        "relative_mean_change": 0.035817352996019965,
+        "relative_p95_change": 0.06816032737293799,
+        "passes": true
+      },
+      {
+        "profile": "nf_mid_H",
+        "region": "pillar_bulk",
+        "wavelength_nm": 927.0756918972991,
+        "first": {
+          "mean_intensity_enhancement": 54.792380195699884,
+          "p95_intensity_enhancement": 128.28831481933594,
+          "maximum_intensity_enhancement": 141.31222534179688,
+          "sampled_area_nm2": 86326.87879036606,
+          "sampled_nodes": 1368
+        },
+        "second": {
+          "mean_intensity_enhancement": 55.02126705376606,
+          "p95_intensity_enhancement": 128.83786010742188,
+          "maximum_intensity_enhancement": 141.28143310546875,
+          "sampled_area_nm2": 86565.54839868925,
+          "sampled_nodes": 5422
+        },
+        "mean_ratio_first_over_second": 0.9958400293137104,
+        "p95_ratio_first_over_second": 0.9957345978299567,
+        "relative_mean_change": 0.004159970686289546,
+        "relative_p95_change": 0.004265402170043339,
+        "passes": true
+      },
+      {
+        "profile": "nf_mid_H",
+        "region": "air_away_from_edges",
+        "wavelength_nm": 927.0756918972991,
+        "first": {
+          "mean_intensity_enhancement": 36.2138009840035,
+          "p95_intensity_enhancement": 99.12507629394531,
+          "maximum_intensity_enhancement": 117.5001449584961,
+          "sampled_area_nm2": 305425.50683143124,
+          "sampled_nodes": 5009
+        },
+        "second": {
+          "mean_intensity_enhancement": 36.34252061690012,
+          "p95_intensity_enhancement": 99.25177001953125,
+          "maximum_intensity_enhancement": 117.89844512939453,
+          "sampled_area_nm2": 305533.9173194483,
+          "sampled_nodes": 19472
+        },
+        "mean_ratio_first_over_second": 0.9964581534051119,
+        "p95_ratio_first_over_second": 0.9987235116758018,
+        "relative_mean_change": 0.0035418465948881183,
+        "relative_p95_change": 0.0012764883241982092,
+        "passes": true
+      }
+    ],
+    "maximum_absolute_R_difference": 0.052391560794248115,
+    "maximum_absolute_T_difference": 5.9681890576507546e-06,
+    "maximum_absolute_A_difference": 0.05239200129605015,
+    "small_effect_under_current_criteria": false
+  },
+  "provenance": {
+    "Au8": {
+      "sample_sha256": "44e115957729b915ff3b5c70ccfa2f6a6707d4b7dedd718f810ff382f624fe5f",
+      "project_sha256": "2008909a17b4f41e157499de5cd771336abca5cab177b200a94241cf5e5bd371",
+      "elapsed_seconds": 1264.562
+    },
+    "Au4": {
+      "sample_sha256": "eafd13361f06b46b69fbbcbe448de81fb1a390942ea263b241395b5a54c682aa",
+      "project_sha256": "49cb8d9488818123db70222603f15315762837598f2282278ca1fdde34cbd7cd",
+      "elapsed_seconds": 10203.156
+    }
+  }
+}
