@@ -52,28 +52,33 @@ def plots(output,destination):
             if row==1:ax.set_xlabel('Wavelength (nm)')
     fig.tight_layout();fig.savefig(figures/'mesh_zoom.png',dpi=190);plt.close(fig)
     geometry=geometry_source()
-    for plane in ('mid','top'):
-        for target in targets:
-            profile=f'nf_{plane}_E';arrays={}
-            for name in CASES:
-                z=cases[name]['data'];w=z[profile+'_wavelength_nm'];i=int(np.argmin(abs(w-target)))
-                if abs(w[i]-target)>1e-5:raise ValueError('A map frequency is missing')
-                arrays[name]=z[profile+'_enhancement'][:,:,0,i]
-            # One identical color scale for all four cases; no percentile clipping.
-            lower=min(float(np.min(v[v>0])) for v in arrays.values());upper=max(float(v.max()) for v in arrays.values())
-            fig,axes=plt.subplots(2,2,figsize=(8,7),layout='constrained')
-            for ax,name in zip(axes.flat,CASES):
-                z=cases[name]['data']
-                image=ax.pcolormesh(z[profile+'_x_nm'],z[profile+'_y_nm'],arrays[name].T,
-                    shading='auto',cmap='magma',norm=LogNorm(vmin=lower,vmax=upper),rasterized=True)
-                for center,angle in zip(geometry.centers(),geometry.angles()):
-                    corners=np.array([[-1,-1],[1,-1],[1,1],[-1,1],[-1,-1]])*geometry.l/2
-                    corners=corners @ geometry.rotation_matrix(angle).T+center
-                    ax.plot(corners[:,0],corners[:,1],color='cyan',lw=.65,alpha=.7)
-                ax.set_title(name);ax.set_aspect('equal');ax.set_xlabel('x (nm)');ax.set_ylabel('y (nm)')
-            fig.colorbar(image,ax=list(axes.flat),label='|E|^2 / |E_inc|^2 (log color scale)',shrink=.8)
-            fig.suptitle(f'{plane} XY plane, {target:.3f} nm; shared color scale')
-            fig.savefig(figures/f'E_{plane}_{target:.3f}.png',dpi=180);plt.close(fig)
+    for vector,planes in (('E',('mid','top')),('H',('mid',))):
+        for plane in planes:
+            profile=f'nf_{plane}_{vector}';maps={}
+            for target in targets:
+                maps[target]={}
+                for name in CASES:
+                    z=cases[name]['data'];w=z[profile+'_wavelength_nm'];i=int(np.argmin(abs(w-target)))
+                    if abs(w[i]-target)>1e-5:raise ValueError('A map frequency is missing')
+                    maps[target][name]=z[profile+'_enhancement'][:,:,0,i]
+            # Shared scale across both target wavelengths and all four cases.
+            values=[value for group in maps.values() for value in group.values()]
+            lower=min(float(np.min(v[v>0])) for v in values);upper=max(float(v.max()) for v in values)
+            for target,arrays in maps.items():
+                fig,axes=plt.subplots(2,2,figsize=(8,7),layout='constrained')
+                for ax,name in zip(axes.flat,CASES):
+                    z=cases[name]['data']
+                    image=ax.pcolormesh(z[profile+'_x_nm'],z[profile+'_y_nm'],arrays[name].T,
+                        shading='auto',cmap='magma',norm=LogNorm(vmin=lower,vmax=upper),rasterized=True)
+                    for center,angle in zip(geometry.centers(),geometry.angles()):
+                        corners=np.array([[-1,-1],[1,-1],[1,1],[-1,1],[-1,-1]])*geometry.l/2
+                        corners=corners @ geometry.rotation_matrix(angle).T+center
+                        ax.plot(corners[:,0],corners[:,1],color='cyan',lw=.65,alpha=.7)
+                    ax.set_title(name);ax.set_aspect('equal');ax.set_xlabel('x (nm)');ax.set_ylabel('y (nm)')
+                    ax.set_xlim(-geometry.p/2,geometry.p/2);ax.set_ylim(-geometry.p/2,geometry.p/2)
+                fig.colorbar(image,ax=list(axes.flat),label=f'|{vector}|^2 / |{vector}_inc|^2 (log color scale)',shrink=.8)
+                fig.suptitle(f'{vector}, {plane} XY plane, {target:.3f} nm; shared color scale')
+                fig.savefig(figures/f'{vector}_{plane}_{target:.3f}.png',dpi=180);plt.close(fig)
     digest=lambda path:hashlib.sha256(path.read_bytes()).hexdigest()
     manifest={'analysis_sha256':digest(destination/'analysis.json'),
               'case_sha256':{name:report['cases'][name]['sample_sha256'] for name in CASES},

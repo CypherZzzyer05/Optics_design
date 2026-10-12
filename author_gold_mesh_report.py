@@ -137,6 +137,10 @@ def author(analysis_path,output):
             page(f'电场空间分布：{plane}，{wavelength:.3f} nm')
             image(figures/f'E_{plane}_{wavelength:.3f}.png',535)
             p('四幅图使用完全相同的对数色标，显示 FE 强度倍数。青色轮廓是柱体在 XY 的投影。mid 平面穿过柱体，top 平面在柱顶上方。热点的单节点极值可随尖角离散变化，应结合面积平均与 P95 解释。',small)
+    for wavelength in targets:
+        page(f'磁场空间分布：mid，{wavelength:.3f} nm')
+        image(figures/f'H_mid_{wavelength:.3f}.png',535)
+        p('显示 FH=|H|^2/|Hinc|^2。两页中截面磁场及全部案例使用统一对数色标，便于比较两个目标波长。青色轮廓为柱体边界；场图及统计限于本次采样平面与频率。',small)
     page('各自谱形与采样场极值')
     p('下表采用镀金组的两个主要反射谷，以及无金组的两个主要反射峰，按各自谱形列出。E 为该谱线附近最近的实测场频率；频率差明确保留，不能把稀疏 H 采样称为谱线中心场。')
     rows=[['案例 / 特征','中心 nm / R','E 频率差 nm','top E 平均 / P95','H 频率差 nm']]
