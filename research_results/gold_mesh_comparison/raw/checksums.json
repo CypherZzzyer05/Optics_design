@@ -1,6 +1,10 @@
 {
-  "archive_status.json": "a921d41c8d456cf5f07125713f3d7e51e8b33a3db9cfa2b34c51b12ff0a3bec6",
+  "archive_status.json": "0056ce33a8b22b06ad69e377f8feb33f6fabc823113ae9dc7c09edf7f0f3fb81",
   "sampling_plan.json": "4cb83cafa14167fe360dc209697d0861c3c86125ac1e0cad683f58d093279392",
+  "cases/Au4/native_audit.json": "e37f9be7df56e35c7019f3ab5606acdfb901aed538999c1fc7443ef0f9afc752",
+  "cases/Au4/sample.npz": "eafd13361f06b46b69fbbcbe448de81fb1a390942ea263b241395b5a54c682aa",
+  "cases/Au4/simulation.resources.json": "d791cc22d8e52524c4013ba17ccf1f4a4869e5879f0d5f8a062597a37aa9df63",
+  "cases/Au4/state.json": "ae312dfdbff610003bca82f2a0dc7644ac3ad15aef90362c0a1740243d01160f",
   "cases/Au8/native_audit.json": "a24d082b3aad641ea7f5b313a2acaa06adf897d3ecfaf9cae576e6c59700a12e",
   "cases/Au8/sample.npz": "44e115957729b915ff3b5c70ccfa2f6a6707d4b7dedd718f810ff382f624fe5f",
   "cases/Au8/simulation.resources.json": "2c8a5a90e008e757a5b6a0dc49af6c1888ba907d086807c51034cc0dc9f9deac",
