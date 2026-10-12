@@ -77,6 +77,11 @@ def author(analysis_path,output):
     p('法向入射、x 偏振。四组采用共同的 1692 个原生频率点：约 1 nm 全波段覆盖，重要谱线窗口保留约 0.333 nm 采样。无插值产生的“伪实算”细谱。4 nm 的主功率监测器降采样 2，并增加 181 个全空间功率频率核验；近场监测均不降采样。')
     p('电场强度增强 FE=|E|^2/|Einc|^2；磁场 FH=|H|^2/|Hinc|^2。从原生 CW 源强度 I 计算 |Einc|^2=2I/(epsilon0*c)，|Hinc|^2=2I/(mu0*c)。8/4 nm 真空参考分别校验该归一化。以上为强度倍数，振幅倍数为其平方根。')
     p('两个 XY 平面为 z=H/2 与 H+10 nm。E 记录 94 个频率，H 记录 4 个频率。平均值和 P95 按原生网格面积加权。中截面柱内及空气区域排除距离柱边缘 10 nm 内的节点；原生节点掩膜是区域积分近似，报告对应采样面积。')
+    table([['案例','柱内采样面积 (nm^2)','空气采样面积 (nm^2)'],
+           *[[NAMES[name],f"{case['region_quadrature']['pillar_bulk']['sampled_area_nm2']:.1f}",
+               f"{case['region_quadrature']['air_away_from_edges']['sampled_area_nm2']:.1f}"]
+             for name,case in report['cases'].items()]],[120,180,180])
+    p(f"精确去边缘方柱多边形总面积为 {report['exact_eroded_pillar_area_nm2']:.1f} nm^2。采样区域面积随网格存在离散差异，上表明确列出，不能将节点数当成面积。",small)
     p('As2Se3 采用 Joseph 2020 薄膜 n/k 数据；末端 1688-1700 nm 的 12 nm 保持端点，属于探索性外推。Au 使用 Palik 原生材料拟合；数值网格比较不证明材料拟合或实验精度。单个尖角最大值不决定结构选择。')
     page('镀金与去金：全波段光谱')
     image(figures/'spectra.png',500)

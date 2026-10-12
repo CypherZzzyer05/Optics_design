@@ -77,6 +77,27 @@ def fields_near_spectral_features(profiles,features):
     return result
 
 
+def verify_calibration(output,case_id,geometry):
+    """Recompute calibration from audited raw fields; do not trust a stale flag."""
+    case=load_audited(output,case_id)
+    if not case['state']['recipe']['vacuum_reference']:raise ValueError('Calibration is not a vacuum experiment')
+    path=output/case_id/'normalization_check.json'
+    stored=json.loads(path.read_text())
+    names=('nf_mid_E','nf_top_E','nf_mid_H','nf_top_H')
+    if set(stored)!=set(names):raise ValueError('A vacuum profile is missing')
+    calculated={}
+    for name in names:
+        rows=profile_statistics(case['data'],name,geometry)
+        deviation=max(abs(row['regions']['all'][metric]-1) for row in rows for metric in
+                      ('mean_intensity_enhancement','p95_intensity_enhancement'))
+        if (not stored[name]['passed'] or deviation>.02 or
+            not np.isclose(deviation,stored[name]['maximum_mean_or_p95_deviation_from_unity'],rtol=0,atol=1e-12)):
+            raise ValueError('Stored vacuum normalization does not verify current raw fields')
+        calculated[name]=float(deviation)
+    return {'sample_sha256':case['state']['sample_sha256'],'native_audit_sha256':checksum(case['directory']/'native_audit.json'),
+            'normalization_check_sha256':checksum(path),'maximum_deviations':calculated,'passed':True}
+
+
 def compare_cases(first,second,reference_dips,targets,criteria):
     a,b=first['data'],second['data']
     if not np.array_equal(a['wavelength_nm'],b['wavelength_nm']):raise ValueError('Main spectral grids differ')
@@ -119,6 +140,7 @@ def compare_cases(first,second,reference_dips,targets,criteria):
 def analyze(output,destination):
     geometry=geometry_source();plan=json.loads((output/'sampling_plan.json').read_text())
     cases={name:load_audited(output,name) for name in CASES}
+    calibrations={mesh:verify_calibration(output,'vacuum'+str(mesh),geometry) for mesh in (8,4)}
     base=cases['Au4']['state']['recipe']
     for name,case in cases.items():
         recipe=case['state']['recipe']
@@ -131,9 +153,10 @@ def analyze(output,destination):
             if recipe[key]!=base[key]:raise ValueError('Field or material source changed')
         case['profiles']={profile:profile_statistics(case['data'],profile,geometry) for profile in
                           ('nf_mid_E','nf_top_E','nf_mid_H','nf_top_H')}
-        calibration=output/('vacuum4' if name.endswith('4') else 'vacuum8')/'normalization_check.json'
-        norm=json.loads(calibration.read_text())
-        if not all(value['passed'] for value in norm.values()):raise ValueError('Vacuum normalization is not verified')
+        vacuum=load_audited(output,'vacuum'+name[-1])
+        for profile in ('nf_mid_E','nf_top_E','nf_mid_H','nf_top_H'):
+            if not np.array_equal(case['data'][profile+'_wavelength_nm'],vacuum['data'][profile+'_wavelength_nm']):
+                raise ValueError('Sample and vacuum calibration frequencies differ')
     reference=double_pair(cases['Au4']['data']['wavelength_nm'],cases['Au4']['data']['reflectance'])['dominant_pair']
     if not reference:raise ValueError('The verified Au4 case does not retain the required double-dip candidate')
     targets=plan['gold_target_wavelengths_nm'];criteria=plan['unchanged_criteria']
@@ -153,9 +176,13 @@ def analyze(output,destination):
                          'actual_mesh':case['audit']['actual_mesh'],'sample_sha256':case['state']['sample_sha256'],
                          'native_audit_sha256':checksum(case['directory']/'native_audit.json'),
                          'spectral_features':features,'field_profiles':case['profiles'],
+                         'region_quadrature':{region:{key:value[key] for key in ('sampled_area_nm2','sampled_nodes')}
+                                              for region,value in case['profiles']['nf_mid_E'][0]['regions'].items()},
                          'sampled_field_extrema':sampled_field_extrema(case['profiles']),
                          'fields_near_own_spectral_features':fields_near_spectral_features(case['profiles'],features['reflectance'])}
     report={'complete_matrix':True,'geometry_values':base['geometry_values'],'criteria':criteria,'cases':summaries,
+            'vacuum_calibrations':calibrations,
+            'exact_eroded_pillar_area_nm2':float(4*(geometry.l-20)**2),
             'comparisons':comparisons,'decision':{'remove_gold':remove_gold,'selected_stack':stack,
              'adopt_8nm':adopt8,'selected_final_mesh_nm':8 if adopt8 else 4},
             'scope':'Current fixed geometry and sampled 700-1700 nm spectra; two XY planes and selected E/H frequencies.',

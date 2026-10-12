@@ -1,8 +1,11 @@
 """Keep measured-frequency provenance and enforce the accepted tolerances."""
 import unittest
+import json
+from pathlib import Path
+import tempfile
 from unittest.mock import patch
 import numpy as np
-from analyze_gold_mesh_results import compare_cases,sampled_field_extrema,fields_near_spectral_features
+from analyze_gold_mesh_results import compare_cases,sampled_field_extrema,fields_near_spectral_features,verify_calibration
 from gold_mesh_research import audit_has_complete_fields
 
 
@@ -24,6 +27,16 @@ def case(mean):
 
 
 class AnalysisTests(unittest.TestCase):
+    def test_calibration_flag_cannot_hide_current_normalization_error(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root=Path(temporary);directory=root/'vacuum8';directory.mkdir()
+            record={name:{'passed':True,'maximum_mean_or_p95_deviation_from_unity':0.} for name in profiles(1.)}
+            (directory/'normalization_check.json').write_text(json.dumps(record))
+            fixture={'state':{'recipe':{'vacuum_reference':True}},'data':{}}
+            bad_rows=[{'regions':{'all':{'mean_intensity_enhancement':1.05,'p95_intensity_enhancement':1.05}}}]
+            with patch('analyze_gold_mesh_results.load_audited',return_value=fixture),patch('analyze_gold_mesh_results.profile_statistics',return_value=bad_rows):
+                with self.assertRaisesRegex(ValueError,'current raw fields'):verify_calibration(root,'vacuum8',None)
+
     def test_old_audit_requires_every_field_and_coordinate(self):
         errors={f'nf_{plane}_{vector}_{suffix}':0. for plane in ('mid','top') for vector in ('E','H')
                 for suffix in ('enhancement','wavelength_nm','incident_squared','x_nm','y_nm','z_nm')}

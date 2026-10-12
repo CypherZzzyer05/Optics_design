@@ -1,0 +1,225 @@
+{
+  "source_snapshot_commit": "3a26d61",
+  "source_path": "D:\\projects\\LumOpt_test",
+  "original_head_unchanged": true,
+  "original_status_unchanged": true,
+  "verified_files": [
+    {
+      "path": ".gitignore",
+      "normalized_sha256": "7fc6b86523b1b52911f95f2f538276a4031ad329c7df26ef7b29627ab3e107a9",
+      "text_newline_normalized": true
+    },
+    {
+      "path": "README.md",
+      "normalized_sha256": "d47322ac6c6aad523d9265841531b754be0074cb29da87122cca7350614328e0",
+      "text_newline_normalized": true
+    },
+    {
+      "path": "compare_training.py",
+      "normalized_sha256": "23d913394ca0a04046603653bad04d67cb985a6ce107864cf28199e01fcc322e",
+      "text_newline_normalized": true
+    },
+    {
+      "path": "configs/dataset.json",
+      "normalized_sha256": "5fdfe71a2608d9efcb60161d3449468f5fec971880a8d2045a56c7b303885c0e",
+      "text_newline_normalized": true
+    },
+    {
+      "path": "configs/rotation_100.json",
+      "normalized_sha256": "745958caad8a2208738c685fe03a7eca319c689ff18c7e41f38506bfa284e4d9",
+      "text_newline_normalized": true
+    },
+    {
+      "path": "configs/rotation_pilot.json",
+      "normalized_sha256": "436f6206d614a1ecf944460647df9b6d1314efe4e0a1569a95ffd9510a25e6ec",
+      "text_newline_normalized": true
+    },
+    {
+      "path": "configs/smoke.json",
+      "normalized_sha256": "ca50d2093ba8df656b02a2fa4ab9c9cd09f10eb56e7b53595563748a4ef27bea",
+      "text_newline_normalized": true
+    },
+    {
+      "path": "configs/train_resnet_100.json",
+      "normalized_sha256": "4648eb897334c12f3aaf35ef3383e54dc2457098a5b2cccb8301edecafc7e894",
+      "text_newline_normalized": true
+    },
+    {
+      "path": "configs/train_rotation_100.json",
+      "normalized_sha256": "ec57aa6cdc901ef698d1d9763d50c08a0169b378ad25ec00294553e2b5733025",
+      "text_newline_normalized": true
+    },
+    {
+      "path": "configs/train_rotation_pilot.json",
+      "normalized_sha256": "b3f88aa43829e3a9163c9c3f2907a5e44b94300eac3f64da10dcd1c4aef78375",
+      "text_newline_normalized": true
+    },
+    {
+      "path": "configs/train_smoke_100.json",
+      "normalized_sha256": "fde34c8a153a7f211ddd9a1392632a15eda8598ebe62feb9db879bf48e166090",
+      "text_newline_normalized": true
+    },
+    {
+      "path": "docs/figures/metaformer_architecture.json",
+      "normalized_sha256": "e8a9ef8dd31182eb83049454ff7350deea539f49e5f1880cb1e2f6135d596713",
+      "text_newline_normalized": true
+    },
+    {
+      "path": "docs/figures/metaformer_architecture.pdf",
+      "normalized_sha256": "b4dcd7c23fea9274728fe948639ffd8688d5ff748709f303a0fc6e37c9ad7477",
+      "text_newline_normalized": false
+    },
+    {
+      "path": "docs/figures/metaformer_architecture.png",
+      "normalized_sha256": "22929dd4cedf89abbd10ed9f6f6c5b670e98db43d32d3dbfb5502b7a66bf0de5",
+      "text_newline_normalized": false
+    },
+    {
+      "path": "docs/figures/metaformer_architecture.svg",
+      "normalized_sha256": "27001583f3a819ec7aeb8d58dba732561a1e36a3a44c28c7f28d3b3c26b6681f",
+      "text_newline_normalized": true
+    },
+    {
+      "path": "docs/figures/metaformer_blocks.png",
+      "normalized_sha256": "4a53c8e5265440051ad0237261e95c71d94d25e1007531c89597defc13135ec1",
+      "text_newline_normalized": false
+    },
+    {
+      "path": "docs/figures/rotation/metaformer_architecture.json",
+      "normalized_sha256": "e841c683a7631c633b789d6d1d473496fae7d2bc6517a78cd4064817eb8b9912",
+      "text_newline_normalized": true
+    },
+    {
+      "path": "docs/figures/rotation/metaformer_architecture.pdf",
+      "normalized_sha256": "e0ef63af7eafd52f14c365b479835da3a000a4147fdf0ad22d19d1fa716fcf24",
+      "text_newline_normalized": false
+    },
+    {
+      "path": "docs/figures/rotation/metaformer_architecture.png",
+      "normalized_sha256": "9dfde3b0adac88d4fc4519571fe6c4d0a554dc42b57db84ccba7e2a856834735",
+      "text_newline_normalized": false
+    },
+    {
+      "path": "docs/figures/rotation/metaformer_architecture.svg",
+      "normalized_sha256": "3dfccbd19df1f8f98730f7c0408aa36650271ef40d7da3ed9d39c7c2613102e0",
+      "text_newline_normalized": true
+    },
+    {
+      "path": "docs/figures/rotation/metaformer_blocks.png",
+      "normalized_sha256": "4a53c8e5265440051ad0237261e95c71d94d25e1007531c89597defc13135ec1",
+      "text_newline_normalized": false
+    },
+    {
+      "path": "docs/near_ir_device_decision_2026-09-30.md",
+      "normalized_sha256": "0abbc56f47a8c4a9df670309df6201c4ff8841496398511ceab33c6e219b1f69",
+      "text_newline_normalized": true
+    },
+    {
+      "path": "docs/research_report_telecom_2026-09-30.md",
+      "normalized_sha256": "837b4351b64518066ce0c300712208d2d06af14723308f282a7f9f5f75fb9efc",
+      "text_newline_normalized": true
+    },
+    {
+      "path": "draw_metaformer.py",
+      "normalized_sha256": "6721c4bddd8d5d0e0f4890f9099a2bcc2f71857ce104f3a50b0e68e61f4bcf60",
+      "text_newline_normalized": true
+    },
+    {
+      "path": "fdtd_pipeline/__init__.py",
+      "normalized_sha256": "658b1e94700ecff205c60d343629c502b16789e9df6003e93c688b3c2e374817",
+      "text_newline_normalized": true
+    },
+    {
+      "path": "fdtd_pipeline/config.py",
+      "normalized_sha256": "2ee6763455d8b98f7d49a14ee99f346cb13af0c417fa1908eaed5649f44f712c",
+      "text_newline_normalized": true
+    },
+    {
+      "path": "fdtd_pipeline/lumerical.py",
+      "normalized_sha256": "a905c6d00f9fbd83bd90e9116d74c11f331ad07f3d304e4d9de3c993e0640539",
+      "text_newline_normalized": true
+    },
+    {
+      "path": "fdtd_pipeline/pipeline.py",
+      "normalized_sha256": "eb4432bf570b9cc6bcd1758589a381c8abdbb4ce35f02a48031ce52a6ea0ee29",
+      "text_newline_normalized": true
+    },
+    {
+      "path": "generate_dataset.py",
+      "normalized_sha256": "a874046bc5e210a1f9ac1d2ad5792bb972d723b0beaac2254cd82dc6d72e87f4",
+      "text_newline_normalized": true
+    },
+    {
+      "path": "metaformer.py",
+      "normalized_sha256": "e19c0ad8d7c26b671d58ccb353125b7ae54bcf7de0cb84933c35d86113838f4a",
+      "text_newline_normalized": true
+    },
+    {
+      "path": "plot_positive_rotation.py",
+      "normalized_sha256": "4997ad5661316a14bb171ac0973818e37a169e6ce09af7abfc0311a7e4fb3f74",
+      "text_newline_normalized": true
+    },
+    {
+      "path": "plot_sample_comparison.py",
+      "normalized_sha256": "aa1b8a4c61a4b00e3a5b38b8a92280dc8e9de29058726443446efd1218d0f37c",
+      "text_newline_normalized": true
+    },
+    {
+      "path": "plot_training.py",
+      "normalized_sha256": "d1f33eee185674a1e2bf9536714591946d1935b2db4e91386936c827ef1ff41c",
+      "text_newline_normalized": true
+    },
+    {
+      "path": "pycharm_demo.py",
+      "normalized_sha256": "11f5f52391b99b6085433bdd9f916f1e29db6d17ca5c7c1dfe621982096c6a20",
+      "text_newline_normalized": true
+    },
+    {
+      "path": "requirements.txt",
+      "normalized_sha256": "d5cb2ba51a34a6163c153079e2f7f43178add25df0acea844937bcda93f5b031",
+      "text_newline_normalized": true
+    },
+    {
+      "path": "spectrum_dataset.py",
+      "normalized_sha256": "f5cc16a329e977e63786952620aad402cd8bb50d7d3af985c4fb196f928a9f92",
+      "text_newline_normalized": true
+    },
+    {
+      "path": "tests/test_fdtd_pipeline.py",
+      "normalized_sha256": "f34846b762431feacdaa533f605d84e6fa4f4c3461feebb2d70095abf6a8530e",
+      "text_newline_normalized": true
+    },
+    {
+      "path": "tests/test_preview_interaction.py",
+      "normalized_sha256": "166d03d215b7697397fcecc5b408fb3e13ad890afbf42b2fd2b73c20824ab49b",
+      "text_newline_normalized": true
+    },
+    {
+      "path": "tests/test_resnet_attention.py",
+      "normalized_sha256": "5d985f88b52630c9f6d149490b2461ca33c4e04d4049e7259dc2ad0960d8562d",
+      "text_newline_normalized": true
+    },
+    {
+      "path": "tests/test_rotation.py",
+      "normalized_sha256": "699bb88d209004452dc851b05bcca3c43bf663964632c29d08da9390b1530a07",
+      "text_newline_normalized": true
+    },
+    {
+      "path": "tests/test_training.py",
+      "normalized_sha256": "602f3406cc0268f4e91c64bc928e3001e2d1284c1ae1108ed0416e84b448524b",
+      "text_newline_normalized": true
+    },
+    {
+      "path": "train_metaformer.py",
+      "normalized_sha256": "aef1caaa1caaffe0dbea0e1b6c4b057b3b34c504ff80cca65879b6e726add29f",
+      "text_newline_normalized": true
+    },
+    {
+      "path": "validate_rotation.py",
+      "normalized_sha256": "3e0fc27fdaf0675f5cb058ed3a3ff7bf17f2db0c12115d931adc4b42dbea698f",
+      "text_newline_normalized": true
+    }
+  ],
+  "checked_at": "2026-10-12T15:38:39",
+  "scope": "All 43 source-snapshot files; text line endings normalized; binary files exact; excludes original ignored data/output as specified in SOURCE_SNAPSHOT.json"
+}
