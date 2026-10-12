@@ -123,10 +123,12 @@ def author(analysis_path,output):
             image(figures/f'E_{plane}_{wavelength:.3f}.png',535)
             p('四幅图使用完全相同的对数色标，显示 FE 强度倍数。青色轮廓是柱体在 XY 的投影。mid 平面穿过柱体，top 平面在柱顶上方。热点的单节点极值可随尖角离散变化，应结合面积平均与 P95 解释。',small)
     page('各自谱形与采样场极值')
-    p('下表按各组自己的反射特征列出，而不强行把去金谱线当作镀金双谷。E 为该谱线附近最近的实测场频率；频率差明确保留，不能把稀疏 H 采样称为谱线中心场。')
+    p('下表采用镀金组的两个主要反射谷，以及无金组的两个主要反射峰，按各自谱形列出。E 为该谱线附近最近的实测场频率；频率差明确保留，不能把稀疏 H 采样称为谱线中心场。')
     rows=[['案例 / 特征','中心 nm / R','E 频率差 nm','top E 平均 / P95','H 频率差 nm']]
     for name,case in report['cases'].items():
-        for row in case['fields_near_own_spectral_features'][:2]:
+        kind='minimum' if name.startswith('Au') else 'maximum'
+        chosen=[row for row in case['fields_near_own_spectral_features'] if row['spectral_feature']['kind']==kind][:2]
+        for row in chosen:
             feature=row['spectral_feature'];e=row['nearest_measured_fields']['nf_top_E'];h=row['nearest_measured_fields']['nf_top_H'];s=e['regions']['all']
             rows.append([NAMES[name]+' / '+('峰' if feature['kind']=='maximum' else '谷'),f"{feature['center_nm']:.3f} / {feature['value']:.4f}",
                          f"{e['offset_nm']:.3f}",' / '.join(number(s[m]) for m in METRICS),f"{h['offset_nm']:.3f}"])
