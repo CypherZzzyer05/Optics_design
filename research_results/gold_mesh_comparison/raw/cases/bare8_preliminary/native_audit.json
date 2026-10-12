@@ -1,0 +1,42 @@
+{
+  "case_id": "bare8_preliminary",
+  "sample_sha256": "73166c4720e506642daf80395abc1e235794065650591fd58e55499ffbcbaf31",
+  "project_sha256": "fe438f62b2bbea65043ff72e82f34606140369122dc1a76ff08c9e8d8f24f56e",
+  "native_geometry_verified": true,
+  "native_spectra_match_export": true,
+  "native_fields_match_export": true,
+  "actual_mesh": {
+    "x": {
+      "points": 85,
+      "maximum_step_nm": 7.943830534459447,
+      "minimum_step_nm": 7.943830534459182
+    },
+    "y": {
+      "points": 85,
+      "maximum_step_nm": 7.943830534459447,
+      "minimum_step_nm": 7.943830534459182
+    },
+    "z": {
+      "points": 457,
+      "maximum_step_nm": 7.987458667975686,
+      "minimum_step_nm": 2.4999999999984936
+    }
+  },
+  "status": 2,
+  "structure": {
+    "gold_present": false,
+    "finite_substrate": true,
+    "geometry_verified": true,
+    "grid_matches_Au_layout": true
+  },
+  "native_vs_export_spectral_errors": {
+    "wavelength_nm": 0.0,
+    "reflectance": 0.0,
+    "transmittance": 0.0,
+    "absorptance": 0.0
+  },
+  "native_vs_export_field_errors": {},
+  "power_integration_validation": null,
+  "field_export_dtype": "float32 intensity enhancement; coordinates and source normalization float64",
+  "note": "Native reload verifies this saved experiment; it does not prove material accuracy or mesh convergence."
+}

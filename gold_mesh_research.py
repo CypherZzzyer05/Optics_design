@@ -23,6 +23,15 @@ MATERIAL_SHA = '9e6ee6d3b584f33226d7201e2b2e12490726cb3b8256726754e5aca9cae64ce9
 PLANES = ('mid', 'top')
 
 
+def audit_has_complete_fields(audit):
+    """Validate all four profiles, including early audits without count metadata."""
+    expected={f'nf_{plane}_{vector}_{suffix}' for plane in PLANES for vector in ('E','H')
+              for suffix in ('enhancement','wavelength_nm','incident_squared','x_nm','y_nm','z_nm')}
+    errors=audit.get('native_vs_export_field_errors',{})
+    return (audit.get('native_fields_match_export') is True and audit.get('field_monitor_count',4)==4
+            and set(errors)==expected and all(np.isfinite(value) and value>=0 for value in errors.values()))
+
+
 def geometry_source():
     source = PROJECT_ROOT/'research_results/double_dip_mesh_5_4/comparison.json'
     values = json.loads(source.read_text(encoding='utf-8'))['geometry_values']

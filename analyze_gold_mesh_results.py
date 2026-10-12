@@ -8,7 +8,7 @@ from scipy.signal import find_peaks,peak_widths
 
 from fdtd_pipeline.config import PROJECT_ROOT
 from fdtd_pipeline.pipeline import atomic_json,checksum
-from gold_mesh_research import geometry_source,validate_saved_case
+from gold_mesh_research import geometry_source,validate_saved_case,audit_has_complete_fields
 from gold_mesh_metrics import profile_statistics
 from explore_double_dips import double_pair
 from analyze_angle_controls import track_pair
@@ -21,8 +21,7 @@ def load_audited(output,case_id):
     audit=json.loads((directory/'native_audit.json').read_text())
     if (audit['sample_sha256']!=state['sample_sha256'] or audit['project_sha256']!=checksum(directory/'simulation.fsp')
             or audit['status']!=2 or not audit['native_geometry_verified']
-            or not audit['native_spectra_match_export'] or audit['native_fields_match_export'] is not True
-            or audit['field_monitor_count']!=4):
+            or not audit['native_spectra_match_export'] or not audit_has_complete_fields(audit)):
         raise ValueError('Current native audit does not verify the complete spectral/field case')
     with np.load(directory/'sample.npz') as z:data={key:z[key] for key in z.files}
     return {'state':state,'audit':audit,'data':data,'directory':directory}

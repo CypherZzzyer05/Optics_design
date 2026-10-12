@@ -3,6 +3,7 @@ import unittest
 from unittest.mock import patch
 import numpy as np
 from analyze_gold_mesh_results import compare_cases,sampled_field_extrema,fields_near_spectral_features
+from gold_mesh_research import audit_has_complete_fields
 
 
 def stats(mean):
@@ -23,6 +24,15 @@ def case(mean):
 
 
 class AnalysisTests(unittest.TestCase):
+    def test_old_audit_requires_every_field_and_coordinate(self):
+        errors={f'nf_{plane}_{vector}_{suffix}':0. for plane in ('mid','top') for vector in ('E','H')
+                for suffix in ('enhancement','wavelength_nm','incident_squared','x_nm','y_nm','z_nm')}
+        audit={'native_fields_match_export':True,'native_vs_export_field_errors':errors}
+        self.assertTrue(audit_has_complete_fields(audit))
+        self.assertFalse(audit_has_complete_fields(audit|{'field_monitor_count':0}))
+        errors.pop('nf_top_H_enhancement')
+        self.assertFalse(audit_has_complete_fields(audit))
+
     def test_field_difference_alone_prevents_substitution(self):
         dip={'wavelength_nm':800.,'reflectance_min':.1,'half_prominence_width_nm':5.}
         tracked={'retained':True,'tracked_dips':[dip,dip]}
