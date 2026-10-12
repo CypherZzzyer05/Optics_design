@@ -167,6 +167,10 @@ def analyze(output,destination):
     geometry=geometry_source();plan=json.loads((output/'sampling_plan.json').read_text())
     cases={name:load_audited(output,name) for name in CASES}
     calibrations={mesh:verify_calibration(output,'vacuum'+str(mesh),geometry) for mesh in (8,4)}
+    from audit_gold_mesh_materials import audit_materials
+    material_diagnostics=audit_materials(output,destination/'materials',plan['gold_target_wavelengths_nm'])
+    if not material_diagnostics['shared_fits_match']:
+        raise ValueError('Shared material fits differ across controls; investigate before a final substitution decision')
     base=cases['Au4']['state']['recipe']
     for name,case in cases.items():
         recipe=case['state']['recipe']
@@ -213,6 +217,7 @@ def analyze(output,destination):
                          'fields_near_own_spectral_features':fields_near_spectral_features(case['profiles'],features['reflectance'])}
     report={'complete_matrix':True,'geometry_values':base['geometry_values'],'criteria':criteria,'cases':summaries,
             'vacuum_calibrations':calibrations,
+            'material_diagnostics':material_diagnostics,
             'exact_eroded_pillar_area_nm2':float(4*(geometry.l-20)**2),
             'comparisons':comparisons,'decision':{'remove_gold':remove_gold,'selected_stack':stack,
              'adopt_8nm':adopt8,'selected_final_mesh_nm':8 if adopt8 else 4},
