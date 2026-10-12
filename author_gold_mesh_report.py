@@ -95,12 +95,22 @@ def author(analysis_path,output):
     page('8 nm 与 4 nm：光谱差异')
     image(figures/'mesh_zoom.png',350)
     rows=[['比较 / 谷','位移 nm','谷底 |delta R|','宽度变化 %','通过']]
-    for key in ('Au_8nm_vs_4nm','bare_8nm_vs_4nm'):
+    for key in ('Au_8nm_vs_4nm',):
         c=report['comparisons'][key]
         if not c['tracked_spectral_features']:rows.append([key,'目标双谷未能同时跟踪','','','否'])
         for i,row in enumerate(c['tracked_spectral_features']):rows.append([key+f' / {i+1}',f"{row['center_shift_nm']:.3f}",
            f"{row['absolute_R_change']:.5f}",f"{100*row['relative_width_change']:.2f}",str(row['passes'])])
     table(rows,[165,70,90,90,65])
+    auxiliary=report['comparisons']['bare_8nm_vs_4nm']['own_peak_mesh_comparison']
+    rows=[['无金自己的反射峰','位移 nm','峰值 |delta R|','宽度变化 %','通过']]
+    for i,row in enumerate(auxiliary['tracked_peaks']):
+        if row['first'] is None:rows.append([f'峰 {i+1}','未能匹配','','','否']);continue
+        rows.append([f'峰 {i+1}',f"{row['center_shift_nm']:.3f}",f"{row['absolute_R_change']:.5f}",
+                     f"{100*row['relative_width_change']:.2f}",str(row['passes'])])
+    table(rows,[165,70,90,90,65])
+    p('无金自身峰采用同数值门槛作辅助网格比较；未保留Au目标双谷时，双谷替代门槛不适用于判断其自身网格误差。峰比较不替代已确认的双谷选择判据。',small)
+    peak_fields=auxiliary['field_at_shared_preliminary_peak_wavelengths']
+    p(f"无金组两个预扫峰的共同采样波长处，8/4 nm 的 E/H 核心区域平均值最大相对变化为 {100*max(row['relative_mean_change'] for row in peak_fields):.1f}%，P95 为 {100*max(row['relative_p95_change'] for row in peak_fields):.1f}%；该辅助峰及场检查同时通过={auxiliary['own_peaks_and_sampled_fields_stable']}。",small)
     p('线宽指反射谷的半突出度宽度，不是已验证模态的 FWHM 或 Q。比较均使用直接采样的谱线；中心分辨率受约 0.333 nm 频率采样限制。')
     page('相同目标波长：电场和磁场增强')
     p('每个数值为“面积加权平均 / P95”的强度增强因子。mid-bulk 为柱内去边缘区域；mid-air 为柱外去边缘空气；top 为柱顶上方 10 nm 全单胞。')
@@ -150,7 +160,7 @@ def author(analysis_path,output):
     p('每组均有配置指纹、源和几何核验、实际网格坐标、自动终止状态、R/T/A 原生复读、四个 E/H 监测器复读和原始文件 SHA256。float32 场导出的复读容差远小于 10% 决策阈值。以下为原始 NPZ 校验值：')
     for name,case in report['cases'].items():p(NAMES[name]+': '+case['sample_sha256'],small)
     p('分析 JSON SHA256: '+hashlib.sha256(analysis_path.read_bytes()).hexdigest(),small)
-    p('限制：固定单一结构及法向 x 偏振；没有偏振、角度、制造公差或实验验证。4 nm 与8 nm 对照不是无限细网格收敛证明；此前 5/4 nm 双谷光谱检查通过，仍不能替代本次场精度检查。没有宣称 Fano、BIC、模态身份或模态 Q。')
+    p('限制：固定单一结构及法向 x 偏振；没有偏振、角度、制造公差或实验验证。背板距离采用有限350 nm SiO2；不能把结论直接用于毫米厚基片背面的镀金。4 nm 与8 nm 对照不是无限细网格收敛证明；此前 5/4 nm 双谷光谱检查通过，仍不能替代本次场精度检查。没有宣称 Fano、BIC、模态身份或模态 Q。')
     p('方法来源（Ansys 官方）：')
     for name,url in [('源强度与 CW 归一化','https://optics.ansys.com/hc/en-us/articles/360034925373-sourceintensity-Script-command'),
                      ('频域场监测器','https://optics.ansys.com/hc/en-us/articles/360034902393-Frequency-domain-monitor-Simulation-object'),
