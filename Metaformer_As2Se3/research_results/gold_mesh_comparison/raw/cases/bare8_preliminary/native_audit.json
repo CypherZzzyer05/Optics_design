@@ -4,7 +4,8 @@
   "project_sha256": "fe438f62b2bbea65043ff72e82f34606140369122dc1a76ff08c9e8d8f24f56e",
   "native_geometry_verified": true,
   "native_spectra_match_export": true,
-  "native_fields_match_export": true,
+  "native_fields_match_export": null,
+  "field_monitor_count": 0,
   "actual_mesh": {
     "x": {
       "points": 85,

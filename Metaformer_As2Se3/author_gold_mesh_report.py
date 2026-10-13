@@ -64,6 +64,9 @@ def author(analysis_path,output):
       ('8 nm 满足已确认的替代容差，可以采用。' if decision['adopt_8nm'] else '8 nm 未满足全部替代容差；精细结果采用 4 nm。'))
     if report['material_interpretation']['near_lossless_fit_at_any_target']:
         p('材料限制：保存模型在目标波长处的Au拟合几乎漏掉材料表中的损耗。上述数值判断限于本次模型；材料修正后的器件光谱、场增强与方案取舍尚未完成验证。')
+    mesh_comparison=report['comparisons']['Au_8nm_vs_4nm']
+    p(f"镀金组第一谷谷底R的8/4 nm差为 {100*mesh_comparison['tracked_spectral_features'][0]['absolute_R_change']:.2f} 个百分点，超过3个百分点标准；共同目标波长处场平均/P95的最大变化为 {100*max(x['relative_mean_change'] for x in mesh_comparison['field_at_common_wavelengths']):.1f}% / {100*max(x['relative_p95_change'] for x in mesh_comparison['field_at_common_wavelengths']):.1f}%，均通过10%标准。")
+    p('无金结构自身的两个反射峰及共同峰波长处的场，8/4 nm辅助检查均通过；若后续目标改为这种谱形，可据该采样范围考虑8 nm。它没有保留当前Au目标双谷。')
     p('建议仅针对本报告的固定结构和指定光谱、场采样。未通过容差意味着不能在这个精度等级下直接替代，并不证明某材料或网格在所有设计中更优。')
     table([['指标','已确认的“影响不大”标准'],['反射谷中心','位移 <= 2 nm'],['谷底反射率','绝对变化 <= 0.03（3 个百分点）'],
            ['半突出度线宽','相对变化 <= 10%'],['场强度增强','区域平均值及面积加权 P95 相对变化 <= 10%']], [160,320])
@@ -175,7 +178,8 @@ def author(analysis_path,output):
     p('若拟合n接近0，而材料表n非零，即使k相近，介电常数虚部2nk也会改变；不能把“无增益”当成损耗拟合准确。该诊断与8/4 nm数值网格对照分别报告。')
     p('As2Se3 原始 n/k CSV SHA256: 9e6ee6d3b584f33226d7201e2b2e12490726cb3b8256726754e5aca9cae64ce9',small)
     page('可复核性、限制与最终采用方案')
-    p('采用方案：'+('保留 Au' if not decision['remove_gold'] else '移除 Au')+f"；最终精细网格 {decision['selected_final_mesh_nm']} nm。未满足容差的具体指标见光谱和场对照表；8 nm 可作为探索阶段结果，但是否用于正式训练需按误差等级另行标识。")
+    p('当前拟合材料模型下的采用方案：'+('保留 Au' if not decision['remove_gold'] else '移除 Au')+f"；最终精细网格 {decision['selected_final_mesh_nm']} nm。未满足容差的具体指标见光谱和场对照表；8 nm 可作为镀金结构探索阶段结果，但是否用于正式训练需按误差等级另行标识。")
+    p('无金结构自身的双反射峰及共同峰波长处的E/H场辅助网格检查通过，可在这些指标的精度范围内采用8 nm；这是另一种谱形的网格判断。Au损耗拟合修正后的器件表现与金层取舍尚未验证。本轮完成报告后暂停，不启动新的材料或结构仿真。')
     p('每组均有配置指纹、源和几何核验、实际网格坐标、自动终止状态、R/T/A 原生复读、四个 E/H 监测器复读和原始文件 SHA256。float32 场导出的复读容差远小于 10% 决策阈值。以下为原始 NPZ 校验值：')
     for name,case in report['cases'].items():p(NAMES[name]+': '+case['sample_sha256'],small)
     p('分析 JSON SHA256: '+hashlib.sha256(analysis_path.read_bytes()).hexdigest(),small)
@@ -187,7 +191,7 @@ def author(analysis_path,output):
                      ('网格细化方法','https://optics.ansys.com/hc/en-us/articles/360034382594-Understanding-Mesh-Refinement-and-Conformal-Mesh-in-FDTD'),
                      ('FDTD 材料拟合查询','https://optics.ansys.com/hc/en-us/articles/360034409694-getfdtdindex-Script-command'),
                      ('As2Se3 数据来源','https://refractiveindex.info/?shelf=main&book=As2Se3&page=Joseph-700nm')]:
-        story.append(Paragraph(escape(name)+': <link href="'+url+'" color="#174d78">'+escape(url)+'</link>',small))
+        story.append(Paragraph('<link href="'+url+'" color="#174d78">'+escape(name)+'</link>',small))
     output.parent.mkdir(parents=True,exist_ok=True)
     def footer(canvas,doc):
         canvas.setFont('Chinese',8);canvas.setFillColor(colors.HexColor('#657580'))

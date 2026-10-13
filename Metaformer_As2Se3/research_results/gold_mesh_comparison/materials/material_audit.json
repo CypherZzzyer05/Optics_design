@@ -1,0 +1,336 @@
+{
+  "cases": {
+    "Au8": {
+      "project_sha256": "2008909a17b4f41e157499de5cd771336abca5cab177b200a94241cf5e5bd371",
+      "sample_sha256": "44e115957729b915ff3b5c70ccfa2f6a6707d4b7dedd718f810ff382f624fe5f",
+      "fit_frequency_limits_hz": [
+        176348504705882.34,
+        428274939999999.94
+      ],
+      "materials": {
+        "As2Se3 - Joseph 700nm film (2020)": {
+          "max_n_error": 0.0068060458615883945,
+          "max_k_error": 0.0017094041668339333,
+          "rms_n_error": 0.003776753022116275,
+          "rms_k_error": 0.0008293443866356776,
+          "minimum_fit_n": 2.6357004914731674,
+          "minimum_fit_k": 0.025431260623283377,
+          "maximum_imaginary_permittivity_error": 0.009892438894474886,
+          "csv": "Au8_material_0.csv",
+          "csv_sha256": "b549bf6ff788bc577d9c89b2d413ba1ed50df6a6ff1c377c182d1bb4cd20add6",
+          "at_target_wavelengths": [
+            {
+              "wavelength_nm": 839.3797932644214,
+              "data_n": 2.7903644245969725,
+              "data_k": 0.03367901342350579,
+              "fit_n": 2.7858800479320536,
+              "fit_k": 0.03405154589655998
+            },
+            {
+              "wavelength_nm": 927.0756918972991,
+              "data_n": 2.7475129490346846,
+              "data_k": 0.036949820653884115,
+              "fit_n": 2.747823893359144,
+              "fit_k": 0.035390342983487866
+            }
+          ]
+        },
+        "SiO2 (Glass) - Palik": {
+          "max_n_error": 0.008349388224864862,
+          "max_k_error": 0.0,
+          "rms_n_error": 0.004269767967074801,
+          "rms_k_error": 0.0,
+          "minimum_fit_n": 1.450519268354684,
+          "minimum_fit_k": 0.0,
+          "maximum_imaginary_permittivity_error": 0.0,
+          "csv": "Au8_material_1.csv",
+          "csv_sha256": "3c32b0e977284dd60c08a781a8555df6e412c028eebccadfc799abefec51ba42",
+          "at_target_wavelengths": [
+            {
+              "wavelength_nm": 839.3797932644214,
+              "data_n": 1.4526766881682076,
+              "data_k": 0.0,
+              "fit_n": 1.450519268354684,
+              "fit_k": 0.0
+            },
+            {
+              "wavelength_nm": 927.0756918972991,
+              "data_n": 1.4513714634441857,
+              "data_k": 0.0,
+              "fit_n": 1.450519268354684,
+              "fit_k": 0.0
+            }
+          ]
+        },
+        "Au (Gold) - Palik": {
+          "max_n_error": 0.6558529804086315,
+          "max_k_error": 0.9026045749913916,
+          "rms_n_error": 0.39897009534015404,
+          "rms_k_error": 0.4471866335048615,
+          "minimum_fit_n": 1.9868680043950106e-08,
+          "minimum_fit_k": 4.250449039086406,
+          "maximum_imaginary_permittivity_error": 14.173032698570964,
+          "csv": "Au8_material_2.csv",
+          "csv_sha256": "d55bac85f4d4676ee204243122c68630df3a504905924e68c1dd5388a34ae7ca",
+          "at_target_wavelengths": [
+            {
+              "wavelength_nm": 839.3797932644214,
+              "data_n": 0.19323813597899778,
+              "data_k": 5.505826869137931,
+              "fit_n": 2.8226402647545826e-08,
+              "fit_k": 5.190591843733623
+            },
+            {
+              "wavelength_nm": 927.0756918972991,
+              "data_n": 0.22598004402187583,
+              "data_k": 6.256166617845261,
+              "fit_n": 3.431726024344585e-08,
+              "fit_k": 5.77796852625109
+            }
+          ]
+        }
+      }
+    },
+    "bare8": {
+      "project_sha256": "b135923d540e67ee5e6b53ffc29024a36321ddfd64e43b191829e38d28201644",
+      "sample_sha256": "6ffd13693de8a1f073a77418d085a314d97ff05cd63df775493b82a671763b46",
+      "fit_frequency_limits_hz": [
+        176348504705882.34,
+        428274939999999.94
+      ],
+      "materials": {
+        "As2Se3 - Joseph 700nm film (2020)": {
+          "max_n_error": 0.0068060458615883945,
+          "max_k_error": 0.0017094041668339333,
+          "rms_n_error": 0.003776753022116275,
+          "rms_k_error": 0.0008293443866356776,
+          "minimum_fit_n": 2.6357004914731674,
+          "minimum_fit_k": 0.025431260623283377,
+          "maximum_imaginary_permittivity_error": 0.009892438894474886,
+          "csv": "bare8_material_0.csv",
+          "csv_sha256": "b549bf6ff788bc577d9c89b2d413ba1ed50df6a6ff1c377c182d1bb4cd20add6",
+          "at_target_wavelengths": [
+            {
+              "wavelength_nm": 839.3797932644214,
+              "data_n": 2.7903644245969725,
+              "data_k": 0.03367901342350579,
+              "fit_n": 2.7858800479320536,
+              "fit_k": 0.03405154589655998
+            },
+            {
+              "wavelength_nm": 927.0756918972991,
+              "data_n": 2.7475129490346846,
+              "data_k": 0.036949820653884115,
+              "fit_n": 2.747823893359144,
+              "fit_k": 0.035390342983487866
+            }
+          ]
+        },
+        "SiO2 (Glass) - Palik": {
+          "max_n_error": 0.008349388224864862,
+          "max_k_error": 0.0,
+          "rms_n_error": 0.004269767967074801,
+          "rms_k_error": 0.0,
+          "minimum_fit_n": 1.450519268354684,
+          "minimum_fit_k": 0.0,
+          "maximum_imaginary_permittivity_error": 0.0,
+          "csv": "bare8_material_1.csv",
+          "csv_sha256": "3c32b0e977284dd60c08a781a8555df6e412c028eebccadfc799abefec51ba42",
+          "at_target_wavelengths": [
+            {
+              "wavelength_nm": 839.3797932644214,
+              "data_n": 1.4526766881682076,
+              "data_k": 0.0,
+              "fit_n": 1.450519268354684,
+              "fit_k": 0.0
+            },
+            {
+              "wavelength_nm": 927.0756918972991,
+              "data_n": 1.4513714634441857,
+              "data_k": 0.0,
+              "fit_n": 1.450519268354684,
+              "fit_k": 0.0
+            }
+          ]
+        }
+      }
+    },
+    "Au4": {
+      "project_sha256": "49cb8d9488818123db70222603f15315762837598f2282278ca1fdde34cbd7cd",
+      "sample_sha256": "eafd13361f06b46b69fbbcbe448de81fb1a390942ea263b241395b5a54c682aa",
+      "fit_frequency_limits_hz": [
+        176348504705882.34,
+        428274939999999.94
+      ],
+      "materials": {
+        "As2Se3 - Joseph 700nm film (2020)": {
+          "max_n_error": 0.0068060458615883945,
+          "max_k_error": 0.0017094041668339333,
+          "rms_n_error": 0.003776753022116275,
+          "rms_k_error": 0.0008293443866356776,
+          "minimum_fit_n": 2.6357004914731674,
+          "minimum_fit_k": 0.025431260623283377,
+          "maximum_imaginary_permittivity_error": 0.009892438894474886,
+          "csv": "Au4_material_0.csv",
+          "csv_sha256": "b549bf6ff788bc577d9c89b2d413ba1ed50df6a6ff1c377c182d1bb4cd20add6",
+          "at_target_wavelengths": [
+            {
+              "wavelength_nm": 839.3797932644214,
+              "data_n": 2.7903644245969725,
+              "data_k": 0.03367901342350579,
+              "fit_n": 2.7858800479320536,
+              "fit_k": 0.03405154589655998
+            },
+            {
+              "wavelength_nm": 927.0756918972991,
+              "data_n": 2.7475129490346846,
+              "data_k": 0.036949820653884115,
+              "fit_n": 2.747823893359144,
+              "fit_k": 0.035390342983487866
+            }
+          ]
+        },
+        "SiO2 (Glass) - Palik": {
+          "max_n_error": 0.008349388224864862,
+          "max_k_error": 0.0,
+          "rms_n_error": 0.004269767967074801,
+          "rms_k_error": 0.0,
+          "minimum_fit_n": 1.450519268354684,
+          "minimum_fit_k": 0.0,
+          "maximum_imaginary_permittivity_error": 0.0,
+          "csv": "Au4_material_1.csv",
+          "csv_sha256": "3c32b0e977284dd60c08a781a8555df6e412c028eebccadfc799abefec51ba42",
+          "at_target_wavelengths": [
+            {
+              "wavelength_nm": 839.3797932644214,
+              "data_n": 1.4526766881682076,
+              "data_k": 0.0,
+              "fit_n": 1.450519268354684,
+              "fit_k": 0.0
+            },
+            {
+              "wavelength_nm": 927.0756918972991,
+              "data_n": 1.4513714634441857,
+              "data_k": 0.0,
+              "fit_n": 1.450519268354684,
+              "fit_k": 0.0
+            }
+          ]
+        },
+        "Au (Gold) - Palik": {
+          "max_n_error": 0.6558529804086315,
+          "max_k_error": 0.9026045749913916,
+          "rms_n_error": 0.39897009534015404,
+          "rms_k_error": 0.4471866335048615,
+          "minimum_fit_n": 1.9868680043950106e-08,
+          "minimum_fit_k": 4.250449039086406,
+          "maximum_imaginary_permittivity_error": 14.173032698570964,
+          "csv": "Au4_material_2.csv",
+          "csv_sha256": "d55bac85f4d4676ee204243122c68630df3a504905924e68c1dd5388a34ae7ca",
+          "at_target_wavelengths": [
+            {
+              "wavelength_nm": 839.3797932644214,
+              "data_n": 0.19323813597899778,
+              "data_k": 5.505826869137931,
+              "fit_n": 2.8226402647545826e-08,
+              "fit_k": 5.190591843733623
+            },
+            {
+              "wavelength_nm": 927.0756918972991,
+              "data_n": 0.22598004402187583,
+              "data_k": 6.256166617845261,
+              "fit_n": 3.431726024344585e-08,
+              "fit_k": 5.77796852625109
+            }
+          ]
+        }
+      }
+    },
+    "bare4": {
+      "project_sha256": "35ab18db47793d88a17b0b2f74efc61a50c50342a57e1a312e9c75290a000069",
+      "sample_sha256": "9eda45cb72decc6b6f2929bf71fa0fd241e4a8c43bdd7a9a744fe99d7ec7eb0e",
+      "fit_frequency_limits_hz": [
+        176348504705882.34,
+        428274939999999.94
+      ],
+      "materials": {
+        "As2Se3 - Joseph 700nm film (2020)": {
+          "max_n_error": 0.0068060458615883945,
+          "max_k_error": 0.0017094041668339333,
+          "rms_n_error": 0.003776753022116275,
+          "rms_k_error": 0.0008293443866356776,
+          "minimum_fit_n": 2.6357004914731674,
+          "minimum_fit_k": 0.025431260623283377,
+          "maximum_imaginary_permittivity_error": 0.009892438894474886,
+          "csv": "bare4_material_0.csv",
+          "csv_sha256": "b549bf6ff788bc577d9c89b2d413ba1ed50df6a6ff1c377c182d1bb4cd20add6",
+          "at_target_wavelengths": [
+            {
+              "wavelength_nm": 839.3797932644214,
+              "data_n": 2.7903644245969725,
+              "data_k": 0.03367901342350579,
+              "fit_n": 2.7858800479320536,
+              "fit_k": 0.03405154589655998
+            },
+            {
+              "wavelength_nm": 927.0756918972991,
+              "data_n": 2.7475129490346846,
+              "data_k": 0.036949820653884115,
+              "fit_n": 2.747823893359144,
+              "fit_k": 0.035390342983487866
+            }
+          ]
+        },
+        "SiO2 (Glass) - Palik": {
+          "max_n_error": 0.008349388224864862,
+          "max_k_error": 0.0,
+          "rms_n_error": 0.004269767967074801,
+          "rms_k_error": 0.0,
+          "minimum_fit_n": 1.450519268354684,
+          "minimum_fit_k": 0.0,
+          "maximum_imaginary_permittivity_error": 0.0,
+          "csv": "bare4_material_1.csv",
+          "csv_sha256": "3c32b0e977284dd60c08a781a8555df6e412c028eebccadfc799abefec51ba42",
+          "at_target_wavelengths": [
+            {
+              "wavelength_nm": 839.3797932644214,
+              "data_n": 1.4526766881682076,
+              "data_k": 0.0,
+              "fit_n": 1.450519268354684,
+              "fit_k": 0.0
+            },
+            {
+              "wavelength_nm": 927.0756918972991,
+              "data_n": 1.4513714634441857,
+              "data_k": 0.0,
+              "fit_n": 1.450519268354684,
+              "fit_k": 0.0
+            }
+          ]
+        }
+      }
+    }
+  },
+  "shared_material_fit_differences": {
+    "Au8_vs_Au4": {
+      "As2Se3 - Joseph 700nm film (2020)": 0.0,
+      "Au (Gold) - Palik": 0.0,
+      "SiO2 (Glass) - Palik": 0.0
+    },
+    "bare8_vs_bare4": {
+      "As2Se3 - Joseph 700nm film (2020)": 0.0,
+      "SiO2 (Glass) - Palik": 0.0
+    },
+    "Au8_vs_bare8": {
+      "As2Se3 - Joseph 700nm film (2020)": 0.0,
+      "SiO2 (Glass) - Palik": 0.0
+    },
+    "Au4_vs_bare4": {
+      "As2Se3 - Joseph 700nm film (2020)": 0.0,
+      "SiO2 (Glass) - Palik": 0.0
+    }
+  },
+  "shared_fits_match": true,
+  "scope": "getindex data and getfdtdindex fit over the saved 700-1700 nm source band; native FSP bytes unchanged; no solver or fit-setting mutation.",
+  "accuracy_not_certified": true
+}

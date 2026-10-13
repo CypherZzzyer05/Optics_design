@@ -5,6 +5,7 @@
   "native_geometry_verified": true,
   "native_spectra_match_export": true,
   "native_fields_match_export": true,
+  "field_monitor_count": 4,
   "actual_mesh": {
     "x": {
       "points": 168,
