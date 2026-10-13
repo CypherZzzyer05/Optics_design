@@ -1,0 +1,39 @@
+{
+  "checked_at": "2026-10-13T17:39:19.170923+08:00",
+  "pdf_sha256": "f1df63cc5fba2a5dd24284877d6959ff2cd3108364ae7d314b8ce3809f9ec2f7",
+  "pages": 14,
+  "render_dpi": 110,
+  "all_pages_visually_reviewed": true,
+  "visual_defects_found": [],
+  "repair_passes": 1,
+  "analysis_sha256": "a8328ba3afaacaee4684e87de097935535ee08c522eb4d39f700a91e1f0e1910",
+  "rendered_page_sha256": {
+    "page-01.png": "8c08795e5c0ecf4197b6a34502a0122bd5f16d26f06dbdb31ba3e70253e1010c",
+    "page-02.png": "2f3b7403a381c51d0ee7dec94452fa0fcc051ca2eff4282c69eeecf3c1ee5096",
+    "page-03.png": "103429776586abef41482da35fe04396f904c074d1bfc51a1c7bebeb1eb91848",
+    "page-04.png": "0fc6512bd1ae4dc5d1fa0a51bdf83b0364ef82426d86cd747561fcef52a0e786",
+    "page-05.png": "d20edfeccd9c1a1447570739d7a9198188726bfd8bd8b6b528c8117eccf3d2a8",
+    "page-06.png": "a186ad90b19d8ace21c00f93d9b09d74223b847319b2875fbca1dcc27d19ce64",
+    "page-07.png": "0ce126124243e229394fe4e029751076e711238a8becd9c6228a94c1d1c30fee",
+    "page-08.png": "b7d4c4196b328ec8a15f9fa136f11c37ccc4421cfe5fed36eb9b8cadc510299b",
+    "page-09.png": "e607fb8ccdae1697ccb5393163003a0e8adca130446d740c405d70b5e3d15aec",
+    "page-10.png": "7746494e67cb419cab10c47c57df9b542f3fefc4ce31a7743655bce5ed279d17",
+    "page-11.png": "fa7426b02423ddc955bdb0ab08a4f5c244c93dbb48f9b77be16021ffda75a4c9",
+    "page-12.png": "f9fcde84a822911685558e3cbf41d731ada7dc817f7cf6243761aab6be46e8fc",
+    "page-13.png": "2d90ac585e3b1f04fe8efd3da1c697d0aec42a18cabd1bc59d27b77ed13dfaca",
+    "page-14.png": "d37b4debee6b6629409e54005c2745b9a7758ab955adc93767ca594a80918068"
+  },
+  "source_hyperlinks": [
+    "https://optics.ansys.com/hc/en-us/articles/360034925373-sourceintensity-Script-command",
+    "https://optics.ansys.com/hc/en-us/articles/360034902393-Frequency-domain-monitor-Simulation-object",
+    "https://optics.ansys.com/hc/en-us/articles/39744236202771-Accessing-Simulation-Results-Python-API",
+    "https://optics.ansys.com/hc/en-us/articles/360034382594-Understanding-Mesh-Refinement-and-Conformal-Mesh-in-FDTD",
+    "https://optics.ansys.com/hc/en-us/articles/360034409694-getfdtdindex-Script-command",
+    "https://refractiveindex.info/?shelf=main&book=As2Se3&page=Joseph-700nm"
+  ],
+  "native_matrix_complete": true,
+  "shared_material_fits_match": true,
+  "material_accuracy_certified": false,
+  "gold_loss_warning_present": true,
+  "scope": "Fixed geometry, two XY planes and selected E/H frequencies; current fitted-material model only."
+}

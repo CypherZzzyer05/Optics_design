@@ -42,4 +42,10 @@ python continue_gold_mesh_study.py
 
 最终报告采用PDF并逐页渲染检查。用户已将交付方式改为在电脑查看：完成后在当前任务中打开本机PDF，并将报告、图表及证据推送到Optics_design仓库。手机GPT交付要求已取消，网页登录不再需要。
 
+## 本轮完成状态（2026-10-13）
+
+四组物理对照和两组真空参考均完成，终止状态2，原生复读及共同材料拟合一致性检查通过。最后无金4 nm组耗时210.25 min，17:33自动终止；完成组在续算时使用校验值一致的原生审计，无新增重复求解。报告、分析JSON、场比较CSV、同色标场图、材料n/k诊断和全部压缩原始导出已生成。
+
+当前模型下的目标双谷取舍为保留Au、精细结果采用4 nm；8/4 nm镀金第一谷R变化4.10个百分点未过门槛，而场平均/P95最大变化4.4%/6.8%通过。无金自身反射峰及共同峰波长处E/H辅助检查通过，能支持该采样谱形下的8 nm判断。Au拟合的目标波长损耗仅约材料表的1.4e-7，不能把本轮数字当作实物器件的定量性能。材料修正后的器件对照留待后续GOAL调整，本轮报告交付后暂停。
+
 方法依据：[原生场监测器](https://optics.ansys.com/hc/en-us/articles/360034902393-Frequency-domain-monitor-Simulation-object)、[源强度](https://optics.ansys.com/hc/en-us/articles/360034925373-sourceintensity-Script-command)、[Python数据维度](https://optics.ansys.com/hc/en-us/articles/39744236202771-Accessing-Simulation-Results-Python-API)、[原生资源预检](https://optics.ansys.com/hc/en-us/articles/4403937981715-runsystemcheck-Script-command)。本机2024 R1使用无参数CPU预检命令。
