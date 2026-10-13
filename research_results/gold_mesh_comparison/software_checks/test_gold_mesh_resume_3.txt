@@ -1,0 +1,9 @@
+test_changed_native_file_or_export_is_rejected (test_gold_mesh_resume.NativeAuditReuseTests) ... ok
+test_one_missing_native_field_error_prevents_reuse (test_gold_mesh_resume.NativeAuditReuseTests) ... ok
+Verified and reused unchanged native audit: Au4
+test_unchanged_complete_audit_can_be_reused (test_gold_mesh_resume.NativeAuditReuseTests) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.039s
+
+OK
