@@ -46,9 +46,11 @@ def finish():
             report=json.loads((destination/'analysis.json').read_text());decision=report['decision']
             lines=['# As2Se3 四聚体：Au 镀层及 8/4 nm 网格对照报告',
                    '四组同结构对照及两组真空归一化均已完成，原生 FSP 光谱和 E/H 场复读通过。',
-                   '当前结构建议：'+('移除 Au。' if decision['remove_gold'] else '保留 Au。')+
+                   '在当前保存的FDTD材料拟合模型下，当前结构建议：'+('移除 Au。' if decision['remove_gold'] else '保留 Au。')+
                    f"正式精细结果采用 {decision['selected_final_mesh_nm']} nm 网格。",
                    '标准：反射谷中心 2 nm、谷底反射率 3 个百分点、半突出度宽度 10%，区域平均及面积加权 P95 场强度增强 10%。']
+            if report['material_interpretation']['near_lossless_fit_at_any_target']:
+                lines.append('材料限制：保存FSP的Au拟合在目标波长处几乎漏掉材料表中的损耗。以上数值结论限定于当前模型；材料修正后的器件光谱、场增强及取舍尚未验证，本轮不启动此后续仿真。')
             for key,c in report['comparisons'].items():
                 rows=c['field_at_common_wavelengths']
                 lines.append(f"- {key}: 最大光谱绝对差 R={c['maximum_absolute_R_difference']:.4f}、T={c['maximum_absolute_T_difference']:.4f}、A={c['maximum_absolute_A_difference']:.4f}；"
