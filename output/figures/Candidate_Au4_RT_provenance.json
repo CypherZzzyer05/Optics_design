@@ -1,0 +1,60 @@
+{
+  "case": "Au4",
+  "sample_sha256": "eafd13361f06b46b69fbbcbe448de81fb1a390942ea263b241395b5a54c682aa",
+  "analysis_sha256": "a8328ba3afaacaee4684e87de097935535ee08c522eb4d39f700a91e1f0e1910",
+  "native_status": 2,
+  "spectral_points": 1692,
+  "geometry_values": [
+    667.2817648945917,
+    167.03697293849132,
+    369.4900803132179,
+    97.04945218123429,
+    118.95531822839662,
+    -4.964905749468862,
+    41.23316704158616
+  ],
+  "reflectance_dips": [
+    {
+      "wavelength_nm": 839.3797932644214,
+      "reflectance_min": 0.0880694224987432,
+      "prominence": 0.7394516717954873,
+      "half_prominence_width_nm": 6.357263365156086,
+      "width_samples": 19.065432832103056,
+      "resolved": true,
+      "lambda_over_width": 132.03476795770794
+    },
+    {
+      "wavelength_nm": 927.0756918972991,
+      "reflectance_min": 0.04091355726594519,
+      "prominence": 0.8505227777879204,
+      "half_prominence_width_nm": 6.691994752550954,
+      "width_samples": 20.069292262900603,
+      "resolved": true,
+      "lambda_over_width": 138.53502971500427
+    }
+  ],
+  "raw_transmittance_min": -3.6519282188242653e-06,
+  "raw_transmittance_max": 8.481747441007584e-06,
+  "clipped_or_smoothed": false,
+  "material_interpretation": {
+    "source_material": "Au (Gold) - Palik",
+    "target_loss_diagnostics": [
+      {
+        "wavelength_nm": 839.3797932644214,
+        "data_imaginary_permittivity": 2.1278714424305902,
+        "fit_imaginary_permittivity": 2.93023470720585e-07,
+        "fit_over_data_loss_fraction": 1.3770731862723575e-07
+      },
+      {
+        "wavelength_nm": 927.0756918972991,
+        "data_imaginary_permittivity": 2.827537615417724,
+        "fit_imaginary_permittivity": 3.9656809918759593e-07,
+        "fit_over_data_loss_fraction": 1.4025210381825787e-07
+      }
+    ],
+    "near_lossless_fit_at_any_target": true,
+    "material_accuracy_certified": false,
+    "interpretation": "Current saved fitted-material model only"
+  },
+  "image_sha256": "a4ad3689f10acc3a46a598d997955ebfd4978785273297e43a40233a13791e44"
+}
