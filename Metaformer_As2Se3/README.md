@@ -47,6 +47,10 @@ python finalize_gold_mesh_report.py
 
 PDF已逐页渲染检查。分析/绘图入口要求本机原生FSP复核，Git保存压缩NPZ、审计、材料诊断、图表、分析和最终PDF。此前的8 nm数据不会与新网格配置混合。
 
+镀金4 nm候选的反射、透射与两个目标谷的独立展示如下。透射在当前数值精度内近零，原始零附近残差未截断；Au损耗拟合限制仍适用。运行 `python plot_candidate_rt.py` 可从已提交的原生审计导出重现此图，不启动求解器。
+
+![镀金4 nm双谷候选的反射与透射光谱](output/figures/Candidate_Au4_RT.png)
+
 ## 使用
 
 按用户要求，数据生成已封装并推送至独立仓库 [Deta_Generator](https://github.com/CypherZzzyer05/Deta_Generator)，可在另一台已安装Lumerical的Windows计算机采集，支持4/8 nm、Au/Ag/有限基板无Au、迁移续算及分片合并。本项目仍保留训练和研究分析。后续批次须依照网格与材料复核结论使用新配置，不直接混合已保存的8 nm首样本。新包25项测试和Windows/Linux纯软件CI通过；原生预检通过，但新封装调度尚未另跑一个完整长时间FDTD样本。
