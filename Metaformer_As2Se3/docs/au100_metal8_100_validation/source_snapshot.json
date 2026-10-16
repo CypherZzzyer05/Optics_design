@@ -1,0 +1,13 @@
+{
+  "source_commit": "9957aac3508a6216d4b603214a3504d8d9bd4abf",
+  "source_branch": "codex/train-au100-metal8-100",
+  "core_training_implementation_unchanged": true,
+  "dataset_sha256": "591ca0f4d9f4fc0be9803f3a566f72eee1ee3ac871ad9d03472b93a732aed0e3",
+  "best_checkpoint_sha256": "af982135761f1566a626d573db89e9707ad1f9f3b8241c74e65abad58627d54b",
+  "best_checkpoint_storage": "Local run directory; binary checkpoint not committed",
+  "model_sha256": {
+    "train_metaformer.py": "eaaafad494f4e57f09addce81d6a904f836828cb3d18a1267381d3b70a3c84ac",
+    "metaformer.py": "2fac5d58cef3d2b429938782c43bc90bb0c4ec1c1d7d4d129863bec76e129ba7",
+    "spectrum_dataset.py": "a9e2a091ec6de72cfe886efd15633783e2588afa1b267b4dd0c34f6dda1583f3"
+  }
+}

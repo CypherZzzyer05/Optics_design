@@ -1,0 +1,173 @@
+{
+  "dataset_sha256": "591ca0f4d9f4fc0be9803f3a566f72eee1ee3ac871ad9d03472b93a732aed0e3",
+  "run_directory": "D:\\projects\\Metaformer_As2Se3_train100\\runs\\as2se3_au100_metal8_100\\20261016_153802_183104",
+  "evaluation_recomputed_from_exported_predictions": true,
+  "model_test": {
+    "samples": 10,
+    "normalized_mse": 0.06505033858532401,
+    "normalized_rmse": 0.2550496786614796,
+    "normalized_mae": 0.21488492881268645,
+    "mae_nm": {
+      "p": 12.169164223635399,
+      "l": 9.061430581143192,
+      "h": 15.049669172969985,
+      "alpha_x": 14.680450780844168,
+      "alpha_y": 14.194766431469798
+    },
+    "rmse_nm": {
+      "p": 14.322631203527976,
+      "l": 11.130171967814215,
+      "h": 17.7729640097441,
+      "alpha_x": 17.502674848322044,
+      "alpha_y": 16.41025053261379
+    },
+    "mae_deg": {
+      "theta_odd_deg": 21.844996644715014,
+      "theta_even_deg": 28.58825202973684
+    },
+    "rmse_deg": {
+      "theta_odd_deg": 23.855540933771252,
+      "theta_even_deg": 30.871623114272815
+    },
+    "angle_symmetry": "square_periodic"
+  },
+  "arithmetic_mean_baseline_test": {
+    "samples": 10,
+    "normalized_mse": 0.07190142598503563,
+    "normalized_rmse": 0.2681444125560621,
+    "normalized_mae": 0.23621016208614623,
+    "mae_nm": {
+      "p": 15.520028218626976,
+      "l": 10.675398744642735,
+      "h": 27.42913892865181,
+      "alpha_x": 14.413246437907219,
+      "alpha_y": 14.2337666451931
+    },
+    "rmse_nm": {
+      "p": 16.99307335076086,
+      "l": 12.715624579937831,
+      "h": 31.22081019511969,
+      "alpha_x": 16.950913240127647,
+      "alpha_y": 16.218033536697085
+    },
+    "mae_deg": {
+      "theta_odd_deg": 20.68695967644453,
+      "theta_even_deg": 28.35186519473791
+    },
+    "rmse_deg": {
+      "theta_odd_deg": 23.374919201149243,
+      "theta_even_deg": 29.80068521811008
+    },
+    "angle_symmetry": "square_periodic"
+  },
+  "periodic_optimal_constant_baseline_test": {
+    "samples": 10,
+    "normalized_mse": 0.07552040277415313,
+    "normalized_rmse": 0.27480975742166275,
+    "normalized_mae": 0.242845683365553,
+    "mae_nm": {
+      "p": 15.520027826004661,
+      "l": 10.675398744642735,
+      "h": 27.429140211315826,
+      "alpha_x": 14.413245880231258,
+      "alpha_y": 14.233766304049642
+    },
+    "rmse_nm": {
+      "p": 16.99307288911178,
+      "l": 12.715624517863402,
+      "h": 31.220811095739684,
+      "alpha_x": 16.950912853364407,
+      "alpha_y": 16.21803337120214
+    },
+    "mae_deg": {
+      "theta_odd_deg": 24.867339698501745,
+      "theta_even_deg": 28.351864607166497
+    },
+    "rmse_deg": {
+      "theta_odd_deg": 27.41501243731795,
+      "theta_even_deg": 29.800684782804293
+    },
+    "angle_symmetry": "square_periodic"
+  },
+  "periodic_optimal_constant_01": [
+    0.5414629894192331,
+    0.5337079840013758,
+    0.5447639960912056,
+    0.5059536463115364,
+    0.4991909847827628,
+    0.07310094466520241,
+    0.4889042540686205
+  ],
+  "periodic_optimal_constant_physical": [
+    657.9024092593463,
+    186.6853992000688,
+    316.2669594527688,
+    120.35721877869219,
+    119.95145908696577,
+    -38.42091498013178,
+    -0.9986171338241547
+  ],
+  "improvement_vs_arithmetic_mean_percent": 9.52844439278996,
+  "improvement_vs_periodic_constant_percent": 13.863888164150563,
+  "predicted_geometry_checks": [
+    {
+      "sample_id": 1,
+      "valid": true
+    },
+    {
+      "sample_id": 11,
+      "valid": true
+    },
+    {
+      "sample_id": 12,
+      "valid": true
+    },
+    {
+      "sample_id": 40,
+      "valid": true
+    },
+    {
+      "sample_id": 41,
+      "valid": true
+    },
+    {
+      "sample_id": 46,
+      "valid": true
+    },
+    {
+      "sample_id": 48,
+      "valid": true
+    },
+    {
+      "sample_id": 68,
+      "valid": true
+    },
+    {
+      "sample_id": 74,
+      "valid": true
+    },
+    {
+      "sample_id": 96,
+      "valid": true
+    }
+  ],
+  "predicted_geometry_valid_count": 10,
+  "test_set_used_for_training_or_selection": false,
+  "additional_training_performed": false,
+  "predicted_structure_fdtd_run_performed": false,
+  "paired_bootstrap": {
+    "seed": 20261016,
+    "resamples": 50000,
+    "unit": "held-out structure",
+    "difference": "arithmetic training-mean baseline minus model normalized MSE",
+    "mean_difference": 0.0068510858456350176,
+    "percentile_95_interval": [
+      -0.0013597696292959537,
+      0.01584398202853846
+    ],
+    "test_structures_improved": 6,
+    "interpretation": "Descriptive uncertainty over only 10 test structures; not a model selection procedure"
+  },
+  "length_normalized_mse_improvement_percent": 18.019342868976807,
+  "angle_normalized_mse_change_percent": 6.112114040834404
+}

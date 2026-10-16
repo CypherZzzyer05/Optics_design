@@ -1,0 +1,200 @@
+{
+  "dataset_sha256": "591ca0f4d9f4fc0be9803f3a566f72eee1ee3ac871ad9d03472b93a732aed0e3",
+  "job_sha256": "bb57d057584148a3c8f2a08a27899fe5e43395838ee187a3bc8a01dbbd5c0e8a",
+  "config_fingerprint": "e14de93a39ef74ed454504040650c12e0e16d55fb62bba47a9a16120339daec3",
+  "source": "D:\\仿真\\au100_metal8_100",
+  "samples": 100,
+  "spectrum_points": 1000,
+  "parameter_names": [
+    "p",
+    "l",
+    "h",
+    "alpha_x",
+    "alpha_y",
+    "theta_odd_deg",
+    "theta_even_deg"
+  ],
+  "parameter_units": [
+    "nm",
+    "nm",
+    "nm",
+    "nm",
+    "nm",
+    "deg",
+    "deg"
+  ],
+  "splits": {
+    "train": 80,
+    "val": 10,
+    "test": 10
+  },
+  "split_sample_ids": {
+    "train": [
+      0,
+      2,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      20,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      42,
+      43,
+      44,
+      45,
+      47,
+      49,
+      50,
+      51,
+      52,
+      53,
+      54,
+      55,
+      56,
+      57,
+      58,
+      59,
+      60,
+      61,
+      62,
+      63,
+      64,
+      65,
+      66,
+      67,
+      69,
+      70,
+      71,
+      72,
+      73,
+      75,
+      76,
+      77,
+      80,
+      81,
+      82,
+      85,
+      88,
+      89,
+      90,
+      91,
+      92,
+      94,
+      95,
+      97,
+      98,
+      99
+    ],
+    "val": [
+      3,
+      19,
+      21,
+      78,
+      79,
+      83,
+      84,
+      86,
+      87,
+      93
+    ],
+    "test": [
+      1,
+      11,
+      12,
+      40,
+      41,
+      46,
+      48,
+      68,
+      74,
+      96
+    ]
+  },
+  "all_geometry_matches_seeded_plan": true,
+  "all_status_2": true,
+  "unique_geometries": 100,
+  "unique_spectra": 100,
+  "simulation_time_limit_ps": {
+    "4.0": 84,
+    "8.0": 14,
+    "16.0": 2
+  },
+  "run_attempts": {
+    "1": 84,
+    "2": 14,
+    "3": 2
+  },
+  "quality_level": "pipeline_validation",
+  "fdtd_versions": [
+    "8.33.3999"
+  ],
+  "reflectance_range": [
+    0.0013269104529172182,
+    0.9875206351280212
+  ],
+  "transmittance_range": [
+    -0.0015197740867733955,
+    0.007949291728436947
+  ],
+  "absorptance_range": [
+    0.012357352301478386,
+    0.9984841346740723
+  ],
+  "negative_transmittance_points": 36,
+  "negative_transmittance_sample_count": 10,
+  "rta_closure_max_abs": 5.960464477539063e-08,
+  "closure_note": "A is defined as 1-R-T; closure is not an independent accuracy test.",
+  "clipping_or_smoothing_performed": false,
+  "summary_json_received": false,
+  "material_fit_errors": {
+    "As2Se3 - Joseph 700nm film (2020)": {
+      "max_n_error": 0.006806046107783015,
+      "max_k_error": 0.001709403981953031,
+      "max_imaginary_permittivity_error": 0.009892439990771718,
+      "accuracy_certified": false
+    },
+    "SiO2 (Glass) - Palik": {
+      "max_n_error": 0.008349388224864862,
+      "max_k_error": 0.0,
+      "max_imaginary_permittivity_error": 0.0,
+      "accuracy_certified": false
+    },
+    "Au (Gold) - Palik": {
+      "max_n_error": 0.6558529804086315,
+      "max_k_error": 0.9026045749913898,
+      "max_imaginary_permittivity_error": 14.173032698570964,
+      "accuracy_certified": false
+    }
+  },
+  "limitations": [
+    "pipeline_validation physics; Au loss fit accuracy not certified",
+    "Only 10 held-out test structures; geometry prediction does not establish reconstructed spectral accuracy",
+    "Per-sample native logs and actual mesh arrays not included in the uploaded merged file"
+  ]
+}

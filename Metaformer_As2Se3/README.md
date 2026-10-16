@@ -106,3 +106,10 @@ As₂Se₃ 使用 Joseph 等实测薄膜 n/k，来源与许可见 [materials/REA
 研究流程、角度均值/差值扫描、尺寸扫描及目标谱导入方法见[近红外研究计划](docs/near_ir_research_plan.md)。当前目标为双谷或其他明显特征谱，尚未限定中心和线宽。双谷的判据、原始数据、训练审计见[双谷研究记录](docs/double_dip_research.md)。支持用 `explore_spectra.py --target-csv` 比较后续指定目标。
 
 原五/六参数模型的历史说明归档至 [legacy_metaformer_readme.md](docs/legacy_metaformer_readme.md)；其中原项目的数据、训练记录和4–8 μm结果属于历史参考。本项目没有复制其大型数据及权重。
+
+
+## 2026-10-16：100样本首次模型验证
+
+100个Au100nm/仅金属8nm真实FDTD样本按80/10/10训练，沿用七参数ResNet1D+Metaformer。最佳第31轮，51轮早停；测试MSE为0.065050，比训练集均值基线低9.53%，收益主要来自H/P/L，两个角度未优于原基线。10个测试样本的不确定性仍大，未对预测结构回仿真。数据保留pipeline_validation标记。
+
+见[完整报告](docs/au100_metal8_100_validation/report.md)和[结果图](docs/au100_metal8_100_validation/validation_overview.png)。真实数据位于data/as2se3_au100_metal8_100/dataset.npz；配置为configs/train_au100_metal8_100.json，在本目录运行`python train_metaformer.py --config configs/train_au100_metal8_100.json`可复现同一训练流程（硬件差异可能影响数值）。源码提交与数据/权重校验值见报告目录source_snapshot.json。
