@@ -118,4 +118,4 @@ As₂Se₃ 使用 Joseph 等实测薄膜 n/k，来源与许可见 [materials/REA
 
 100个Au100nm/仅金属8nm真实FDTD样本按80/10/10训练，沿用七参数ResNet1D+Metaformer。最佳第31轮，51轮早停；测试MSE为0.065050，比训练集均值基线低9.53%，收益主要来自H/P/L，两个角度未优于原基线。10个测试样本的不确定性仍大，未对预测结构回仿真。数据保留pipeline_validation标记。
 
-见[完整报告](docs/au100_metal8_100_validation/report.md)和[结果图](docs/au100_metal8_100_validation/validation_overview.png)。真实数据位于data/as2se3_au100_metal8_100/dataset.npz；配置为configs/train_au100_metal8_100.json，在本目录运行`python train_metaformer.py --config configs/train_au100_metal8_100.json`可复现同一训练流程（硬件差异可能影响数值）。源码提交与数据/权重校验值见报告目录source_snapshot.json。
+见[完整报告](docs/au100_metal8_100_validation/report.md)和[结果图](docs/au100_metal8_100_validation/validation_overview.png)。历史训练的源码提交、配置和数据/权重校验值见报告目录source_snapshot.json；复现上述 ResNet 指标需使用该历史版本。当前 configs/train_au100_metal8_100.json 已切换为无 ResNet 模型，可读取同一批数据重新训练，输出写入独立的 `_plain` 目录，不直接复现上面的历史指标。
