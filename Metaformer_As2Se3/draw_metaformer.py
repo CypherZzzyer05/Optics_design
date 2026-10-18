@@ -1,4 +1,4 @@
-"""Draw the implemented ResNet + inverse Metaformer, with runtime shape checks.
+"""Draw the implemented inverse Metaformer, with runtime shape checks.
 
 Run from PyCharm or the project directory:
     python draw_metaformer.py
@@ -10,10 +10,9 @@ This script only inspects architecture; it does not train or change weights.
 from __future__ import annotations
 
 import argparse
-from dataclasses import asdict, replace
+from dataclasses import asdict
 from hashlib import sha256
 import json
-from math import gcd
 from pathlib import Path
 
 import matplotlib
@@ -51,9 +50,7 @@ def architecture_report(config: MetaformerConfig) -> dict:
         return hook
 
     modules = dict(model.named_modules())
-    names = ["spectral_frontend.stem"]
-    names += [f"spectral_frontend.blocks.{i}" for i in range(config.resnet_blocks)]
-    names += ["spectral_frontend", "patch_embedding", "position_encoding"]
+    names = ["patch_embedding", "position_encoding"]
     names += [f"blocks.{i}" for i in range(config.encoder_layers)]
     names += ["final_norm", "regressor.0", "regressor.1", "regressor.2", "regressor.3"]
     for name in names:
@@ -67,7 +64,6 @@ def architecture_report(config: MetaformerConfig) -> dict:
             hook.remove()
 
     c = config
-    assert observed["spectral_frontend"] == [batch, c.resnet_channels, c.spectrum_points]
     assert observed["patch_embedding"] == [batch, c.embedding_dim, c.patch_count]
     assert observed["position_encoding"] == [batch, c.patch_count, c.embedding_dim]
     for i in range(c.encoder_layers):
@@ -75,7 +71,6 @@ def architecture_report(config: MetaformerConfig) -> dict:
     assert prediction.shape == (batch, c.geometry_dim)
     assert len(attention) == c.encoder_layers
     assert all(a.shape == (batch, c.attention_heads, c.patch_count, c.patch_count) for a in attention)
-    baseline = InverseMetaformer(replace(c, spectral_frontend="linear"))
     return {
         "model_config": asdict(c),
         "probe_mode": "eval / inference_mode; synthetic zeros for shape checks only",
@@ -85,7 +80,6 @@ def architecture_report(config: MetaformerConfig) -> dict:
         "prediction_shape": list(prediction.shape),
         "attention_shapes": [list(a.shape) for a in attention],
         "parameter_count": sum(p.numel() for p in model.parameters()),
-        "baseline_parameter_count": sum(p.numel() for p in baseline.parameters()),
     }
 
 
@@ -134,7 +128,7 @@ def draw(config: MetaformerConfig, training: dict, bounds: np.ndarray,
                                    linewidth=1.1, zorder=0))
         label(x + 40, 117, title, 14, "bold")
 
-    label(130, 170, "ResNet + MetaFormer 逆向设计网络 · 实际实现结构", 23, "bold")
+    label(130, 170, "MetaFormer 逆向设计网络 · 实际实现结构", 23, "bold")
     rotated = c.geometry_dim >= 6
     quadrant = c.geometry_dim == 7
     angle_description = ' + 奇/偶象限两个旋转角' if quadrant else (' + 共同旋转角' if rotated else '')
@@ -142,14 +136,13 @@ def draw(config: MetaformerConfig, training: dict, bounds: np.ndarray,
     units = 'nm ×5 + deg ×2' if quadrant else ('nm ×5 + deg' if rotated else 'nm')
     label(130, 164,
           f"光谱 → 五个尺寸{angle_description}   |   B 为批量大小（训练 B={training['batch_size']}）"
-          f"   |   参数量 {report['parameter_count']:,}   |   ResNet 为本项目增加的前端", 11,
+          f"   |   参数量 {report['parameter_count']:,}   |   原始光谱直接分块编码", 11,
           color=COLORS["muted"])
 
     start_um, stop_um = wavelengths[[0, -1]] / 1000
     stages = [
         ("blue", f"反射光谱 R(λ)\n{start_um:g}–{stop_um:g} μm；{c.spectrum_points} 点\n[B, {c.spectrum_points}]"),
-        ("green", f"① 1D ResNet\nStem + {c.resnet_blocks} 个残差块\n[B, {c.resnet_channels}, {c.spectrum_points}]"),
-        ("purple", f"Patch Embedding\nConv1d {c.resnet_channels}→{c.embedding_dim}\nk={c.patch_size}, stride={c.patch_size}；转置\n[B, {c.patch_count}, {c.embedding_dim}]"),
+        ("purple", f"Patch Embedding\nConv1d 1→{c.embedding_dim}\nk={c.patch_size}, stride={c.patch_size}；转置\n[B, {c.patch_count}, {c.embedding_dim}]"),
         ("purple", f"位置编码\n固定正弦 / 余弦\n与 token 逐元素相加\n[B, {c.patch_count}, {c.embedding_dim}]"),
         ("orange", f"② Encoder × {c.encoder_layers}\n{c.attention_heads} heads；dₖ={c.head_dim}\n每层含两条残差\n[B, {c.patch_count}, {c.embedding_dim}]"),
         ("blue", f"LayerNorm\n按每个 token 的\n{c.embedding_dim} 个特征归一化\n[B, {c.patch_count}, {c.embedding_dim}]"),
@@ -158,44 +151,26 @@ def draw(config: MetaformerConfig, training: dict, bounds: np.ndarray,
         ("gray", f"单位还原（网络外）\np, l, h, αₓ, αᵧ{angle_names}\n[B, {c.geometry_dim}]；{units}\ng = lower + ĝ₀₁ × range"),
     ]
     for i, (fill, text) in enumerate(stages):
-        x = 4 + i * 28
+        x = 4 + i * 32
         box(x, 137, 24, 22, text, fill, 10.5)
         if i < len(stages) - 1:
-            arrow([(x + 24.4, 148), (x + 27.6, 148)])
+            arrow([(x + 24.4, 148), (x + 31.6, 148)])
 
-    arrow([(16, 137), (16, 132.5), (72, 132.5), (72, 137)], True)
-    label(44, 128, f"基线版本跳过 ResNet；Patch Conv 改为 1→{c.embedding_dim}", 9,
-          color=COLORS["muted"])
     names = ["p", "l", "h", "αₓ", "αᵧ"] + (["θ奇", "θ偶"] if quadrant else (["θ"] if rotated else []))
     ranges = "；".join(f"{name} {lo:g}–{hi:g}" for name, (lo, hi) in zip(names, bounds))
     label(169, 128, f"范围（前五个 nm{'；θ 用 deg' if rotated else ''}）：{ranges}", 9 if rotated else 9.5, color=COLORS["muted"])
 
-    panel(4, "① 1D ResNet：局部光谱特征与残差")
+    panel(4, "① 光谱分块与位置编码")
     panel(90, f"② 单个 Encoder：重复 {c.encoder_layers} 次，权重独立")
     panel(176, "③ 多头自注意力：每个 Encoder 内部")
 
-    # The CNN block has no activation after the residual addition.
-    label(44, 108,
-          f"Stem：Conv1d 1→{c.resnet_channels}，k={c.resnet_kernel_size}，stride=1 → GELU", 10.5)
-    label(44, 103,
-          "残差块串联：" + " → ".join(f"d={2 ** i}" for i in range(c.resnet_blocks)), 10.5)
-    label(47, 96, f"x：[B, {c.resnet_channels}, {c.spectrum_points}]", 11)
-    padding = (c.resnet_kernel_size - 1) // 2
-    box(23, 80, 48, 11,
-        f"Conv1d {c.resnet_channels}→{c.resnet_channels}\nk={c.resnet_kernel_size}，dilation=d，padding={padding}d", "green", 10.5)
-    arrow([(47, 94), (47, 91.4)])
-    box(23, 64, 48, 11, f"GroupNorm（{gcd(c.resnet_channels, 8)} 组）\nGELU", "green", 11)
-    arrow([(47, 79.6), (47, 75.4)])
-    box(23, 48, 48, 11,
-        f"Conv1d {c.resnet_channels}→{c.resnet_channels}（k={c.resnet_kernel_size}，d）\nGroupNorm（{gcd(c.resnet_channels, 8)} 组）", "green", 10.5)
-    arrow([(47, 63.6), (47, 59.4)])
-    arrow([(47, 47.6), (47, 41.5)])
-    arrow([(47, 94), (14, 94), (14, 39), (44.5, 39)], color=COLORS["accent"])
-    label(12, 67, "恒等\n分支", 10, color=COLORS["accent"])
-    add(47, 39)
-    arrow([(47, 36.5), (47, 33.8)])
-    label(47, 32, f"输出仍为 [B, {c.resnet_channels}, {c.spectrum_points}]；加和后无激活", 9.5)
-    label(44, 27.5, "末端 GroupNorm 的 γ、β 仅在初始化时置零", 9.5, color=COLORS["muted"])
+    label(44, 107, "原始反射率直接进入共享分块投影", 11)
+    box(14, 85, 60, 15, f"每段 {c.patch_size} 个点 → {c.embedding_dim} 维\nConv1d：kernel = stride = {c.patch_size}", "purple", 11)
+    arrow([(44, 84.6), (44, 77.4)])
+    box(14, 62, 60, 15, f"固定正弦 / 余弦位置编码\npos 为分块序号，维度 {c.embedding_dim}", "purple", 11)
+    arrow([(44, 61.6), (44, 54.4)])
+    box(14, 39, 60, 15, f"分块嵌入 + 位置编码\n[B, {c.patch_count}, {c.embedding_dim}]", "blue", 11)
+    label(44, 29, "Encoder 内部的两条残差连接保留", 10, color=COLORS["muted"])
 
     # Pre-norm attention and feed-forward sublayers with two separate skip paths.
     label(130, 110, f"x：[B, {c.patch_count}, {c.embedding_dim}]", 11)
@@ -274,13 +249,13 @@ def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--config", type=Path, default=ROOT / "configs/train_as2se3_pilot.json")
     parser.add_argument("--sampling-config", type=Path, help="Use planned bounds and band if training data have not been generated")
-    parser.add_argument("--output-dir", type=Path, default=ROOT / "docs/figures")
+    parser.add_argument("--output-dir", type=Path, default=ROOT / "docs/figures/plain")
     args = parser.parse_args()
     config_path = args.config.resolve()
     training = json.loads(config_path.read_text(encoding="utf-8"))
-    config = MetaformerConfig(**training["model"])
-    if config.spectral_frontend != "resnet1d" or config.geometry_dim not in (5, 6, 7):
-        parser.error("This figure describes five-, six- or seven-output ResNet + Metaformer configurations.")
+    config = MetaformerConfig.from_dict(training["model"])
+    if config.geometry_dim not in (5, 6, 7):
+        parser.error("This figure describes five-, six- or seven-output Metaformer configurations.")
     dataset_path = (config_path.parent / training["dataset"]).resolve()
     rotated = config.geometry_dim >= 6
     planned_sample_count = None
@@ -318,8 +293,7 @@ def main() -> None:
     (args.output_dir / "metaformer_architecture.json").write_text(
         json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(f"Verified {config.encoder_layers} encoder shapes and attention tensors.")
-    print(f"Parameters: ResNet + Metaformer={report['parameter_count']:,}; "
-          f"baseline={report['baseline_parameter_count']:,}")
+    print(f"Parameters: Metaformer={report['parameter_count']:,}")
     print(f"Saved figures and architecture report to {args.output_dir.resolve()}")
 
 

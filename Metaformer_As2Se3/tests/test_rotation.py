@@ -112,8 +112,7 @@ class RotationTests(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, 'bounds disagree'):
                 SpectrumGeometryDataset(root / 'wrong_bounds.npz', 'all', True)
             model_config = MetaformerConfig(geometry_dim=6, angle_symmetry='square_mirror', patch_count=10,
-                embedding_dim=8, attention_heads=2, head_dim=4, encoder_layers=1, mlp_dim=16,
-                spectral_frontend='resnet1d', resnet_channels=4, resnet_blocks=1)
+                embedding_dim=8, attention_heads=2, head_dim=4, encoder_layers=1, mlp_dim=16)
             training = TrainingConfig(config.output_dir / 'dataset.npz', root / 'runs',
                                       allow_validation_data=True, epochs=2, batch_size=2, model=model_config)
             with patch('plot_training.plot_training'):

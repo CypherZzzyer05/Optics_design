@@ -6,13 +6,12 @@ attention uses explicit 128 -> (10 * 64) projections instead of PyTorch's
 ``nn.MultiheadAttention``.
 """
 
-# 核心流程：反射光谱 → 可选 1D ResNet → 光谱分块/token → 位置编码
+# 核心流程：反射光谱 → 光谱分块/token → 位置编码
 #          → 多层注意力 Encoder → 平均池化 → 五个归一化长度及可选旋转角。
 # 阅读时约定：B=批量大小，P=token 数量，C=卷积通道数，D=特征维度。
 # 本文件仅定义网络；数据读取、训练更新和 nm 单位还原位于另外两个模块。
 
 from dataclasses import dataclass
-from math import gcd
 
 import torch
 from torch import Tensor, nn
@@ -30,10 +29,7 @@ class MetaformerConfig:
     mlp_dim: int = 256            # Encoder 内 MLP 和最终回归头的隐藏维度。
     dropout: float = 0.1          # 训练时随机丢弃部分元素；eval() 时关闭。
     geometry_dim: int = 5         # 兼容旧五参数；新项目配置为7：五长度+奇/偶象限角。
-    spectral_frontend: str = "linear"  # linear 保持原模型；resnet1d 启用新增卷积前端。
-    resnet_channels: int = 32     # ResNet 保留 1000 个位置，每个位置有 32 通道特征。
-    resnet_blocks: int = 3        # 三个残差块的 dilation 分别为 1、2、4。
-    resnet_kernel_size: int = 7   # 奇数卷积核便于对称补零并保持序列长度。
+    spectral_frontend: str = "linear"  # 直接对原始光谱分块；不添加卷积特征前端。
     angle_symmetry: str = "none"  # 七参数用square_periodic；旧六参数用square_mirror。
 
     def __post_init__(self) -> None:
@@ -47,20 +43,24 @@ class MetaformerConfig:
             raise ValueError("All network dimensions must be positive")
         if not 0 <= self.dropout < 1:
             raise ValueError("dropout must be in [0, 1)")
-        if self.spectral_frontend not in ("linear", "resnet1d"):
-            raise ValueError("spectral_frontend must be linear or resnet1d")
-        for name in ("resnet_channels", "resnet_blocks", "resnet_kernel_size"):
-            value = getattr(self, name)
-            if isinstance(value, bool) or not isinstance(value, int) or value <= 0:
-                raise ValueError(f"{name} must be a positive integer")
-        if self.resnet_kernel_size % 2 != 1:
-            raise ValueError("resnet_kernel_size must be odd to preserve spectral length")
+        if self.spectral_frontend != "linear":
+            raise ValueError("The ResNet frontend has been removed; use spectral_frontend='linear' and start a new run")
         if self.angle_symmetry not in ("none", "square_mirror", "square_periodic"):
             raise ValueError("Unknown angle symmetry")
         if self.angle_symmetry == "square_mirror" and self.geometry_dim != 6:
             raise ValueError("Square mirror angle loss requires six outputs")
         if self.angle_symmetry == "square_periodic" and self.geometry_dim != 7:
             raise ValueError("Quadrant periodic angle loss requires seven outputs")
+
+    @classmethod
+    def from_dict(cls, values):
+        """Read older plain-model metadata without reinterpreting ResNet weights."""
+        values = dict(values)
+        if values.get("spectral_frontend", "linear") != "linear":
+            raise ValueError("The ResNet frontend has been removed; its checkpoints require the historical code")
+        for key in ("resnet_channels", "resnet_blocks", "resnet_kernel_size"):
+            values.pop(key, None)  # Unused fields were also saved for old plain models.
+        return cls(**values)
 
     @property
     def patch_size(self) -> int:
@@ -159,53 +159,6 @@ class EncoderBlock(nn.Module):
         return (tokens, weights) if return_attention else tokens
 
 
-class SpectralResidualBlock(nn.Module):
-    """Local peak-shape features with an identity path and length-preserving convolutions."""
-
-    def __init__(self, channels: int, kernel_size: int, dilation: int):
-        super().__init__()
-        # dilation 扩大卷积采样间隔；配套 padding 使输出仍有 1000 个位置。
-        padding = dilation * (kernel_size - 1) // 2
-        # 32 通道时分 8 组；GroupNorm 对每个样本处理，不依赖批量统计量。
-        groups = gcd(channels, 8)
-        self.conv1 = nn.Conv1d(channels, channels, kernel_size, padding=padding, dilation=dilation, bias=False)
-        self.norm1 = nn.GroupNorm(groups, channels)
-        self.activation = nn.GELU()
-        self.conv2 = nn.Conv1d(channels, channels, kernel_size, padding=padding, dilation=dilation, bias=False)
-        self.norm2 = nn.GroupNorm(groups, channels)
-        # Start as an identity branch; the residual contribution learns from the data.
-        # 仅初始化时将末端归一化参数置零，使起始输出等于输入；之后仍可训练。
-        nn.init.zeros_(self.norm2.weight)
-        nn.init.zeros_(self.norm2.bias)
-
-    def forward(self, spectrum_features: Tensor) -> Tensor:
-        # 残差支路：Conv → GroupNorm → GELU → Conv → GroupNorm。
-        update = self.activation(self.norm1(self.conv1(spectrum_features)))
-        # 恒等支路与残差支路逐元素相加；实现中加和后没有额外激活函数。
-        return spectrum_features + self.norm2(self.conv2(update))
-
-
-class SpectralResNet(nn.Module):
-    """1D ResNet stem followed by dilated blocks; preserve the ordered 1000-point grid."""
-
-    def __init__(self, config: MetaformerConfig):
-        super().__init__()
-        # 原始单通道反射率 [B,1,1000] → 峰形特征 [B,32,1000]。
-        self.stem = nn.Sequential(
-            nn.Conv1d(1, config.resnet_channels, config.resnet_kernel_size,
-                      padding=config.resnet_kernel_size // 2),
-            nn.GELU(),
-        )
-        # 串联三个权重独立的残差块，dilation=1/2/4，在分块前融合邻域特征。
-        self.blocks = nn.Sequential(*[
-            SpectralResidualBlock(config.resnet_channels, config.resnet_kernel_size, 2 ** i)
-            for i in range(config.resnet_blocks)
-        ])
-
-    def forward(self, spectrum: Tensor) -> Tensor:
-        return self.blocks(self.stem(spectrum))
-
-
 class InverseMetaformer(nn.Module):
     """Map [batch, 1000] reflectance to [batch, geometry_dim] values in [0, 1].
 
@@ -219,14 +172,9 @@ class InverseMetaformer(nn.Module):
         super().__init__()
         self.config = config or MetaformerConfig()
         c = self.config
-        # linear 路径直接分块原光谱；resnet1d 路径先处理整条光谱的特征。
-        self.spectral_frontend = SpectralResNet(c) if c.spectral_frontend == "resnet1d" else nn.Identity()
-        # kernel=stride=10：1000 个位置形成 100 个不重叠的特征窗口。
-        # 原路径每窗 1×10→128；ResNet 路径每窗 32×10→128，各窗口共用权重。
-        # 卷积窗口不重叠，但 ResNet 已融合邻域信息，token 的信息范围可跨过窗口边界。
+        # Non-overlapping shared projection: each raw 10-point patch -> 128 features.
         self.patch_embedding = nn.Conv1d(
-            c.resnet_channels if c.spectral_frontend == "resnet1d" else 1,
-            c.embedding_dim, kernel_size=c.patch_size, stride=c.patch_size
+            1, c.embedding_dim, kernel_size=c.patch_size, stride=c.patch_size
         )
         self.position_encoding = SinusoidalPositionEncoding(c.patch_count, c.embedding_dim)
         # 每次构造一个新 Encoder 实例，十层不共享参数。
@@ -250,10 +198,8 @@ class InverseMetaformer(nn.Module):
                 f"Expected spectrum [batch, {self.config.spectrum_points}] "
                 f"or [batch, 1, {self.config.spectrum_points}]"
             )
-        # 加入通道轴后提取特征：原路径 [B,1,1000]，ResNet 路径 [B,32,1000]。
-        features = self.spectral_frontend(spectrum.unsqueeze(1))
-        # Conv 输出 [B,128,100]；转置成注意力所用的 [B,100,128]。
-        tokens = self.patch_embedding(features).transpose(1, 2)
+        # [B,1,1000] -> [B,128,100] -> [B,100,128], without a feature frontend.
+        tokens = self.patch_embedding(spectrum.unsqueeze(1)).transpose(1, 2)
         tokens = self.position_encoding(tokens)
         attention_maps = []
         # 每层仍有 100 个 token，但 token 的内容会结合整条光谱逐层更新。

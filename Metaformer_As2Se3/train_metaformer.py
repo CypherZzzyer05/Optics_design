@@ -85,16 +85,18 @@ def load_training_config(path=DEFAULT_CONFIG):
     # JSON 中的数据和输出路径相对于配置文件解析，便于从 PyCharm 或命令行启动。
     for key in ('dataset', 'output_dir'):
         values[key] = (path.parent / values[key]).resolve()
-    values['model'] = MetaformerConfig(**values.get('model', {}))
+    values['model'] = MetaformerConfig.from_dict(values.get('model', {}))
     return TrainingConfig(**values)
 
 
 def matching_training_config(saved, current):
-    """Fill optional model defaults when reading checkpoints saved before ResNet support."""
+    """Compare plain-model metadata; reject ResNet checkpoint resumption."""
     saved, current = dict(saved), dict(current)
-    # 旧模型未保存 ResNet 字段时补入默认值；实际结构或超参数改变仍会拒绝续训。
-    saved['model'] = asdict(MetaformerConfig(**saved['model']))
-    current['model'] = asdict(MetaformerConfig(**current['model']))
+    try:
+        saved['model'] = asdict(MetaformerConfig.from_dict(saved['model']))
+        current['model'] = asdict(MetaformerConfig.from_dict(current['model']))
+    except (TypeError, ValueError):
+        return False
     return saved == current
 
 
@@ -211,7 +213,7 @@ def train_epoch(model, loader, optimizer, device, scaler, use_amp, clip_norm):
             loss = geometry_mse(prediction.float(), target, model.config.angle_symmetry)
         if not torch.isfinite(loss):
             raise ValueError('Nonfinite training loss')
-        # 误差沿回归头、Encoder、Q/K/V 投影和 ResNet 反向传播，计算各参数梯度。
+        # 误差沿回归头、Encoder、Q/K/V 投影和光谱嵌入 反向传播，计算各参数梯度。
         # AMP 时先放大损失，降低小梯度在半精度下发生下溢的风险。
         scaler.scale(loss).backward()
         # 裁剪前先还原梯度尺度，使 clip_norm 针对实际梯度范数生效。

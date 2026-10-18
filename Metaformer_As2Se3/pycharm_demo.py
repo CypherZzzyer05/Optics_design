@@ -24,7 +24,6 @@ def verify_model_interface(dataset_path):
     rotated = len(dataset.parameter_names) == 6
     model = InverseMetaformer(MetaformerConfig(
         geometry_dim=len(dataset.parameter_names),
-        spectral_frontend="resnet1d" if len(dataset.parameter_names) > 5 else "linear",
         angle_symmetry="square_periodic" if len(dataset.parameter_names) == 7 else ("square_mirror" if rotated else "none"))).to(device)
     spectra, target = next(iter(DataLoader(dataset, batch_size=min(2, len(dataset)), shuffle=False)))
     prediction = model(spectra.to(device))

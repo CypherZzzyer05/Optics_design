@@ -1,6 +1,6 @@
 {
   "dataset": "../data/as2se3_au100_metal8_100/dataset.npz",
-  "output_dir": "../runs/as2se3_au100_metal8_100",
+  "output_dir": "../runs/as2se3_au100_metal8_100_plain",
   "allow_validation_data": true,
   "seed": 42,
   "device": "auto",
@@ -25,10 +25,7 @@
     "mlp_dim": 256,
     "dropout": 0.1,
     "geometry_dim": 7,
-    "spectral_frontend": "resnet1d",
-    "resnet_channels": 32,
-    "resnet_blocks": 3,
-    "resnet_kernel_size": 7,
+    "spectral_frontend": "linear",
     "angle_symmetry": "square_periodic"
   }
 }
