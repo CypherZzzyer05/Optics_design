@@ -1,0 +1,126 @@
+{
+  "dataset": "D:\\仿真\\au100_metal8_100\\dataset.npz",
+  "dataset_sha256": "591ca0f4d9f4fc0be9803f3a566f72eee1ee3ac871ad9d03472b93a732aed0e3",
+  "sample_id": 0,
+  "geometry_values": [
+    649.7604076511419,
+    161.1566330153756,
+    284.88377288849,
+    133.54673339593725,
+    116.4992120505661,
+    -33.64481402341028,
+    39.36335222367701
+  ],
+  "status": 2,
+  "source_unchanged": true,
+  "solver_run_performed": false,
+  "model_training_performed": false,
+  "raw_grid_step_nm": 1.001001001001001,
+  "background_method": "grey_closing; nearest boundary padding; flat 1D footprint",
+  "background_window_points": 41,
+  "background_window_span_nm": 40.04004004004004,
+  "background_boundary_mask": "Exclude first and last 40 points from derived background features; raw spectrum retained",
+  "derivative": "numpy.gradient(R, wavelength_nm, edge_order=2); no smoothing",
+  "local_view": "33 linear-interpolation samples over +-3 half-prominence widths; no added resolution",
+  "local_metadata_columns": [
+    "center_nm",
+    "half_prominence_width_nm",
+    "minimum_R",
+    "contrast_depth"
+  ],
+  "valleys": [
+    {
+      "order": 1,
+      "sample_index": 118,
+      "center_nm": 818.1181181181181,
+      "minimum_reflectance": 0.13232505321502686,
+      "raw_prominence": 0.7108118534088135,
+      "half_prominence_width_nm": 5.255752717462883,
+      "half_prominence_level_R": 0.4877309799194336,
+      "half_prominence_bounds_nm": [
+        816.0607353324009,
+        821.3164880498638
+      ],
+      "native_samples_inside_half_prominence_width": 6,
+      "estimated_background_R": 0.8431369066238403,
+      "background_contrast_depth": 0.7108118534088135,
+      "native_samples_inside_local_window": 31
+    },
+    {
+      "order": 2,
+      "sample_index": 299,
+      "center_nm": 999.2992992992993,
+      "minimum_reflectance": 0.6772516965866089,
+      "raw_prominence": 0.289192259311676,
+      "half_prominence_width_nm": 3.968314303116699,
+      "half_prominence_level_R": 0.8218478262424469,
+      "half_prominence_bounds_nm": [
+        997.6695745954288,
+        1001.6378888985455
+      ],
+      "native_samples_inside_half_prominence_width": 4,
+      "estimated_background_R": 0.9664439558982849,
+      "background_contrast_depth": 0.289192259311676,
+      "native_samples_inside_local_window": 23
+    }
+  ],
+  "smoothing_differences": [
+    {
+      "valley_order": 1,
+      "window_points": 5,
+      "polynomial_order": 2,
+      "smoothed_local_minimum_nm": 818.1181181181181,
+      "smoothed_local_minimum_R": 0.14820816516876206,
+      "minimum_R_change_percentage_points": 1.5883111953735207
+    },
+    {
+      "valley_order": 1,
+      "window_points": 7,
+      "polynomial_order": 2,
+      "smoothed_local_minimum_nm": 818.1181181181181,
+      "smoothed_local_minimum_R": 0.1795284535203662,
+      "minimum_R_change_percentage_points": 4.720340030533935
+    },
+    {
+      "valley_order": 1,
+      "window_points": 11,
+      "polynomial_order": 2,
+      "smoothed_local_minimum_nm": 819.1191191191191,
+      "smoothed_local_minimum_R": 0.25571343188102524,
+      "minimum_R_change_percentage_points": 12.338837866599839
+    },
+    {
+      "valley_order": 2,
+      "window_points": 5,
+      "polynomial_order": 2,
+      "smoothed_local_minimum_nm": 999.2992992992993,
+      "smoothed_local_minimum_R": 0.6875696131161277,
+      "minimum_R_change_percentage_points": 1.0317916529518856
+    },
+    {
+      "valley_order": 2,
+      "window_points": 7,
+      "polynomial_order": 2,
+      "smoothed_local_minimum_nm": 999.2992992992993,
+      "smoothed_local_minimum_R": 0.710086076032548,
+      "minimum_R_change_percentage_points": 3.2834379445939144
+    },
+    {
+      "valley_order": 2,
+      "window_points": 11,
+      "polynomial_order": 2,
+      "smoothed_local_minimum_nm": 999.2992992992993,
+      "smoothed_local_minimum_R": 0.7561468259715836,
+      "minimum_R_change_percentage_points": 7.889512938497467
+    }
+  ],
+  "reconstruction_max_absolute_error": 0.0,
+  "illustration_only": "Background scale and valley rules are not validated training hyperparameters; raw spectrum is retained",
+  "scipy_version": "1.11.4",
+  "sources": {
+    "background": "https://docs.scipy.org/doc/scipy/reference/generated/scipy.ndimage.grey_closing.html",
+    "width": "https://docs.scipy.org/doc/scipy/reference/generated/scipy.signal.peak_widths.html",
+    "smoothing": "https://docs.scipy.org/doc/scipy/reference/generated/scipy.signal.savgol_filter.html"
+  },
+  "script_sha256": "2b2a4148839ad6b492c7b4f70bc1788b251d5b7bb4ca16366fee5eb076174947"
+}
