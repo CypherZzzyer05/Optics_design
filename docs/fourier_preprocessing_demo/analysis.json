@@ -1,0 +1,142 @@
+{
+  "sample_id": 0,
+  "dataset": "D:\\仿真\\au100_metal8_100\\dataset.npz",
+  "dataset_sha256": "591ca0f4d9f4fc0be9803f3a566f72eee1ee3ac871ad9d03472b93a732aed0e3",
+  "job_sha256": "bb57d057584148a3c8f2a08a27899fe5e43395838ee187a3bc8a01dbbd5c0e8a",
+  "quality_level": "pipeline_validation",
+  "points": 1000,
+  "wavelength_step_nm": 1.001001001001001,
+  "mean_reflectance": 0.9357060762792826,
+  "endpoint_reflectance_difference": 0.6918352842330933,
+  "transform": "scipy.fft.rfft(R - mean(R)); no smoothing/windowing/truncation/padding",
+  "frequency_unit": "cycles per micrometre along the wavelength coordinate",
+  "amplitude_normalization": "2*abs(rfft)/N, with DC and even-N Nyquist not doubled",
+  "inverse_max_absolute_error": 2.220446049250313e-16,
+  "major_valleys": [
+    {
+      "wavelength_nm": 818.1181181181181,
+      "reflectance": 0.13232505321502686,
+      "half_prominence_width_nm": 5.255752717462759
+    },
+    {
+      "wavelength_nm": 999.2992992992993,
+      "reflectance": 0.6772516965866089,
+      "half_prominence_width_nm": 3.9683143031166503
+    }
+  ],
+  "geometry_names": [
+    "P",
+    "L",
+    "H",
+    "dX",
+    "dY",
+    "theta_odd_deg",
+    "theta_even_deg"
+  ],
+  "geometry_values": [
+    649.7604076511419,
+    161.1566330153756,
+    284.88377288849,
+    133.54673339593725,
+    116.4992120505661,
+    -33.64481402341028,
+    39.36335222367701
+  ],
+  "centres_nm": [
+    [
+      -147.35168320565643,
+      -138.82792253297086
+    ],
+    [
+      -147.35168320565643,
+      138.82792253297086
+    ],
+    [
+      147.35168320565643,
+      -138.82792253297086
+    ],
+    [
+      147.35168320565643,
+      138.82792253297086
+    ]
+  ],
+  "polygon_vertices_nm": [
+    [
+      [
+        -259.07601702489103,
+        -161.2645759169864
+      ],
+      [
+        -124.9150298216409,
+        -250.55225635220546
+      ],
+      [
+        -35.62734938642183,
+        -116.39126914895533
+      ],
+      [
+        -169.78833658967196,
+        -27.103588713736258
+      ]
+    ],
+    [
+      [
+        -158.5442756912407,
+        25.423971738133602
+      ],
+      [
+        -33.947732410819185,
+        127.63533004738659
+      ],
+      [
+        -136.15909072007216,
+        252.2318733278081
+      ],
+      [
+        -260.75563400049367,
+        150.02051501855513
+      ]
+    ],
+    [
+      [
+        136.15909072007216,
+        -252.2318733278081
+      ],
+      [
+        260.75563400049367,
+        -150.02051501855513
+      ],
+      [
+        158.5442756912407,
+        -25.423971738133602
+      ],
+      [
+        33.947732410819185,
+        -127.63533004738659
+      ]
+    ],
+    [
+      [
+        35.62734938642183,
+        116.39126914895533
+      ],
+      [
+        169.78833658967196,
+        27.103588713736258
+      ],
+      [
+        259.07601702489103,
+        161.2645759169864
+      ],
+      [
+        124.9150298216409,
+        250.55225635220546
+      ]
+    ]
+  ],
+  "substrate_depth_nm": 350,
+  "metal_thickness_nm": 100,
+  "resonator_material": "As2Se3 - Joseph 700nm film (2020)",
+  "substrate_material": "SiO2 (Glass) - Palik",
+  "metal_material": "Au (Gold) - Palik"
+}
