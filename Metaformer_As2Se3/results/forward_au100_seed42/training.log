@@ -1,0 +1,9 @@
+2026-10-19 13:37:29,581 INFO Epoch 1: train MSE 0.071304; validation MSE 0.027706; best epoch 1
+2026-10-19 13:37:30,634 INFO Epoch 10: train MSE 0.006364; validation MSE 0.005893; best epoch 10
+2026-10-19 13:37:31,754 INFO Epoch 20: train MSE 0.004670; validation MSE 0.004739; best epoch 19
+2026-10-19 13:37:32,826 INFO Epoch 30: train MSE 0.003992; validation MSE 0.003938; best epoch 30
+2026-10-19 13:37:33,891 INFO Epoch 40: train MSE 0.003672; validation MSE 0.003832; best epoch 37
+2026-10-19 13:37:34,952 INFO Epoch 50: train MSE 0.003371; validation MSE 0.003782; best epoch 48
+2026-10-19 13:37:36,011 INFO Epoch 60: train MSE 0.003201; validation MSE 0.003775; best epoch 48
+2026-10-19 13:37:37,073 INFO Epoch 70: train MSE 0.003130; validation MSE 0.003699; best epoch 48
+2026-10-19 13:37:37,633 INFO Completed: test MSE 0.003159; train-mean MSE 0.005565; D:\projects\Optics_design_forward_pilot\Metaformer_As2Se3\runs\forward_au100_pilot\20261019_053728_904352Z

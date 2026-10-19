@@ -1,0 +1,18 @@
+{
+  "model_checkpoint": {
+    "path": "models\\forward_au100_seed42.pt",
+    "sha256": "171a095ff88824016732dc12fe67471dfffe4ed550f277359fda08b75e9b55d8"
+  },
+  "files": {
+    "history.json": "63bc2b7de8a0e9ec013529e02083b0cb70931a4576da254864d146b5d496de7e",
+    "learning_curve.png": "8477ff046d98c637568843124729c7e2373c07b826a2b8c419c93be590ec0835",
+    "metrics.json": "518f408df3932520dd9bcff8e7a36989bcbe31890ad38b9dd9d9d35ed814ec72",
+    "predictions.npz": "d3a787a7bbf91cce3cc5c9018ca349b3c908e83314837ba6254a95d79f108ca5",
+    "README.md": "e17b5c8a896aec80faa8b85bc88924e866b5a247be8e57b5e1c66f8a977da5f1",
+    "run.json": "1f1d1ca405a0612b0ff1a280ec54226f891dcb1cf2c834a365eb69aaa9437d64",
+    "summary.json": "d2f62124cddc33d367b1d0a09aaf36e58984cdeb08bd770fa04413b3df52d119",
+    "test_spectra.png": "e04cdc4f84844f1251722646f4708b3c05a91b860bb1e9ac2cdc9a2cb1cb0732",
+    "training.log": "23b6888ff277ea2b53f60e3d4bc7bccd8e754ab899ed97b34fa3ee37a8cfaf7d",
+    "valley_details.png": "90db57d2f6cc0245daa65229dfcb935442bfba11cc5ffa93cc5248e5e9dd6c93"
+  }
+}

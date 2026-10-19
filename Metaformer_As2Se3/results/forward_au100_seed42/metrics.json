@@ -1,0 +1,4727 @@
+{
+  "best_epoch": 48,
+  "epochs_completed": 73,
+  "stop_reason": "early_stopping",
+  "optimizer_steps": 730,
+  "training_seconds": 8.46799830000009,
+  "max_parameter_change_from_initial": 0.07254455983638763,
+  "cpu_checkpoint_max_abs_difference": 2.682209014892578e-07,
+  "metrics": {
+    "train": {
+      "samples": 80,
+      "mse": 0.0031616833018443735,
+      "rmse": 0.056228847594845595,
+      "mae": 0.02219934572058264,
+      "per_sample_mse": [
+        0.0024157278996466314,
+        0.001814901168222564,
+        0.0035960545703767545,
+        0.005643167176828829,
+        0.0036032731965660167,
+        0.00020931701278681825,
+        0.0010811188331609181,
+        0.001955992076775519,
+        0.002155940731466946,
+        0.0022366135552532363,
+        0.005151142688412952,
+        0.0021307818198187407,
+        0.003469715330909587,
+        0.0016077955821983602,
+        0.0021117962008832983,
+        0.008738306448344857,
+        0.0074394040873670495,
+        0.0003853733958058386,
+        0.0011694098970582907,
+        0.0011851499919942924,
+        0.0029327745278790005,
+        0.004748602624132678,
+        0.0011478773002290862,
+        0.004856681250967989,
+        0.004897001997171001,
+        0.004346314716177965,
+        0.004108272543995857,
+        0.0010078188266283193,
+        0.0033602659141022196,
+        0.0030473599293885955,
+        0.004093653496784235,
+        0.0011018697108805685,
+        0.00035796900201737306,
+        0.007196702869037349,
+        0.002260605226673905,
+        0.0013047141106451471,
+        0.0013956122318856449,
+        0.005426309205294307,
+        0.0016726552340642913,
+        0.00024693316793546226,
+        0.0020201126570208996,
+        0.004338210543891905,
+        0.0022560806097952943,
+        0.0007161157659703696,
+        0.00047816729442963724,
+        0.0013138675568766622,
+        0.0006283326224259209,
+        0.0012657931828847478,
+        0.0006807153201921954,
+        0.004832772144872916,
+        0.007981080167736408,
+        0.004779365769333623,
+        0.005435611641133427,
+        0.0022211231374203466,
+        0.004894670425828224,
+        0.002414032646971439,
+        0.0012322129798654925,
+        0.0036641750632350006,
+        0.002668747260966842,
+        0.0018327327367074259,
+        0.00031271395691028083,
+        0.0026826733582662296,
+        0.0015574697904763824,
+        0.0070892761489572565,
+        0.006410923535873977,
+        0.0013890795460354019,
+        0.005273234022422069,
+        0.0005402379983503526,
+        0.006696115516595227,
+        0.004885875221689805,
+        0.005230248016479303,
+        0.005592402158451118,
+        0.00431136047371857,
+        0.0023556521701199244,
+        0.0065779235542912946,
+        0.0036529199329388925,
+        0.005664008743986542,
+        0.0029993206788456305,
+        0.0036133921222833527,
+        0.002834942123530978
+      ],
+      "target_valleys": 152,
+      "matched_valleys": 61,
+      "missing_valleys": 91,
+      "valley_window_mse": 0.04067168202930368,
+      "matched_center_mae_nm": 5.907546891153443,
+      "matched_depth_mae": 0.44429026605546107,
+      "matched_width_relative_mae": 2.203211236868843,
+      "valley_definition": "Two strongest reference minima with prominence>=0.05; nearest unused predicted minimum with prominence>=0.02 within 15 nm. Width is half-prominence, not modal FWHM.",
+      "valley_matches": [
+        {
+          "sample_id": 0,
+          "target": {
+            "center_nm": 818.1181181181181,
+            "reflectance": 0.13232505321502686,
+            "half_prominence_width_nm": 5.255752717462883,
+            "index": 118
+          },
+          "predicted": {
+            "center_nm": 829.1291291291292,
+            "reflectance": 0.7754572629928589,
+            "half_prominence_width_nm": 26.159503045160363,
+            "index": 129
+          }
+        },
+        {
+          "sample_id": 0,
+          "target": {
+            "center_nm": 999.2992992992993,
+            "reflectance": 0.6772516965866089,
+            "half_prominence_width_nm": 3.968314303116699,
+            "index": 299
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 2,
+          "target": {
+            "center_nm": 760.0600600600601,
+            "reflectance": 0.35238194465637207,
+            "half_prominence_width_nm": 6.259374072402238,
+            "index": 60
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 2,
+          "target": {
+            "center_nm": 865.1651651651651,
+            "reflectance": 0.38126564025878906,
+            "half_prominence_width_nm": 10.682220356900984,
+            "index": 165
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 4,
+          "target": {
+            "center_nm": 935.2352352352352,
+            "reflectance": 0.3451847732067108,
+            "half_prominence_width_nm": 5.200429124911125,
+            "index": 235
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 4,
+          "target": {
+            "center_nm": 1048.3483483483483,
+            "reflectance": 0.3454810678958893,
+            "half_prominence_width_nm": 6.57094734199768,
+            "index": 348
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 5,
+          "target": {
+            "center_nm": 769.0690690690691,
+            "reflectance": 0.1208944171667099,
+            "half_prominence_width_nm": 7.891615212982742,
+            "index": 69
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 5,
+          "target": {
+            "center_nm": 879.1791791791792,
+            "reflectance": 0.04257142171263695,
+            "half_prominence_width_nm": 9.638048959889716,
+            "index": 179
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 6,
+          "target": {
+            "center_nm": 927.2272272272272,
+            "reflectance": 0.5608740448951721,
+            "half_prominence_width_nm": 4.839206876886806,
+            "index": 227
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 6,
+          "target": {
+            "center_nm": 1048.3483483483483,
+            "reflectance": 0.2092820107936859,
+            "half_prominence_width_nm": 6.355891843324116,
+            "index": 348
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 8,
+          "target": {
+            "center_nm": 874.1741741741741,
+            "reflectance": 0.5506771206855774,
+            "half_prominence_width_nm": 7.838751838504891,
+            "index": 174
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 8,
+          "target": {
+            "center_nm": 1026.3263263263264,
+            "reflectance": 0.7338072061538696,
+            "half_prominence_width_nm": 5.910420096924213,
+            "index": 326
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 9,
+          "target": {
+            "center_nm": 828.1281281281281,
+            "reflectance": 0.1353970468044281,
+            "half_prominence_width_nm": 3.6218178439985422,
+            "index": 128
+          },
+          "predicted": {
+            "center_nm": 829.1291291291292,
+            "reflectance": 0.8039180040359497,
+            "half_prominence_width_nm": 35.78490539830818,
+            "index": 129
+          }
+        },
+        {
+          "sample_id": 9,
+          "target": {
+            "center_nm": 1015.3153153153153,
+            "reflectance": 0.6203984618186951,
+            "half_prominence_width_nm": 4.671797856844023,
+            "index": 315
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 10,
+          "target": {
+            "center_nm": 859.1591591591591,
+            "reflectance": 0.8730939626693726,
+            "half_prominence_width_nm": 4.494378683678178,
+            "index": 159
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 10,
+          "target": {
+            "center_nm": 970.2702702702703,
+            "reflectance": 0.32031387090682983,
+            "half_prominence_width_nm": 3.79134316684042,
+            "index": 270
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 13,
+          "target": {
+            "center_nm": 826.1261261261261,
+            "reflectance": 0.3164308965206146,
+            "half_prominence_width_nm": 3.265086670915707,
+            "index": 126
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 13,
+          "target": {
+            "center_nm": 916.2162162162163,
+            "reflectance": 0.4611320197582245,
+            "half_prominence_width_nm": 4.966611759420857,
+            "index": 216
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 14,
+          "target": {
+            "center_nm": 728.0280280280281,
+            "reflectance": 0.03519313037395477,
+            "half_prominence_width_nm": 10.177697995761605,
+            "index": 28
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 14,
+          "target": {
+            "center_nm": 837.1371371371372,
+            "reflectance": 0.15387730300426483,
+            "half_prominence_width_nm": 7.894966440819303,
+            "index": 137
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 15,
+          "target": {
+            "center_nm": 763.063063063063,
+            "reflectance": 0.3678356409072876,
+            "half_prominence_width_nm": 6.457399128037991,
+            "index": 63
+          },
+          "predicted": {
+            "center_nm": 751.0510510510511,
+            "reflectance": 0.6246172785758972,
+            "half_prominence_width_nm": 3.9519313259902447,
+            "index": 51
+          }
+        },
+        {
+          "sample_id": 15,
+          "target": {
+            "center_nm": 886.1861861861862,
+            "reflectance": 0.2713315486907959,
+            "half_prominence_width_nm": 9.56162482652178,
+            "index": 186
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 16,
+          "target": {
+            "center_nm": 723.023023023023,
+            "reflectance": 0.01436151284724474,
+            "half_prominence_width_nm": 10.980683581478615,
+            "index": 23
+          },
+          "predicted": {
+            "center_nm": 710.01001001001,
+            "reflectance": 0.23292972147464752,
+            "half_prominence_width_nm": 2.1224053322191594,
+            "index": 10
+          }
+        },
+        {
+          "sample_id": 16,
+          "target": {
+            "center_nm": 836.1361361361362,
+            "reflectance": 0.2987789809703827,
+            "half_prominence_width_nm": 9.49098413575473,
+            "index": 136
+          },
+          "predicted": {
+            "center_nm": 845.1451451451452,
+            "reflectance": 0.7375771403312683,
+            "half_prominence_width_nm": 36.237629993959104,
+            "index": 145
+          }
+        },
+        {
+          "sample_id": 17,
+          "target": {
+            "center_nm": 816.1161161161161,
+            "reflectance": 0.2134789079427719,
+            "half_prominence_width_nm": 4.534274788445714,
+            "index": 116
+          },
+          "predicted": {
+            "center_nm": 824.1241241241241,
+            "reflectance": 0.7426543831825256,
+            "half_prominence_width_nm": 27.515762113380788,
+            "index": 124
+          }
+        },
+        {
+          "sample_id": 18,
+          "target": {
+            "center_nm": 826.1261261261261,
+            "reflectance": 0.09717144072055817,
+            "half_prominence_width_nm": 4.145321645113654,
+            "index": 126
+          },
+          "predicted": {
+            "center_nm": 820.1201201201202,
+            "reflectance": 0.7620481252670288,
+            "half_prominence_width_nm": 21.43317810142389,
+            "index": 120
+          }
+        },
+        {
+          "sample_id": 20,
+          "target": {
+            "center_nm": 762.0620620620621,
+            "reflectance": 0.011190712451934814,
+            "half_prominence_width_nm": 9.543536243440485,
+            "index": 62
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 20,
+          "target": {
+            "center_nm": 870.1701701701702,
+            "reflectance": 0.026706470176577568,
+            "half_prominence_width_nm": 13.117187229554702,
+            "index": 170
+          },
+          "predicted": {
+            "center_nm": 861.1611611611612,
+            "reflectance": 0.6588510870933533,
+            "half_prominence_width_nm": 59.91486281382845,
+            "index": 161
+          }
+        },
+        {
+          "sample_id": 22,
+          "target": {
+            "center_nm": 901.2012012012012,
+            "reflectance": 0.07741276919841766,
+            "half_prominence_width_nm": 11.723536001423668,
+            "index": 201
+          },
+          "predicted": {
+            "center_nm": 901.2012012012012,
+            "reflectance": 0.5762435793876648,
+            "half_prominence_width_nm": 2.4255607744071312,
+            "index": 201
+          }
+        },
+        {
+          "sample_id": 22,
+          "target": {
+            "center_nm": 1072.3723723723724,
+            "reflectance": 0.3233899176120758,
+            "half_prominence_width_nm": 7.840303832593008,
+            "index": 372
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 23,
+          "target": {
+            "center_nm": 858.1581581581581,
+            "reflectance": 0.6656168103218079,
+            "half_prominence_width_nm": 10.135260849911674,
+            "index": 158
+          },
+          "predicted": {
+            "center_nm": 861.1611611611612,
+            "reflectance": 0.7596680521965027,
+            "half_prominence_width_nm": 40.820260988453924,
+            "index": 161
+          }
+        },
+        {
+          "sample_id": 23,
+          "target": {
+            "center_nm": 943.2432432432432,
+            "reflectance": 0.7715414762496948,
+            "half_prominence_width_nm": 3.405146399487535,
+            "index": 243
+          },
+          "predicted": {
+            "center_nm": 942.2422422422422,
+            "reflectance": 0.8282633423805237,
+            "half_prominence_width_nm": 5.440126473998248,
+            "index": 242
+          }
+        },
+        {
+          "sample_id": 24,
+          "target": {
+            "center_nm": 879.1791791791792,
+            "reflectance": 0.5942432880401611,
+            "half_prominence_width_nm": 4.020038181517293,
+            "index": 179
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 24,
+          "target": {
+            "center_nm": 981.2812812812813,
+            "reflectance": 0.6507725715637207,
+            "half_prominence_width_nm": 5.020193728710865,
+            "index": 281
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 25,
+          "target": {
+            "center_nm": 911.2112112112112,
+            "reflectance": 0.7312120199203491,
+            "half_prominence_width_nm": 69.5971158558657,
+            "index": 211
+          },
+          "predicted": {
+            "center_nm": 922.2222222222222,
+            "reflectance": 0.7767156362533569,
+            "half_prominence_width_nm": 3.2744163181625936,
+            "index": 222
+          }
+        },
+        {
+          "sample_id": 26,
+          "target": {
+            "center_nm": 731.031031031031,
+            "reflectance": 0.02522920072078705,
+            "half_prominence_width_nm": 10.82850708483761,
+            "index": 31
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 26,
+          "target": {
+            "center_nm": 960.2602602602603,
+            "reflectance": 0.17845754325389862,
+            "half_prominence_width_nm": 3.7918990398806045,
+            "index": 260
+          },
+          "predicted": {
+            "center_nm": 967.2672672672672,
+            "reflectance": 0.8108516931533813,
+            "half_prominence_width_nm": 1.9140711748796093,
+            "index": 267
+          }
+        },
+        {
+          "sample_id": 27,
+          "target": {
+            "center_nm": 717.017017017017,
+            "reflectance": 0.0849982425570488,
+            "half_prominence_width_nm": 10.652387599994995,
+            "index": 17
+          },
+          "predicted": {
+            "center_nm": 711.011011011011,
+            "reflectance": 0.5111216306686401,
+            "half_prominence_width_nm": 2.0196092847352247,
+            "index": 11
+          }
+        },
+        {
+          "sample_id": 27,
+          "target": {
+            "center_nm": 841.1411411411411,
+            "reflectance": 0.14228782057762146,
+            "half_prominence_width_nm": 8.116480807465678,
+            "index": 141
+          },
+          "predicted": {
+            "center_nm": 831.1311311311312,
+            "reflectance": 0.7044695615768433,
+            "half_prominence_width_nm": 26.90919220481578,
+            "index": 131
+          }
+        },
+        {
+          "sample_id": 28,
+          "target": {
+            "center_nm": 731.031031031031,
+            "reflectance": 0.50459885597229,
+            "half_prominence_width_nm": 6.39553958894237,
+            "index": 31
+          },
+          "predicted": {
+            "center_nm": 740.04004004004,
+            "reflectance": 0.6273117065429688,
+            "half_prominence_width_nm": 2.157578474382831,
+            "index": 40
+          }
+        },
+        {
+          "sample_id": 28,
+          "target": {
+            "center_nm": 850.1501501501501,
+            "reflectance": 0.39561212062835693,
+            "half_prominence_width_nm": 6.9847414493279985,
+            "index": 150
+          },
+          "predicted": {
+            "center_nm": 841.1411411411411,
+            "reflectance": 0.6851402521133423,
+            "half_prominence_width_nm": 30.477519315749305,
+            "index": 141
+          }
+        },
+        {
+          "sample_id": 29,
+          "target": {
+            "center_nm": 851.1511511511512,
+            "reflectance": 0.46122732758522034,
+            "half_prominence_width_nm": 3.543039690459068,
+            "index": 151
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 29,
+          "target": {
+            "center_nm": 1020.3203203203203,
+            "reflectance": 0.02436814457178116,
+            "half_prominence_width_nm": 4.272691552922652,
+            "index": 320
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 30,
+          "target": {
+            "center_nm": 740.04004004004,
+            "reflectance": 0.15001384913921356,
+            "half_prominence_width_nm": 8.638748883829066,
+            "index": 40
+          },
+          "predicted": {
+            "center_nm": 740.04004004004,
+            "reflectance": 0.6129874587059021,
+            "half_prominence_width_nm": 2.5888599180690335,
+            "index": 40
+          }
+        },
+        {
+          "sample_id": 30,
+          "target": {
+            "center_nm": 853.1531531531532,
+            "reflectance": 0.0030569236259907484,
+            "half_prominence_width_nm": 9.509982996396161,
+            "index": 153
+          },
+          "predicted": {
+            "center_nm": 851.1511511511512,
+            "reflectance": 0.6714953780174255,
+            "half_prominence_width_nm": 1.4747030570689503,
+            "index": 151
+          }
+        },
+        {
+          "sample_id": 31,
+          "target": {
+            "center_nm": 932.2322322322323,
+            "reflectance": 0.4674828350543976,
+            "half_prominence_width_nm": 5.198028710722724,
+            "index": 232
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 31,
+          "target": {
+            "center_nm": 1050.3503503503503,
+            "reflectance": 0.17430782318115234,
+            "half_prominence_width_nm": 6.7705070161539425,
+            "index": 350
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 32,
+          "target": {
+            "center_nm": 946.2462462462463,
+            "reflectance": 0.057386405766010284,
+            "half_prominence_width_nm": 7.323755112295771,
+            "index": 246
+          },
+          "predicted": {
+            "center_nm": 942.2422422422422,
+            "reflectance": 0.7319247126579285,
+            "half_prominence_width_nm": 13.318385511583415,
+            "index": 242
+          }
+        },
+        {
+          "sample_id": 32,
+          "target": {
+            "center_nm": 1074.3743743743744,
+            "reflectance": 0.6182218790054321,
+            "half_prominence_width_nm": 9.042532742012781,
+            "index": 374
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 33,
+          "target": {
+            "center_nm": 732.032032032032,
+            "reflectance": 0.05250437185168266,
+            "half_prominence_width_nm": 8.880007593801906,
+            "index": 32
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 33,
+          "target": {
+            "center_nm": 966.2662662662663,
+            "reflectance": 0.4004528224468231,
+            "half_prominence_width_nm": 3.325382430555578,
+            "index": 266
+          },
+          "predicted": {
+            "center_nm": 967.2672672672672,
+            "reflectance": 0.7799158692359924,
+            "half_prominence_width_nm": 2.517269005460207,
+            "index": 267
+          }
+        },
+        {
+          "sample_id": 34,
+          "target": {
+            "center_nm": 817.1171171171171,
+            "reflectance": 0.10197810083627701,
+            "half_prominence_width_nm": 5.996422628841515,
+            "index": 117
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 34,
+          "target": {
+            "center_nm": 910.2102102102102,
+            "reflectance": 0.40842166543006897,
+            "half_prominence_width_nm": 3.7898734933686455,
+            "index": 210
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 35,
+          "target": {
+            "center_nm": 807.1071071071071,
+            "reflectance": 0.05276564881205559,
+            "half_prominence_width_nm": 5.706380603466187,
+            "index": 107
+          },
+          "predicted": {
+            "center_nm": 794.0940940940941,
+            "reflectance": 0.7696453332901001,
+            "half_prominence_width_nm": 5.570113854648525,
+            "index": 94
+          }
+        },
+        {
+          "sample_id": 36,
+          "target": {
+            "center_nm": 835.1351351351352,
+            "reflectance": 0.057419586926698685,
+            "half_prominence_width_nm": 5.519582249166547,
+            "index": 135
+          },
+          "predicted": {
+            "center_nm": 824.1241241241241,
+            "reflectance": 0.754311203956604,
+            "half_prominence_width_nm": 22.12179047524694,
+            "index": 124
+          }
+        },
+        {
+          "sample_id": 36,
+          "target": {
+            "center_nm": 1006.3063063063064,
+            "reflectance": 0.8284286260604858,
+            "half_prominence_width_nm": 3.0879014855922833,
+            "index": 306
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 37,
+          "target": {
+            "center_nm": 755.055055055055,
+            "reflectance": 0.47553810477256775,
+            "half_prominence_width_nm": 6.264520731424227,
+            "index": 55
+          },
+          "predicted": {
+            "center_nm": 751.0510510510511,
+            "reflectance": 0.6400933861732483,
+            "half_prominence_width_nm": 4.070842521011514,
+            "index": 51
+          }
+        },
+        {
+          "sample_id": 37,
+          "target": {
+            "center_nm": 875.1751751751751,
+            "reflectance": 0.3699806034564972,
+            "half_prominence_width_nm": 8.108263784192673,
+            "index": 175
+          },
+          "predicted": {
+            "center_nm": 861.1611611611612,
+            "reflectance": 0.6675074696540833,
+            "half_prominence_width_nm": 4.874546711985886,
+            "index": 161
+          }
+        },
+        {
+          "sample_id": 38,
+          "target": {
+            "center_nm": 715.015015015015,
+            "reflectance": 0.16265390813350677,
+            "half_prominence_width_nm": 1.202813172574679,
+            "index": 15
+          },
+          "predicted": {
+            "center_nm": 711.011011011011,
+            "reflectance": 0.20524102449417114,
+            "half_prominence_width_nm": 2.192899845835882,
+            "index": 11
+          }
+        },
+        {
+          "sample_id": 38,
+          "target": {
+            "center_nm": 873.1731731731732,
+            "reflectance": 0.5834293365478516,
+            "half_prominence_width_nm": 4.936632654593382,
+            "index": 173
+          },
+          "predicted": {
+            "center_nm": 861.1611611611612,
+            "reflectance": 0.7720867395401001,
+            "half_prominence_width_nm": 30.582248719407175,
+            "index": 161
+          }
+        },
+        {
+          "sample_id": 39,
+          "target": {
+            "center_nm": 852.1521521521522,
+            "reflectance": 0.08311757445335388,
+            "half_prominence_width_nm": 9.981462012317024,
+            "index": 152
+          },
+          "predicted": {
+            "center_nm": 841.1411411411411,
+            "reflectance": 0.6748343110084534,
+            "half_prominence_width_nm": 25.00614400566053,
+            "index": 141
+          }
+        },
+        {
+          "sample_id": 39,
+          "target": {
+            "center_nm": 1027.3273273273273,
+            "reflectance": 0.30193665623664856,
+            "half_prominence_width_nm": 4.976796599724821,
+            "index": 327
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 42,
+          "target": {
+            "center_nm": 845.1451451451452,
+            "reflectance": 0.6172760725021362,
+            "half_prominence_width_nm": 5.7028916682309045,
+            "index": 145
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 42,
+          "target": {
+            "center_nm": 933.2332332332332,
+            "reflectance": 0.17569643259048462,
+            "half_prominence_width_nm": 4.389668082112166,
+            "index": 233
+          },
+          "predicted": {
+            "center_nm": 932.2322322322323,
+            "reflectance": 0.8253623843193054,
+            "half_prominence_width_nm": 1.4902384884683215,
+            "index": 232
+          }
+        },
+        {
+          "sample_id": 43,
+          "target": {
+            "center_nm": 931.2312312312313,
+            "reflectance": 0.44107893109321594,
+            "half_prominence_width_nm": 3.985904332738187,
+            "index": 231
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 43,
+          "target": {
+            "center_nm": 1051.3513513513512,
+            "reflectance": 0.7673360109329224,
+            "half_prominence_width_nm": 6.627206021878692,
+            "index": 351
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 44,
+          "target": {
+            "center_nm": 731.031031031031,
+            "reflectance": 0.4571610689163208,
+            "half_prominence_width_nm": 6.5982563668619605,
+            "index": 31
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 44,
+          "target": {
+            "center_nm": 836.1361361361362,
+            "reflectance": 0.2892506718635559,
+            "half_prominence_width_nm": 7.524407225008986,
+            "index": 136
+          },
+          "predicted": {
+            "center_nm": 841.1411411411411,
+            "reflectance": 0.70137619972229,
+            "half_prominence_width_nm": 40.10274957035733,
+            "index": 141
+          }
+        },
+        {
+          "sample_id": 45,
+          "target": {
+            "center_nm": 829.1291291291292,
+            "reflectance": 0.019107406958937645,
+            "half_prominence_width_nm": 4.6417248161582165,
+            "index": 129
+          },
+          "predicted": {
+            "center_nm": 829.1291291291292,
+            "reflectance": 0.7571879625320435,
+            "half_prominence_width_nm": 24.09441916101082,
+            "index": 129
+          }
+        },
+        {
+          "sample_id": 45,
+          "target": {
+            "center_nm": 1005.3053053053054,
+            "reflectance": 0.11213275790214539,
+            "half_prominence_width_nm": 5.071461476013269,
+            "index": 305
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 47,
+          "target": {
+            "center_nm": 799.0990990990991,
+            "reflectance": 0.6356570720672607,
+            "half_prominence_width_nm": 45.384964135275254,
+            "index": 99
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 47,
+          "target": {
+            "center_nm": 1038.3383383383384,
+            "reflectance": 0.6692044734954834,
+            "half_prominence_width_nm": 4.919051615978333,
+            "index": 338
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 49,
+          "target": {
+            "center_nm": 835.1351351351352,
+            "reflectance": 0.7139990329742432,
+            "half_prominence_width_nm": 42.11882000699552,
+            "index": 135
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 49,
+          "target": {
+            "center_nm": 893.1931931931932,
+            "reflectance": 0.7236053943634033,
+            "half_prominence_width_nm": 3.1962825350634603,
+            "index": 193
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 50,
+          "target": {
+            "center_nm": 709.009009009009,
+            "reflectance": 0.10503964126110077,
+            "half_prominence_width_nm": 2.966315584872632,
+            "index": 9
+          },
+          "predicted": {
+            "center_nm": 708.008008008008,
+            "reflectance": 0.26265954971313477,
+            "half_prominence_width_nm": 0.9452215798041834,
+            "index": 8
+          }
+        },
+        {
+          "sample_id": 50,
+          "target": {
+            "center_nm": 856.1561561561562,
+            "reflectance": 0.18427376449108124,
+            "half_prominence_width_nm": 3.792516057252328,
+            "index": 156
+          },
+          "predicted": {
+            "center_nm": 851.1511511511512,
+            "reflectance": 0.813318133354187,
+            "half_prominence_width_nm": 29.543574102971547,
+            "index": 151
+          }
+        },
+        {
+          "sample_id": 51,
+          "target": {
+            "center_nm": 783.0830830830831,
+            "reflectance": 0.25797227025032043,
+            "half_prominence_width_nm": 5.298056676536248,
+            "index": 83
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 51,
+          "target": {
+            "center_nm": 942.2422422422422,
+            "reflectance": 0.22785383462905884,
+            "half_prominence_width_nm": 9.452281449444513,
+            "index": 242
+          },
+          "predicted": {
+            "center_nm": 940.2402402402403,
+            "reflectance": 0.719596266746521,
+            "half_prominence_width_nm": 9.492712231901692,
+            "index": 240
+          }
+        },
+        {
+          "sample_id": 52,
+          "target": {
+            "center_nm": 750.05005005005,
+            "reflectance": 0.2339811474084854,
+            "half_prominence_width_nm": 5.527833204941658,
+            "index": 50
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 52,
+          "target": {
+            "center_nm": 907.2072072072073,
+            "reflectance": 0.6608760356903076,
+            "half_prominence_width_nm": 46.16552114022841,
+            "index": 207
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 53,
+          "target": {
+            "center_nm": 811.1111111111111,
+            "reflectance": 0.6700601577758789,
+            "half_prominence_width_nm": 4.699640425945063,
+            "index": 111
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 53,
+          "target": {
+            "center_nm": 903.2032032032032,
+            "reflectance": 0.5547536015510559,
+            "half_prominence_width_nm": 3.3075536379899404,
+            "index": 203
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 54,
+          "target": {
+            "center_nm": 763.063063063063,
+            "reflectance": 0.5321135520935059,
+            "half_prominence_width_nm": 4.814405173072942,
+            "index": 63
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 54,
+          "target": {
+            "center_nm": 862.1621621621622,
+            "reflectance": 0.6116718053817749,
+            "half_prominence_width_nm": 7.665542371867559,
+            "index": 162
+          },
+          "predicted": {
+            "center_nm": 861.1611611611612,
+            "reflectance": 0.754676342010498,
+            "half_prominence_width_nm": 32.79661365934612,
+            "index": 161
+          }
+        },
+        {
+          "sample_id": 55,
+          "target": {
+            "center_nm": 897.1971971971973,
+            "reflectance": 0.6059693098068237,
+            "half_prominence_width_nm": 4.9091396043870645,
+            "index": 197
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 55,
+          "target": {
+            "center_nm": 996.2962962962963,
+            "reflectance": 0.644797682762146,
+            "half_prominence_width_nm": 5.477003897669306,
+            "index": 296
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 56,
+          "target": {
+            "center_nm": 746.0460460460461,
+            "reflectance": 0.6197897791862488,
+            "half_prominence_width_nm": 5.477523844058851,
+            "index": 46
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 56,
+          "target": {
+            "center_nm": 864.1641641641642,
+            "reflectance": 0.5705284476280212,
+            "half_prominence_width_nm": 6.098061695280762,
+            "index": 164
+          },
+          "predicted": {
+            "center_nm": 851.1511511511512,
+            "reflectance": 0.741791844367981,
+            "half_prominence_width_nm": 24.529111602563262,
+            "index": 151
+          }
+        },
+        {
+          "sample_id": 57,
+          "target": {
+            "center_nm": 734.034034034034,
+            "reflectance": 0.5145947933197021,
+            "half_prominence_width_nm": 6.155672258817049,
+            "index": 34
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 57,
+          "target": {
+            "center_nm": 841.1411411411411,
+            "reflectance": 0.34702080488204956,
+            "half_prominence_width_nm": 7.63867646701226,
+            "index": 141
+          },
+          "predicted": {
+            "center_nm": 851.1511511511512,
+            "reflectance": 0.7001930475234985,
+            "half_prominence_width_nm": 39.27025945453556,
+            "index": 151
+          }
+        },
+        {
+          "sample_id": 58,
+          "target": {
+            "center_nm": 909.2092092092092,
+            "reflectance": 0.7496638298034668,
+            "half_prominence_width_nm": 70.40648510797496,
+            "index": 209
+          },
+          "predicted": {
+            "center_nm": 920.2202202202202,
+            "reflectance": 0.784562349319458,
+            "half_prominence_width_nm": 4.992783963468128,
+            "index": 220
+          }
+        },
+        {
+          "sample_id": 59,
+          "target": {
+            "center_nm": 767.0670670670671,
+            "reflectance": 0.2332260012626648,
+            "half_prominence_width_nm": 9.498356019497237,
+            "index": 67
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 59,
+          "target": {
+            "center_nm": 882.1821821821823,
+            "reflectance": 0.03916599974036217,
+            "half_prominence_width_nm": 7.699057105794509,
+            "index": 182
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 60,
+          "target": {
+            "center_nm": 829.1291291291292,
+            "reflectance": 0.2184157818555832,
+            "half_prominence_width_nm": 8.202235941545382,
+            "index": 129
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 60,
+          "target": {
+            "center_nm": 1019.3193193193193,
+            "reflectance": 0.22562402486801147,
+            "half_prominence_width_nm": 6.508217577968367,
+            "index": 319
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 61,
+          "target": {
+            "center_nm": 767.0670670670671,
+            "reflectance": 0.21086594462394714,
+            "half_prominence_width_nm": 6.8397116296305285,
+            "index": 67
+          },
+          "predicted": {
+            "center_nm": 772.072072072072,
+            "reflectance": 0.6084500551223755,
+            "half_prominence_width_nm": 1.9305887728613698,
+            "index": 72
+          }
+        },
+        {
+          "sample_id": 61,
+          "target": {
+            "center_nm": 888.1881881881882,
+            "reflectance": 0.15628834068775177,
+            "half_prominence_width_nm": 12.930272612488011,
+            "index": 188
+          },
+          "predicted": {
+            "center_nm": 892.1921921921922,
+            "reflectance": 0.5982485413551331,
+            "half_prominence_width_nm": 19.354599414629888,
+            "index": 192
+          }
+        },
+        {
+          "sample_id": 62,
+          "target": {
+            "center_nm": 736.0360360360361,
+            "reflectance": 0.0030672699213027954,
+            "half_prominence_width_nm": 10.84603553246825,
+            "index": 36
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 62,
+          "target": {
+            "center_nm": 842.1421421421421,
+            "reflectance": 0.17652523517608643,
+            "half_prominence_width_nm": 10.034715999693276,
+            "index": 142
+          },
+          "predicted": {
+            "center_nm": 856.1561561561562,
+            "reflectance": 0.732990026473999,
+            "half_prominence_width_nm": 42.43779708027978,
+            "index": 156
+          }
+        },
+        {
+          "sample_id": 63,
+          "target": {
+            "center_nm": 790.0900900900901,
+            "reflectance": 0.37853196263313293,
+            "half_prominence_width_nm": 6.603252240499387,
+            "index": 90
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 63,
+          "target": {
+            "center_nm": 907.2072072072073,
+            "reflectance": 0.3431791067123413,
+            "half_prominence_width_nm": 13.854301166767527,
+            "index": 207
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 64,
+          "target": {
+            "center_nm": 878.1781781781782,
+            "reflectance": 0.1031414046883583,
+            "half_prominence_width_nm": 7.100652213343324,
+            "index": 178
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 64,
+          "target": {
+            "center_nm": 1066.3663663663665,
+            "reflectance": 0.31834134459495544,
+            "half_prominence_width_nm": 5.366944531338959,
+            "index": 366
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 65,
+          "target": {
+            "center_nm": 928.2282282282283,
+            "reflectance": 0.15496385097503662,
+            "half_prominence_width_nm": 4.4755963634044065,
+            "index": 228
+          },
+          "predicted": {
+            "center_nm": 932.2322322322323,
+            "reflectance": 0.8435353636741638,
+            "half_prominence_width_nm": 1.7568978190624875,
+            "index": 232
+          }
+        },
+        {
+          "sample_id": 65,
+          "target": {
+            "center_nm": 1041.3413413413414,
+            "reflectance": 0.807842493057251,
+            "half_prominence_width_nm": 7.314019976985492,
+            "index": 341
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 66,
+          "target": {
+            "center_nm": 911.2112112112112,
+            "reflectance": 0.6522383093833923,
+            "half_prominence_width_nm": 3.6701299437728494,
+            "index": 211
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 66,
+          "target": {
+            "center_nm": 1029.3293293293293,
+            "reflectance": 0.6799624562263489,
+            "half_prominence_width_nm": 5.3043692217315765,
+            "index": 329
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 67,
+          "target": {
+            "center_nm": 850.1501501501501,
+            "reflectance": 0.47133898735046387,
+            "half_prominence_width_nm": 13.044702787241931,
+            "index": 150
+          },
+          "predicted": {
+            "center_nm": 853.1531531531532,
+            "reflectance": 0.6958298087120056,
+            "half_prominence_width_nm": 40.89227705577423,
+            "index": 153
+          }
+        },
+        {
+          "sample_id": 67,
+          "target": {
+            "center_nm": 902.2022022022022,
+            "reflectance": 0.1180025190114975,
+            "half_prominence_width_nm": 5.727527950419699,
+            "index": 202
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 69,
+          "target": {
+            "center_nm": 915.2152152152153,
+            "reflectance": 0.015098080039024353,
+            "half_prominence_width_nm": 4.293655825613769,
+            "index": 215
+          },
+          "predicted": {
+            "center_nm": 922.2222222222222,
+            "reflectance": 0.7985209822654724,
+            "half_prominence_width_nm": 4.540805542000726,
+            "index": 222
+          }
+        },
+        {
+          "sample_id": 69,
+          "target": {
+            "center_nm": 1042.3423423423424,
+            "reflectance": 0.8877372145652771,
+            "half_prominence_width_nm": 7.432366463489643,
+            "index": 342
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 70,
+          "target": {
+            "center_nm": 833.1331331331331,
+            "reflectance": 0.35363855957984924,
+            "half_prominence_width_nm": 3.1279645409247223,
+            "index": 133
+          },
+          "predicted": {
+            "center_nm": 841.1411411411411,
+            "reflectance": 0.806226372718811,
+            "half_prominence_width_nm": 26.088470179923434,
+            "index": 141
+          }
+        },
+        {
+          "sample_id": 70,
+          "target": {
+            "center_nm": 1015.3153153153153,
+            "reflectance": 0.44151920080184937,
+            "half_prominence_width_nm": 4.650922994710527,
+            "index": 315
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 71,
+          "target": {
+            "center_nm": 896.1961961961962,
+            "reflectance": 0.7317712306976318,
+            "half_prominence_width_nm": 68.12092165406648,
+            "index": 196
+          },
+          "predicted": {
+            "center_nm": 893.1931931931932,
+            "reflectance": 0.6878432035446167,
+            "half_prominence_width_nm": 35.12018138585995,
+            "index": 193
+          }
+        },
+        {
+          "sample_id": 72,
+          "target": {
+            "center_nm": 829.1291291291292,
+            "reflectance": 0.23632192611694336,
+            "half_prominence_width_nm": 2.712240339778532,
+            "index": 129
+          },
+          "predicted": {
+            "center_nm": 835.1351351351352,
+            "reflectance": 0.8222064971923828,
+            "half_prominence_width_nm": 19.802465212431684,
+            "index": 135
+          }
+        },
+        {
+          "sample_id": 72,
+          "target": {
+            "center_nm": 1010.3103103103103,
+            "reflectance": 0.29224658012390137,
+            "half_prominence_width_nm": 4.4737493653731235,
+            "index": 310
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 73,
+          "target": {
+            "center_nm": 882.1821821821823,
+            "reflectance": 0.5892793536186218,
+            "half_prominence_width_nm": 4.6775180472300235,
+            "index": 182
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 73,
+          "target": {
+            "center_nm": 982.2822822822823,
+            "reflectance": 0.5121435523033142,
+            "half_prominence_width_nm": 5.068109417538949,
+            "index": 282
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 75,
+          "target": {
+            "center_nm": 845.1451451451452,
+            "reflectance": 0.22503091394901276,
+            "half_prominence_width_nm": 8.535710152336037,
+            "index": 145
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 75,
+          "target": {
+            "center_nm": 946.2462462462463,
+            "reflectance": 0.22791174054145813,
+            "half_prominence_width_nm": 5.880585266088929,
+            "index": 246
+          },
+          "predicted": {
+            "center_nm": 936.2362362362362,
+            "reflectance": 0.8217315077781677,
+            "half_prominence_width_nm": 2.9266648618810223,
+            "index": 236
+          }
+        },
+        {
+          "sample_id": 76,
+          "target": {
+            "center_nm": 957.2572572572573,
+            "reflectance": 0.169608011841774,
+            "half_prominence_width_nm": 5.760733805698692,
+            "index": 257
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 76,
+          "target": {
+            "center_nm": 1075.3753753753754,
+            "reflectance": 0.3821174204349518,
+            "half_prominence_width_nm": 7.475553173475419,
+            "index": 375
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 77,
+          "target": {
+            "center_nm": 731.031031031031,
+            "reflectance": 0.16732370853424072,
+            "half_prominence_width_nm": 6.980740038730914,
+            "index": 31
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 77,
+          "target": {
+            "center_nm": 821.1211211211212,
+            "reflectance": 0.45704612135887146,
+            "half_prominence_width_nm": 6.837518676937634,
+            "index": 121
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 80,
+          "target": {
+            "center_nm": 790.0900900900901,
+            "reflectance": 0.02349436841905117,
+            "half_prominence_width_nm": 8.790493171347748,
+            "index": 90
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 80,
+          "target": {
+            "center_nm": 899.1991991991993,
+            "reflectance": 0.12645678222179413,
+            "half_prominence_width_nm": 14.893478793399481,
+            "index": 199
+          },
+          "predicted": {
+            "center_nm": 891.1911911911911,
+            "reflectance": 0.5524221658706665,
+            "half_prominence_width_nm": 37.40586443040979,
+            "index": 191
+          }
+        },
+        {
+          "sample_id": 81,
+          "target": {
+            "center_nm": 855.1551551551552,
+            "reflectance": 0.6537589430809021,
+            "half_prominence_width_nm": 5.663025848972666,
+            "index": 155
+          },
+          "predicted": {
+            "center_nm": 851.1511511511512,
+            "reflectance": 0.7762523293495178,
+            "half_prominence_width_nm": 35.637131895138396,
+            "index": 151
+          }
+        },
+        {
+          "sample_id": 81,
+          "target": {
+            "center_nm": 937.2372372372372,
+            "reflectance": 0.7644789814949036,
+            "half_prominence_width_nm": 3.5850677647382554,
+            "index": 237
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 82,
+          "target": {
+            "center_nm": 793.0930930930931,
+            "reflectance": 0.008220745250582695,
+            "half_prominence_width_nm": 8.328331302488891,
+            "index": 93
+          },
+          "predicted": {
+            "center_nm": 795.0950950950951,
+            "reflectance": 0.6062731742858887,
+            "half_prominence_width_nm": 2.284171686206605,
+            "index": 95
+          }
+        },
+        {
+          "sample_id": 82,
+          "target": {
+            "center_nm": 969.2692692692692,
+            "reflectance": 0.05018172785639763,
+            "half_prominence_width_nm": 6.080447076477185,
+            "index": 269
+          },
+          "predicted": {
+            "center_nm": 968.2682682682682,
+            "reflectance": 0.6586146950721741,
+            "half_prominence_width_nm": 2.4812361670694827,
+            "index": 268
+          }
+        },
+        {
+          "sample_id": 85,
+          "target": {
+            "center_nm": 751.0510510510511,
+            "reflectance": 0.1620934158563614,
+            "half_prominence_width_nm": 8.054055000528933,
+            "index": 51
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 85,
+          "target": {
+            "center_nm": 862.1621621621622,
+            "reflectance": 0.021006720140576363,
+            "half_prominence_width_nm": 9.240713075713302,
+            "index": 162
+          },
+          "predicted": {
+            "center_nm": 861.1611611611612,
+            "reflectance": 0.6738900542259216,
+            "half_prominence_width_nm": 4.385494246141775,
+            "index": 161
+          }
+        },
+        {
+          "sample_id": 88,
+          "target": {
+            "center_nm": 774.0740740740741,
+            "reflectance": 0.07102121412754059,
+            "half_prominence_width_nm": 8.459945489616075,
+            "index": 74
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 88,
+          "target": {
+            "center_nm": 901.2012012012012,
+            "reflectance": 0.019137417897582054,
+            "half_prominence_width_nm": 10.63631530065129,
+            "index": 201
+          },
+          "predicted": {
+            "center_nm": 893.1931931931932,
+            "reflectance": 0.6017236709594727,
+            "half_prominence_width_nm": 56.45941216065876,
+            "index": 193
+          }
+        },
+        {
+          "sample_id": 89,
+          "target": {
+            "center_nm": 737.0370370370371,
+            "reflectance": 0.08786097913980484,
+            "half_prominence_width_nm": 9.785026934504572,
+            "index": 37
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 89,
+          "target": {
+            "center_nm": 861.1611611611612,
+            "reflectance": 0.04098251834511757,
+            "half_prominence_width_nm": 8.86233066925115,
+            "index": 161
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 90,
+          "target": {
+            "center_nm": 783.0830830830831,
+            "reflectance": 0.03252191096544266,
+            "half_prominence_width_nm": 7.3267245355663135,
+            "index": 83
+          },
+          "predicted": {
+            "center_nm": 785.0850850850851,
+            "reflectance": 0.5036976933479309,
+            "half_prominence_width_nm": 1.501934593160513,
+            "index": 85
+          }
+        },
+        {
+          "sample_id": 90,
+          "target": {
+            "center_nm": 958.2582582582584,
+            "reflectance": 0.11504098027944565,
+            "half_prominence_width_nm": 7.121169157924214,
+            "index": 258
+          },
+          "predicted": {
+            "center_nm": 958.2582582582584,
+            "reflectance": 0.6650005578994751,
+            "half_prominence_width_nm": 4.498716469747251,
+            "index": 258
+          }
+        },
+        {
+          "sample_id": 91,
+          "target": {
+            "center_nm": 762.0620620620621,
+            "reflectance": 0.48311322927474976,
+            "half_prominence_width_nm": 5.894389987607951,
+            "index": 62
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 91,
+          "target": {
+            "center_nm": 881.1811811811812,
+            "reflectance": 0.3323655426502228,
+            "half_prominence_width_nm": 10.896380828593578,
+            "index": 181
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 92,
+          "target": {
+            "center_nm": 749.049049049049,
+            "reflectance": 0.0066166892647743225,
+            "half_prominence_width_nm": 10.616411329021844,
+            "index": 49
+          },
+          "predicted": {
+            "center_nm": 750.05005005005,
+            "reflectance": 0.5962903499603271,
+            "half_prominence_width_nm": 3.9311004822759514,
+            "index": 50
+          }
+        },
+        {
+          "sample_id": 92,
+          "target": {
+            "center_nm": 875.1751751751751,
+            "reflectance": 0.10792309045791626,
+            "half_prominence_width_nm": 11.221141859273871,
+            "index": 175
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 94,
+          "target": {
+            "center_nm": 786.0860860860861,
+            "reflectance": 0.18182167410850525,
+            "half_prominence_width_nm": 5.968988987660509,
+            "index": 86
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 94,
+          "target": {
+            "center_nm": 939.2392392392393,
+            "reflectance": 0.06287286430597305,
+            "half_prominence_width_nm": 5.261875210997232,
+            "index": 239
+          },
+          "predicted": {
+            "center_nm": 940.2402402402403,
+            "reflectance": 0.6715425848960876,
+            "half_prominence_width_nm": 3.522760298109347,
+            "index": 240
+          }
+        },
+        {
+          "sample_id": 95,
+          "target": {
+            "center_nm": 774.0740740740741,
+            "reflectance": 0.011220335029065609,
+            "half_prominence_width_nm": 10.021512535555416,
+            "index": 74
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 95,
+          "target": {
+            "center_nm": 897.1971971971973,
+            "reflectance": 0.021908791735768318,
+            "half_prominence_width_nm": 13.037991816459567,
+            "index": 197
+          },
+          "predicted": {
+            "center_nm": 893.1931931931932,
+            "reflectance": 0.5687097907066345,
+            "half_prominence_width_nm": 49.76042509026206,
+            "index": 193
+          }
+        },
+        {
+          "sample_id": 97,
+          "target": {
+            "center_nm": 750.05005005005,
+            "reflectance": 0.2966081202030182,
+            "half_prominence_width_nm": 7.171501552456789,
+            "index": 50
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 97,
+          "target": {
+            "center_nm": 858.1581581581581,
+            "reflectance": 0.10577977448701859,
+            "half_prominence_width_nm": 7.763176264238837,
+            "index": 158
+          },
+          "predicted": {
+            "center_nm": 861.1611611611612,
+            "reflectance": 0.7030705213546753,
+            "half_prominence_width_nm": 51.028011369513706,
+            "index": 161
+          }
+        },
+        {
+          "sample_id": 98,
+          "target": {
+            "center_nm": 872.1721721721722,
+            "reflectance": 0.1525164693593979,
+            "half_prominence_width_nm": 6.96221324234466,
+            "index": 172
+          },
+          "predicted": {
+            "center_nm": 861.1611611611612,
+            "reflectance": 0.6866326332092285,
+            "half_prominence_width_nm": 37.74491205921731,
+            "index": 161
+          }
+        },
+        {
+          "sample_id": 98,
+          "target": {
+            "center_nm": 1062.3623623623623,
+            "reflectance": 0.4833204448223114,
+            "half_prominence_width_nm": 5.904875059151209,
+            "index": 362
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 99,
+          "target": {
+            "center_nm": 887.1871871871872,
+            "reflectance": 0.4670898914337158,
+            "half_prominence_width_nm": 6.267378854284971,
+            "index": 187
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 99,
+          "target": {
+            "center_nm": 1057.3573573573574,
+            "reflectance": 0.4540981352329254,
+            "half_prominence_width_nm": 4.0448029610870435,
+            "index": 357
+          },
+          "predicted": null
+        }
+      ]
+    },
+    "val": {
+      "samples": 10,
+      "mse": 0.003677877153557918,
+      "rmse": 0.060645503984697154,
+      "mae": 0.025053559175354893,
+      "per_sample_mse": [
+        0.00910592273440842,
+        0.0007835257849133943,
+        0.004941661235397746,
+        0.0003871150847357124,
+        0.0009920073141511203,
+        0.009219473475451373,
+        0.0030156618752119305,
+        0.005835546906057026,
+        0.0014139293128960092,
+        0.0010839278123564524
+      ],
+      "target_valleys": 20,
+      "matched_valleys": 7,
+      "missing_valleys": 13,
+      "valley_window_mse": 0.034591398231112194,
+      "matched_center_mae_nm": 6.292006292006282,
+      "matched_depth_mae": 0.4145134645846805,
+      "matched_width_relative_mae": 1.1480790549977906,
+      "valley_definition": "Two strongest reference minima with prominence>=0.05; nearest unused predicted minimum with prominence>=0.02 within 15 nm. Width is half-prominence, not modal FWHM.",
+      "valley_matches": [
+        {
+          "sample_id": 3,
+          "target": {
+            "center_nm": 841.1411411411411,
+            "reflectance": 0.05850275605916977,
+            "half_prominence_width_nm": 5.846494303514305,
+            "index": 141
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 3,
+          "target": {
+            "center_nm": 941.2412412412413,
+            "reflectance": 0.12030963599681854,
+            "half_prominence_width_nm": 6.7311352624954,
+            "index": 241
+          },
+          "predicted": {
+            "center_nm": 942.2422422422422,
+            "reflectance": 0.8324093818664551,
+            "half_prominence_width_nm": 3.4424662780340896,
+            "index": 242
+          }
+        },
+        {
+          "sample_id": 19,
+          "target": {
+            "center_nm": 768.0680680680681,
+            "reflectance": 0.4747818112373352,
+            "half_prominence_width_nm": 5.140331707834434,
+            "index": 68
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 19,
+          "target": {
+            "center_nm": 870.1701701701702,
+            "reflectance": 0.6199333071708679,
+            "half_prominence_width_nm": 12.859204658032922,
+            "index": 170
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 21,
+          "target": {
+            "center_nm": 836.1361361361362,
+            "reflectance": 0.055370427668094635,
+            "half_prominence_width_nm": 4.676316069981226,
+            "index": 136
+          },
+          "predicted": {
+            "center_nm": 829.1291291291292,
+            "reflectance": 0.8113207817077637,
+            "half_prominence_width_nm": 6.464103581310496,
+            "index": 129
+          }
+        },
+        {
+          "sample_id": 21,
+          "target": {
+            "center_nm": 937.2372372372372,
+            "reflectance": 0.37102723121643066,
+            "half_prominence_width_nm": 5.524731660989119,
+            "index": 237
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 78,
+          "target": {
+            "center_nm": 780.08008008008,
+            "reflectance": 0.5544055104255676,
+            "half_prominence_width_nm": 4.752455470092286,
+            "index": 80
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 78,
+          "target": {
+            "center_nm": 884.1841841841842,
+            "reflectance": 0.6452566981315613,
+            "half_prominence_width_nm": 17.322994410851607,
+            "index": 184
+          },
+          "predicted": {
+            "center_nm": 893.1931931931932,
+            "reflectance": 0.6937335133552551,
+            "half_prominence_width_nm": 32.03837483851328,
+            "index": 193
+          }
+        },
+        {
+          "sample_id": 79,
+          "target": {
+            "center_nm": 833.1331331331331,
+            "reflectance": 0.4588779807090759,
+            "half_prominence_width_nm": 4.0653893135674934,
+            "index": 133
+          },
+          "predicted": {
+            "center_nm": 820.1201201201202,
+            "reflectance": 0.7428249716758728,
+            "half_prominence_width_nm": 21.25143098099784,
+            "index": 120
+          }
+        },
+        {
+          "sample_id": 79,
+          "target": {
+            "center_nm": 1001.3013013013014,
+            "reflectance": 0.8670845031738281,
+            "half_prominence_width_nm": 3.5015987578171917,
+            "index": 301
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 83,
+          "target": {
+            "center_nm": 858.1581581581581,
+            "reflectance": 0.12442410737276077,
+            "half_prominence_width_nm": 10.731812562614891,
+            "index": 158
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 83,
+          "target": {
+            "center_nm": 1032.3323323323325,
+            "reflectance": 0.08031156659126282,
+            "half_prominence_width_nm": 5.121114054944655,
+            "index": 332
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 84,
+          "target": {
+            "center_nm": 709.009009009009,
+            "reflectance": 0.0013269104529172182,
+            "half_prominence_width_nm": 8.150277410899548,
+            "index": 9
+          },
+          "predicted": {
+            "center_nm": 710.01001001001,
+            "reflectance": 0.1143321841955185,
+            "half_prominence_width_nm": 3.5746093683941353,
+            "index": 10
+          }
+        },
+        {
+          "sample_id": 84,
+          "target": {
+            "center_nm": 916.2162162162163,
+            "reflectance": 0.16398650407791138,
+            "half_prominence_width_nm": 7.323750295120476,
+            "index": 216
+          },
+          "predicted": {
+            "center_nm": 904.2042042042042,
+            "reflectance": 0.7488883137702942,
+            "half_prominence_width_nm": 2.3034038253665585,
+            "index": 204
+          }
+        },
+        {
+          "sample_id": 86,
+          "target": {
+            "center_nm": 849.1491491491491,
+            "reflectance": 0.313238263130188,
+            "half_prominence_width_nm": 8.67868977448029,
+            "index": 149
+          },
+          "predicted": {
+            "center_nm": 848.1481481481482,
+            "reflectance": 0.7164515256881714,
+            "half_prominence_width_nm": 1.3721420848579555,
+            "index": 148
+          }
+        },
+        {
+          "sample_id": 86,
+          "target": {
+            "center_nm": 1034.3343343343345,
+            "reflectance": 0.448840856552124,
+            "half_prominence_width_nm": 3.474751753514738,
+            "index": 334
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 87,
+          "target": {
+            "center_nm": 738.038038038038,
+            "reflectance": 0.5218841433525085,
+            "half_prominence_width_nm": 6.779018169014535,
+            "index": 38
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 87,
+          "target": {
+            "center_nm": 864.1641641641642,
+            "reflectance": 0.5336693525314331,
+            "half_prominence_width_nm": 5.30676092613362,
+            "index": 164
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 93,
+          "target": {
+            "center_nm": 910.2102102102102,
+            "reflectance": 0.6938727498054504,
+            "half_prominence_width_nm": 4.194736149645678,
+            "index": 210
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 93,
+          "target": {
+            "center_nm": 1022.3223223223224,
+            "reflectance": 0.5885257124900818,
+            "half_prominence_width_nm": 5.274110579192666,
+            "index": 322
+          },
+          "predicted": null
+        }
+      ]
+    },
+    "test": {
+      "samples": 10,
+      "mse": 0.003159062763405572,
+      "rmse": 0.05620554032660457,
+      "mae": 0.022657258296851068,
+      "per_sample_mse": [
+        0.006282215619833375,
+        0.0010792055099615619,
+        0.0025650291905462137,
+        0.0015810133477742534,
+        0.0004145683588586397,
+        0.006060757118022457,
+        0.004081589484103461,
+        0.005644514450852837,
+        0.0016536483887555561,
+        0.002228086165347364
+      ],
+      "target_valleys": 20,
+      "matched_valleys": 10,
+      "missing_valleys": 10,
+      "valley_window_mse": 0.03128028325035179,
+      "matched_center_mae_nm": 7.807807807807819,
+      "matched_depth_mae": 0.3819322261027992,
+      "matched_width_relative_mae": 1.301927371554595,
+      "valley_definition": "Two strongest reference minima with prominence>=0.05; nearest unused predicted minimum with prominence>=0.02 within 15 nm. Width is half-prominence, not modal FWHM.",
+      "valley_matches": [
+        {
+          "sample_id": 1,
+          "target": {
+            "center_nm": 951.2512512512512,
+            "reflectance": 0.15346328914165497,
+            "half_prominence_width_nm": 5.544146084589215,
+            "index": 251
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 1,
+          "target": {
+            "center_nm": 1074.3743743743744,
+            "reflectance": 0.2775510251522064,
+            "half_prominence_width_nm": 7.882648579749002,
+            "index": 374
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 11,
+          "target": {
+            "center_nm": 874.1741741741741,
+            "reflectance": 0.7014184594154358,
+            "half_prominence_width_nm": 65.45181488480137,
+            "index": 174
+          },
+          "predicted": {
+            "center_nm": 861.1611611611612,
+            "reflectance": 0.7207117676734924,
+            "half_prominence_width_nm": 34.943401807742134,
+            "index": 161
+          }
+        },
+        {
+          "sample_id": 11,
+          "target": {
+            "center_nm": 941.2412412412413,
+            "reflectance": 0.6241961121559143,
+            "half_prominence_width_nm": 3.211802813862846,
+            "index": 241
+          },
+          "predicted": {
+            "center_nm": 942.2422422422422,
+            "reflectance": 0.8161209225654602,
+            "half_prominence_width_nm": 1.5954726072548056,
+            "index": 242
+          }
+        },
+        {
+          "sample_id": 12,
+          "target": {
+            "center_nm": 890.1901901901902,
+            "reflectance": 0.46119341254234314,
+            "half_prominence_width_nm": 14.934757454184705,
+            "index": 190
+          },
+          "predicted": {
+            "center_nm": 891.1911911911911,
+            "reflectance": 0.6463702321052551,
+            "half_prominence_width_nm": 35.54449644500676,
+            "index": 191
+          }
+        },
+        {
+          "sample_id": 12,
+          "target": {
+            "center_nm": 949.2492492492493,
+            "reflectance": 0.3938745856285095,
+            "half_prominence_width_nm": 4.529162066086542,
+            "index": 249
+          },
+          "predicted": {
+            "center_nm": 940.2402402402403,
+            "reflectance": 0.6782711744308472,
+            "half_prominence_width_nm": 13.486201158217227,
+            "index": 240
+          }
+        },
+        {
+          "sample_id": 40,
+          "target": {
+            "center_nm": 829.1291291291292,
+            "reflectance": 0.4001423418521881,
+            "half_prominence_width_nm": 4.955236601203978,
+            "index": 129
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 40,
+          "target": {
+            "center_nm": 907.2072072072073,
+            "reflectance": 0.6606643199920654,
+            "half_prominence_width_nm": 4.188501709859906,
+            "index": 207
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 41,
+          "target": {
+            "center_nm": 904.2042042042042,
+            "reflectance": 0.745097815990448,
+            "half_prominence_width_nm": 3.5890806273364433,
+            "index": 204
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 41,
+          "target": {
+            "center_nm": 1013.3133133133133,
+            "reflectance": 0.8818199634552002,
+            "half_prominence_width_nm": 5.651418494886798,
+            "index": 313
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 46,
+          "target": {
+            "center_nm": 900.2002002002002,
+            "reflectance": 0.0798763558268547,
+            "half_prominence_width_nm": 11.547270685844751,
+            "index": 200
+          },
+          "predicted": {
+            "center_nm": 891.1911911911911,
+            "reflectance": 0.5956711173057556,
+            "half_prominence_width_nm": 36.05581904350686,
+            "index": 191
+          }
+        },
+        {
+          "sample_id": 46,
+          "target": {
+            "center_nm": 959.2592592592594,
+            "reflectance": 0.27026256918907166,
+            "half_prominence_width_nm": 3.9612029848858583,
+            "index": 259
+          },
+          "predicted": {
+            "center_nm": 964.2642642642643,
+            "reflectance": 0.8171126842498779,
+            "half_prominence_width_nm": 1.3356143688299653,
+            "index": 264
+          }
+        },
+        {
+          "sample_id": 48,
+          "target": {
+            "center_nm": 821.1211211211212,
+            "reflectance": 0.23678192496299744,
+            "half_prominence_width_nm": 7.558928174694302,
+            "index": 121
+          },
+          "predicted": {
+            "center_nm": 819.1191191191191,
+            "reflectance": 0.7732212543487549,
+            "half_prominence_width_nm": 1.4975300456713967,
+            "index": 119
+          }
+        },
+        {
+          "sample_id": 48,
+          "target": {
+            "center_nm": 920.2202202202202,
+            "reflectance": 0.5704160332679749,
+            "half_prominence_width_nm": 4.340848052337151,
+            "index": 220
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 68,
+          "target": {
+            "center_nm": 919.2192192192192,
+            "reflectance": 0.01434460747987032,
+            "half_prominence_width_nm": 5.080988209064117,
+            "index": 219
+          },
+          "predicted": {
+            "center_nm": 932.2322322322323,
+            "reflectance": 0.8644870519638062,
+            "half_prominence_width_nm": 3.582307532415598,
+            "index": 232
+          }
+        },
+        {
+          "sample_id": 68,
+          "target": {
+            "center_nm": 1039.3393393393394,
+            "reflectance": 0.8206274509429932,
+            "half_prominence_width_nm": 7.782628301538352,
+            "index": 339
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 74,
+          "target": {
+            "center_nm": 897.1971971971973,
+            "reflectance": 0.7304053902626038,
+            "half_prominence_width_nm": 4.518629354356335,
+            "index": 197
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 74,
+          "target": {
+            "center_nm": 1011.3113113113113,
+            "reflectance": 0.4929342269897461,
+            "half_prominence_width_nm": 5.286260293768578,
+            "index": 311
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 96,
+          "target": {
+            "center_nm": 722.022022022022,
+            "reflectance": 0.4143379032611847,
+            "half_prominence_width_nm": 7.295612126822789,
+            "index": 22
+          },
+          "predicted": {
+            "center_nm": 711.011011011011,
+            "reflectance": 0.5323265194892883,
+            "half_prominence_width_nm": 2.8199004386984825,
+            "index": 11
+          }
+        },
+        {
+          "sample_id": 96,
+          "target": {
+            "center_nm": 827.1271271271271,
+            "reflectance": 0.14932411909103394,
+            "half_prominence_width_nm": 6.427052450817655,
+            "index": 127
+          },
+          "predicted": {
+            "center_nm": 841.1411411411411,
+            "reflectance": 0.7206395864486694,
+            "half_prominence_width_nm": 33.399336746274116,
+            "index": 141
+          }
+        }
+      ]
+    }
+  },
+  "train_mean_baseline": {
+    "train": {
+      "samples": 80,
+      "mse": 0.006140774573778669,
+      "rmse": 0.07836309446275504,
+      "mae": 0.037066472741425965,
+      "per_sample_mse": [
+        0.006124153277787436,
+        0.00296742918445348,
+        0.00450952425611444,
+        0.008241395062694449,
+        0.004707863165749643,
+        0.0024990570807028076,
+        0.0031322865353829955,
+        0.0054535502536129845,
+        0.006928586968599235,
+        0.004290003561970365,
+        0.004807706282788794,
+        0.004119615509577519,
+        0.004270620945303939,
+        0.004784871112488833,
+        0.0048392086633149995,
+        0.01178209495473099,
+        0.011915934294594071,
+        0.0024703917632035526,
+        0.004265429900380767,
+        0.004198961047738237,
+        0.009653449239616013,
+        0.0050627853650250555,
+        0.0036104877983956125,
+        0.007274119970155875,
+        0.007030777263082424,
+        0.005167158347785551,
+        0.010624286062351104,
+        0.008255042810720504,
+        0.005118738697492217,
+        0.0062388192585583445,
+        0.0054713053157646714,
+        0.0031194799104314556,
+        0.001378901421045227,
+        0.007892775406231546,
+        0.004160622511959727,
+        0.001818039701379502,
+        0.003356035124370892,
+        0.007304201488242962,
+        0.0032640871808077847,
+        0.002122250557280953,
+        0.0027144671400257327,
+        0.015310537893386883,
+        0.0042100681901862625,
+        0.0020332613822278234,
+        0.003126929118185665,
+        0.006136682237981063,
+        0.002709849980262728,
+        0.0031583782616081313,
+        0.003469046554602633,
+        0.006195027514838244,
+        0.007935786831192991,
+        0.007971882857756084,
+        0.006327753715355348,
+        0.007402438165754578,
+        0.00598371339390748,
+        0.0043948745218919455,
+        0.003031890972586357,
+        0.004173924359722064,
+        0.005386985718030893,
+        0.005515747722167257,
+        0.004902376725642196,
+        0.007449929644750587,
+        0.005495249889813621,
+        0.009408696251469813,
+        0.006944879473673294,
+        0.002202231443461976,
+        0.01574302210999124,
+        0.0013937952881113878,
+        0.02421033644480597,
+        0.006038938267818586,
+        0.009733595969214954,
+        0.006551026499926446,
+        0.019928391787258103,
+        0.003294033385996366,
+        0.008481718891718937,
+        0.01406314498819269,
+        0.01192511245430411,
+        0.0038048920841354094,
+        0.004342347292753863,
+        0.003926953225696869
+      ],
+      "target_valleys": 152,
+      "matched_valleys": 28,
+      "missing_valleys": 124,
+      "valley_window_mse": 0.05394702801463028,
+      "matched_center_mae_nm": 6.36350636350636,
+      "matched_depth_mae": 0.4617025212916945,
+      "matched_width_relative_mae": 2.350409660651342,
+      "valley_definition": "Two strongest reference minima with prominence>=0.05; nearest unused predicted minimum with prominence>=0.02 within 15 nm. Width is half-prominence, not modal FWHM.",
+      "valley_matches": [
+        {
+          "sample_id": 0,
+          "target": {
+            "center_nm": 818.1181181181181,
+            "reflectance": 0.13232505321502686,
+            "half_prominence_width_nm": 5.255752717462883,
+            "index": 118
+          },
+          "predicted": {
+            "center_nm": 829.1291291291292,
+            "reflectance": 0.7332990169525146,
+            "half_prominence_width_nm": 21.640467475851892,
+            "index": 129
+          }
+        },
+        {
+          "sample_id": 0,
+          "target": {
+            "center_nm": 999.2992992992993,
+            "reflectance": 0.6772516965866089,
+            "half_prominence_width_nm": 3.968314303116699,
+            "index": 299
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 2,
+          "target": {
+            "center_nm": 760.0600600600601,
+            "reflectance": 0.35238194465637207,
+            "half_prominence_width_nm": 6.259374072402238,
+            "index": 60
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 2,
+          "target": {
+            "center_nm": 865.1651651651651,
+            "reflectance": 0.38126564025878906,
+            "half_prominence_width_nm": 10.682220356900984,
+            "index": 165
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 4,
+          "target": {
+            "center_nm": 935.2352352352352,
+            "reflectance": 0.3451847732067108,
+            "half_prominence_width_nm": 5.200429124911125,
+            "index": 235
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 4,
+          "target": {
+            "center_nm": 1048.3483483483483,
+            "reflectance": 0.3454810678958893,
+            "half_prominence_width_nm": 6.57094734199768,
+            "index": 348
+          },
+          "predicted": {
+            "center_nm": 1049.3493493493493,
+            "reflectance": 0.9171188473701477,
+            "half_prominence_width_nm": 11.450056982543401,
+            "index": 349
+          }
+        },
+        {
+          "sample_id": 5,
+          "target": {
+            "center_nm": 769.0690690690691,
+            "reflectance": 0.1208944171667099,
+            "half_prominence_width_nm": 7.891615212982742,
+            "index": 69
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 5,
+          "target": {
+            "center_nm": 879.1791791791792,
+            "reflectance": 0.04257142171263695,
+            "half_prominence_width_nm": 9.638048959889716,
+            "index": 179
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 6,
+          "target": {
+            "center_nm": 927.2272272272272,
+            "reflectance": 0.5608740448951721,
+            "half_prominence_width_nm": 4.839206876886806,
+            "index": 227
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 6,
+          "target": {
+            "center_nm": 1048.3483483483483,
+            "reflectance": 0.2092820107936859,
+            "half_prominence_width_nm": 6.355891843324116,
+            "index": 348
+          },
+          "predicted": {
+            "center_nm": 1049.3493493493493,
+            "reflectance": 0.9171188473701477,
+            "half_prominence_width_nm": 11.450056982543401,
+            "index": 349
+          }
+        },
+        {
+          "sample_id": 8,
+          "target": {
+            "center_nm": 874.1741741741741,
+            "reflectance": 0.5506771206855774,
+            "half_prominence_width_nm": 7.838751838504891,
+            "index": 174
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 8,
+          "target": {
+            "center_nm": 1026.3263263263264,
+            "reflectance": 0.7338072061538696,
+            "half_prominence_width_nm": 5.910420096924213,
+            "index": 326
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 9,
+          "target": {
+            "center_nm": 828.1281281281281,
+            "reflectance": 0.1353970468044281,
+            "half_prominence_width_nm": 3.6218178439985422,
+            "index": 128
+          },
+          "predicted": {
+            "center_nm": 829.1291291291292,
+            "reflectance": 0.7332990169525146,
+            "half_prominence_width_nm": 21.640467475851892,
+            "index": 129
+          }
+        },
+        {
+          "sample_id": 9,
+          "target": {
+            "center_nm": 1015.3153153153153,
+            "reflectance": 0.6203984618186951,
+            "half_prominence_width_nm": 4.671797856844023,
+            "index": 315
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 10,
+          "target": {
+            "center_nm": 859.1591591591591,
+            "reflectance": 0.8730939626693726,
+            "half_prominence_width_nm": 4.494378683678178,
+            "index": 159
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 10,
+          "target": {
+            "center_nm": 970.2702702702703,
+            "reflectance": 0.32031387090682983,
+            "half_prominence_width_nm": 3.79134316684042,
+            "index": 270
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 13,
+          "target": {
+            "center_nm": 826.1261261261261,
+            "reflectance": 0.3164308965206146,
+            "half_prominence_width_nm": 3.265086670915707,
+            "index": 126
+          },
+          "predicted": {
+            "center_nm": 829.1291291291292,
+            "reflectance": 0.7332990169525146,
+            "half_prominence_width_nm": 21.640467475851892,
+            "index": 129
+          }
+        },
+        {
+          "sample_id": 13,
+          "target": {
+            "center_nm": 916.2162162162163,
+            "reflectance": 0.4611320197582245,
+            "half_prominence_width_nm": 4.966611759420857,
+            "index": 216
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 14,
+          "target": {
+            "center_nm": 728.0280280280281,
+            "reflectance": 0.03519313037395477,
+            "half_prominence_width_nm": 10.177697995761605,
+            "index": 28
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 14,
+          "target": {
+            "center_nm": 837.1371371371372,
+            "reflectance": 0.15387730300426483,
+            "half_prominence_width_nm": 7.894966440819303,
+            "index": 137
+          },
+          "predicted": {
+            "center_nm": 829.1291291291292,
+            "reflectance": 0.7332990169525146,
+            "half_prominence_width_nm": 21.640467475851892,
+            "index": 129
+          }
+        },
+        {
+          "sample_id": 15,
+          "target": {
+            "center_nm": 763.063063063063,
+            "reflectance": 0.3678356409072876,
+            "half_prominence_width_nm": 6.457399128037991,
+            "index": 63
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 15,
+          "target": {
+            "center_nm": 886.1861861861862,
+            "reflectance": 0.2713315486907959,
+            "half_prominence_width_nm": 9.56162482652178,
+            "index": 186
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 16,
+          "target": {
+            "center_nm": 723.023023023023,
+            "reflectance": 0.01436151284724474,
+            "half_prominence_width_nm": 10.980683581478615,
+            "index": 23
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 16,
+          "target": {
+            "center_nm": 836.1361361361362,
+            "reflectance": 0.2987789809703827,
+            "half_prominence_width_nm": 9.49098413575473,
+            "index": 136
+          },
+          "predicted": {
+            "center_nm": 829.1291291291292,
+            "reflectance": 0.7332990169525146,
+            "half_prominence_width_nm": 21.640467475851892,
+            "index": 129
+          }
+        },
+        {
+          "sample_id": 17,
+          "target": {
+            "center_nm": 816.1161161161161,
+            "reflectance": 0.2134789079427719,
+            "half_prominence_width_nm": 4.534274788445714,
+            "index": 116
+          },
+          "predicted": {
+            "center_nm": 829.1291291291292,
+            "reflectance": 0.7332990169525146,
+            "half_prominence_width_nm": 21.640467475851892,
+            "index": 129
+          }
+        },
+        {
+          "sample_id": 18,
+          "target": {
+            "center_nm": 826.1261261261261,
+            "reflectance": 0.09717144072055817,
+            "half_prominence_width_nm": 4.145321645113654,
+            "index": 126
+          },
+          "predicted": {
+            "center_nm": 829.1291291291292,
+            "reflectance": 0.7332990169525146,
+            "half_prominence_width_nm": 21.640467475851892,
+            "index": 129
+          }
+        },
+        {
+          "sample_id": 20,
+          "target": {
+            "center_nm": 762.0620620620621,
+            "reflectance": 0.011190712451934814,
+            "half_prominence_width_nm": 9.543536243440485,
+            "index": 62
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 20,
+          "target": {
+            "center_nm": 870.1701701701702,
+            "reflectance": 0.026706470176577568,
+            "half_prominence_width_nm": 13.117187229554702,
+            "index": 170
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 22,
+          "target": {
+            "center_nm": 901.2012012012012,
+            "reflectance": 0.07741276919841766,
+            "half_prominence_width_nm": 11.723536001423668,
+            "index": 201
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 22,
+          "target": {
+            "center_nm": 1072.3723723723724,
+            "reflectance": 0.3233899176120758,
+            "half_prominence_width_nm": 7.840303832593008,
+            "index": 372
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 23,
+          "target": {
+            "center_nm": 858.1581581581581,
+            "reflectance": 0.6656168103218079,
+            "half_prominence_width_nm": 10.135260849911674,
+            "index": 158
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 23,
+          "target": {
+            "center_nm": 943.2432432432432,
+            "reflectance": 0.7715414762496948,
+            "half_prominence_width_nm": 3.405146399487535,
+            "index": 243
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 24,
+          "target": {
+            "center_nm": 879.1791791791792,
+            "reflectance": 0.5942432880401611,
+            "half_prominence_width_nm": 4.020038181517293,
+            "index": 179
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 24,
+          "target": {
+            "center_nm": 981.2812812812813,
+            "reflectance": 0.6507725715637207,
+            "half_prominence_width_nm": 5.020193728710865,
+            "index": 281
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 25,
+          "target": {
+            "center_nm": 911.2112112112112,
+            "reflectance": 0.7312120199203491,
+            "half_prominence_width_nm": 69.5971158558657,
+            "index": 211
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 26,
+          "target": {
+            "center_nm": 731.031031031031,
+            "reflectance": 0.02522920072078705,
+            "half_prominence_width_nm": 10.82850708483761,
+            "index": 31
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 26,
+          "target": {
+            "center_nm": 960.2602602602603,
+            "reflectance": 0.17845754325389862,
+            "half_prominence_width_nm": 3.7918990398806045,
+            "index": 260
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 27,
+          "target": {
+            "center_nm": 717.017017017017,
+            "reflectance": 0.0849982425570488,
+            "half_prominence_width_nm": 10.652387599994995,
+            "index": 17
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 27,
+          "target": {
+            "center_nm": 841.1411411411411,
+            "reflectance": 0.14228782057762146,
+            "half_prominence_width_nm": 8.116480807465678,
+            "index": 141
+          },
+          "predicted": {
+            "center_nm": 829.1291291291292,
+            "reflectance": 0.7332990169525146,
+            "half_prominence_width_nm": 21.640467475851892,
+            "index": 129
+          }
+        },
+        {
+          "sample_id": 28,
+          "target": {
+            "center_nm": 731.031031031031,
+            "reflectance": 0.50459885597229,
+            "half_prominence_width_nm": 6.39553958894237,
+            "index": 31
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 28,
+          "target": {
+            "center_nm": 850.1501501501501,
+            "reflectance": 0.39561212062835693,
+            "half_prominence_width_nm": 6.9847414493279985,
+            "index": 150
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 29,
+          "target": {
+            "center_nm": 851.1511511511512,
+            "reflectance": 0.46122732758522034,
+            "half_prominence_width_nm": 3.543039690459068,
+            "index": 151
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 29,
+          "target": {
+            "center_nm": 1020.3203203203203,
+            "reflectance": 0.02436814457178116,
+            "half_prominence_width_nm": 4.272691552922652,
+            "index": 320
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 30,
+          "target": {
+            "center_nm": 740.04004004004,
+            "reflectance": 0.15001384913921356,
+            "half_prominence_width_nm": 8.638748883829066,
+            "index": 40
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 30,
+          "target": {
+            "center_nm": 853.1531531531532,
+            "reflectance": 0.0030569236259907484,
+            "half_prominence_width_nm": 9.509982996396161,
+            "index": 153
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 31,
+          "target": {
+            "center_nm": 932.2322322322323,
+            "reflectance": 0.4674828350543976,
+            "half_prominence_width_nm": 5.198028710722724,
+            "index": 232
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 31,
+          "target": {
+            "center_nm": 1050.3503503503503,
+            "reflectance": 0.17430782318115234,
+            "half_prominence_width_nm": 6.7705070161539425,
+            "index": 350
+          },
+          "predicted": {
+            "center_nm": 1049.3493493493493,
+            "reflectance": 0.9171188473701477,
+            "half_prominence_width_nm": 11.450056982543401,
+            "index": 349
+          }
+        },
+        {
+          "sample_id": 32,
+          "target": {
+            "center_nm": 946.2462462462463,
+            "reflectance": 0.057386405766010284,
+            "half_prominence_width_nm": 7.323755112295771,
+            "index": 246
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 32,
+          "target": {
+            "center_nm": 1074.3743743743744,
+            "reflectance": 0.6182218790054321,
+            "half_prominence_width_nm": 9.042532742012781,
+            "index": 374
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 33,
+          "target": {
+            "center_nm": 732.032032032032,
+            "reflectance": 0.05250437185168266,
+            "half_prominence_width_nm": 8.880007593801906,
+            "index": 32
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 33,
+          "target": {
+            "center_nm": 966.2662662662663,
+            "reflectance": 0.4004528224468231,
+            "half_prominence_width_nm": 3.325382430555578,
+            "index": 266
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 34,
+          "target": {
+            "center_nm": 817.1171171171171,
+            "reflectance": 0.10197810083627701,
+            "half_prominence_width_nm": 5.996422628841515,
+            "index": 117
+          },
+          "predicted": {
+            "center_nm": 829.1291291291292,
+            "reflectance": 0.7332990169525146,
+            "half_prominence_width_nm": 21.640467475851892,
+            "index": 129
+          }
+        },
+        {
+          "sample_id": 34,
+          "target": {
+            "center_nm": 910.2102102102102,
+            "reflectance": 0.40842166543006897,
+            "half_prominence_width_nm": 3.7898734933686455,
+            "index": 210
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 35,
+          "target": {
+            "center_nm": 807.1071071071071,
+            "reflectance": 0.05276564881205559,
+            "half_prominence_width_nm": 5.706380603466187,
+            "index": 107
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 36,
+          "target": {
+            "center_nm": 835.1351351351352,
+            "reflectance": 0.057419586926698685,
+            "half_prominence_width_nm": 5.519582249166547,
+            "index": 135
+          },
+          "predicted": {
+            "center_nm": 829.1291291291292,
+            "reflectance": 0.7332990169525146,
+            "half_prominence_width_nm": 21.640467475851892,
+            "index": 129
+          }
+        },
+        {
+          "sample_id": 36,
+          "target": {
+            "center_nm": 1006.3063063063064,
+            "reflectance": 0.8284286260604858,
+            "half_prominence_width_nm": 3.0879014855922833,
+            "index": 306
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 37,
+          "target": {
+            "center_nm": 755.055055055055,
+            "reflectance": 0.47553810477256775,
+            "half_prominence_width_nm": 6.264520731424227,
+            "index": 55
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 37,
+          "target": {
+            "center_nm": 875.1751751751751,
+            "reflectance": 0.3699806034564972,
+            "half_prominence_width_nm": 8.108263784192673,
+            "index": 175
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 38,
+          "target": {
+            "center_nm": 715.015015015015,
+            "reflectance": 0.16265390813350677,
+            "half_prominence_width_nm": 1.202813172574679,
+            "index": 15
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 38,
+          "target": {
+            "center_nm": 873.1731731731732,
+            "reflectance": 0.5834293365478516,
+            "half_prominence_width_nm": 4.936632654593382,
+            "index": 173
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 39,
+          "target": {
+            "center_nm": 852.1521521521522,
+            "reflectance": 0.08311757445335388,
+            "half_prominence_width_nm": 9.981462012317024,
+            "index": 152
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 39,
+          "target": {
+            "center_nm": 1027.3273273273273,
+            "reflectance": 0.30193665623664856,
+            "half_prominence_width_nm": 4.976796599724821,
+            "index": 327
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 42,
+          "target": {
+            "center_nm": 845.1451451451452,
+            "reflectance": 0.6172760725021362,
+            "half_prominence_width_nm": 5.7028916682309045,
+            "index": 145
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 42,
+          "target": {
+            "center_nm": 933.2332332332332,
+            "reflectance": 0.17569643259048462,
+            "half_prominence_width_nm": 4.389668082112166,
+            "index": 233
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 43,
+          "target": {
+            "center_nm": 931.2312312312313,
+            "reflectance": 0.44107893109321594,
+            "half_prominence_width_nm": 3.985904332738187,
+            "index": 231
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 43,
+          "target": {
+            "center_nm": 1051.3513513513512,
+            "reflectance": 0.7673360109329224,
+            "half_prominence_width_nm": 6.627206021878692,
+            "index": 351
+          },
+          "predicted": {
+            "center_nm": 1049.3493493493493,
+            "reflectance": 0.9171188473701477,
+            "half_prominence_width_nm": 11.450056982543401,
+            "index": 349
+          }
+        },
+        {
+          "sample_id": 44,
+          "target": {
+            "center_nm": 731.031031031031,
+            "reflectance": 0.4571610689163208,
+            "half_prominence_width_nm": 6.5982563668619605,
+            "index": 31
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 44,
+          "target": {
+            "center_nm": 836.1361361361362,
+            "reflectance": 0.2892506718635559,
+            "half_prominence_width_nm": 7.524407225008986,
+            "index": 136
+          },
+          "predicted": {
+            "center_nm": 829.1291291291292,
+            "reflectance": 0.7332990169525146,
+            "half_prominence_width_nm": 21.640467475851892,
+            "index": 129
+          }
+        },
+        {
+          "sample_id": 45,
+          "target": {
+            "center_nm": 829.1291291291292,
+            "reflectance": 0.019107406958937645,
+            "half_prominence_width_nm": 4.6417248161582165,
+            "index": 129
+          },
+          "predicted": {
+            "center_nm": 829.1291291291292,
+            "reflectance": 0.7332990169525146,
+            "half_prominence_width_nm": 21.640467475851892,
+            "index": 129
+          }
+        },
+        {
+          "sample_id": 45,
+          "target": {
+            "center_nm": 1005.3053053053054,
+            "reflectance": 0.11213275790214539,
+            "half_prominence_width_nm": 5.071461476013269,
+            "index": 305
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 47,
+          "target": {
+            "center_nm": 799.0990990990991,
+            "reflectance": 0.6356570720672607,
+            "half_prominence_width_nm": 45.384964135275254,
+            "index": 99
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 47,
+          "target": {
+            "center_nm": 1038.3383383383384,
+            "reflectance": 0.6692044734954834,
+            "half_prominence_width_nm": 4.919051615978333,
+            "index": 338
+          },
+          "predicted": {
+            "center_nm": 1049.3493493493493,
+            "reflectance": 0.9171188473701477,
+            "half_prominence_width_nm": 11.450056982543401,
+            "index": 349
+          }
+        },
+        {
+          "sample_id": 49,
+          "target": {
+            "center_nm": 835.1351351351352,
+            "reflectance": 0.7139990329742432,
+            "half_prominence_width_nm": 42.11882000699552,
+            "index": 135
+          },
+          "predicted": {
+            "center_nm": 829.1291291291292,
+            "reflectance": 0.7332990169525146,
+            "half_prominence_width_nm": 21.640467475851892,
+            "index": 129
+          }
+        },
+        {
+          "sample_id": 49,
+          "target": {
+            "center_nm": 893.1931931931932,
+            "reflectance": 0.7236053943634033,
+            "half_prominence_width_nm": 3.1962825350634603,
+            "index": 193
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 50,
+          "target": {
+            "center_nm": 709.009009009009,
+            "reflectance": 0.10503964126110077,
+            "half_prominence_width_nm": 2.966315584872632,
+            "index": 9
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 50,
+          "target": {
+            "center_nm": 856.1561561561562,
+            "reflectance": 0.18427376449108124,
+            "half_prominence_width_nm": 3.792516057252328,
+            "index": 156
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 51,
+          "target": {
+            "center_nm": 783.0830830830831,
+            "reflectance": 0.25797227025032043,
+            "half_prominence_width_nm": 5.298056676536248,
+            "index": 83
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 51,
+          "target": {
+            "center_nm": 942.2422422422422,
+            "reflectance": 0.22785383462905884,
+            "half_prominence_width_nm": 9.452281449444513,
+            "index": 242
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 52,
+          "target": {
+            "center_nm": 750.05005005005,
+            "reflectance": 0.2339811474084854,
+            "half_prominence_width_nm": 5.527833204941658,
+            "index": 50
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 52,
+          "target": {
+            "center_nm": 907.2072072072073,
+            "reflectance": 0.6608760356903076,
+            "half_prominence_width_nm": 46.16552114022841,
+            "index": 207
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 53,
+          "target": {
+            "center_nm": 811.1111111111111,
+            "reflectance": 0.6700601577758789,
+            "half_prominence_width_nm": 4.699640425945063,
+            "index": 111
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 53,
+          "target": {
+            "center_nm": 903.2032032032032,
+            "reflectance": 0.5547536015510559,
+            "half_prominence_width_nm": 3.3075536379899404,
+            "index": 203
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 54,
+          "target": {
+            "center_nm": 763.063063063063,
+            "reflectance": 0.5321135520935059,
+            "half_prominence_width_nm": 4.814405173072942,
+            "index": 63
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 54,
+          "target": {
+            "center_nm": 862.1621621621622,
+            "reflectance": 0.6116718053817749,
+            "half_prominence_width_nm": 7.665542371867559,
+            "index": 162
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 55,
+          "target": {
+            "center_nm": 897.1971971971973,
+            "reflectance": 0.6059693098068237,
+            "half_prominence_width_nm": 4.9091396043870645,
+            "index": 197
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 55,
+          "target": {
+            "center_nm": 996.2962962962963,
+            "reflectance": 0.644797682762146,
+            "half_prominence_width_nm": 5.477003897669306,
+            "index": 296
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 56,
+          "target": {
+            "center_nm": 746.0460460460461,
+            "reflectance": 0.6197897791862488,
+            "half_prominence_width_nm": 5.477523844058851,
+            "index": 46
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 56,
+          "target": {
+            "center_nm": 864.1641641641642,
+            "reflectance": 0.5705284476280212,
+            "half_prominence_width_nm": 6.098061695280762,
+            "index": 164
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 57,
+          "target": {
+            "center_nm": 734.034034034034,
+            "reflectance": 0.5145947933197021,
+            "half_prominence_width_nm": 6.155672258817049,
+            "index": 34
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 57,
+          "target": {
+            "center_nm": 841.1411411411411,
+            "reflectance": 0.34702080488204956,
+            "half_prominence_width_nm": 7.63867646701226,
+            "index": 141
+          },
+          "predicted": {
+            "center_nm": 829.1291291291292,
+            "reflectance": 0.7332990169525146,
+            "half_prominence_width_nm": 21.640467475851892,
+            "index": 129
+          }
+        },
+        {
+          "sample_id": 58,
+          "target": {
+            "center_nm": 909.2092092092092,
+            "reflectance": 0.7496638298034668,
+            "half_prominence_width_nm": 70.40648510797496,
+            "index": 209
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 59,
+          "target": {
+            "center_nm": 767.0670670670671,
+            "reflectance": 0.2332260012626648,
+            "half_prominence_width_nm": 9.498356019497237,
+            "index": 67
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 59,
+          "target": {
+            "center_nm": 882.1821821821823,
+            "reflectance": 0.03916599974036217,
+            "half_prominence_width_nm": 7.699057105794509,
+            "index": 182
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 60,
+          "target": {
+            "center_nm": 829.1291291291292,
+            "reflectance": 0.2184157818555832,
+            "half_prominence_width_nm": 8.202235941545382,
+            "index": 129
+          },
+          "predicted": {
+            "center_nm": 829.1291291291292,
+            "reflectance": 0.7332990169525146,
+            "half_prominence_width_nm": 21.640467475851892,
+            "index": 129
+          }
+        },
+        {
+          "sample_id": 60,
+          "target": {
+            "center_nm": 1019.3193193193193,
+            "reflectance": 0.22562402486801147,
+            "half_prominence_width_nm": 6.508217577968367,
+            "index": 319
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 61,
+          "target": {
+            "center_nm": 767.0670670670671,
+            "reflectance": 0.21086594462394714,
+            "half_prominence_width_nm": 6.8397116296305285,
+            "index": 67
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 61,
+          "target": {
+            "center_nm": 888.1881881881882,
+            "reflectance": 0.15628834068775177,
+            "half_prominence_width_nm": 12.930272612488011,
+            "index": 188
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 62,
+          "target": {
+            "center_nm": 736.0360360360361,
+            "reflectance": 0.0030672699213027954,
+            "half_prominence_width_nm": 10.84603553246825,
+            "index": 36
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 62,
+          "target": {
+            "center_nm": 842.1421421421421,
+            "reflectance": 0.17652523517608643,
+            "half_prominence_width_nm": 10.034715999693276,
+            "index": 142
+          },
+          "predicted": {
+            "center_nm": 829.1291291291292,
+            "reflectance": 0.7332990169525146,
+            "half_prominence_width_nm": 21.640467475851892,
+            "index": 129
+          }
+        },
+        {
+          "sample_id": 63,
+          "target": {
+            "center_nm": 790.0900900900901,
+            "reflectance": 0.37853196263313293,
+            "half_prominence_width_nm": 6.603252240499387,
+            "index": 90
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 63,
+          "target": {
+            "center_nm": 907.2072072072073,
+            "reflectance": 0.3431791067123413,
+            "half_prominence_width_nm": 13.854301166767527,
+            "index": 207
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 64,
+          "target": {
+            "center_nm": 878.1781781781782,
+            "reflectance": 0.1031414046883583,
+            "half_prominence_width_nm": 7.100652213343324,
+            "index": 178
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 64,
+          "target": {
+            "center_nm": 1066.3663663663665,
+            "reflectance": 0.31834134459495544,
+            "half_prominence_width_nm": 5.366944531338959,
+            "index": 366
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 65,
+          "target": {
+            "center_nm": 928.2282282282283,
+            "reflectance": 0.15496385097503662,
+            "half_prominence_width_nm": 4.4755963634044065,
+            "index": 228
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 65,
+          "target": {
+            "center_nm": 1041.3413413413414,
+            "reflectance": 0.807842493057251,
+            "half_prominence_width_nm": 7.314019976985492,
+            "index": 341
+          },
+          "predicted": {
+            "center_nm": 1049.3493493493493,
+            "reflectance": 0.9171188473701477,
+            "half_prominence_width_nm": 11.450056982543401,
+            "index": 349
+          }
+        },
+        {
+          "sample_id": 66,
+          "target": {
+            "center_nm": 911.2112112112112,
+            "reflectance": 0.6522383093833923,
+            "half_prominence_width_nm": 3.6701299437728494,
+            "index": 211
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 66,
+          "target": {
+            "center_nm": 1029.3293293293293,
+            "reflectance": 0.6799624562263489,
+            "half_prominence_width_nm": 5.3043692217315765,
+            "index": 329
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 67,
+          "target": {
+            "center_nm": 850.1501501501501,
+            "reflectance": 0.47133898735046387,
+            "half_prominence_width_nm": 13.044702787241931,
+            "index": 150
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 67,
+          "target": {
+            "center_nm": 902.2022022022022,
+            "reflectance": 0.1180025190114975,
+            "half_prominence_width_nm": 5.727527950419699,
+            "index": 202
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 69,
+          "target": {
+            "center_nm": 915.2152152152153,
+            "reflectance": 0.015098080039024353,
+            "half_prominence_width_nm": 4.293655825613769,
+            "index": 215
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 69,
+          "target": {
+            "center_nm": 1042.3423423423424,
+            "reflectance": 0.8877372145652771,
+            "half_prominence_width_nm": 7.432366463489643,
+            "index": 342
+          },
+          "predicted": {
+            "center_nm": 1049.3493493493493,
+            "reflectance": 0.9171188473701477,
+            "half_prominence_width_nm": 11.450056982543401,
+            "index": 349
+          }
+        },
+        {
+          "sample_id": 70,
+          "target": {
+            "center_nm": 833.1331331331331,
+            "reflectance": 0.35363855957984924,
+            "half_prominence_width_nm": 3.1279645409247223,
+            "index": 133
+          },
+          "predicted": {
+            "center_nm": 829.1291291291292,
+            "reflectance": 0.7332990169525146,
+            "half_prominence_width_nm": 21.640467475851892,
+            "index": 129
+          }
+        },
+        {
+          "sample_id": 70,
+          "target": {
+            "center_nm": 1015.3153153153153,
+            "reflectance": 0.44151920080184937,
+            "half_prominence_width_nm": 4.650922994710527,
+            "index": 315
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 71,
+          "target": {
+            "center_nm": 896.1961961961962,
+            "reflectance": 0.7317712306976318,
+            "half_prominence_width_nm": 68.12092165406648,
+            "index": 196
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 72,
+          "target": {
+            "center_nm": 829.1291291291292,
+            "reflectance": 0.23632192611694336,
+            "half_prominence_width_nm": 2.712240339778532,
+            "index": 129
+          },
+          "predicted": {
+            "center_nm": 829.1291291291292,
+            "reflectance": 0.7332990169525146,
+            "half_prominence_width_nm": 21.640467475851892,
+            "index": 129
+          }
+        },
+        {
+          "sample_id": 72,
+          "target": {
+            "center_nm": 1010.3103103103103,
+            "reflectance": 0.29224658012390137,
+            "half_prominence_width_nm": 4.4737493653731235,
+            "index": 310
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 73,
+          "target": {
+            "center_nm": 882.1821821821823,
+            "reflectance": 0.5892793536186218,
+            "half_prominence_width_nm": 4.6775180472300235,
+            "index": 182
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 73,
+          "target": {
+            "center_nm": 982.2822822822823,
+            "reflectance": 0.5121435523033142,
+            "half_prominence_width_nm": 5.068109417538949,
+            "index": 282
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 75,
+          "target": {
+            "center_nm": 845.1451451451452,
+            "reflectance": 0.22503091394901276,
+            "half_prominence_width_nm": 8.535710152336037,
+            "index": 145
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 75,
+          "target": {
+            "center_nm": 946.2462462462463,
+            "reflectance": 0.22791174054145813,
+            "half_prominence_width_nm": 5.880585266088929,
+            "index": 246
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 76,
+          "target": {
+            "center_nm": 957.2572572572573,
+            "reflectance": 0.169608011841774,
+            "half_prominence_width_nm": 5.760733805698692,
+            "index": 257
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 76,
+          "target": {
+            "center_nm": 1075.3753753753754,
+            "reflectance": 0.3821174204349518,
+            "half_prominence_width_nm": 7.475553173475419,
+            "index": 375
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 77,
+          "target": {
+            "center_nm": 731.031031031031,
+            "reflectance": 0.16732370853424072,
+            "half_prominence_width_nm": 6.980740038730914,
+            "index": 31
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 77,
+          "target": {
+            "center_nm": 821.1211211211212,
+            "reflectance": 0.45704612135887146,
+            "half_prominence_width_nm": 6.837518676937634,
+            "index": 121
+          },
+          "predicted": {
+            "center_nm": 829.1291291291292,
+            "reflectance": 0.7332990169525146,
+            "half_prominence_width_nm": 21.640467475851892,
+            "index": 129
+          }
+        },
+        {
+          "sample_id": 80,
+          "target": {
+            "center_nm": 790.0900900900901,
+            "reflectance": 0.02349436841905117,
+            "half_prominence_width_nm": 8.790493171347748,
+            "index": 90
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 80,
+          "target": {
+            "center_nm": 899.1991991991993,
+            "reflectance": 0.12645678222179413,
+            "half_prominence_width_nm": 14.893478793399481,
+            "index": 199
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 81,
+          "target": {
+            "center_nm": 855.1551551551552,
+            "reflectance": 0.6537589430809021,
+            "half_prominence_width_nm": 5.663025848972666,
+            "index": 155
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 81,
+          "target": {
+            "center_nm": 937.2372372372372,
+            "reflectance": 0.7644789814949036,
+            "half_prominence_width_nm": 3.5850677647382554,
+            "index": 237
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 82,
+          "target": {
+            "center_nm": 793.0930930930931,
+            "reflectance": 0.008220745250582695,
+            "half_prominence_width_nm": 8.328331302488891,
+            "index": 93
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 82,
+          "target": {
+            "center_nm": 969.2692692692692,
+            "reflectance": 0.05018172785639763,
+            "half_prominence_width_nm": 6.080447076477185,
+            "index": 269
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 85,
+          "target": {
+            "center_nm": 751.0510510510511,
+            "reflectance": 0.1620934158563614,
+            "half_prominence_width_nm": 8.054055000528933,
+            "index": 51
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 85,
+          "target": {
+            "center_nm": 862.1621621621622,
+            "reflectance": 0.021006720140576363,
+            "half_prominence_width_nm": 9.240713075713302,
+            "index": 162
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 88,
+          "target": {
+            "center_nm": 774.0740740740741,
+            "reflectance": 0.07102121412754059,
+            "half_prominence_width_nm": 8.459945489616075,
+            "index": 74
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 88,
+          "target": {
+            "center_nm": 901.2012012012012,
+            "reflectance": 0.019137417897582054,
+            "half_prominence_width_nm": 10.63631530065129,
+            "index": 201
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 89,
+          "target": {
+            "center_nm": 737.0370370370371,
+            "reflectance": 0.08786097913980484,
+            "half_prominence_width_nm": 9.785026934504572,
+            "index": 37
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 89,
+          "target": {
+            "center_nm": 861.1611611611612,
+            "reflectance": 0.04098251834511757,
+            "half_prominence_width_nm": 8.86233066925115,
+            "index": 161
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 90,
+          "target": {
+            "center_nm": 783.0830830830831,
+            "reflectance": 0.03252191096544266,
+            "half_prominence_width_nm": 7.3267245355663135,
+            "index": 83
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 90,
+          "target": {
+            "center_nm": 958.2582582582584,
+            "reflectance": 0.11504098027944565,
+            "half_prominence_width_nm": 7.121169157924214,
+            "index": 258
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 91,
+          "target": {
+            "center_nm": 762.0620620620621,
+            "reflectance": 0.48311322927474976,
+            "half_prominence_width_nm": 5.894389987607951,
+            "index": 62
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 91,
+          "target": {
+            "center_nm": 881.1811811811812,
+            "reflectance": 0.3323655426502228,
+            "half_prominence_width_nm": 10.896380828593578,
+            "index": 181
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 92,
+          "target": {
+            "center_nm": 749.049049049049,
+            "reflectance": 0.0066166892647743225,
+            "half_prominence_width_nm": 10.616411329021844,
+            "index": 49
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 92,
+          "target": {
+            "center_nm": 875.1751751751751,
+            "reflectance": 0.10792309045791626,
+            "half_prominence_width_nm": 11.221141859273871,
+            "index": 175
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 94,
+          "target": {
+            "center_nm": 786.0860860860861,
+            "reflectance": 0.18182167410850525,
+            "half_prominence_width_nm": 5.968988987660509,
+            "index": 86
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 94,
+          "target": {
+            "center_nm": 939.2392392392393,
+            "reflectance": 0.06287286430597305,
+            "half_prominence_width_nm": 5.261875210997232,
+            "index": 239
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 95,
+          "target": {
+            "center_nm": 774.0740740740741,
+            "reflectance": 0.011220335029065609,
+            "half_prominence_width_nm": 10.021512535555416,
+            "index": 74
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 95,
+          "target": {
+            "center_nm": 897.1971971971973,
+            "reflectance": 0.021908791735768318,
+            "half_prominence_width_nm": 13.037991816459567,
+            "index": 197
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 97,
+          "target": {
+            "center_nm": 750.05005005005,
+            "reflectance": 0.2966081202030182,
+            "half_prominence_width_nm": 7.171501552456789,
+            "index": 50
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 97,
+          "target": {
+            "center_nm": 858.1581581581581,
+            "reflectance": 0.10577977448701859,
+            "half_prominence_width_nm": 7.763176264238837,
+            "index": 158
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 98,
+          "target": {
+            "center_nm": 872.1721721721722,
+            "reflectance": 0.1525164693593979,
+            "half_prominence_width_nm": 6.96221324234466,
+            "index": 172
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 98,
+          "target": {
+            "center_nm": 1062.3623623623623,
+            "reflectance": 0.4833204448223114,
+            "half_prominence_width_nm": 5.904875059151209,
+            "index": 362
+          },
+          "predicted": {
+            "center_nm": 1049.3493493493493,
+            "reflectance": 0.9171188473701477,
+            "half_prominence_width_nm": 11.450056982543401,
+            "index": 349
+          }
+        },
+        {
+          "sample_id": 99,
+          "target": {
+            "center_nm": 887.1871871871872,
+            "reflectance": 0.4670898914337158,
+            "half_prominence_width_nm": 6.267378854284971,
+            "index": 187
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 99,
+          "target": {
+            "center_nm": 1057.3573573573574,
+            "reflectance": 0.4540981352329254,
+            "half_prominence_width_nm": 4.0448029610870435,
+            "index": 357
+          },
+          "predicted": {
+            "center_nm": 1049.3493493493493,
+            "reflectance": 0.9171188473701477,
+            "half_prominence_width_nm": 11.450056982543401,
+            "index": 349
+          }
+        }
+      ]
+    },
+    "val": {
+      "samples": 10,
+      "mse": 0.006026608273928251,
+      "rmse": 0.07763123259312743,
+      "mae": 0.03952299384124344,
+      "per_sample_mse": [
+        0.010629689666676875,
+        0.003855646090260141,
+        0.006862521293370245,
+        0.004565285178434083,
+        0.003835857775544863,
+        0.00944813057223448,
+        0.008427284149405686,
+        0.0056235922925295,
+        0.0031780977122408734,
+        0.0038399780085857627
+      ],
+      "target_valleys": 20,
+      "matched_valleys": 3,
+      "missing_valleys": 17,
+      "valley_window_mse": 0.038588624337179155,
+      "matched_center_mae_nm": 7.674341007674305,
+      "matched_depth_mae": 0.5423819621404012,
+      "matched_width_relative_mae": 3.5507386788161726,
+      "valley_definition": "Two strongest reference minima with prominence>=0.05; nearest unused predicted minimum with prominence>=0.02 within 15 nm. Width is half-prominence, not modal FWHM.",
+      "valley_matches": [
+        {
+          "sample_id": 3,
+          "target": {
+            "center_nm": 841.1411411411411,
+            "reflectance": 0.05850275605916977,
+            "half_prominence_width_nm": 5.846494303514305,
+            "index": 141
+          },
+          "predicted": {
+            "center_nm": 829.1291291291292,
+            "reflectance": 0.7332990169525146,
+            "half_prominence_width_nm": 21.640467475851892,
+            "index": 129
+          }
+        },
+        {
+          "sample_id": 3,
+          "target": {
+            "center_nm": 941.2412412412413,
+            "reflectance": 0.12030963599681854,
+            "half_prominence_width_nm": 6.7311352624954,
+            "index": 241
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 19,
+          "target": {
+            "center_nm": 768.0680680680681,
+            "reflectance": 0.4747818112373352,
+            "half_prominence_width_nm": 5.140331707834434,
+            "index": 68
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 19,
+          "target": {
+            "center_nm": 870.1701701701702,
+            "reflectance": 0.6199333071708679,
+            "half_prominence_width_nm": 12.859204658032922,
+            "index": 170
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 21,
+          "target": {
+            "center_nm": 836.1361361361362,
+            "reflectance": 0.055370427668094635,
+            "half_prominence_width_nm": 4.676316069981226,
+            "index": 136
+          },
+          "predicted": {
+            "center_nm": 829.1291291291292,
+            "reflectance": 0.7332990169525146,
+            "half_prominence_width_nm": 21.640467475851892,
+            "index": 129
+          }
+        },
+        {
+          "sample_id": 21,
+          "target": {
+            "center_nm": 937.2372372372372,
+            "reflectance": 0.37102723121643066,
+            "half_prominence_width_nm": 5.524731660989119,
+            "index": 237
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 78,
+          "target": {
+            "center_nm": 780.08008008008,
+            "reflectance": 0.5544055104255676,
+            "half_prominence_width_nm": 4.752455470092286,
+            "index": 80
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 78,
+          "target": {
+            "center_nm": 884.1841841841842,
+            "reflectance": 0.6452566981315613,
+            "half_prominence_width_nm": 17.322994410851607,
+            "index": 184
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 79,
+          "target": {
+            "center_nm": 833.1331331331331,
+            "reflectance": 0.4588779807090759,
+            "half_prominence_width_nm": 4.0653893135674934,
+            "index": 133
+          },
+          "predicted": {
+            "center_nm": 829.1291291291292,
+            "reflectance": 0.7332990169525146,
+            "half_prominence_width_nm": 21.640467475851892,
+            "index": 129
+          }
+        },
+        {
+          "sample_id": 79,
+          "target": {
+            "center_nm": 1001.3013013013014,
+            "reflectance": 0.8670845031738281,
+            "half_prominence_width_nm": 3.5015987578171917,
+            "index": 301
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 83,
+          "target": {
+            "center_nm": 858.1581581581581,
+            "reflectance": 0.12442410737276077,
+            "half_prominence_width_nm": 10.731812562614891,
+            "index": 158
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 83,
+          "target": {
+            "center_nm": 1032.3323323323325,
+            "reflectance": 0.08031156659126282,
+            "half_prominence_width_nm": 5.121114054944655,
+            "index": 332
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 84,
+          "target": {
+            "center_nm": 709.009009009009,
+            "reflectance": 0.0013269104529172182,
+            "half_prominence_width_nm": 8.150277410899548,
+            "index": 9
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 84,
+          "target": {
+            "center_nm": 916.2162162162163,
+            "reflectance": 0.16398650407791138,
+            "half_prominence_width_nm": 7.323750295120476,
+            "index": 216
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 86,
+          "target": {
+            "center_nm": 849.1491491491491,
+            "reflectance": 0.313238263130188,
+            "half_prominence_width_nm": 8.67868977448029,
+            "index": 149
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 86,
+          "target": {
+            "center_nm": 1034.3343343343345,
+            "reflectance": 0.448840856552124,
+            "half_prominence_width_nm": 3.474751753514738,
+            "index": 334
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 87,
+          "target": {
+            "center_nm": 738.038038038038,
+            "reflectance": 0.5218841433525085,
+            "half_prominence_width_nm": 6.779018169014535,
+            "index": 38
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 87,
+          "target": {
+            "center_nm": 864.1641641641642,
+            "reflectance": 0.5336693525314331,
+            "half_prominence_width_nm": 5.30676092613362,
+            "index": 164
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 93,
+          "target": {
+            "center_nm": 910.2102102102102,
+            "reflectance": 0.6938727498054504,
+            "half_prominence_width_nm": 4.194736149645678,
+            "index": 210
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 93,
+          "target": {
+            "center_nm": 1022.3223223223224,
+            "reflectance": 0.5885257124900818,
+            "half_prominence_width_nm": 5.274110579192666,
+            "index": 322
+          },
+          "predicted": null
+        }
+      ]
+    },
+    "test": {
+      "samples": 10,
+      "mse": 0.005565413822150296,
+      "rmse": 0.07460170120144913,
+      "mae": 0.03404878132576123,
+      "per_sample_mse": [
+        0.007339149465342603,
+        0.002470476753264041,
+        0.007857076407078294,
+        0.003165590214757045,
+        0.0029193334068517885,
+        0.01263417911789601,
+        0.0051039287470707,
+        0.005690202400496763,
+        0.004087846015152966,
+        0.0043863556935927585
+      ],
+      "target_valleys": 20,
+      "matched_valleys": 4,
+      "missing_valleys": 16,
+      "valley_window_mse": 0.03911497845861236,
+      "matched_center_mae_nm": 5.005005005004989,
+      "matched_depth_mae": 0.37753501534461975,
+      "matched_width_relative_mae": 2.017104087915296,
+      "valley_definition": "Two strongest reference minima with prominence>=0.05; nearest unused predicted minimum with prominence>=0.02 within 15 nm. Width is half-prominence, not modal FWHM.",
+      "valley_matches": [
+        {
+          "sample_id": 1,
+          "target": {
+            "center_nm": 951.2512512512512,
+            "reflectance": 0.15346328914165497,
+            "half_prominence_width_nm": 5.544146084589215,
+            "index": 251
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 1,
+          "target": {
+            "center_nm": 1074.3743743743744,
+            "reflectance": 0.2775510251522064,
+            "half_prominence_width_nm": 7.882648579749002,
+            "index": 374
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 11,
+          "target": {
+            "center_nm": 874.1741741741741,
+            "reflectance": 0.7014184594154358,
+            "half_prominence_width_nm": 65.45181488480137,
+            "index": 174
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 11,
+          "target": {
+            "center_nm": 941.2412412412413,
+            "reflectance": 0.6241961121559143,
+            "half_prominence_width_nm": 3.211802813862846,
+            "index": 241
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 12,
+          "target": {
+            "center_nm": 890.1901901901902,
+            "reflectance": 0.46119341254234314,
+            "half_prominence_width_nm": 14.934757454184705,
+            "index": 190
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 12,
+          "target": {
+            "center_nm": 949.2492492492493,
+            "reflectance": 0.3938745856285095,
+            "half_prominence_width_nm": 4.529162066086542,
+            "index": 249
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 40,
+          "target": {
+            "center_nm": 829.1291291291292,
+            "reflectance": 0.4001423418521881,
+            "half_prominence_width_nm": 4.955236601203978,
+            "index": 129
+          },
+          "predicted": {
+            "center_nm": 829.1291291291292,
+            "reflectance": 0.7332990169525146,
+            "half_prominence_width_nm": 21.640467475851892,
+            "index": 129
+          }
+        },
+        {
+          "sample_id": 40,
+          "target": {
+            "center_nm": 907.2072072072073,
+            "reflectance": 0.6606643199920654,
+            "half_prominence_width_nm": 4.188501709859906,
+            "index": 207
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 41,
+          "target": {
+            "center_nm": 904.2042042042042,
+            "reflectance": 0.745097815990448,
+            "half_prominence_width_nm": 3.5890806273364433,
+            "index": 204
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 41,
+          "target": {
+            "center_nm": 1013.3133133133133,
+            "reflectance": 0.8818199634552002,
+            "half_prominence_width_nm": 5.651418494886798,
+            "index": 313
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 46,
+          "target": {
+            "center_nm": 900.2002002002002,
+            "reflectance": 0.0798763558268547,
+            "half_prominence_width_nm": 11.547270685844751,
+            "index": 200
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 46,
+          "target": {
+            "center_nm": 959.2592592592594,
+            "reflectance": 0.27026256918907166,
+            "half_prominence_width_nm": 3.9612029848858583,
+            "index": 259
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 48,
+          "target": {
+            "center_nm": 821.1211211211212,
+            "reflectance": 0.23678192496299744,
+            "half_prominence_width_nm": 7.558928174694302,
+            "index": 121
+          },
+          "predicted": {
+            "center_nm": 829.1291291291292,
+            "reflectance": 0.7332990169525146,
+            "half_prominence_width_nm": 21.640467475851892,
+            "index": 129
+          }
+        },
+        {
+          "sample_id": 48,
+          "target": {
+            "center_nm": 920.2202202202202,
+            "reflectance": 0.5704160332679749,
+            "half_prominence_width_nm": 4.340848052337151,
+            "index": 220
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 68,
+          "target": {
+            "center_nm": 919.2192192192192,
+            "reflectance": 0.01434460747987032,
+            "half_prominence_width_nm": 5.080988209064117,
+            "index": 219
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 68,
+          "target": {
+            "center_nm": 1039.3393393393394,
+            "reflectance": 0.8206274509429932,
+            "half_prominence_width_nm": 7.782628301538352,
+            "index": 339
+          },
+          "predicted": {
+            "center_nm": 1049.3493493493493,
+            "reflectance": 0.9171188473701477,
+            "half_prominence_width_nm": 11.450056982543401,
+            "index": 349
+          }
+        },
+        {
+          "sample_id": 74,
+          "target": {
+            "center_nm": 897.1971971971973,
+            "reflectance": 0.7304053902626038,
+            "half_prominence_width_nm": 4.518629354356335,
+            "index": 197
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 74,
+          "target": {
+            "center_nm": 1011.3113113113113,
+            "reflectance": 0.4929342269897461,
+            "half_prominence_width_nm": 5.286260293768578,
+            "index": 311
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 96,
+          "target": {
+            "center_nm": 722.022022022022,
+            "reflectance": 0.4143379032611847,
+            "half_prominence_width_nm": 7.295612126822789,
+            "index": 22
+          },
+          "predicted": null
+        },
+        {
+          "sample_id": 96,
+          "target": {
+            "center_nm": 827.1271271271271,
+            "reflectance": 0.14932411909103394,
+            "half_prominence_width_nm": 6.427052450817655,
+            "index": 127
+          },
+          "predicted": {
+            "center_nm": 829.1291291291292,
+            "reflectance": 0.7332990169525146,
+            "half_prominence_width_nm": 21.640467475851892,
+            "index": 129
+          }
+        }
+      ]
+    }
+  },
+  "best_checkpoint_sha256": "171a095ff88824016732dc12fe67471dfffe4ed550f277359fda08b75e9b55d8"
+}

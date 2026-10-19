@@ -1,0 +1,24 @@
+{
+  "dataset": "../examples/au100_metal8_100/dataset.npz",
+  "output_dir": "../runs/forward_au100_pilot",
+  "allow_validation_data": true,
+  "seed": 42,
+  "device": "auto",
+  "epochs": 150,
+  "batch_size": 8,
+  "learning_rate": 0.0003,
+  "weight_decay": 0.001,
+  "early_stopping_patience": 25,
+  "min_delta": 0.00001,
+  "mixed_precision": true,
+  "model": {
+    "spectrum_points": 1000,
+    "patch_count": 100,
+    "embedding_dim": 128,
+    "attention_heads": 4,
+    "head_dim": 64,
+    "encoder_layers": 3,
+    "mlp_dim": 256,
+    "dropout": 0.1
+  }
+}

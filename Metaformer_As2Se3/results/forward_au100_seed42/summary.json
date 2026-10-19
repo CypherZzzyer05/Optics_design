@@ -1,0 +1,31 @@
+{
+  "task": "geometry_to_reflectance_only",
+  "dataset_sha256": "591ca0f4d9f4fc0be9803f3a566f72eee1ee3ac871ad9d03472b93a732aed0e3",
+  "quality_level": "pipeline_validation",
+  "model_parameters": 598026,
+  "epochs_completed": 73,
+  "best_epoch": 48,
+  "optimizer_steps": 730,
+  "training_seconds": 8.46799830000009,
+  "test_mse": 0.003159062763405572,
+  "test_mae": 0.022657258296851068,
+  "baseline_test_mse": 0.005565413822150296,
+  "mse_improvement_percent": 43.23759446543703,
+  "matched_valleys": 10,
+  "target_valleys": 20,
+  "matched_center_mae_nm": 7.807807807807819,
+  "matched_depth_mae": 0.3819322261027992,
+  "cpu_checkpoint_max_abs_difference": 2.682209014892578e-07,
+  "cpu_forward_latency_ms": {
+    "median": 2.9143999997813808,
+    "mean": 2.9811800000015864,
+    "p95": 4.836324999928365,
+    "batch_size": 1,
+    "threads": 4,
+    "warmup": 10,
+    "repeats": 100,
+    "scope": "FP32 neural forward only; excludes loading, normalization, CSV and FDTD"
+  },
+  "model_checkpoint_sha256": "171a095ff88824016732dc12fe67471dfffe4ed550f277359fda08b75e9b55d8",
+  "limitation": "Single seed, 10 test samples; narrow valleys remain substantially inaccurate. Not a reliable design surrogate yet."
+}
