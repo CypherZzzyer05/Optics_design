@@ -1,0 +1,97 @@
+{
+  "purpose": "Inverse-only trained artifact integrity",
+  "files": {
+    "metaformer.py": {
+      "sha256": "f9a7934a28c4009192d36f01a48f357300be3eb5596a122fa0b60dca615e629f",
+      "bytes": 16623
+    },
+    "train_metaformer.py": {
+      "sha256": "7fc7ab9b3ba5a36ebe84ab0b65097562ebd4360c8dcaa753811e0fd82b7e5fd9",
+      "bytes": 29897
+    },
+    "spectrum_dataset.py": {
+      "sha256": "a9e2a091ec6de72cfe886efd15633783e2588afa1b267b4dd0c34f6dda1583f3",
+      "bytes": 7358
+    },
+    "optimize_inverse.py": {
+      "sha256": "c1395b4f7316f2b945d091d5ca7dedad60a48a99d60712a1d6bdbe544d50f39d",
+      "bytes": 11069
+    },
+    "predict_inverse.py": {
+      "sha256": "2bb7c40a986c48e0e97db874955c866f47a1c6b56aa8a9bc1d25e458406388e4",
+      "bytes": 3856
+    },
+    "plot_inverse_optimization.py": {
+      "sha256": "218f1ed4f7aaa69c8e5a4247b33c2f88b8a717a56da70f3836fc15d663978c7e",
+      "bytes": 4008
+    },
+    "verify_inverse_results.py": {
+      "sha256": "746977562c88de75f7da74c6332f281071579ea8ade7be6779d44b72d37f51bb",
+      "bytes": 5375
+    },
+    "models/inverse_au100_selected.pt": {
+      "sha256": "8de7d4ea5511a50be44e786499c50e5e4e21d0cd2a76bf770c06948f332e70c1",
+      "bytes": 16140716
+    },
+    "examples/au100_metal8_100/dataset.npz": {
+      "sha256": "591ca0f4d9f4fc0be9803f3a566f72eee1ee3ac871ad9d03472b93a732aed0e3",
+      "bytes": 1101300
+    },
+    "configs/train_inverse_selected.json": {
+      "sha256": "f02cd5c027d1d209d8759d27ef519a8d2e95ba1854adbb18a08b468289348514",
+      "bytes": 935
+    },
+    "docs/inverse_optimization.md": {
+      "sha256": "d261c28d6458f31bbff09cc28237e1dc228e9211bdfb1b19d2a3c905f57b50f6",
+      "bytes": 7395
+    },
+    "results/inverse_au100_ablation/checkpoint.json": {
+      "sha256": "11e049d0c65b025ca800cbaece00304d04ae2118729026d962c08802f5b5b9ac",
+      "bytes": 261
+    },
+    "results/inverse_au100_ablation/comparison.png": {
+      "sha256": "5f93bc4b56ddc83aed2e8bd96b204e1feae1d4dfefecaf47ed2e93cdc3aae783",
+      "bytes": 199013
+    },
+    "results/inverse_au100_ablation/comparison.svg": {
+      "sha256": "0fd88cc7ff7eb351603b18eb60f64a27b17567d49686f6ff601857f5d8881970",
+      "bytes": 148235
+    },
+    "results/inverse_au100_ablation/histories.json": {
+      "sha256": "2d61c46664bf0f6a5d6406eb03112e188d2ab7f1c8fe1ee28d5cebb98c487255",
+      "bytes": 63795
+    },
+    "results/inverse_au100_ablation/summary.json": {
+      "sha256": "e92b2a060871d0c326072a0e1b532aa441fd5d7ecc2f8271eef7a980eeba85b3",
+      "bytes": 35509
+    },
+    "results/inverse_au100_ablation/test_baseline_seed42.csv": {
+      "sha256": "4b3885320d648f044df9160ff28b06d077a2cf21ed8701114b5fd48dbea2769a",
+      "bytes": 3974
+    },
+    "results/inverse_au100_ablation/test_baseline_seed43.csv": {
+      "sha256": "546354f77c596b7e231b9e94070d772aa01787d7139eb14bd6b88441722c09ad",
+      "bytes": 3969
+    },
+    "results/inverse_au100_ablation/test_baseline_seed44.csv": {
+      "sha256": "dac4ff221eeda2bd76319a410ebd7de7927c76877d7268cd253dd8b73a6debed",
+      "bytes": 3966
+    },
+    "results/inverse_au100_ablation/test_baseline_standard_seed42.csv": {
+      "sha256": "170f13398247805ea4f3e8720db75f311371ba0d05288b142a8d0454f781b7d3",
+      "bytes": 3976
+    },
+    "results/inverse_au100_ablation/test_baseline_standard_seed43.csv": {
+      "sha256": "a426ddf3baabe84f510be52436b2a81e1841dae81901f8f0768fcc792975324c",
+      "bytes": 3972
+    },
+    "results/inverse_au100_ablation/test_baseline_standard_seed44.csv": {
+      "sha256": "6eefa87c61ca24b8e8685d65adc4fe07d38863256e7884fc4d38d24ee1c53693",
+      "bytes": 3974
+    },
+    "results/inverse_au100_ablation/verification.json": {
+      "sha256": "0ae10550048401986501d1219a8715f40a651f32dc1b45d4bbc4971abf5b338d",
+      "bytes": 552
+    }
+  }
+}

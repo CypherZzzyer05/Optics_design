@@ -1,0 +1,7 @@
+{
+  "path": "models/inverse_au100_selected.pt",
+  "sha256": "8de7d4ea5511a50be44e786499c50e5e4e21d0cd2a76bf770c06948f332e70c1",
+  "variant": "baseline_standard",
+  "seed": 44,
+  "rule": "Selected variant seed with median validation MSE; never chosen by test"
+}

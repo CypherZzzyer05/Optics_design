@@ -1,5 +1,11 @@
 # As₂Se₃ 四聚体：七参数近红外逆向设计
 
+## 本分支：逆向模型优化（2026-10-19）
+
+本分支 `codex/metaformer-inverse-optimization` 在独立工作树中优化七参数逆向模型。15 次配置/种子对照后，采用“原有编码器 + 训练集输入归一化”，参数仍为 3,998,087；三个种子的平均测试结构 MSE 从 0.064138 降到 0.046654。角度仍未可靠辨识，100 条历史数据仅支持探索性流程验证。正向模型暂缓。
+
+使用方式、全部对照和限制见 [逆向优化说明](docs/inverse_optimization.md)。PyCharm 中可直接运行 `07 View inverse comparison` 查看结果，或 `08 Predict inverse geometry` 使用已训练权重。以下内容包含先前分支的历史记录。
+
 由原 Metaformer 项目建立的独立项目，原 `D:\projects\LumOpt_test` 未修改。开发仓库为 `D:\projects\Metaformer_As2Se3`，代码编辑在 Git worktree `D:\projects\Metaformer_As2Se3_dev`、分支 `codex/as2se3-metal-quadrants` 中进行。
 
 目标波段 **700–1700 nm**。四个 As₂Se₃ 方柱位于有限厚 SiO₂ 基板上，Au 或 Ag 膜位于基板底部。七个输出按 `[P, L, H, dX, dY, theta_odd_deg, theta_even_deg]` 排列；前五项为 nm，后两项为 deg。第一/第三象限共享奇数角，第二/第四象限共享偶数角，各柱绕自身中心旋转。两个角独立；`+δ/−δ` 是可选扫描路径。

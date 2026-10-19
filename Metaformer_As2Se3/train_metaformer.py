@@ -45,6 +45,8 @@ class TrainingConfig:
     lr_factor: float = 0.5
     min_learning_rate: float = 1e-6
     mixed_precision: bool = True
+    optimizer: str = 'adamw'
+    validation_only: bool = False
     model: MetaformerConfig = field(default_factory=MetaformerConfig)
 
     def __post_init__(self):
@@ -63,8 +65,10 @@ class TrainingConfig:
             raise ValueError('Invalid learning-rate schedule')
         if self.device not in ('auto', 'cpu', 'cuda'):
             raise ValueError('device must be auto, cpu or cuda')
-        if not isinstance(self.allow_validation_data, bool) or not isinstance(self.mixed_precision, bool):
+        if not all(isinstance(v, bool) for v in (self.allow_validation_data, self.mixed_precision, self.validation_only)):
             raise ValueError('Data permission and mixed_precision must be booleans')
+        if self.optimizer not in ('adam', 'adamw'):
+            raise ValueError('optimizer must be adam or adamw')
         if self.model.spectrum_points != 1000 or self.model.geometry_dim not in (5, 6, 7):
             raise ValueError('FDTD dataset requires 1000 inputs and five or six outputs')
         if self.model.geometry_dim == 6 and self.model.angle_symmetry != 'square_mirror':
@@ -92,6 +96,9 @@ def load_training_config(path=DEFAULT_CONFIG):
 def matching_training_config(saved, current):
     """Compare plain-model metadata; reject ResNet checkpoint resumption."""
     saved, current = dict(saved), dict(current)
+    for values in (saved, current):
+        values.setdefault('optimizer', 'adamw')
+        values.setdefault('validation_only', False)
     try:
         saved['model'] = asdict(MetaformerConfig.from_dict(saved['model']))
         current['model'] = asdict(MetaformerConfig.from_dict(current['model']))
@@ -342,6 +349,8 @@ def _train_locked(config, datasets, device, dataset_hash, run_dir, resume):
         torch.cuda.manual_seed_all(config.seed)
     torch.backends.cudnn.benchmark = False
     torch.backends.cudnn.deterministic = True
+    torch.backends.cuda.matmul.allow_tf32 = False
+    torch.backends.cudnn.allow_tf32 = False
     use_amp = device.type == 'cuda' and config.mixed_precision
     generator = torch.Generator().manual_seed(config.seed)
     # 训练集每轮打乱，验证集保持固定顺序；num_workers=0 适配当前 Windows 入口。
@@ -351,7 +360,9 @@ def _train_locked(config, datasets, device, dataset_hash, run_dir, resume):
     # 验证集用于调学习率和选最佳模型；测试集在这一阶段不参与训练或模型选择。
     val_loader = DataLoader(datasets['val'], batch_size=config.batch_size, shuffle=False, num_workers=0)
     model = InverseMetaformer(config.model).to(device)
-    optimizer = torch.optim.AdamW(model.parameters(), lr=config.learning_rate, weight_decay=config.weight_decay)
+    model.fit_input_normalization(datasets['train'].spectra)
+    optimizer_class = torch.optim.Adam if config.optimizer == 'adam' else torch.optim.AdamW
+    optimizer = optimizer_class(model.parameters(), lr=config.learning_rate, weight_decay=config.weight_decay)
     # 验证误差连续多轮不改善时降低学习率，帮助后续优化使用更小的步长。
     scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer, mode='min', factor=config.lr_factor,
                    patience=config.lr_patience, min_lr=config.min_learning_rate)
@@ -372,6 +383,11 @@ def _train_locked(config, datasets, device, dataset_hash, run_dir, resume):
         'pytorch_version': str(torch.__version__), 'model_parameters': sum(p.numel() for p in model.parameters()),
         'mixed_precision_active': use_amp, 'quality_level': datasets['train'].metadata['config']['quality_level'],
         'selection': 'Lowest validation normalized MSE; test unused until final evaluation',
+        'source_sha256': {name: checksum(Path(__file__).parent / name)
+                          for name in ('metaformer.py', 'train_metaformer.py', 'spectrum_dataset.py')},
+        'input_normalization_fit_sample_ids': datasets['train'].sample_ids.tolist()
+             if config.model.input_normalization == 'train_standard' else [],
+        'tf32_enabled': False,
     }
     history, best_loss, best_epoch, bad_epochs, total_steps, previous_seconds = [], math.inf, 0, 0, 0, 0.0
     if resume:
@@ -450,6 +466,8 @@ def _train_locked(config, datasets, device, dataset_hash, run_dir, resume):
         train_mean[5] = .5 + (datasets['train'].labels[:, 5] - .5).abs().mean().item()
     scores, baselines = {}, {}
     for split, dataset in datasets.items():
+        if config.validation_only and split == 'test':
+            continue
         # 到这里才评估测试集，并导出各划分的逐样本预测和物理单位误差。
         loader = DataLoader(dataset, batch_size=config.batch_size, shuffle=False, num_workers=0)
         _, prediction, target = evaluate(model, loader, device)
@@ -466,14 +484,15 @@ def _train_locked(config, datasets, device, dataset_hash, run_dir, resume):
               'metrics': scores, 'train_mean_baseline': baselines,
               'best_checkpoint': str(run_dir / 'best.pt'), 'best_checkpoint_sha256': checksum(run_dir / 'best.pt')}
     atomic_json(run_dir / 'metrics.json', report)
-    from plot_training import plot_training
-    # 保存静态训练曲线，show=False 不在训练结束时强制弹出绘图窗口。
-    plot_training(run_dir, show=False)
+    if not config.validation_only:
+        from plot_training import plot_training
+        plot_training(run_dir, show=False)
+    evaluated_split = 'val' if config.validation_only else 'test'
     atomic_json(run_dir / 'status.json', {'state': 'completed', 'epochs_completed': len(history),
-                'best_epoch': best_epoch, 'test_mse': scores['test']['normalized_mse'], 'time': utc_now()})
+                'best_epoch': best_epoch, evaluated_split + '_mse': scores[evaluated_split]['normalized_mse'], 'time': utc_now()})
     atomic_json(latest, {'run_dir': str(run_dir), 'state': 'completed', 'dataset': str(config.dataset)})
-    LOG.info('Finished. Best epoch %d; test MSE=%.6f; train-mean baseline=%.6f', best_epoch,
-             scores['test']['normalized_mse'], baselines['test']['normalized_mse'])
+    LOG.info('Finished. Best epoch %d; %s MSE=%.6f; train-mean baseline=%.6f', best_epoch,
+             evaluated_split, scores[evaluated_split]['normalized_mse'], baselines[evaluated_split]['normalized_mse'])
     LOG.info('Best checkpoint: %s', run_dir / 'best.pt')
     return run_dir, report
 

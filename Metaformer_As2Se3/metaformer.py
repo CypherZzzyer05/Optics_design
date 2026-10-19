@@ -31,6 +31,10 @@ class MetaformerConfig:
     geometry_dim: int = 5         # 兼容旧五参数；新项目配置为7：五长度+奇/偶象限角。
     spectral_frontend: str = "linear"  # 直接对原始光谱分块；不添加卷积特征前端。
     angle_symmetry: str = "none"  # 七参数用square_periodic；旧六参数用square_mirror。
+    activation: str = "gelu"
+    norm_order: str = "pre"
+    input_normalization: str = "none"
+    normalization_floor: float = 0.02  # Reflectance units; fixed before validation trials.
 
     def __post_init__(self) -> None:
         # 要求点数能被 token 数整除，防止分块时漏掉末尾的光谱点。
@@ -43,6 +47,12 @@ class MetaformerConfig:
             raise ValueError("All network dimensions must be positive")
         if not 0 <= self.dropout < 1:
             raise ValueError("dropout must be in [0, 1)")
+        if self.activation not in ("gelu", "relu") or self.norm_order not in ("pre", "post"):
+            raise ValueError("Use gelu/relu activation and pre/post normalization")
+        if self.input_normalization not in ("none", "train_standard"):
+            raise ValueError("Unknown input normalization")
+        if not 0 < self.normalization_floor <= 1:
+            raise ValueError("normalization_floor must be in (0, 1]")
         if self.spectral_frontend != "linear":
             raise ValueError("The ResNet frontend has been removed; use spectral_frontend='linear' and start a new run")
         if self.angle_symmetry not in ("none", "square_mirror", "square_periodic"):
@@ -112,6 +122,13 @@ class MultiHeadSelfAttention(nn.Module):
         query, key, value = qkv.permute(2, 0, 3, 1, 4).unbind(0)
         # QK^T / sqrt(64)：每个头都比较全部 100×100 对 token，没有因果掩码。
         # 矩阵第 i 行、第 j 列表示 query token i 与 key token j 的匹配分数。
+        if not return_attention:
+            attended = F.scaled_dot_product_attention(
+                query, key, value,
+                dropout_p=self.attention_dropout.p if self.training else 0.0,
+            )
+            attended = attended.transpose(1, 2).reshape(batch, patches, -1)
+            return self.output_dropout(self.output(attended))
         weights = (query @ key.transpose(-2, -1)) * (self.head_dim ** -0.5)
         # 对 key 轴做 Softmax；每个 query 对全部 key 的权重之和为 1。
         # 这些权重随输入重新计算；训练更新的是 qkv/output 的投影参数等网络参数。
@@ -131,6 +148,7 @@ class EncoderBlock(nn.Module):
     def __init__(self, config: MetaformerConfig) -> None:
         super().__init__()
         dim = config.embedding_dim
+        self.norm_order = config.norm_order
         # Pre-LayerNorm：先归一化特征，再计算子层；每个子层之后都有残差路径。
         self.attention_norm = nn.LayerNorm(dim)
         self.attention = MultiHeadSelfAttention(
@@ -141,19 +159,24 @@ class EncoderBlock(nn.Module):
         # token 之间的信息交互发生在注意力子层，MLP 沿最后的特征轴处理。
         self.mlp = nn.Sequential(
             nn.Linear(dim, config.mlp_dim),
-            nn.GELU(),
+            nn.ReLU() if config.activation == "relu" else nn.GELU(),
             nn.Dropout(config.dropout),
             nn.Linear(config.mlp_dim, dim),
             nn.Dropout(config.dropout),
         )
 
     def forward(self, tokens: Tensor, return_attention: bool = False):
+        attention_input = self.attention_norm(tokens) if self.norm_order == "pre" else tokens
         if return_attention:
-            update, weights = self.attention(self.attention_norm(tokens), True)
+            update, weights = self.attention(attention_input, True)
         else:
-            update = self.attention(self.attention_norm(tokens))
+            update = self.attention(attention_input)
         # 第一条残差：保留原 token 表示，同时叠加跨波长的信息交互结果。
         tokens = tokens + update
+        if self.norm_order == "post":
+            tokens = self.attention_norm(tokens)
+            tokens = self.mlp_norm(tokens + self.mlp(tokens))
+            return (tokens, weights) if return_attention else tokens
         # 第二条残差：在已更新的 token 上加入 MLP 的非线性特征变换。
         tokens = tokens + self.mlp(self.mlp_norm(tokens))
         return (tokens, weights) if return_attention else tokens
@@ -172,6 +195,10 @@ class InverseMetaformer(nn.Module):
         super().__init__()
         self.config = config or MetaformerConfig()
         c = self.config
+        if c.input_normalization == "train_standard":
+            self.register_buffer("spectrum_mean", torch.zeros(c.spectrum_points))
+            self.register_buffer("spectrum_scale", torch.ones(c.spectrum_points))
+            self.register_buffer("normalization_fitted", torch.tensor(False))
         # Non-overlapping shared projection: each raw 10-point patch -> 128 features.
         self.patch_embedding = nn.Conv1d(
             1, c.embedding_dim, kernel_size=c.patch_size, stride=c.patch_size
@@ -184,10 +211,25 @@ class InverseMetaformer(nn.Module):
         # nm/deg 单位还原见 SpectrumGeometryDataset.denormalize()。
         self.regressor = nn.Sequential(
             nn.Linear(c.embedding_dim, c.mlp_dim),
-            nn.GELU(),
+            nn.ReLU() if c.activation == "relu" else nn.GELU(),
             nn.Linear(c.mlp_dim, c.geometry_dim),
             nn.Sigmoid(),
         )
+
+    @torch.no_grad()
+    def fit_input_normalization(self, training_spectra: Tensor) -> None:
+        """Fit only on the training split; buffers travel with the checkpoint."""
+        if self.config.input_normalization == "none":
+            return
+        values = torch.as_tensor(training_spectra, dtype=self.spectrum_mean.dtype,
+                                 device=self.spectrum_mean.device)
+        if values.ndim != 2 or values.shape[1] != self.config.spectrum_points or len(values) < 2:
+            raise ValueError("Normalization requires at least two complete training spectra")
+        if not torch.isfinite(values).all():
+            raise ValueError("Nonfinite training spectra")
+        self.spectrum_mean.copy_(values.mean(dim=0))
+        self.spectrum_scale.copy_(values.std(dim=0, unbiased=False).clamp_min(self.config.normalization_floor))
+        self.normalization_fitted.fill_(True)
 
     def forward(self, spectrum: Tensor, return_attention: bool = False):
         # 同时接受 [B,1000] 和 [B,1,1000]，内部统一为前者。
@@ -198,7 +240,11 @@ class InverseMetaformer(nn.Module):
                 f"Expected spectrum [batch, {self.config.spectrum_points}] "
                 f"or [batch, 1, {self.config.spectrum_points}]"
             )
-        # [B,1,1000] -> [B,128,100] -> [B,100,128], without a feature frontend.
+        if self.config.input_normalization == "train_standard":
+            if not self.normalization_fitted:
+                raise RuntimeError("Fit input normalization on training spectra before prediction")
+            spectrum = (spectrum - self.spectrum_mean) / self.spectrum_scale
+        # [B,1,1000] -> [B,128,P] -> [B,P,128], without a feature frontend.
         tokens = self.patch_embedding(spectrum.unsqueeze(1)).transpose(1, 2)
         tokens = self.position_encoding(tokens)
         attention_maps = []

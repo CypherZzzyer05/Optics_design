@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "source_and_dataset_hashes_verified": true,
+  "selection_recomputed_from_validation_only": true,
+  "normalization_training_ids_verified": true,
+  "max_csv_metric_recalculation_difference": 3.2640973257613837e-12,
+  "max_checkpoint_reload_prediction_difference": 5.96458556989532e-08,
+  "max_cpu_cuda_prediction_difference": 2.682209014892578e-07,
+  "cpu_batch1_median_ms": 9.432700000616023,
+  "cpu_threads": 4,
+  "timing_scope": "FP32 warmed model forward only; excludes loading and CSV I/O",
+  "trainable_parameters": 3998087
+}

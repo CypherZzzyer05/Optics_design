@@ -1,0 +1,1129 @@
+{
+  "plan": {
+    "dataset_sha256": "591ca0f4d9f4fc0be9803f3a566f72eee1ee3ac871ad9d03472b93a732aed0e3",
+    "seeds": [
+      42,
+      43,
+      44
+    ],
+    "selection": "Lowest mean best-validation periodic normalized geometry MSE across seeds",
+    "representative_checkpoint": "Selected variant seed with median validation MSE; never chosen by test",
+    "epochs": 100,
+    "early_stopping_patience": 20,
+    "learning_rate": 0.0003,
+    "batch_size": 8,
+    "normalization": "Training-only wavelength-wise mean/std; fixed std floor=0.02 reflectance",
+    "test_policy": "No trial evaluates test; after configuration selection evaluate baseline and winner only",
+    "variants": {
+      "baseline": {
+        "model": {
+          "spectrum_points": 1000,
+          "patch_count": 100,
+          "embedding_dim": 128,
+          "attention_heads": 10,
+          "head_dim": 64,
+          "encoder_layers": 10,
+          "mlp_dim": 256,
+          "dropout": 0.1,
+          "geometry_dim": 7,
+          "spectral_frontend": "linear",
+          "angle_symmetry": "square_periodic",
+          "activation": "gelu",
+          "norm_order": "pre",
+          "input_normalization": "none",
+          "normalization_floor": 0.02
+        },
+        "optimizer": "adamw",
+        "weight_decay": 0.001
+      },
+      "baseline_standard": {
+        "model": {
+          "spectrum_points": 1000,
+          "patch_count": 100,
+          "embedding_dim": 128,
+          "attention_heads": 10,
+          "head_dim": 64,
+          "encoder_layers": 10,
+          "mlp_dim": 256,
+          "dropout": 0.1,
+          "geometry_dim": 7,
+          "spectral_frontend": "linear",
+          "angle_symmetry": "square_periodic",
+          "activation": "gelu",
+          "norm_order": "pre",
+          "input_normalization": "train_standard",
+          "normalization_floor": 0.02
+        },
+        "optimizer": "adamw",
+        "weight_decay": 0.001
+      },
+      "paper_style": {
+        "model": {
+          "spectrum_points": 1000,
+          "patch_count": 100,
+          "embedding_dim": 128,
+          "attention_heads": 10,
+          "head_dim": 64,
+          "encoder_layers": 10,
+          "mlp_dim": 256,
+          "dropout": 0.1,
+          "geometry_dim": 7,
+          "spectral_frontend": "linear",
+          "angle_symmetry": "square_periodic",
+          "activation": "relu",
+          "norm_order": "post",
+          "input_normalization": "none",
+          "normalization_floor": 0.02
+        },
+        "optimizer": "adam",
+        "weight_decay": 0.0
+      },
+      "paper_standard": {
+        "model": {
+          "spectrum_points": 1000,
+          "patch_count": 100,
+          "embedding_dim": 128,
+          "attention_heads": 10,
+          "head_dim": 64,
+          "encoder_layers": 10,
+          "mlp_dim": 256,
+          "dropout": 0.1,
+          "geometry_dim": 7,
+          "spectral_frontend": "linear",
+          "angle_symmetry": "square_periodic",
+          "activation": "relu",
+          "norm_order": "post",
+          "input_normalization": "train_standard",
+          "normalization_floor": 0.02
+        },
+        "optimizer": "adam",
+        "weight_decay": 0.0
+      },
+      "paper_standard_fine": {
+        "model": {
+          "spectrum_points": 1000,
+          "patch_count": 200,
+          "embedding_dim": 128,
+          "attention_heads": 10,
+          "head_dim": 64,
+          "encoder_layers": 10,
+          "mlp_dim": 256,
+          "dropout": 0.1,
+          "geometry_dim": 7,
+          "spectral_frontend": "linear",
+          "angle_symmetry": "square_periodic",
+          "activation": "relu",
+          "norm_order": "post",
+          "input_normalization": "train_standard",
+          "normalization_floor": 0.02
+        },
+        "optimizer": "adam",
+        "weight_decay": 0.0
+      }
+    },
+    "source_sha256": {
+      "metaformer.py": "f9a7934a28c4009192d36f01a48f357300be3eb5596a122fa0b60dca615e629f",
+      "train_metaformer.py": "7fc7ab9b3ba5a36ebe84ab0b65097562ebd4360c8dcaa753811e0fd82b7e5fd9",
+      "spectrum_dataset.py": "a9e2a091ec6de72cfe886efd15633783e2588afa1b267b4dd0c34f6dda1583f3",
+      "optimize_inverse.py": "c1395b4f7316f2b945d091d5ca7dedad60a48a99d60712a1d6bdbe544d50f39d"
+    }
+  },
+  "selection": {
+    "selected_variant": "baseline_standard",
+    "ranking": [
+      {
+        "variant": "baseline_standard",
+        "mean_validation_mse": 0.037311580032110214,
+        "std_validation_mse": 0.0006568232074594628
+      },
+      {
+        "variant": "paper_standard_fine",
+        "mean_validation_mse": 0.05980659027894338,
+        "std_validation_mse": 0.010417617781015895
+      },
+      {
+        "variant": "paper_standard",
+        "mean_validation_mse": 0.061732687056064606,
+        "std_validation_mse": 0.009601184140261437
+      },
+      {
+        "variant": "baseline",
+        "mean_validation_mse": 0.06259700407584508,
+        "std_validation_mse": 0.0016965320639524845
+      },
+      {
+        "variant": "paper_style",
+        "mean_validation_mse": 0.0773218646645546,
+        "std_validation_mse": 0.0018792389031394427
+      }
+    ],
+    "representative_seed": 44,
+    "test_evaluated": false
+  },
+  "trials": [
+    {
+      "variant": "baseline",
+      "seed": 42,
+      "run_dir": "D:\\projects\\Optics_design_inverse_optimization\\Metaformer_As2Se3\\runs\\inverse_ablation\\baseline\\seed42\\20261019_162814_182305",
+      "model_parameters": 3998087,
+      "best_epoch": 16,
+      "epochs_completed": 36,
+      "best_val_mse": 0.06409598141908646,
+      "training_seconds": 13.046000000000276,
+      "optimizer_steps": 360,
+      "validation_metrics": {
+        "samples": 10,
+        "normalized_mse": 0.06409597841990124,
+        "normalized_rmse": 0.2531718357556805,
+        "normalized_mae": 0.208197522269828,
+        "mae_nm": {
+          "p": 11.216823555529118,
+          "l": 10.63323225826025,
+          "h": 26.06009703874588,
+          "alpha_x": 13.417215138673782,
+          "alpha_y": 8.865675553679466
+        },
+        "rmse_nm": {
+          "p": 13.726349187933138,
+          "l": 13.028778936432337,
+          "h": 33.23514672908619,
+          "alpha_x": 15.77189067622424,
+          "alpha_y": 10.4655426771994
+        },
+        "mae_deg": {
+          "theta_odd_deg": 22.24874722212553,
+          "theta_even_deg": 25.176987893879414
+        },
+        "rmse_deg": {
+          "theta_odd_deg": 25.489361314452893,
+          "theta_even_deg": 29.333887656500888
+        },
+        "angle_symmetry": "square_periodic"
+      },
+      "best_checkpoint_sha256": "887cd20c4ad7890d1494509a8b4e34da56e7d3db612aa83b99b08ca7e8a37cec"
+    },
+    {
+      "variant": "baseline",
+      "seed": 43,
+      "run_dir": "D:\\projects\\Optics_design_inverse_optimization\\Metaformer_As2Se3\\runs\\inverse_ablation\\baseline\\seed43\\20261019_162828_555333",
+      "model_parameters": 3998087,
+      "best_epoch": 29,
+      "epochs_completed": 49,
+      "best_val_mse": 0.06075526028871536,
+      "training_seconds": 16.20299999999952,
+      "optimizer_steps": 490,
+      "validation_metrics": {
+        "samples": 10,
+        "normalized_mse": 0.06075526613604183,
+        "normalized_rmse": 0.2464858335402703,
+        "normalized_mae": 0.19379979595541955,
+        "mae_nm": {
+          "p": 12.63430655747652,
+          "l": 7.246836684644222,
+          "h": 20.47987899184227,
+          "alpha_x": 13.995308250188828,
+          "alpha_y": 9.633569911122322
+        },
+        "rmse_nm": {
+          "p": 15.093762417478704,
+          "l": 9.72630356387312,
+          "h": 29.135029262950223,
+          "alpha_x": 16.509410018961937,
+          "alpha_y": 12.225118308170986
+        },
+        "mae_deg": {
+          "theta_odd_deg": 16.010802514851093,
+          "theta_even_deg": 28.185700736939907
+        },
+        "rmse_deg": {
+          "theta_odd_deg": 20.273360505583177,
+          "theta_even_deg": 32.40944418568314
+        },
+        "angle_symmetry": "square_periodic"
+      },
+      "best_checkpoint_sha256": "d00a9e993deb825ab0009e7f0eff7316df3c33f91651bf0ee329c81fef672e07"
+    },
+    {
+      "variant": "baseline",
+      "seed": 44,
+      "run_dir": "D:\\projects\\Optics_design_inverse_optimization\\Metaformer_As2Se3\\runs\\inverse_ablation\\baseline\\seed44\\20261019_162844_865814",
+      "model_parameters": 3998087,
+      "best_epoch": 36,
+      "epochs_completed": 56,
+      "best_val_mse": 0.06293977051973343,
+      "training_seconds": 18.140000000001237,
+      "optimizer_steps": 560,
+      "validation_metrics": {
+        "samples": 10,
+        "normalized_mse": 0.06293976759346671,
+        "normalized_rmse": 0.25087799344196515,
+        "normalized_mae": 0.19892067408987454,
+        "mae_nm": {
+          "p": 12.07188818603754,
+          "l": 6.291667856276035,
+          "h": 22.758357793092728,
+          "alpha_x": 15.980700194835663,
+          "alpha_y": 10.661377385258675
+        },
+        "rmse_nm": {
+          "p": 15.983088258105566,
+          "l": 8.792189927996315,
+          "h": 32.3392098633337,
+          "alpha_x": 18.133435089478613,
+          "alpha_y": 12.877745162873461
+        },
+        "mae_deg": {
+          "theta_odd_deg": 17.916080184280872,
+          "theta_even_deg": 25.964454017579556
+        },
+        "rmse_deg": {
+          "theta_odd_deg": 22.161943267973488,
+          "theta_even_deg": 29.31893761919269
+        },
+        "angle_symmetry": "square_periodic"
+      },
+      "best_checkpoint_sha256": "579edbc70815ff555f4acbefbcad87cc576ea91b8db58eb8ae6acb544c82678e"
+    },
+    {
+      "variant": "baseline_standard",
+      "seed": 42,
+      "run_dir": "D:\\projects\\Optics_design_inverse_optimization\\Metaformer_As2Se3\\runs\\inverse_ablation\\baseline_standard\\seed42\\20261019_162903_112248",
+      "model_parameters": 3998087,
+      "best_epoch": 25,
+      "epochs_completed": 45,
+      "best_val_mse": 0.03660950809717178,
+      "training_seconds": 14.859000000000378,
+      "optimizer_steps": 450,
+      "validation_metrics": {
+        "samples": 10,
+        "normalized_mse": 0.03660950718012783,
+        "normalized_rmse": 0.19133611049701996,
+        "normalized_mae": 0.14449884071946145,
+        "mae_nm": {
+          "p": 8.310984142124653,
+          "l": 2.521243132650852,
+          "h": 15.706431955099106,
+          "alpha_x": 11.48873832821846,
+          "alpha_y": 7.691274002194405
+        },
+        "rmse_nm": {
+          "p": 10.50518408470938,
+          "l": 3.078585568851613,
+          "h": 22.36010775493055,
+          "alpha_x": 14.551358210555149,
+          "alpha_y": 8.091395758603094
+        },
+        "mae_deg": {
+          "theta_odd_deg": 19.465785048902035,
+          "theta_even_deg": 17.47768545895815
+        },
+        "rmse_deg": {
+          "theta_odd_deg": 23.94404040435871,
+          "theta_even_deg": 21.42320205056136
+        },
+        "angle_symmetry": "square_periodic"
+      },
+      "best_checkpoint_sha256": "da815c5c3e0134d9984d776edaf911def1711bbcd3f0217d7a3253520b5d8531"
+    },
+    {
+      "variant": "baseline_standard",
+      "seed": 43,
+      "run_dir": "D:\\projects\\Optics_design_inverse_optimization\\Metaformer_As2Se3\\runs\\inverse_ablation\\baseline_standard\\seed43\\20261019_162918_073435",
+      "model_parameters": 3998087,
+      "best_epoch": 59,
+      "epochs_completed": 79,
+      "best_val_mse": 0.03791108727455139,
+      "training_seconds": 26.625,
+      "optimizer_steps": 790,
+      "validation_metrics": {
+        "samples": 10,
+        "normalized_mse": 0.037911085058200136,
+        "normalized_rmse": 0.1947076913175238,
+        "normalized_mae": 0.14561993298786027,
+        "mae_nm": {
+          "p": 8.390959531068802,
+          "l": 1.5742569416761398,
+          "h": 8.613725706934929,
+          "alpha_x": 10.213304668664932,
+          "alpha_y": 9.765296146273613
+        },
+        "rmse_nm": {
+          "p": 11.204415749877233,
+          "l": 2.0139797105626362,
+          "h": 11.594808533968429,
+          "alpha_x": 13.760681424206743,
+          "alpha_y": 10.799418833995533
+        },
+        "mae_deg": {
+          "theta_odd_deg": 20.25155447423458,
+          "theta_even_deg": 22.361667953431606
+        },
+        "rmse_deg": {
+          "theta_odd_deg": 23.65052541592186,
+          "theta_even_deg": 25.01045884844903
+        },
+        "angle_symmetry": "square_periodic"
+      },
+      "best_checkpoint_sha256": "9885d0a4bd334cc302f2bccf3968d9f361db8885ffe206765ed10defa1f8f115"
+    },
+    {
+      "variant": "baseline_standard",
+      "seed": 44,
+      "run_dir": "D:\\projects\\Optics_design_inverse_optimization\\Metaformer_As2Se3\\runs\\inverse_ablation\\baseline_standard\\seed44\\20261019_162944_814954",
+      "model_parameters": 3998087,
+      "best_epoch": 22,
+      "epochs_completed": 42,
+      "best_val_mse": 0.03741414472460747,
+      "training_seconds": 13.936999999999898,
+      "optimizer_steps": 420,
+      "validation_metrics": {
+        "samples": 10,
+        "normalized_mse": 0.03741414581580269,
+        "normalized_rmse": 0.19342736573660588,
+        "normalized_mae": 0.15437032825180463,
+        "mae_nm": {
+          "p": 9.197986669838428,
+          "l": 3.048701137304306,
+          "h": 17.790648132562637,
+          "alpha_x": 12.034674435853958,
+          "alpha_y": 8.068423077464104
+        },
+        "rmse_nm": {
+          "p": 10.102101049291909,
+          "l": 3.584282427986679,
+          "h": 22.078519877003046,
+          "alpha_x": 14.903401735772686,
+          "alpha_y": 9.588628300862373
+        },
+        "mae_deg": {
+          "theta_odd_deg": 18.506988868117332,
+          "theta_even_deg": 19.84118152409792
+        },
+        "rmse_deg": {
+          "theta_odd_deg": 22.329931657638,
+          "theta_even_deg": 22.45801319003024
+        },
+        "angle_symmetry": "square_periodic"
+      },
+      "best_checkpoint_sha256": "8de7d4ea5511a50be44e786499c50e5e4e21d0cd2a76bf770c06948f332e70c1"
+    },
+    {
+      "variant": "paper_style",
+      "seed": 42,
+      "run_dir": "D:\\projects\\Optics_design_inverse_optimization\\Metaformer_As2Se3\\runs\\inverse_ablation\\paper_style\\seed42\\20261019_162958_855263",
+      "model_parameters": 3998087,
+      "best_epoch": 2,
+      "epochs_completed": 22,
+      "best_val_mse": 0.0771062970161438,
+      "training_seconds": 7.061999999999898,
+      "optimizer_steps": 220,
+      "validation_metrics": {
+        "samples": 10,
+        "normalized_mse": 0.07710630645576348,
+        "normalized_rmse": 0.27768022337891385,
+        "normalized_mae": 0.23406679843153272,
+        "mae_nm": {
+          "p": 11.1122782304883,
+          "l": 11.037932150065899,
+          "h": 50.434448301792145,
+          "alpha_x": 13.645186632871628,
+          "alpha_y": 10.398930117487907
+        },
+        "rmse_nm": {
+          "p": 13.85492135409528,
+          "l": 13.852751108361538,
+          "h": 51.97700568819537,
+          "alpha_x": 15.537384567785193,
+          "alpha_y": 13.357091191586017
+        },
+        "mae_deg": {
+          "theta_odd_deg": 20.618547454476357,
+          "theta_even_deg": 24.199722357094288
+        },
+        "rmse_deg": {
+          "theta_odd_deg": 23.976843038439643,
+          "theta_even_deg": 28.22916468060641
+        },
+        "angle_symmetry": "square_periodic"
+      },
+      "best_checkpoint_sha256": "e4e166e23fb0e4eac0658547d8dd47be5e7597593e0ca60ad05c99a05db1de10"
+    },
+    {
+      "variant": "paper_style",
+      "seed": 43,
+      "run_dir": "D:\\projects\\Optics_design_inverse_optimization\\Metaformer_As2Se3\\runs\\inverse_ablation\\paper_style\\seed43\\20261019_163006_035504",
+      "model_parameters": 3998087,
+      "best_epoch": 17,
+      "epochs_completed": 27,
+      "best_val_mse": 0.07929959148168564,
+      "training_seconds": 8.609000000000378,
+      "optimizer_steps": 270,
+      "validation_metrics": {
+        "samples": 10,
+        "normalized_mse": 0.07929960204310742,
+        "normalized_rmse": 0.28160185021250733,
+        "normalized_mae": 0.24004482392753873,
+        "mae_nm": {
+          "p": 11.850225694477558,
+          "l": 10.548470132052898,
+          "h": 50.43542796373367,
+          "alpha_x": 13.716386049985886,
+          "alpha_y": 10.095264717936516
+        },
+        "rmse_nm": {
+          "p": 14.055813055385444,
+          "l": 12.860921214091995,
+          "h": 52.008523632897926,
+          "alpha_x": 15.59395628000432,
+          "alpha_y": 13.227337182785787
+        },
+        "mae_deg": {
+          "theta_odd_deg": 24.703126788139343,
+          "theta_even_deg": 24.161610312759876
+        },
+        "rmse_deg": {
+          "theta_odd_deg": 27.95540522156182,
+          "theta_even_deg": 28.171803294201226
+        },
+        "angle_symmetry": "square_periodic"
+      },
+      "best_checkpoint_sha256": "0ca6b707a69f157c414077998dce36410e4174dc310c539ee6dd8e796e1d861f"
+    },
+    {
+      "variant": "paper_style",
+      "seed": 44,
+      "run_dir": "D:\\projects\\Optics_design_inverse_optimization\\Metaformer_As2Se3\\runs\\inverse_ablation\\paper_style\\seed44\\20261019_163014_747651",
+      "model_parameters": 3998087,
+      "best_epoch": 1,
+      "epochs_completed": 21,
+      "best_val_mse": 0.07555970549583435,
+      "training_seconds": 6.813000000000102,
+      "optimizer_steps": 210,
+      "validation_metrics": {
+        "samples": 10,
+        "normalized_mse": 0.07555970094780595,
+        "normalized_rmse": 0.27488124881083825,
+        "normalized_mae": 0.23652902437107903,
+        "mae_nm": {
+          "p": 11.803953774273396,
+          "l": 10.649952106177807,
+          "h": 50.43611639738083,
+          "alpha_x": 13.457038968801498,
+          "alpha_y": 12.025322064757347
+        },
+        "rmse_nm": {
+          "p": 14.017098263395704,
+          "l": 13.12495052944753,
+          "h": 51.97421867044649,
+          "alpha_x": 15.426467403546877,
+          "alpha_y": 14.6261107637338
+        },
+        "mae_deg": {
+          "theta_odd_deg": 20.371514528989792,
+          "theta_even_deg": 23.64858580380678
+        },
+        "rmse_deg": {
+          "theta_odd_deg": 23.845938285746698,
+          "theta_even_deg": 26.448886461212286
+        },
+        "angle_symmetry": "square_periodic"
+      },
+      "best_checkpoint_sha256": "bd642a9fa5adbae081cf7e5bfeb0323b743cbf9f54d058954c4a8fdba4966094"
+    },
+    {
+      "variant": "paper_standard",
+      "seed": 42,
+      "run_dir": "D:\\projects\\Optics_design_inverse_optimization\\Metaformer_As2Se3\\runs\\inverse_ablation\\paper_standard\\seed42\\20261019_163021_676752",
+      "model_parameters": 3998087,
+      "best_epoch": 44,
+      "epochs_completed": 64,
+      "best_val_mse": 0.05185675621032715,
+      "training_seconds": 20.71900000000096,
+      "optimizer_steps": 640,
+      "validation_metrics": {
+        "samples": 10,
+        "normalized_mse": 0.05185675835469161,
+        "normalized_rmse": 0.22772079034355122,
+        "normalized_mae": 0.18276806162404163,
+        "mae_nm": {
+          "p": 10.9793666228652,
+          "l": 5.6575461104512215,
+          "h": 23.578680515289307,
+          "alpha_x": 10.914609521627426,
+          "alpha_y": 13.72367213666439
+        },
+        "rmse_nm": {
+          "p": 12.4813099841586,
+          "l": 7.455508415548699,
+          "h": 29.93839520887301,
+          "alpha_x": 15.597651614140416,
+          "alpha_y": 15.428122707892125
+        },
+        "mae_deg": {
+          "theta_odd_deg": 19.902717953547835,
+          "theta_even_deg": 18.826103679835796
+        },
+        "rmse_deg": {
+          "theta_odd_deg": 23.5706396178813,
+          "theta_even_deg": 22.21984222409442
+        },
+        "angle_symmetry": "square_periodic"
+      },
+      "best_checkpoint_sha256": "b98d3d3187ce467881105e4b9302f117b86fbc393ba5910524ac7d75b23b9baf"
+    },
+    {
+      "variant": "paper_standard",
+      "seed": 43,
+      "run_dir": "D:\\projects\\Optics_design_inverse_optimization\\Metaformer_As2Se3\\runs\\inverse_ablation\\paper_standard\\seed43\\20261019_163042_499610",
+      "model_parameters": 3998087,
+      "best_epoch": 8,
+      "epochs_completed": 28,
+      "best_val_mse": 0.07103324681520462,
+      "training_seconds": 8.95299999999952,
+      "optimizer_steps": 280,
+      "validation_metrics": {
+        "samples": 10,
+        "normalized_mse": 0.07103325103312152,
+        "normalized_rmse": 0.266520639037808,
+        "normalized_mae": 0.22222680002450942,
+        "mae_nm": {
+          "p": 12.490118511021137,
+          "l": 11.240536831319332,
+          "h": 28.43873792886734,
+          "alpha_x": 13.37354251742363,
+          "alpha_y": 9.884066328406334
+        },
+        "rmse_nm": {
+          "p": 15.951673603481725,
+          "l": 13.934250831065434,
+          "h": 34.92839776806934,
+          "alpha_x": 15.285960016267966,
+          "alpha_y": 12.795765794694779
+        },
+        "mae_deg": {
+          "theta_odd_deg": 26.169595062732697,
+          "theta_even_deg": 24.373139776289463
+        },
+        "rmse_deg": {
+          "theta_odd_deg": 27.936925464759693,
+          "theta_even_deg": 28.26800155316664
+        },
+        "angle_symmetry": "square_periodic"
+      },
+      "best_checkpoint_sha256": "32f3157014e219672748feddf787b88291d6277b4cca851be4ce33012ece50c2"
+    },
+    {
+      "variant": "paper_standard",
+      "seed": 44,
+      "run_dir": "D:\\projects\\Optics_design_inverse_optimization\\Metaformer_As2Se3\\runs\\inverse_ablation\\paper_standard\\seed44\\20261019_163051_563310",
+      "model_parameters": 3998087,
+      "best_epoch": 3,
+      "epochs_completed": 23,
+      "best_val_mse": 0.06230805814266205,
+      "training_seconds": 7.40599999999904,
+      "optimizer_steps": 230,
+      "validation_metrics": {
+        "samples": 10,
+        "normalized_mse": 0.062308062169576024,
+        "normalized_rmse": 0.24961582916469063,
+        "normalized_mae": 0.20245531648397447,
+        "mae_nm": {
+          "p": 12.690836556255817,
+          "l": 8.215397112071514,
+          "h": 34.81581938266754,
+          "alpha_x": 13.141997963190079,
+          "alpha_y": 9.325441405177116
+        },
+        "rmse_nm": {
+          "p": 15.965899414043548,
+          "l": 10.623636614885722,
+          "h": 40.79529425595202,
+          "alpha_x": 15.22557368583389,
+          "alpha_y": 12.886770107146349
+        },
+        "mae_deg": {
+          "theta_odd_deg": 17.19754260778427,
+          "theta_even_deg": 23.162044890224934
+        },
+        "rmse_deg": {
+          "theta_odd_deg": 20.299691255917203,
+          "theta_even_deg": 27.39911064878345
+        },
+        "angle_symmetry": "square_periodic"
+      },
+      "best_checkpoint_sha256": "e2e3a14c0cb5f630dc58f6de584c332c07d8e4ff9fd36109bcaa926cf62523c0"
+    },
+    {
+      "variant": "paper_standard_fine",
+      "seed": 42,
+      "run_dir": "D:\\projects\\Optics_design_inverse_optimization\\Metaformer_As2Se3\\runs\\inverse_ablation\\paper_standard_fine\\seed42\\20261019_163059_077647",
+      "model_parameters": 3997447,
+      "best_epoch": 1,
+      "epochs_completed": 21,
+      "best_val_mse": 0.06647629290819168,
+      "training_seconds": 8.390999999999622,
+      "optimizer_steps": 210,
+      "validation_metrics": {
+        "samples": 10,
+        "normalized_mse": 0.0664762906288151,
+        "normalized_rmse": 0.25782996456737745,
+        "normalized_mae": 0.20649405313389643,
+        "mae_nm": {
+          "p": 11.00343520194292,
+          "l": 10.286477021872997,
+          "h": 35.925359547138214,
+          "alpha_x": 13.400908023118973,
+          "alpha_y": 8.46351908147335
+        },
+        "rmse_nm": {
+          "p": 14.798821317142778,
+          "l": 12.854976239177052,
+          "h": 42.90474796301483,
+          "alpha_x": 15.326467091666482,
+          "alpha_y": 12.169822267943239
+        },
+        "mae_deg": {
+          "theta_odd_deg": 17.608428061008453,
+          "theta_even_deg": 23.92837829142809
+        },
+        "rmse_deg": {
+          "theta_odd_deg": 21.55765225825963,
+          "theta_even_deg": 28.009382614282917
+        },
+        "angle_symmetry": "square_periodic"
+      },
+      "best_checkpoint_sha256": "26178c5d5bad8cd9210c3b7c77bc6920f169716c980c660f0f949b4262658ee0"
+    },
+    {
+      "variant": "paper_standard_fine",
+      "seed": 43,
+      "run_dir": "D:\\projects\\Optics_design_inverse_optimization\\Metaformer_As2Se3\\runs\\inverse_ablation\\paper_standard_fine\\seed43\\20261019_163107_572728",
+      "model_parameters": 3997447,
+      "best_epoch": 1,
+      "epochs_completed": 21,
+      "best_val_mse": 0.06514140218496323,
+      "training_seconds": 8.343999999999141,
+      "optimizer_steps": 210,
+      "validation_metrics": {
+        "samples": 10,
+        "normalized_mse": 0.06514140883030181,
+        "normalized_rmse": 0.25522815054437437,
+        "normalized_mae": 0.2108353418963296,
+        "mae_nm": {
+          "p": 13.94483283907175,
+          "l": 7.333669923245907,
+          "h": 35.48284566402435,
+          "alpha_x": 14.981493026018143,
+          "alpha_y": 9.32188694179058
+        },
+        "rmse_nm": {
+          "p": 16.847577777149446,
+          "l": 9.233036383080696,
+          "h": 41.51642813939497,
+          "alpha_x": 16.800586625627396,
+          "alpha_y": 12.184920261973314
+        },
+        "mae_deg": {
+          "theta_odd_deg": 18.131245851516724,
+          "theta_even_deg": 24.299872152507305
+        },
+        "rmse_deg": {
+          "theta_odd_deg": 22.125360646934567,
+          "theta_even_deg": 27.87681017426001
+        },
+        "angle_symmetry": "square_periodic"
+      },
+      "best_checkpoint_sha256": "2e4af9b76d685d253530627d68f5e997ac89558d88a6a8924026b24fc1daf858"
+    },
+    {
+      "variant": "paper_standard_fine",
+      "seed": 44,
+      "run_dir": "D:\\projects\\Optics_design_inverse_optimization\\Metaformer_As2Se3\\runs\\inverse_ablation\\paper_standard_fine\\seed44\\20261019_163116_038293",
+      "model_parameters": 3997447,
+      "best_epoch": 58,
+      "epochs_completed": 78,
+      "best_val_mse": 0.04780207574367523,
+      "training_seconds": 30.78100000000086,
+      "optimizer_steps": 780,
+      "validation_metrics": {
+        "samples": 10,
+        "normalized_mse": 0.047802076463468235,
+        "normalized_rmse": 0.21863685980060232,
+        "normalized_mae": 0.17642450364572662,
+        "mae_nm": {
+          "p": 14.078535206615925,
+          "l": 5.881104506552219,
+          "h": 19.0665902197361,
+          "alpha_x": 9.374333649873734,
+          "alpha_y": 11.618124470114708
+        },
+        "rmse_nm": {
+          "p": 16.50601441908305,
+          "l": 7.577152281407998,
+          "h": 23.281912910615485,
+          "alpha_x": 12.457970346075456,
+          "alpha_y": 14.77154283748352
+        },
+        "mae_deg": {
+          "theta_odd_deg": 19.26095373183489,
+          "theta_even_deg": 19.45374072343111
+        },
+        "rmse_deg": {
+          "theta_odd_deg": 23.134621727448177,
+          "theta_even_deg": 21.78567787586395
+        },
+        "angle_symmetry": "square_periodic"
+      },
+      "best_checkpoint_sha256": "7c1a05f90f78d182afbc8c63c8158fd085f25d4b4014c4273e32d3bd2da7d032"
+    }
+  ],
+  "test_summary": {
+    "baseline_standard": {
+      "mean_mse": 0.04665350309092228,
+      "std_mse": 0.0010519801658841158,
+      "mae_nm": {
+        "p": 10.406383228798708,
+        "l": 3.882303535938263,
+        "h": 11.676224211851755,
+        "alpha_x": 13.577531054615974,
+        "alpha_y": 7.924051359295845
+      },
+      "mae_deg": {
+        "theta_odd_deg": 22.701342601329088,
+        "theta_even_deg": 22.451489366590977
+      }
+    },
+    "baseline": {
+      "mean_mse": 0.06413820780592537,
+      "std_mse": 0.007515315949882963,
+      "mae_nm": {
+        "p": 10.439203416307768,
+        "l": 8.995391316711903,
+        "h": 17.36834853887558,
+        "alpha_x": 15.309019222855568,
+        "alpha_y": 10.781069427728653
+      },
+      "mae_deg": {
+        "theta_odd_deg": 21.948715198785067,
+        "theta_even_deg": 25.889972291886806
+      }
+    }
+  },
+  "test_seed_metrics": [
+    {
+      "variant": "baseline",
+      "seed": 42,
+      "metrics": {
+        "samples": 10,
+        "normalized_mse": 0.07223719705318661,
+        "normalized_rmse": 0.2687697844869966,
+        "normalized_mae": 0.2235882019358022,
+        "mae_nm": {
+          "p": 12.639937475323677,
+          "l": 11.676723696291447,
+          "h": 15.961797446012497,
+          "alpha_x": 14.466333255171776,
+          "alpha_y": 12.171340316534042
+        },
+        "rmse_nm": {
+          "p": 15.668765098213221,
+          "l": 13.650810993994526,
+          "h": 18.875389970822322,
+          "alpha_x": 17.32647700689495,
+          "alpha_y": 14.901696278313146
+        },
+        "mae_deg": {
+          "theta_odd_deg": 25.43132708966732,
+          "theta_even_deg": 27.94212343543768
+        },
+        "rmse_deg": {
+          "theta_odd_deg": 29.09462314956584,
+          "theta_even_deg": 30.288811275068973
+        },
+        "angle_symmetry": "square_periodic"
+      }
+    },
+    {
+      "variant": "baseline",
+      "seed": 43,
+      "metrics": {
+        "samples": 10,
+        "normalized_mse": 0.06278774147153615,
+        "normalized_rmse": 0.250574822102174,
+        "normalized_mae": 0.1995857888034412,
+        "mae_nm": {
+          "p": 9.88832451403141,
+          "l": 8.915386982262135,
+          "h": 17.4387686252594,
+          "alpha_x": 15.356915339827538,
+          "alpha_y": 10.64762082695961
+        },
+        "rmse_nm": {
+          "p": 12.642272634964986,
+          "l": 10.498240919811744,
+          "h": 19.691680940887274,
+          "alpha_x": 18.785271845696077,
+          "alpha_y": 14.77574169036204
+        },
+        "mae_deg": {
+          "theta_odd_deg": 20.40077293664217,
+          "theta_even_deg": 26.359576128423214
+        },
+        "rmse_deg": {
+          "theta_odd_deg": 24.373906121369572,
+          "theta_even_deg": 29.98690542054027
+        },
+        "angle_symmetry": "square_periodic"
+      }
+    },
+    {
+      "variant": "baseline",
+      "seed": 44,
+      "metrics": {
+        "samples": 10,
+        "normalized_mse": 0.05738968489305335,
+        "normalized_rmse": 0.2395614428347211,
+        "normalized_mae": 0.18517231744314944,
+        "mae_nm": {
+          "p": 8.789348259568214,
+          "l": 6.394063271582127,
+          "h": 18.704479545354843,
+          "alpha_x": 16.10380907356739,
+          "alpha_y": 9.524247139692307
+        },
+        "rmse_nm": {
+          "p": 10.636121214039978,
+          "l": 9.033968960999996,
+          "h": 21.837214508756578,
+          "alpha_x": 20.58714871615163,
+          "alpha_y": 12.805490571820622
+        },
+        "mae_deg": {
+          "theta_odd_deg": 20.01404557004571,
+          "theta_even_deg": 23.368217311799526
+        },
+        "rmse_deg": {
+          "theta_odd_deg": 24.111410285877543,
+          "theta_even_deg": 26.486931406374577
+        },
+        "angle_symmetry": "square_periodic"
+      }
+    },
+    {
+      "variant": "baseline_standard",
+      "seed": 42,
+      "metrics": {
+        "samples": 10,
+        "normalized_mse": 0.04561548880149422,
+        "normalized_rmse": 0.21357782844081505,
+        "normalized_mae": 0.1656220911868981,
+        "mae_nm": {
+          "p": 9.808078706264496,
+          "l": 4.220841936767101,
+          "h": 14.06124660372734,
+          "alpha_x": 15.04438953101635,
+          "alpha_y": 6.706373870372772
+        },
+        "rmse_nm": {
+          "p": 11.824817011265809,
+          "l": 5.548557478257565,
+          "h": 19.726411861549465,
+          "alpha_x": 16.52559621995081,
+          "alpha_y": 8.082106942924113
+        },
+        "mae_deg": {
+          "theta_odd_deg": 20.572195395827293,
+          "theta_even_deg": 21.896301738917828
+        },
+        "rmse_deg": {
+          "theta_odd_deg": 25.355955171417367,
+          "theta_even_deg": 26.274209905877083
+        },
+        "angle_symmetry": "square_periodic"
+      }
+    },
+    {
+      "variant": "baseline_standard",
+      "seed": 43,
+      "metrics": {
+        "samples": 10,
+        "normalized_mse": 0.046626106519853786,
+        "normalized_rmse": 0.21593079104160617,
+        "normalized_mae": 0.1634479953774384,
+        "mae_nm": {
+          "p": 6.740004427731037,
+          "l": 4.035716652870178,
+          "h": 9.897647261619568,
+          "alpha_x": 13.695306435227394,
+          "alpha_y": 10.115118339657784
+        },
+        "rmse_nm": {
+          "p": 9.207658263443143,
+          "l": 4.677659895823802,
+          "h": 11.885439481721097,
+          "alpha_x": 17.22528970658632,
+          "alpha_y": 12.442355403637002
+        },
+        "mae_deg": {
+          "theta_odd_deg": 24.423515550792217,
+          "theta_even_deg": 20.54030118137598
+        },
+        "rmse_deg": {
+          "theta_odd_deg": 26.347750599067677,
+          "theta_even_deg": 25.771100309994832
+        },
+        "angle_symmetry": "square_periodic"
+      }
+    },
+    {
+      "variant": "baseline_standard",
+      "seed": 44,
+      "metrics": {
+        "samples": 10,
+        "normalized_mse": 0.04771891395141883,
+        "normalized_rmse": 0.21844659290412113,
+        "normalized_mae": 0.17225911186209747,
+        "mae_nm": {
+          "p": 14.671066552400589,
+          "l": 3.3903520181775093,
+          "h": 11.069778770208359,
+          "alpha_x": 11.99289719760418,
+          "alpha_y": 6.950661867856979
+        },
+        "rmse_nm": {
+          "p": 16.911894575297026,
+          "l": 4.151899457112174,
+          "h": 13.695064929369694,
+          "alpha_x": 14.253878361579536,
+          "alpha_y": 9.73180468280726
+        },
+        "mae_deg": {
+          "theta_odd_deg": 23.108316857367754,
+          "theta_even_deg": 24.917865179479122
+        },
+        "rmse_deg": {
+          "theta_odd_deg": 26.14024315339333,
+          "theta_even_deg": 27.312271477303156
+        },
+        "angle_symmetry": "square_periodic"
+      }
+    }
+  ],
+  "paired_test_mse_difference_selected_minus_baseline": -0.017484702169895172,
+  "exploratory_paired_bootstrap_95_ci": [
+    -0.028481917455792427,
+    -0.006743082159664489
+  ],
+  "bootstrap_unit": "10 test sample IDs; average three seeds per ID before resampling",
+  "dataset_quality": "pipeline_validation; historical metal material-fit limitations remain",
+  "test_limit": "Same previously inspected 10 test samples, not an independent fresh blind test",
+  "inference_limit": "Geometry error only; no forward spectral or FDTD validation performed",
+  "split_sample_ids": {
+    "train": [
+      0,
+      2,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      20,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      42,
+      43,
+      44,
+      45,
+      47,
+      49,
+      50,
+      51,
+      52,
+      53,
+      54,
+      55,
+      56,
+      57,
+      58,
+      59,
+      60,
+      61,
+      62,
+      63,
+      64,
+      65,
+      66,
+      67,
+      69,
+      70,
+      71,
+      72,
+      73,
+      75,
+      76,
+      77,
+      80,
+      81,
+      82,
+      85,
+      88,
+      89,
+      90,
+      91,
+      92,
+      94,
+      95,
+      97,
+      98,
+      99
+    ],
+    "val": [
+      3,
+      19,
+      21,
+      78,
+      79,
+      83,
+      84,
+      86,
+      87,
+      93
+    ],
+    "test": [
+      1,
+      11,
+      12,
+      40,
+      41,
+      46,
+      48,
+      68,
+      74,
+      96
+    ]
+  }
+}
