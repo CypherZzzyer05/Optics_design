@@ -6,6 +6,8 @@
 
 [查看训练结果、图表和逐参数误差](results/inverse_au100_1000/report.md)。解释器仍为 `D:/Anaconda3/envs/transformer_env/python.exe`；PyCharm 可运行 `09 Train inverse 1000` 或 `10 Predict inverse 1000`。新权重为 `models/inverse_au100_1000.pt`，配置为 `configs/train_inverse_1000.json`，旧实验和权重保留。数据仍为 `pipeline_validation`，本次未对预测结构重跑 FDTD。正向模型继续暂缓。
 
+后续[双谷目标分析](results/feature_targets_1000/report.md)整理了 133 组双主谷光谱及训练集中的 P/dY 关联，并对三个未参与训练的目标给出冻结模型的预测结构；预测结构的回仿真尚待完成。
+
 ## 此前：逆向模型优化（2026-10-19）
 
 本分支 `codex/metaformer-inverse-optimization` 在独立工作树中优化七参数逆向模型。15 次配置/种子对照后，采用“原有编码器 + 训练集输入归一化”，参数仍为 3,998,087；三个种子的平均测试结构 MSE 从 0.064138 降到 0.046654。角度仍未可靠辨识，100 条历史数据仅支持探索性流程验证。正向模型暂缓。
