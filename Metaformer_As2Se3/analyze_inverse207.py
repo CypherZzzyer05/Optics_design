@@ -17,6 +17,7 @@ OUTPUT=ROOT/'results/inverse_roundtrip_207'
 def analyze(reference_only=False):
     catalog=json.loads((ROOT/'results/feature_targets_1000/analysis.json').read_text(encoding='utf-8'))
     with np.load(ROOT/'examples/au100_metal8_1000/dataset.npz',allow_pickle=False) as archive:
+        dataset_metadata=json.loads(str(archive['metadata_json'].item()))
         matches=np.flatnonzero(archive['sample_ids']==207)
         assert len(matches)==1
         i=int(matches[0])
@@ -38,6 +39,8 @@ def analyze(reference_only=False):
         comparison=compare_curves(wavelength,source['spectra'],sample['reflectance'])
         cases[name]={'data':sample,'report':report,'source_comparison':comparison,'directory':directory}
     original=cases['reference']
+    source_gold=np.asarray(dataset_metadata['material_identity']['Au (Gold) - Palik']['fitted_index_ri'])
+    source_epsilon_imag=2*source_gold[:,0]*source_gold[:,1]
     result={'sample_id':207,'dataset_sha256':catalog['dataset_sha256'],
         'inverse_checkpoint_sha256':catalog['inverse_checkpoint_sha256'],
         'reference_only':reference_only,'reference_reproduction':original['source_comparison'],
@@ -52,6 +55,9 @@ def analyze(reference_only=False):
                       'mesh_audit':json.loads(str(case['data']['mesh_audit_json'].item()))}
                  for name,case in cases.items()},
         'quality_level':'pipeline_validation','model_or_source_data_modified':False,
+        'source_dataset_Au_fitted_imaginary_permittivity_range':
+            [float(source_epsilon_imag.min()),float(source_epsilon_imag.max())],
+        'material_limitation':'Known severe Au Ohmic-loss fit deficiency; numerical-model round trip only, not realistic gold-device validation',
         'scope':'Generator 1.0 Au100 below finite SiO2; not the 2.0 middle-metal stack'}
     if not reference_only:
         predicted=cases['prediction']
@@ -105,8 +111,8 @@ def plot(wavelength,source,cases,suffix):
         ax.set(xlabel='波长（nm）',ylabel=label,title=label)
         ax.grid(alpha=.2)
         ax.legend(fontsize=9)
-    fig.suptitle('样本 207：真实 FDTD 对照'+('（仅原始结构复现）' if len(cases)==1 else '与逆向结构回仿真'),
-                 fontsize=16,fontweight='bold')
+    fig.suptitle('样本 207：FDTD 对照'+('（仅原始结构复现）' if len(cases)==1 else '与逆向结构回仿真')+
+                 '\n沿用已知 Au 损耗缺失拟合；真实金器件性能尚未验证',fontsize=14,fontweight='bold')
     fig.savefig(OUTPUT/('spectral_comparison'+suffix+'.png'),dpi=160)
     plt.close(fig)
 

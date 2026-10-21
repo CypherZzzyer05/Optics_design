@@ -173,5 +173,10 @@
   },
   "quality_level": "pipeline_validation",
   "model_or_source_data_modified": false,
+  "source_dataset_Au_fitted_imaginary_permittivity_range": [
+    1.6890162400144588e-07,
+    2.595546682322778e-06
+  ],
+  "material_limitation": "Known severe Au Ohmic-loss fit deficiency; numerical-model round trip only, not realistic gold-device validation",
   "scope": "Generator 1.0 Au100 below finite SiO2; not the 2.0 middle-metal stack"
 }
