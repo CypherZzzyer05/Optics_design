@@ -4,5 +4,7 @@
 
 模型保持 3,998,087 个参数，使用训练集光谱标准化。100 条测试 MSE 为 0.033422；在 88 个此前未出现的相同测试结构上，比旧 100 样本模型低 34.1%。五个尺寸参数明显改善，两个角仍约 21°。
 
+已完成[一个新测试目标的真实 FDTD 回仿真](Metaformer_As2Se3/results/inverse_roundtrip_207/report.md)：网络直接输出的结构保留双谷形状，谷位置约 771.1/877.2 nm，相对目标偏移约 1.0/4.0 nm；第二谷仍超出 2 nm 参考标准。
+
 此前的[100 样本配置对照](Metaformer_As2Se3/docs/inverse_optimization.md)及旧权重保留。训练和推理入口位于 [Metaformer_As2Se3](Metaformer_As2Se3/README.md)。
 Optic design

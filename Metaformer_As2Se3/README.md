@@ -4,9 +4,9 @@
 
 分支 `codex/train-au100-metal8-1000` 已查收并核对生成器 1.0 的 1000 条真实数据，固定使用 800/100/100 划分训练已选定的逆向模型。验证集选择第 35 轮权重，第 55 轮早停；测试 MSE 为 0.033422。在此前未出现的同一组 88 个测试结构上，比旧 100 样本模型降低 34.1%。五个尺寸参数改善，两个角仍约 21°。
 
-[查看训练结果、图表和逐参数误差](results/inverse_au100_1000/report.md)。解释器仍为 `D:/Anaconda3/envs/transformer_env/python.exe`；PyCharm 可运行 `09 Train inverse 1000` 或 `10 Predict inverse 1000`。新权重为 `models/inverse_au100_1000.pt`，配置为 `configs/train_inverse_1000.json`，旧实验和权重保留。数据仍为 `pipeline_validation`，本次未对预测结构重跑 FDTD。正向模型继续暂缓。
+[查看训练结果、图表和逐参数误差](results/inverse_au100_1000/report.md)。解释器仍为 `D:/Anaconda3/envs/transformer_env/python.exe`；PyCharm 可运行 `09 Train inverse 1000` 或 `10 Predict inverse 1000`。新权重为 `models/inverse_au100_1000.pt`，配置为 `configs/train_inverse_1000.json`，旧实验和权重保留。数据仍为 `pipeline_validation`。正向网络继续暂缓。
 
-后续[双谷目标分析](results/feature_targets_1000/report.md)整理了 133 组双主谷光谱及训练集中的 P/dY 关联，并对三个未参与训练的目标给出冻结模型的预测结构；预测结构的回仿真尚待完成。
+后续[双谷目标分析](results/feature_targets_1000/report.md)整理了 133 组双主谷光谱及训练集中的 P/dY 关联，并对三个未参与训练的目标给出冻结模型的预测结构。[样本 207 的真实 FDTD 回仿真](results/inverse_roundtrip_207/report.md)已经完成：双谷保留，中心分别偏移约 1.0/4.0 nm，第二谷未通过 2 nm 参考标准；另外两个目标尚未回仿真。
 
 ## 此前：逆向模型优化（2026-10-19）
 

@@ -1,0 +1,177 @@
+{
+  "sample_id": 207,
+  "dataset_sha256": "0a06da7b6c194fb6e3d906fa11f8ca211a236c1aa83f6703c7489ad662ed972f",
+  "inverse_checkpoint_sha256": "cbe4d7f0283d2fddb744a6211714ab255ab995bb5f5fe0a6cd0b238de5faf7d5",
+  "reference_only": true,
+  "reference_reproduction": {
+    "reference_pair": {
+      "dips": [
+        {
+          "wavelength_nm": 772.072072072072,
+          "reflectance_min": 0.012015811167657375,
+          "prominence": 0.6323375189676881,
+          "half_prominence_width_nm": 9.675493039324692,
+          "width_samples": 9.665817546285396,
+          "resolved": true,
+          "lambda_over_width": 79.79666451457231
+        },
+        {
+          "wavelength_nm": 881.1811811811812,
+          "reflectance_min": 0.019898761063814163,
+          "prominence": 0.7473965995013714,
+          "half_prominence_width_nm": 12.146026621207511,
+          "width_samples": 12.133880594586373,
+          "resolved": true,
+          "lambda_over_width": 72.54892555912886
+        }
+      ],
+      "separation_nm": 109.10910910910911,
+      "intervening_max_reflectance": 0.7672953605651855,
+      "score": 0.6323375189676881
+    },
+    "fine_pair": {
+      "dips": [
+        {
+          "wavelength_nm": 772.072072072072,
+          "reflectance_min": 0.012015540369512513,
+          "prominence": 0.6323385823725052,
+          "half_prominence_width_nm": 9.675479632888937,
+          "width_samples": 9.665804153256005,
+          "resolved": true,
+          "lambda_over_width": 79.79677508158261
+        },
+        {
+          "wavelength_nm": 881.1811811811812,
+          "reflectance_min": 0.0198989781811525,
+          "prominence": 0.7473969911022487,
+          "half_prominence_width_nm": 12.146012887741904,
+          "width_samples": 12.133866874854107,
+          "resolved": true,
+          "lambda_over_width": 72.54900759001283
+        }
+      ],
+      "separation_nm": 109.10910910910911,
+      "intervening_max_reflectance": 0.7672959692834012,
+      "score": 0.6323385823725052
+    },
+    "matched_dips": [
+      {
+        "reference_dip": {
+          "wavelength_nm": 772.072072072072,
+          "reflectance_min": 0.012015811167657375,
+          "prominence": 0.6323375189676881,
+          "half_prominence_width_nm": 9.675493039324692,
+          "width_samples": 9.665817546285396,
+          "resolved": true,
+          "lambda_over_width": 79.79666451457231
+        },
+        "fine_dip": {
+          "wavelength_nm": 772.072072072072,
+          "reflectance_min": 0.012015540369512513,
+          "prominence": 0.6323385823725052,
+          "half_prominence_width_nm": 9.675479632888937,
+          "width_samples": 9.665804153256005,
+          "resolved": true,
+          "lambda_over_width": 79.79677508158261
+        },
+        "shift_nm": 0.0,
+        "absolute_R_min_change": 2.707981448628327e-07,
+        "relative_width_change": 1.3856075035123538e-06,
+        "feature_preserved": true,
+        "passes_thresholds": true
+      },
+      {
+        "reference_dip": {
+          "wavelength_nm": 881.1811811811812,
+          "reflectance_min": 0.019898761063814163,
+          "prominence": 0.7473965995013714,
+          "half_prominence_width_nm": 12.146026621207511,
+          "width_samples": 12.133880594586373,
+          "resolved": true,
+          "lambda_over_width": 72.54892555912886
+        },
+        "fine_dip": {
+          "wavelength_nm": 881.1811811811812,
+          "reflectance_min": 0.0198989781811525,
+          "prominence": 0.7473969911022487,
+          "half_prominence_width_nm": 12.146012887741904,
+          "width_samples": 12.133866874854107,
+          "resolved": true,
+          "lambda_over_width": 72.54900759001283
+        },
+        "shift_nm": 0.0,
+        "absolute_R_min_change": 2.17117338337236e-07,
+        "relative_width_change": 1.1306961557044914e-06,
+        "feature_preserved": true,
+        "passes_thresholds": true
+      }
+    ],
+    "both_dips_stable": true,
+    "thresholds": {
+      "peak_shift_nm": 2,
+      "absolute_R_min_change": 0.03,
+      "relative_width_change": 0.1
+    },
+    "maximum_R_difference": 9.666154630050272e-07,
+    "rms_R_difference": 3.252892387449533e-07
+  },
+  "comparison_criteria_note": "Previously used 2nm / 0.03 absolute R / 10% half-prominence width, as preliminary spectral checks",
+  "local_material_fits_match_server_at_1e_7": true,
+  "cases": {
+    "reference": {
+      "status": 2,
+      "elapsed_seconds": 573.4369999999999,
+      "geometry_values": [
+        689.4220905640685,
+        189.66888213889874,
+        355.1814047665215,
+        139.92706252569545,
+        104.66593067867572,
+        2.8109415255014483,
+        35.769904223950576
+      ],
+      "local_fdtd_version": "8.31.3633",
+      "source_fdtd_versions": [
+        "8.33.3999"
+      ],
+      "result_sha256": "000f1f31368a495b28da6483ba0c4062c8727161c08ba30937f3571d1cb24e53",
+      "mesh_audit": {
+        "mesh_policy": "metal_only",
+        "maximum_mesh_nm": null,
+        "whole_domain_limit_enforced": false,
+        "actual_grid": {
+          "x": {
+            "points": 89,
+            "maximum_step_nm": 7.83434193822807,
+            "minimum_step_nm": 7.834341938227805
+          },
+          "y": {
+            "points": 89,
+            "maximum_step_nm": 7.83434193822807,
+            "minimum_step_nm": 7.834341938227805
+          },
+          "z": {
+            "points": 127,
+            "maximum_step_nm": 38.70967741935606,
+            "minimum_step_nm": 7.733333333331656
+          }
+        },
+        "all_returned_cells_below_10_nm": false,
+        "metal_region": {
+          "axis": "z",
+          "z_min_nm": -450,
+          "z_max_nm": -350,
+          "cells": 13,
+          "requested_step_nm": 8.0,
+          "maximum_step_nm": 7.7333333333333485,
+          "minimum_step_nm": 7.7333333333333485,
+          "reference_mesh_without_metal": false,
+          "reference_xy_pinned": false
+        }
+      }
+    }
+  },
+  "quality_level": "pipeline_validation",
+  "model_or_source_data_modified": false,
+  "scope": "Generator 1.0 Au100 below finite SiO2; not the 2.0 middle-metal stack"
+}
