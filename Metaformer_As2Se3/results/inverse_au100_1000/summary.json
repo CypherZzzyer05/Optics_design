@@ -286,12 +286,15 @@
   "test_metrics_recomputed_from_csv": true,
   "best_checkpoint_selected_by_validation_only": true,
   "source_data_modified": false,
-  "predicted_structure_fdtd_run_performed": false,
+  "fdtd_run_performed_by_this_script": false,
+  "subsequent_fdtd_report": "../inverse_roundtrip_207/report.md",
   "quality_level": "pipeline_validation",
+  "material_fit_quality": "known_severe_Au_loss_deficiency",
   "limitations": [
     "One fixed training seed, no new hyperparameter search",
     "12 original test structures appeared in the earlier 100-sample dataset; fresh-88 results reported separately",
-    "Geometry prediction errors do not establish reconstructed optical spectra or BIC Q factors"
+    "Geometry prediction errors do not establish reconstructed optical spectra or BIC Q factors",
+    "Archived Au FDTD fit severely underestimates Ohmic loss; real-device validation requires corrected material data"
   ],
   "checkpoint": {
     "path": "models\\inverse_au100_1000.pt",

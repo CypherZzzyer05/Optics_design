@@ -103,10 +103,14 @@ def summarize():
         'max_reloaded_cpu_vs_exported_cuda_prediction_difference':reload_difference,
         'normalization_fit_only_on_training_rows_verified':True,'test_metrics_recomputed_from_csv':True,
         'best_checkpoint_selected_by_validation_only':True,'source_data_modified':False,
-        'predicted_structure_fdtd_run_performed':False,'quality_level':'pipeline_validation',
+        'fdtd_run_performed_by_this_script':False,
+        'subsequent_fdtd_report':'../inverse_roundtrip_207/report.md',
+        'quality_level':'pipeline_validation',
+        'material_fit_quality':'known_severe_Au_loss_deficiency',
         'limitations':['One fixed training seed, no new hyperparameter search',
             '12 original test structures appeared in the earlier 100-sample dataset; fresh-88 results reported separately',
-            'Geometry prediction errors do not establish reconstructed optical spectra or BIC Q factors']}
+            'Geometry prediction errors do not establish reconstructed optical spectra or BIC Q factors',
+            'Archived Au FDTD fit severely underestimates Ohmic loss; real-device validation requires corrected material data']}
     for name in ('metrics.json','history.json','test_predictions.csv','val_predictions.csv','training.log'):
         shutil.copy2(run/name,OUTPUT/name)
     checkpoint=ROOT/'models/inverse_au100_1000.pt'
@@ -128,7 +132,7 @@ def plot_results(result,prediction,target,lower,upper):
     base=result['training_only_constant_baseline']
     blue,gray,green='#2457bd','#a2adbb','#008a78'
     fig,axes=plt.subplots(2,2,figsize=(13,9),layout='constrained')
-    fig.suptitle('Metaformer：1000 个真实 FDTD 样本的逆向训练与验证',fontsize=17,fontweight='bold')
+    fig.suptitle('Metaformer：1000 个 FDTD 数值样本的逆向训练与验证',fontsize=17,fontweight='bold')
     fig.supxlabel('Au 底层结构（生成器 1.0） · 700–1700 nm · 800 / 100 / 100 · seed 44')
     ax=axes[0,0]
     ax.plot([h['epoch'] for h in history],[h['train_mse'] for h in history],label='训练（含 dropout）',color=blue)
@@ -161,7 +165,7 @@ def plot_results(result,prediction,target,lower,upper):
         f"88 个此前未出现的测试结构\n新模型 MSE：{fresh['new_model']['normalized_mse']:.6f}\n"
         f"旧 100 样本模型 MSE：{fresh['previous_100_sample_model']['normalized_mse']:.6f}\n"
         f"同一测试结构上降低：{fresh['mse_reduction_vs_previous_model_percent']:.1f}%\n\n"
-        '仅以验证集选择权重；单种子训练。\n数据为 pipeline_validation。\n未对预测结构重跑 FDTD。',
+        '仅以验证集选择权重；单种子训练。\n已知 Au 损耗拟合严重缺失。\n后续回仿真另见样本 207 报告。',
         va='top',fontsize=12,linespacing=1.45)
     fig.savefig(OUTPUT/'validation_overview.png',dpi=160)
     plt.close(fig)
@@ -172,7 +176,7 @@ def plot_results(result,prediction,target,lower,upper):
     for i,ax in enumerate(axes.flat):
         if i==7:
             ax.axis('off')
-            ax.text(.05,.9,'100 个测试结构\n\n长度：真实值与预测值\n角度：真实值与周期误差\n\n角度周期为 90°，\n不使用普通散点距离\n判断跨边界的预测误差。',va='top',linespacing=1.7)
+            ax.text(.05,.9,'100 个测试结构\n\n长度：真实值与预测值\n角度：真实值与周期误差\n\n角度周期为 90°，\n不使用普通散点距离\n判断跨边界的预测误差。\n\n已知 Au 损耗拟合严重缺失，\n本图用于数值流程验证。',va='top',linespacing=1.7)
         elif i<5:
             ax.scatter(truth[:,i],pred[:,i],s=17,alpha=.6,color=blue)
             ax.plot([lower[i],upper[i]],[lower[i],upper[i]],'--',color=gray)
