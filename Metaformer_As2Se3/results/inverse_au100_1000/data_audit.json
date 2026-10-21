@@ -1,0 +1,97 @@
+{
+  "source": "D:\\simulation\\au100_metal8_1000_p10\\au100_metal8_1000_p10",
+  "dataset_sha256": "0a06da7b6c194fb6e3d906fa11f8ca211a236c1aa83f6703c7489ad662ed972f",
+  "config_fingerprint": "4601f31a6f1c666482ff192b2d659d5dbb1b538c933917bd8b2246b662a8ae98",
+  "raw_shards_verified": 40,
+  "raw_samples_verified": 1000,
+  "samples": 1000,
+  "spectrum_points": 1000,
+  "parameter_names": [
+    "p",
+    "l",
+    "h",
+    "alpha_x",
+    "alpha_y",
+    "theta_odd_deg",
+    "theta_even_deg"
+  ],
+  "parameter_units": [
+    "nm",
+    "nm",
+    "nm",
+    "nm",
+    "nm",
+    "deg",
+    "deg"
+  ],
+  "splits": {
+    "train": 800,
+    "val": 100,
+    "test": 100
+  },
+  "all_status_2": true,
+  "all_raw_checksums_and_merged_arrays_match": true,
+  "all_geometries_match_original_seeded_plan": true,
+  "unique_geometries": 1000,
+  "unique_spectra": 1000,
+  "metal_maximum_step_nm": 7.7333333333333485,
+  "quality_level": "pipeline_validation",
+  "fdtd_versions": [
+    "8.33.3999"
+  ],
+  "preprocessing": "No clipping, smoothing or resampling; normalization fits training rows only",
+  "previous_100_dataset_overlap_in_current_test": {
+    "train": [
+      27,
+      39,
+      50,
+      54,
+      77,
+      81,
+      90
+    ],
+    "val": [
+      19,
+      83,
+      84
+    ],
+    "test": [
+      68,
+      96
+    ]
+  },
+  "previously_seen_test_sample_ids": [
+    19,
+    27,
+    39,
+    50,
+    54,
+    68,
+    77,
+    81,
+    83,
+    84,
+    90,
+    96
+  ],
+  "previously_unseen_test_count": 88,
+  "reflectance_range": [
+    8.526480087311938e-05,
+    0.9899296760559082
+  ],
+  "transmittance_range": [
+    -0.0035794004797935486,
+    0.01852412335574627
+  ],
+  "absorptance_range": [
+    0.009941115975379944,
+    0.9996795654296875
+  ],
+  "source_data_modified": false,
+  "solver_run_performed": false,
+  "physical_stack": "Generator 1.0: Au below finite SiO2, then As2Se3 tetramer",
+  "limitations": [
+    "Material fit accuracy remains pipeline_validation",
+    "Original test split retained; report the 88 previously unseen test structures separately"
+  ]
+}

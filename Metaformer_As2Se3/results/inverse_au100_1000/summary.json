@@ -1,0 +1,300 @@
+{
+  "dataset_sha256": "0a06da7b6c194fb6e3d906fa11f8ca211a236c1aa83f6703c7489ad662ed972f",
+  "data_audit": "data_audit.json",
+  "seed": 44,
+  "model_parameters": 3998087,
+  "epochs_completed": 55,
+  "best_epoch": 35,
+  "training_seconds": 141.48399999999992,
+  "optimizer_steps": 5500,
+  "best_validation_mse": 0.031601738184690475,
+  "train_metrics": {
+    "samples": 800,
+    "normalized_mse": 0.020120921699036495,
+    "normalized_rmse": 0.1418482347406428,
+    "normalized_mae": 0.09931904069210629,
+    "mae_nm": {
+      "p": 4.987889452312447,
+      "l": 2.1302622004805016,
+      "h": 4.8738437646148665,
+      "alpha_x": 5.902934701996855,
+      "alpha_y": 5.596841501017844
+    },
+    "rmse_nm": {
+      "p": 6.267282010220937,
+      "l": 2.663128773013874,
+      "h": 6.171024007431921,
+      "alpha_x": 8.515758760625458,
+      "alpha_y": 7.458736900422962
+    },
+    "mae_deg": {
+      "theta_odd_deg": 15.487415954744211,
+      "theta_even_deg": 16.45325741424167
+    },
+    "rmse_deg": {
+      "theta_odd_deg": 18.721058303974306,
+      "theta_even_deg": 19.959752481935187
+    },
+    "angle_symmetry": "square_periodic"
+  },
+  "validation_metrics": {
+    "samples": 100,
+    "normalized_mse": 0.03160173667119625,
+    "normalized_rmse": 0.17776877304857636,
+    "normalized_mae": 0.12092362309307127,
+    "mae_nm": {
+      "p": 5.3964100276585665,
+      "l": 2.264116460457444,
+      "h": 5.393134041992016,
+      "alpha_x": 6.607532838732004,
+      "alpha_y": 7.551727210963145
+    },
+    "rmse_nm": {
+      "p": 7.749857341807192,
+      "l": 2.951066453753754,
+      "h": 7.029054803034332,
+      "alpha_x": 10.368129234217058,
+      "alpha_y": 10.48269975973942
+    },
+    "mae_deg": {
+      "theta_odd_deg": 18.736617739044597,
+      "theta_even_deg": 21.72570890081115
+    },
+    "rmse_deg": {
+      "theta_odd_deg": 22.990490438401448,
+      "theta_even_deg": 25.02440951847568
+    },
+    "angle_symmetry": "square_periodic"
+  },
+  "test_metrics": {
+    "samples": 100,
+    "normalized_mse": 0.03342228578809837,
+    "normalized_rmse": 0.18281762986128655,
+    "normalized_mae": 0.12639556078384429,
+    "mae_nm": {
+      "p": 6.047976255061999,
+      "l": 2.4982838310255002,
+      "h": 5.164872242776401,
+      "alpha_x": 6.759637536190797,
+      "alpha_y": 7.645749308357401
+    },
+    "rmse_nm": {
+      "p": 8.471297495334019,
+      "l": 3.2689298051880136,
+      "h": 6.364012810013015,
+      "alpha_x": 10.327543428910822,
+      "alpha_y": 9.987597558543893
+    },
+    "mae_deg": {
+      "theta_odd_deg": 21.699759508143305,
+      "theta_even_deg": 20.728208139003005
+    },
+    "rmse_deg": {
+      "theta_odd_deg": 25.53037732275211,
+      "theta_even_deg": 24.67452290343672
+    },
+    "angle_symmetry": "square_periodic"
+  },
+  "training_only_constant_baseline": {
+    "samples": 100,
+    "normalized_mse": 0.08112312518729455,
+    "normalized_rmse": 0.28482121618182615,
+    "normalized_mae": 0.24492722968509067,
+    "mae_nm": {
+      "p": 16.924821800856545,
+      "l": 11.125914256636758,
+      "h": 35.39224568108439,
+      "alpha_x": 16.473577178109146,
+      "alpha_y": 15.421856749576257
+    },
+    "rmse_nm": {
+      "p": 19.77342534111705,
+      "l": 13.18660911294363,
+      "h": 40.64059302169707,
+      "alpha_x": 18.637578541578765,
+      "alpha_y": 17.526687013962682
+    },
+    "mae_deg": {
+      "theta_odd_deg": 19.756206722172486,
+      "theta_even_deg": 22.16550831559057
+    },
+    "rmse_deg": {
+      "theta_odd_deg": 23.77535825904085,
+      "theta_even_deg": 25.872688431986006
+    },
+    "angle_symmetry": "square_periodic"
+  },
+  "improvement_vs_constant_percent": 58.80054459078834,
+  "length_mse_improvement_vs_constant_percent": 81.14686323110645,
+  "angle_mse_improvement_vs_constant_percent": -2.1032918035175596,
+  "previously_unseen_test": {
+    "sample_ids": [
+      103,
+      110,
+      115,
+      131,
+      140,
+      143,
+      157,
+      165,
+      170,
+      187,
+      196,
+      202,
+      207,
+      217,
+      218,
+      236,
+      241,
+      264,
+      266,
+      268,
+      304,
+      310,
+      315,
+      321,
+      332,
+      337,
+      341,
+      351,
+      375,
+      380,
+      383,
+      405,
+      407,
+      428,
+      432,
+      441,
+      455,
+      466,
+      471,
+      489,
+      502,
+      516,
+      523,
+      549,
+      553,
+      570,
+      580,
+      590,
+      591,
+      606,
+      607,
+      624,
+      626,
+      635,
+      641,
+      643,
+      647,
+      660,
+      672,
+      689,
+      708,
+      756,
+      766,
+      782,
+      786,
+      787,
+      808,
+      814,
+      816,
+      833,
+      839,
+      840,
+      843,
+      844,
+      859,
+      862,
+      867,
+      879,
+      897,
+      903,
+      915,
+      917,
+      942,
+      953,
+      959,
+      974,
+      978,
+      985
+    ],
+    "new_model": {
+      "samples": 88,
+      "normalized_mse": 0.034112272914926085,
+      "normalized_rmse": 0.18469508091696998,
+      "normalized_mae": 0.12744022200539934,
+      "mae_nm": {
+        "p": 6.17485187999432,
+        "l": 2.3867367064494327,
+        "h": 5.11644290104818,
+        "alpha_x": 6.855822391921362,
+        "alpha_y": 7.907885469831137
+      },
+      "rmse_nm": {
+        "p": 8.706935922046116,
+        "l": 3.17358156290351,
+        "h": 6.374135340679249,
+        "alpha_x": 10.534136824345936,
+        "alpha_y": 10.351403653661022
+      },
+      "mae_deg": {
+        "theta_odd_deg": 21.120407897136133,
+        "theta_even_deg": 21.497006962789772
+      },
+      "rmse_deg": {
+        "theta_odd_deg": 25.013994430612346,
+        "theta_even_deg": 25.356542129623858
+      },
+      "angle_symmetry": "square_periodic"
+    },
+    "previous_100_sample_model": {
+      "samples": 88,
+      "normalized_mse": 0.051754434345964835,
+      "normalized_rmse": 0.22749600951657337,
+      "normalized_mae": 0.177019409828805,
+      "mae_nm": {
+        "p": 12.542947899428531,
+        "l": 3.9490015196624926,
+        "h": 13.422382228103485,
+        "alpha_x": 10.635118619082043,
+        "alpha_y": 12.60504531901634
+      },
+      "rmse_nm": {
+        "p": 15.30219958425561,
+        "l": 4.918486461102722,
+        "h": 19.074727819108908,
+        "alpha_x": 13.253589205057153,
+        "alpha_y": 14.881894476791896
+      },
+      "mae_deg": {
+        "theta_odd_deg": 21.32243788828234,
+        "theta_even_deg": 23.476020072564395
+      },
+      "rmse_deg": {
+        "theta_odd_deg": 25.828562857161092,
+        "theta_even_deg": 27.531824640650747
+      },
+      "angle_symmetry": "square_periodic"
+    },
+    "old_checkpoint_sha256": "8de7d4ea5511a50be44e786499c50e5e4e21d0cd2a76bf770c06948f332e70c1",
+    "mse_reduction_vs_previous_model_percent": 34.08821225463604
+  },
+  "predicted_geometry_valid_count": 100,
+  "invalid_predicted_geometries": [],
+  "max_reloaded_cpu_vs_exported_cuda_prediction_difference": 8.940350281205767e-07,
+  "normalization_fit_only_on_training_rows_verified": true,
+  "test_metrics_recomputed_from_csv": true,
+  "best_checkpoint_selected_by_validation_only": true,
+  "source_data_modified": false,
+  "predicted_structure_fdtd_run_performed": false,
+  "quality_level": "pipeline_validation",
+  "limitations": [
+    "One fixed training seed, no new hyperparameter search",
+    "12 original test structures appeared in the earlier 100-sample dataset; fresh-88 results reported separately",
+    "Geometry prediction errors do not establish reconstructed optical spectra or BIC Q factors"
+  ],
+  "checkpoint": {
+    "path": "models\\inverse_au100_1000.pt",
+    "sha256": "cbe4d7f0283d2fddb744a6211714ab255ab995bb5f5fe0a6cd0b238de5faf7d5"
+  }
+}
