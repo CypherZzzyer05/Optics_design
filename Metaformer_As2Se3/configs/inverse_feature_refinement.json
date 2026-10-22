@@ -1,0 +1,25 @@
+{
+  "dataset": "../examples/au100_metal8_1000/dataset.npz",
+  "output_dir": "../runs/inverse_features1000_refined",
+  "results_dir": "../results/inverse_features1000",
+  "historical_checkpoint": "D:/projects/Optics_design_train1000/Metaformer_As2Se3/models/inverse_au100_1000.pt",
+  "seeds": [42, 43, 44],
+  "epochs": 100,
+  "batch_size": 8,
+  "learning_rate": 0.0003,
+  "weight_decay": 0.001,
+  "patience": 20,
+  "variants": {
+    "baseline": {"architecture": "baseline", "view": "raw", "mirror_loss": false},
+    "compact_raw": {"architecture": "compact", "view": "raw", "mirror_loss": false},
+    "shape": {"architecture": "compact", "view": "shape", "mirror_loss": false},
+    "shape_fft": {"architecture": "compact", "view": "shape_fft", "mirror_loss": false},
+    "shape_fft_mirror": {"architecture": "compact", "view": "shape_fft", "mirror_loss": true},
+    "compact_raw_mirror": {"architecture": "compact", "view": "raw", "mirror_loss": true},
+    "shape_mirror": {"architecture": "compact", "view": "shape", "mirror_loss": true}
+  },
+  "selection": "Minimum mean validation joint-mirror-equivalent seven-parameter MSE over three seeds; all variants use this same metric. Freeze ranking before opening test predictions.",
+  "test_policy": "Evaluate only baseline and selected variant, report original periodic and joint-mirror metrics together. Existing test set is previously inspected, not a new blind test.",
+  "quality_scope": "Existing 1.0 Au-bottom dataset with known Au loss-fit limitations; optimize numerical inverse learning only.",
+  "refinement_note": "Before any new test evaluation, add raw+mirror and shape+mirror controls to distinguish symmetry-loss benefits from spectral-view benefits. Reuse the first five variants' unchanged training runs. No test-guided tuning."
+}

@@ -1,0 +1,44 @@
+{
+  "selected": "shape_fft_mirror",
+  "representative_seed": 42,
+  "ranking": [
+    {
+      "variant": "shape_fft_mirror",
+      "mean_equivalent_validation_mse": 0.021880368732478585,
+      "std": 0.0005043413059862835,
+      "mean_periodic_validation_mse": 0.03279520821759173,
+      "parameters": 349736
+    },
+    {
+      "variant": "shape",
+      "mean_equivalent_validation_mse": 0.02582332514390148,
+      "std": 0.0007386753684186316,
+      "mean_periodic_validation_mse": 0.0311628641369756,
+      "parameters": 337064
+    },
+    {
+      "variant": "baseline",
+      "mean_equivalent_validation_mse": 0.02622388815315479,
+      "std": 0.00035609361766574866,
+      "mean_periodic_validation_mse": 0.03147311966399672,
+      "parameters": 3998087
+    },
+    {
+      "variant": "compact_raw",
+      "mean_equivalent_validation_mse": 0.026700785631204024,
+      "std": 0.0008479287803030389,
+      "mean_periodic_validation_mse": 0.03131495365046481,
+      "parameters": 320552
+    },
+    {
+      "variant": "shape_fft",
+      "mean_equivalent_validation_mse": 0.0279004268861562,
+      "std": 0.0016681125774476062,
+      "mean_periodic_validation_mse": 0.03358852750448794,
+      "parameters": 349736
+    }
+  ],
+  "selection_metric": "Minimum mean validation joint-mirror-equivalent seven-parameter MSE over three seeds; all variants use this same metric. Freeze ranking before opening test predictions.",
+  "test_evaluated": false,
+  "plan_sha256": "f4ed4d17cd95869bdb25ffa913335485ba037529c1de208dfeb04b51502282fd"
+}

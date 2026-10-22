@@ -1,0 +1,19 @@
+{
+  "checkpoint_reload_max_difference": 5.960464477539062e-07,
+  "metric_recalculation_max_difference": 0.0,
+  "cpu_batch1_median_ms": 2.30205000116257,
+  "cpu_threads": 4,
+  "baseline_cpu_batch1_median_ms": 10.125349999725586,
+  "timing_scope": "Warm FP32 forward; includes preprocessing, excludes checkpoint/CSV I/O",
+  "valid_geometry_counts_out_of_100": {
+    "baseline_seed42": 100,
+    "baseline_seed43": 100,
+    "baseline_seed44": 100,
+    "baseline_seedensemble": 100,
+    "compact_raw_mirror_seed42": 100,
+    "compact_raw_mirror_seed43": 99,
+    "compact_raw_mirror_seed44": 100,
+    "compact_raw_mirror_seedensemble": 100
+  },
+  "selected_checkpoint_sha256": "084970fc797f3bd62612e13bc1e33a3a6bfe170ca552d924896ea0e43522389e"
+}

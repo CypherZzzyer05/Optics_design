@@ -1,0 +1,38 @@
+2026-10-22 10:02:38,322 Device=cuda; dataset=0a06da7b6c194fb6e3d906fa11f8ca211a236c1aa83f6703c7489ad662ed972f; no FDTD run
+2026-10-22 10:02:42,931 compact_raw_mirror seed42 epoch1 train=0.06097 val=0.06941 equivalent=0.05713 best_epoch=1
+2026-10-22 10:02:59,747 compact_raw_mirror seed42 epoch10 train=0.02225 val=0.03453 equivalent=0.02313 best_epoch=10
+2026-10-22 10:03:17,585 compact_raw_mirror seed42 epoch20 train=0.01899 val=0.03618 equivalent=0.02426 best_epoch=18
+2026-10-22 10:03:35,782 compact_raw_mirror seed42 epoch30 train=0.01480 val=0.03379 equivalent=0.02260 best_epoch=18
+2026-10-22 10:03:51,158 Finished compact_raw_mirror seed42: equivalent val 0.021600, 72.5s
+2026-10-22 10:03:52,788 compact_raw_mirror seed43 epoch1 train=0.05911 val=0.05794 equivalent=0.04463 best_epoch=1
+2026-10-22 10:04:08,652 compact_raw_mirror seed43 epoch10 train=0.02197 val=0.03524 equivalent=0.02309 best_epoch=9
+2026-10-22 10:04:28,874 compact_raw_mirror seed43 epoch20 train=0.01859 val=0.03272 equivalent=0.02145 best_epoch=12
+2026-10-22 10:04:47,162 compact_raw_mirror seed43 epoch30 train=0.01595 val=0.03219 equivalent=0.02130 best_epoch=27
+2026-10-22 10:05:03,329 compact_raw_mirror seed43 epoch40 train=0.01383 val=0.03045 equivalent=0.01962 best_epoch=40
+2026-10-22 10:05:19,191 compact_raw_mirror seed43 epoch50 train=0.01167 val=0.03205 equivalent=0.02042 best_epoch=47
+2026-10-22 10:05:35,335 compact_raw_mirror seed43 epoch60 train=0.00864 val=0.03177 equivalent=0.02053 best_epoch=47
+2026-10-22 10:05:46,949 Finished compact_raw_mirror seed43: equivalent val 0.019283, 115.6s
+2026-10-22 10:05:48,622 compact_raw_mirror seed44 epoch1 train=0.06209 val=0.07227 equivalent=0.06034 best_epoch=1
+2026-10-22 10:06:03,045 compact_raw_mirror seed44 epoch10 train=0.02193 val=0.03754 equivalent=0.02584 best_epoch=7
+2026-10-22 10:06:18,901 compact_raw_mirror seed44 epoch20 train=0.01925 val=0.03502 equivalent=0.02287 best_epoch=18
+2026-10-22 10:06:35,185 compact_raw_mirror seed44 epoch30 train=0.01658 val=0.03386 equivalent=0.02347 best_epoch=23
+2026-10-22 10:06:51,186 compact_raw_mirror seed44 epoch40 train=0.01278 val=0.03352 equivalent=0.02329 best_epoch=23
+2026-10-22 10:06:55,931 Finished compact_raw_mirror seed44: equivalent val 0.020902, 68.8s
+2026-10-22 10:06:57,648 shape_mirror seed42 epoch1 train=0.06218 val=0.07050 equivalent=0.05809 best_epoch=1
+2026-10-22 10:07:12,889 shape_mirror seed42 epoch10 train=0.02082 val=0.03418 equivalent=0.02315 best_epoch=10
+2026-10-22 10:07:29,632 shape_mirror seed42 epoch20 train=0.01613 val=0.03505 equivalent=0.02521 best_epoch=15
+2026-10-22 10:07:46,617 shape_mirror seed42 epoch30 train=0.01003 val=0.03202 equivalent=0.02409 best_epoch=15
+2026-10-22 10:07:54,994 Finished shape_mirror seed42: equivalent val 0.022920, 58.9s
+2026-10-22 10:07:56,426 shape_mirror seed43 epoch1 train=0.06194 val=0.06754 equivalent=0.05876 best_epoch=1
+2026-10-22 10:08:08,948 shape_mirror seed43 epoch10 train=0.02094 val=0.03297 equivalent=0.02205 best_epoch=10
+2026-10-22 10:08:22,441 shape_mirror seed43 epoch20 train=0.01658 val=0.03555 equivalent=0.02502 best_epoch=11
+2026-10-22 10:08:36,243 shape_mirror seed43 epoch30 train=0.01090 val=0.03492 equivalent=0.02585 best_epoch=11
+2026-10-22 10:08:37,790 Finished shape_mirror seed43: equivalent val 0.021877, 42.6s
+2026-10-22 10:08:39,178 shape_mirror seed44 epoch1 train=0.06212 val=0.06712 equivalent=0.05538 best_epoch=1
+2026-10-22 10:08:51,615 shape_mirror seed44 epoch10 train=0.02074 val=0.03540 equivalent=0.02297 best_epoch=10
+2026-10-22 10:09:05,653 shape_mirror seed44 epoch20 train=0.01621 val=0.03290 equivalent=0.02227 best_epoch=18
+2026-10-22 10:09:19,256 shape_mirror seed44 epoch30 train=0.01208 val=0.03334 equivalent=0.02318 best_epoch=23
+2026-10-22 10:09:33,263 shape_mirror seed44 epoch40 train=0.00762 val=0.03144 equivalent=0.02284 best_epoch=23
+2026-10-22 10:09:37,911 Finished shape_mirror seed44: equivalent val 0.020499, 59.9s
+2026-10-22 10:09:50,237 Device=cuda; dataset=0a06da7b6c194fb6e3d906fa11f8ca211a236c1aa83f6703c7489ad662ed972f; no FDTD run
+2026-10-22 10:09:51,061 Final selection: compact_raw_mirror, representative seed 44

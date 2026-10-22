@@ -1,5 +1,15 @@
 # As₂Se₃ 四聚体：七参数近红外逆向设计
 
+## 本分支：现有 1000 样本的模型与光谱特征优化
+
+独立工作树 `D:/projects/Optics_design_features1000`，分支 `codex/inverse-feature-optimization`。保留所有历史入口，新增 `spectral_inverse.py`、`optimize_spectral_inverse.py`、`predict_spectral_inverse.py`；先比较 5 个方案，在测试前补充 2 个去分支对照，共 7 个方案、每个方案 3 个随机种子。[实验记录](results/inverse_features1000/report.md)。不调用原生求解器、不更改数据标签、不添加正向网络。
+
+PyCharm 仍用 `D:/Anaconda3/envs/transformer_env/python.exe`，配置 `11 Optimize spectrum features 1000` 执行完整七方案训练和冻结测试；配置 `12 Predict optimized inverse` 使用新权重。图表与报告可执行 `python summarize_feature_study.py` 生成。运行进度见 `runs/inverse_features1000_refined/status.json` 和 `study.log`。
+
+小模型由四层 96 维编码器和学习式池化组成。shape 方案保留 R 并添加固定局部导数、细/粗分块；Fourier 方案增加实部和虚部编码的全局 token。镜像方案在两个角上共同选择一组等价标签，原始标签周期误差仍同时报告。算法是否有效由冻结验证与测试结果判断。
+
+已完成的七方案对照选中 `compact_raw_mirror`：320,552 参数，同一镜像等价测试 MSE 降低 21.4%，原始标签周期 MSE 略升 0.9%。部署 `models/inverse_features1000.pt` 为验证集表现居中的 seed44；原始光谱直接分块，未选入导数/Fourier 分支。两个角和 dX 仍有改善空间，完整数据见上述报告。
+
 **材料更正：已确认当前 1000 样本数据也沿用了严重缺失 Au 欧姆损耗的拟合。模型训练与回仿真验证针对这套数值体系，真实 Au 器件性能需在材料修正后重新验证。** [证据](results/inverse_roundtrip_207/report.md)
 
 ## 本分支：1000 样本训练与验证（2026-10-21）
