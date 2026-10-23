@@ -1,4 +1,20 @@
-# As₂Se₃ 四聚体：七参数近红外逆向设计
+# MetaformerPro：As₂Se₃ 四聚体七参数逆向设计
+
+## MetaformerPro（2026-10-23）
+
+本轮独立工作树为 `D:/projects/MetaformerPro`，分支 `codex/metaformerpro`。模型代码 `metaformerpro.py`，训练 `train_metaformerpro.py`，推理 `predict_metaformerpro.py`。[本轮对照与结果](results/metaformerpro_v02/report.md)。昨日最优模型命名为 MetaformerPro 0.1，转换权重后预测保持一致；圆周输出、七参数查询池化及重叠分块作为0.2候选进行同一验证。
+
+验证选中单独圆周角度头，导出为0.2：五尺寸测试MSE降低3.4%，原始标签周期MSE降低8.3%，镜像等价MSE略升1.3%。dX MAE从7.165降至6.659 nm；偶数角仍退步。320,938参数，部署seed44的100条测试预测全部通过几何检查；这不保证后续输入全部合法，推理仍返回检查结果。
+
+```powershell
+python train_metaformerpro.py all
+python summarize_metaformerpro.py
+python predict_metaformerpro.py --sample-id 207
+```
+
+PyCharm配置为 `13 MetaformerPro train v02` / `14 MetaformerPro predict`，解释器仍为 `D:/Anaconda3/envs/transformer_env/python.exe`。部署权重 `models/metaformerpro.pt`。进度在 `runs/metaformerpro_v02/status.json` 和 `study.log`，输出、缓存均放在D盘。
+
+选型同时约束尺寸误差：五尺寸验证MSE最多增加2%，dX验证MAE最多增加5%，之后按三种子平均镜像等价MSE排序。保留全部试验与旧权重；同一固定测试集上的后续优化不视为新的盲测。
 
 ## 本分支：现有 1000 样本的模型与光谱特征优化
 

@@ -1,0 +1,102 @@
+2026-10-23 09:50:57,590 MetaformerPro device=cuda; dataset=0a06da7b6c194fb6e3d906fa11f8ca211a236c1aa83f6703c7489ad662ed972f
+2026-10-23 09:50:58,660 Finished pro_v01 seed42: val 0.021600, 72.5s
+2026-10-23 09:50:58,851 Finished pro_v01 seed43: val 0.019283, 115.6s
+2026-10-23 09:50:59,040 Finished pro_v01 seed44: val 0.020902, 68.8s
+2026-10-23 09:51:02,005 circular seed42 epoch1 train=0.06134 val=0.05460 lengths=0.05928 dX=15.810nm best=1
+2026-10-23 09:51:12,826 circular seed42 epoch10 train=0.02251 val=0.02148 lengths=0.01404 dX=7.071nm best=10
+2026-10-23 09:51:24,094 circular seed42 epoch20 train=0.01821 val=0.02186 lengths=0.01346 dX=6.473nm best=19
+2026-10-23 09:51:36,299 circular seed42 epoch30 train=0.01818 val=0.02120 lengths=0.01294 dX=6.431nm best=26
+2026-10-23 09:51:48,142 circular seed42 epoch40 train=0.01443 val=0.02050 lengths=0.01241 dX=5.892nm best=40
+2026-10-23 09:51:59,940 circular seed42 epoch50 train=0.01317 val=0.02120 lengths=0.01286 dX=5.843nm best=40
+2026-10-23 09:52:11,689 circular seed42 epoch60 train=0.01016 val=0.02225 lengths=0.01396 dX=5.959nm best=40
+2026-10-23 09:52:11,843 Finished circular seed42: val 0.020495, 71.4s
+2026-10-23 09:52:13,027 circular seed43 epoch1 train=0.05920 val=0.04575 lengths=0.04637 dX=15.490nm best=1
+2026-10-23 09:52:23,397 circular seed43 epoch10 train=0.02132 val=0.02259 lengths=0.01477 dX=8.079nm best=8
+2026-10-23 09:52:35,495 circular seed43 epoch20 train=0.01878 val=0.02129 lengths=0.01406 dX=6.918nm best=11
+2026-10-23 09:52:46,972 circular seed43 epoch30 train=0.01535 val=0.02096 lengths=0.01342 dX=6.697nm best=26
+2026-10-23 09:52:58,648 circular seed43 epoch40 train=0.01372 val=0.01998 lengths=0.01212 dX=6.627nm best=40
+2026-10-23 09:53:10,734 circular seed43 epoch50 train=0.01226 val=0.02083 lengths=0.01301 dX=6.742nm best=42
+2026-10-23 09:53:22,310 circular seed43 epoch60 train=0.01139 val=0.02024 lengths=0.01274 dX=6.515nm best=42
+2026-10-23 09:53:24,844 Finished circular seed43: val 0.019958, 72.8s
+2026-10-23 09:53:26,066 circular seed44 epoch1 train=0.06222 val=0.05995 lengths=0.06559 dX=15.779nm best=1
+2026-10-23 09:53:36,901 circular seed44 epoch10 train=0.02199 val=0.02365 lengths=0.01703 dX=7.659nm best=9
+2026-10-23 09:53:48,490 circular seed44 epoch20 train=0.01907 val=0.02265 lengths=0.01471 dX=7.060nm best=13
+2026-10-23 09:54:00,409 circular seed44 epoch30 train=0.01576 val=0.02105 lengths=0.01267 dX=5.923nm best=13
+2026-10-23 09:54:04,075 Finished circular seed44: val 0.020484, 39.1s
+2026-10-23 09:54:05,308 queries seed42 epoch1 train=0.06900 val=0.06612 lengths=0.07455 dX=17.119nm best=1
+2026-10-23 09:54:16,085 queries seed42 epoch10 train=0.03258 val=0.03315 lengths=0.02886 dX=12.774nm best=10
+2026-10-23 09:54:28,307 queries seed42 epoch20 train=0.02220 val=0.02300 lengths=0.01471 dX=7.255nm best=20
+2026-10-23 09:54:40,445 queries seed42 epoch30 train=0.01961 val=0.02164 lengths=0.01390 dX=7.025nm best=23
+2026-10-23 09:54:53,375 queries seed42 epoch40 train=0.01598 val=0.02136 lengths=0.01377 dX=6.658nm best=37
+2026-10-23 09:55:06,094 queries seed42 epoch50 train=0.01360 val=0.02017 lengths=0.01254 dX=6.648nm best=49
+2026-10-23 09:55:18,214 queries seed42 epoch60 train=0.01217 val=0.01972 lengths=0.01266 dX=6.520nm best=60
+2026-10-23 09:55:31,041 queries seed42 epoch70 train=0.01164 val=0.02038 lengths=0.01443 dX=6.812nm best=62
+2026-10-23 09:55:42,975 queries seed42 epoch80 train=0.01043 val=0.01960 lengths=0.01298 dX=6.545nm best=62
+2026-10-23 09:55:45,576 Finished queries seed42: val 0.019532, 101.3s
+2026-10-23 09:55:46,819 queries seed43 epoch1 train=0.06935 val=0.06565 lengths=0.07431 dX=16.707nm best=1
+2026-10-23 09:55:57,784 queries seed43 epoch10 train=0.03336 val=0.03325 lengths=0.02935 dX=13.495nm best=10
+2026-10-23 09:56:10,070 queries seed43 epoch20 train=0.02024 val=0.02081 lengths=0.01290 dX=7.027nm best=20
+2026-10-23 09:56:22,154 queries seed43 epoch30 train=0.01789 val=0.02086 lengths=0.01265 dX=6.617nm best=26
+2026-10-23 09:56:34,400 queries seed43 epoch40 train=0.01506 val=0.02075 lengths=0.01224 dX=6.398nm best=34
+2026-10-23 09:56:46,479 queries seed43 epoch50 train=0.01158 val=0.02135 lengths=0.01411 dX=7.618nm best=34
+2026-10-23 09:56:51,409 Finished queries seed43: val 0.020288, 65.7s
+2026-10-23 09:56:52,642 queries seed44 epoch1 train=0.06874 val=0.06622 lengths=0.07491 dX=16.467nm best=1
+2026-10-23 09:57:03,771 queries seed44 epoch10 train=0.03744 val=0.03597 lengths=0.03279 dX=13.284nm best=10
+2026-10-23 09:57:15,997 queries seed44 epoch20 train=0.02662 val=0.02802 lengths=0.02189 dX=10.080nm best=20
+2026-10-23 09:57:28,533 queries seed44 epoch30 train=0.02022 val=0.02511 lengths=0.01708 dX=7.937nm best=25
+2026-10-23 09:57:40,879 queries seed44 epoch40 train=0.01779 val=0.02283 lengths=0.01493 dX=7.094nm best=34
+2026-10-23 09:57:53,169 queries seed44 epoch50 train=0.01444 val=0.02241 lengths=0.01559 dX=6.736nm best=34
+2026-10-23 09:57:58,300 Finished queries seed44: val 0.021915, 66.7s
+2026-10-23 09:57:59,584 queries_circular seed42 epoch1 train=0.06942 val=0.06565 lengths=0.07448 dX=17.069nm best=1
+2026-10-23 09:58:10,883 queries_circular seed42 epoch10 train=0.03254 val=0.03379 lengths=0.02977 dX=13.625nm best=10
+2026-10-23 09:58:23,940 queries_circular seed42 epoch20 train=0.02160 val=0.02257 lengths=0.01424 dX=7.334nm best=20
+2026-10-23 09:58:36,806 queries_circular seed42 epoch30 train=0.01971 val=0.02139 lengths=0.01348 dX=7.428nm best=30
+2026-10-23 09:58:49,326 queries_circular seed42 epoch40 train=0.01736 val=0.02077 lengths=0.01261 dX=6.552nm best=40
+2026-10-23 09:59:02,097 queries_circular seed42 epoch50 train=0.01549 val=0.02131 lengths=0.01430 dX=6.791nm best=40
+2026-10-23 09:59:14,775 queries_circular seed42 epoch60 train=0.01177 val=0.02071 lengths=0.01413 dX=6.914nm best=60
+2026-10-23 09:59:27,865 queries_circular seed42 epoch70 train=0.01092 val=0.02150 lengths=0.01527 dX=7.015nm best=68
+2026-10-23 09:59:40,345 queries_circular seed42 epoch80 train=0.00935 val=0.02195 lengths=0.01545 dX=6.868nm best=68
+2026-10-23 09:59:50,616 Finished queries_circular seed42: val 0.020504, 112.2s
+2026-10-23 09:59:51,908 queries_circular seed43 epoch1 train=0.06986 val=0.06618 lengths=0.07482 dX=16.750nm best=1
+2026-10-23 10:00:04,355 queries_circular seed43 epoch10 train=0.03188 val=0.03421 lengths=0.03070 dX=13.174nm best=10
+2026-10-23 10:00:17,620 queries_circular seed43 epoch20 train=0.02214 val=0.02238 lengths=0.01447 dX=7.285nm best=20
+2026-10-23 10:00:30,439 queries_circular seed43 epoch30 train=0.02018 val=0.02186 lengths=0.01344 dX=6.853nm best=30
+2026-10-23 10:00:43,133 queries_circular seed43 epoch40 train=0.01791 val=0.02355 lengths=0.01559 dX=6.645nm best=31
+2026-10-23 10:00:55,549 queries_circular seed43 epoch50 train=0.01464 val=0.02170 lengths=0.01391 dX=7.127nm best=31
+2026-10-23 10:00:56,951 Finished queries_circular seed43: val 0.021056, 66.2s
+2026-10-23 10:00:58,219 queries_circular seed44 epoch1 train=0.06918 val=0.06620 lengths=0.07473 dX=16.509nm best=1
+2026-10-23 10:01:09,939 queries_circular seed44 epoch10 train=0.03641 val=0.03619 lengths=0.03330 dX=13.545nm best=10
+2026-10-23 10:01:22,379 queries_circular seed44 epoch20 train=0.02713 val=0.02908 lengths=0.02312 dX=10.002nm best=20
+2026-10-23 10:01:35,188 queries_circular seed44 epoch30 train=0.02113 val=0.02347 lengths=0.01526 dX=7.076nm best=27
+2026-10-23 10:01:47,644 queries_circular seed44 epoch40 train=0.01996 val=0.02197 lengths=0.01347 dX=6.290nm best=40
+2026-10-23 10:02:00,115 queries_circular seed44 epoch50 train=0.02015 val=0.02290 lengths=0.01388 dX=6.531nm best=41
+2026-10-23 10:02:12,872 queries_circular seed44 epoch60 train=0.01606 val=0.02159 lengths=0.01365 dX=6.582nm best=54
+2026-10-23 10:02:25,324 queries_circular seed44 epoch70 train=0.01463 val=0.02235 lengths=0.01436 dX=6.691nm best=61
+2026-10-23 10:02:37,843 queries_circular seed44 epoch80 train=0.01360 val=0.02283 lengths=0.01582 dX=7.056nm best=61
+2026-10-23 10:02:50,462 queries_circular seed44 epoch90 train=0.01226 val=0.02251 lengths=0.01585 dX=6.767nm best=88
+2026-10-23 10:03:03,194 queries_circular seed44 epoch100 train=0.01117 val=0.02169 lengths=0.01436 dX=6.424nm best=88
+2026-10-23 10:03:03,350 Finished queries_circular seed44: val 0.021283, 126.2s
+2026-10-23 10:03:04,632 overlap_queries_circular seed42 epoch1 train=0.06916 val=0.06594 lengths=0.07471 dX=17.198nm best=1
+2026-10-23 10:03:15,977 overlap_queries_circular seed42 epoch10 train=0.03201 val=0.03371 lengths=0.02935 dX=13.243nm best=10
+2026-10-23 10:03:28,578 overlap_queries_circular seed42 epoch20 train=0.02235 val=0.02410 lengths=0.01653 dX=7.081nm best=19
+2026-10-23 10:03:41,361 overlap_queries_circular seed42 epoch30 train=0.01979 val=0.02175 lengths=0.01354 dX=6.317nm best=26
+2026-10-23 10:03:54,455 overlap_queries_circular seed42 epoch40 train=0.01707 val=0.02278 lengths=0.01452 dX=6.315nm best=31
+2026-10-23 10:04:07,228 overlap_queries_circular seed42 epoch50 train=0.01476 val=0.02096 lengths=0.01306 dX=5.845nm best=45
+2026-10-23 10:04:19,788 overlap_queries_circular seed42 epoch60 train=0.01264 val=0.02140 lengths=0.01362 dX=5.783nm best=45
+2026-10-23 10:04:26,414 Finished overlap_queries_circular seed42: val 0.020782, 82.9s
+2026-10-23 10:04:27,732 overlap_queries_circular seed43 epoch1 train=0.06956 val=0.06573 lengths=0.07447 dX=16.694nm best=1
+2026-10-23 10:04:39,308 overlap_queries_circular seed43 epoch10 train=0.03139 val=0.03150 lengths=0.02659 dX=12.318nm best=10
+2026-10-23 10:04:52,256 overlap_queries_circular seed43 epoch20 train=0.02057 val=0.02157 lengths=0.01319 dX=7.508nm best=20
+2026-10-23 10:05:05,921 overlap_queries_circular seed43 epoch30 train=0.01828 val=0.02137 lengths=0.01306 dX=6.951nm best=30
+2026-10-23 10:05:19,663 overlap_queries_circular seed43 epoch40 train=0.01649 val=0.02216 lengths=0.01437 dX=6.949nm best=33
+2026-10-23 10:05:32,808 overlap_queries_circular seed43 epoch50 train=0.01318 val=0.02112 lengths=0.01320 dX=6.750nm best=47
+2026-10-23 10:05:45,177 overlap_queries_circular seed43 epoch60 train=0.01108 val=0.02219 lengths=0.01486 dX=6.775nm best=47
+2026-10-23 10:05:54,209 Finished overlap_queries_circular seed43: val 0.020548, 87.6s
+2026-10-23 10:05:55,517 overlap_queries_circular seed44 epoch1 train=0.06933 val=0.06611 lengths=0.07471 dX=16.521nm best=1
+2026-10-23 10:06:07,111 overlap_queries_circular seed44 epoch10 train=0.03132 val=0.03228 lengths=0.02796 dX=12.991nm best=10
+2026-10-23 10:06:19,647 overlap_queries_circular seed44 epoch20 train=0.02184 val=0.02433 lengths=0.01690 dX=7.207nm best=19
+2026-10-23 10:06:32,594 overlap_queries_circular seed44 epoch30 train=0.01866 val=0.02414 lengths=0.01599 dX=6.753nm best=23
+2026-10-23 10:06:45,287 overlap_queries_circular seed44 epoch40 train=0.01512 val=0.02192 lengths=0.01450 dX=6.386nm best=23
+2026-10-23 10:06:49,141 Finished overlap_queries_circular seed44: val 0.021603, 54.8s
+2026-10-23 10:07:06,563 MetaformerPro device=cuda; dataset=0a06da7b6c194fb6e3d906fa11f8ca211a236c1aa83f6703c7489ad662ed972f
+2026-10-23 10:07:07,091 Selected MetaformerPro: circular seed44

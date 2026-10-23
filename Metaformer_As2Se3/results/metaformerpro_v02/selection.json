@@ -1,0 +1,53 @@
+{
+  "selected": "circular",
+  "representative_seed": 44,
+  "ranking": [
+    {
+      "variant": "circular",
+      "mean_validation_mse": 0.020312367186853943,
+      "std_validation_mse": 0.0002505801689542162,
+      "length_mse": 0.012457200705725245,
+      "dx_mae_nm": 6.190864282101393,
+      "parameters": 320938,
+      "eligible": true
+    },
+    {
+      "variant": "queries",
+      "mean_validation_mse": 0.020578625661524668,
+      "std_validation_mse": 0.0009943290488715097,
+      "length_mse": 0.012749811445803505,
+      "dx_mae_nm": 6.702913672477007,
+      "parameters": 320162,
+      "eligible": false
+    },
+    {
+      "variant": "pro_v01",
+      "mean_validation_mse": 0.0205952022343799,
+      "std_validation_mse": 0.000970711274487064,
+      "length_mse": 0.012401451375994734,
+      "dx_mae_nm": 6.969576459005476,
+      "parameters": 320552,
+      "eligible": true
+    },
+    {
+      "variant": "queries_circular",
+      "mean_validation_mse": 0.020947637346055675,
+      "std_validation_mse": 0.00032701258655450956,
+      "length_mse": 0.01334585187346106,
+      "dx_mae_nm": 6.543395709991455,
+      "parameters": 320355,
+      "eligible": false
+    },
+    {
+      "variant": "overlap_queries_circular",
+      "mean_validation_mse": 0.020977871161767383,
+      "std_validation_mse": 0.00045245617752199917,
+      "length_mse": 0.012678218641248629,
+      "dx_mae_nm": 6.579799006134272,
+      "parameters": 321315,
+      "eligible": false
+    }
+  ],
+  "rule": "Across three seeds, select the lowest mean validation joint-mirror MSE among variants with length MSE <= reference * 1.02 and dX MAE <= reference * 1.05. Include reference as fallback; freeze before new test evaluation.",
+  "test_evaluated_at_selection": false
+}

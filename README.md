@@ -1,4 +1,14 @@
-# Optics_design
+# MetaformerPro
+
+MetaformerPro 是本项目的七参数光谱逆向模型名称。昨日的 `compact_raw_mirror` 记为 0.1，本轮在分支 `codex/metaformerpro` 比较圆周角度输出、参数查询池化与重叠分块，保留原模型和历史数据。[本轮结果](Metaformer_As2Se3/results/metaformerpro_v02/report.md)。
+
+本轮完成5方案×3种子对照，验证集选中圆周角度头，记为 **MetaformerPro 0.2**。三个种子平均测试：五尺寸MSE降低3.4%、原始标签周期MSE降低8.3%，镜像等价MSE略升1.3%；五个尺寸的MAE均有改善，偶数角仍退步。参数量320,938，推理输出仍为7个物理参数，内部圆周编码不是新增自由度。当前0.2权重和0.1三个基线均保留，尚无全指标一致胜出的版本。
+
+项目工作树：`D:/projects/MetaformerPro`。PyCharm 打开内部 `Metaformer_As2Se3` 目录，仍使用 `D:/Anaconda3/envs/transformer_env/python.exe`；新配置为 `13 MetaformerPro train v02` 和 `14 MetaformerPro predict`。新权重为 `models/metaformerpro.pt`，三个 0.1 基线快照独立保留。
+
+所有当前工作仅优化逆向模型。沿用现有1000条数值数据，固定划分，验证集选型后再评估既有测试集。未新增正向网络、ResNet或LSTM，也未将新生成器数据混入历史训练集。
+
+## 历史模型记录
 
 本分支 `codex/inverse-feature-optimization` 在独立工作树中使用现有 1000 条光谱，比较小型 Transformer、斜率/曲率多尺度编码、保留相位的 Fourier token 和镜像等价联合损失。原始数据与历史训练代码、权重保持原样。
 

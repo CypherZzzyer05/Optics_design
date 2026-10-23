@@ -1,0 +1,48 @@
+{
+  "reload_max_difference": 8.344650268554688e-07,
+  "metric_recalculation_max_difference": 0.0,
+  "training_normalization_verified": true,
+  "cpu_batch1_median_ms": {
+    "selected": 2.297199999929944,
+    "pro_v01": 2.241749999939202
+  },
+  "cpu_timing_scope": "Warm FP32 forward including preprocessing, 4 CPU threads, excludes file I/O",
+  "geometries": {
+    "pro_v01_seed42": {
+      "valid": 100,
+      "total": 100,
+      "failures": []
+    },
+    "pro_v01_seed43": {
+      "valid": 99,
+      "total": 100,
+      "failures": [
+        {
+          "test_row": 9,
+          "error": "Rotated squares must stay inside the periodic cell"
+        }
+      ]
+    },
+    "pro_v01_seed44": {
+      "valid": 100,
+      "total": 100,
+      "failures": []
+    },
+    "circular_seed42": {
+      "valid": 100,
+      "total": 100,
+      "failures": []
+    },
+    "circular_seed43": {
+      "valid": 100,
+      "total": 100,
+      "failures": []
+    },
+    "circular_seed44": {
+      "valid": 100,
+      "total": 100,
+      "failures": []
+    }
+  },
+  "model_sha256": "662d610cb0c53cdf399bfd8d2f662cdd8b236afd010b41a8be8bd41729efeffd"
+}

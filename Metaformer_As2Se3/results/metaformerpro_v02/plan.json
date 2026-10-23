@@ -1,0 +1,56 @@
+{
+  "dataset": "D:\\projects\\MetaformerPro\\Metaformer_As2Se3\\examples\\au100_metal8_1000\\dataset.npz",
+  "output_dir": "D:\\projects\\MetaformerPro\\Metaformer_As2Se3\\runs\\metaformerpro_v02",
+  "results_dir": "D:\\projects\\MetaformerPro\\Metaformer_As2Se3\\results\\metaformerpro_v02",
+  "reference_results": "D:\\projects\\MetaformerPro\\Metaformer_As2Se3\\results\\inverse_features1000\\validation_results.json",
+  "seeds": [
+    42,
+    43,
+    44
+  ],
+  "epochs": 100,
+  "batch_size": 8,
+  "learning_rate": 0.0003,
+  "weight_decay": 0.001,
+  "patience": 20,
+  "variants": {
+    "pro_v01": {
+      "readout": "global",
+      "angle_head": "sigmoid",
+      "overlap": false
+    },
+    "circular": {
+      "readout": "global",
+      "angle_head": "circular",
+      "overlap": false
+    },
+    "queries": {
+      "readout": "queries",
+      "angle_head": "sigmoid",
+      "overlap": false
+    },
+    "queries_circular": {
+      "readout": "queries",
+      "angle_head": "circular",
+      "overlap": false
+    },
+    "overlap_queries_circular": {
+      "readout": "queries",
+      "angle_head": "circular",
+      "overlap": true
+    }
+  },
+  "selection": "Across three seeds, select the lowest mean validation joint-mirror MSE among variants with length MSE <= reference * 1.02 and dX MAE <= reference * 1.05. Include reference as fallback; freeze before new test evaluation.",
+  "test_policy": "Evaluate only frozen winner and pro_v01; original 100 test rows have been inspected in past experiments and are not a fresh blind test. No test-guided variant selection.",
+  "quality_scope": "Existing 1.0 Au-bottom numerical dataset; known Au loss-fit limitation. Inverse model research only, no forward model or FDTD run.",
+  "dataset_sha256": "0a06da7b6c194fb6e3d906fa11f8ca211a236c1aa83f6703c7489ad662ed972f",
+  "source_sha256": {
+    "metaformerpro.py": "4f950aedd545168a09cbb8100e43d887e86ae0eff899d8d00bfd94ecf8bc3798",
+    "train_metaformerpro.py": "9f5c83b4d86c0b726aef993097788aa678f2aa071bd6cd782579989b39913b81",
+    "spectral_inverse.py": "daf26227dfb9a40710b09ac5f16cd0e7a6cae19cd014db5773d38ea864a6ed8d"
+  },
+  "runtime": {
+    "torch": "2.5.1+cu121",
+    "numpy": "2.2.6"
+  }
+}

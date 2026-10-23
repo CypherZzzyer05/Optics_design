@@ -1,0 +1,291 @@
+{
+  "selection": {
+    "selected": "circular",
+    "representative_seed": 44,
+    "ranking": [
+      {
+        "variant": "circular",
+        "mean_validation_mse": 0.020312367186853943,
+        "std_validation_mse": 0.0002505801689542162,
+        "length_mse": 0.012457200705725245,
+        "dx_mae_nm": 6.190864282101393,
+        "parameters": 320938,
+        "eligible": true
+      },
+      {
+        "variant": "queries",
+        "mean_validation_mse": 0.020578625661524668,
+        "std_validation_mse": 0.0009943290488715097,
+        "length_mse": 0.012749811445803505,
+        "dx_mae_nm": 6.702913672477007,
+        "parameters": 320162,
+        "eligible": false
+      },
+      {
+        "variant": "pro_v01",
+        "mean_validation_mse": 0.0205952022343799,
+        "std_validation_mse": 0.000970711274487064,
+        "length_mse": 0.012401451375994734,
+        "dx_mae_nm": 6.969576459005476,
+        "parameters": 320552,
+        "eligible": true
+      },
+      {
+        "variant": "queries_circular",
+        "mean_validation_mse": 0.020947637346055675,
+        "std_validation_mse": 0.00032701258655450956,
+        "length_mse": 0.01334585187346106,
+        "dx_mae_nm": 6.543395709991455,
+        "parameters": 320355,
+        "eligible": false
+      },
+      {
+        "variant": "overlap_queries_circular",
+        "mean_validation_mse": 0.020977871161767383,
+        "std_validation_mse": 0.00045245617752199917,
+        "length_mse": 0.012678218641248629,
+        "dx_mae_nm": 6.579799006134272,
+        "parameters": 321315,
+        "eligible": false
+      }
+    ],
+    "rule": "Across three seeds, select the lowest mean validation joint-mirror MSE among variants with length MSE <= reference * 1.02 and dX MAE <= reference * 1.05. Include reference as fallback; freeze before new test evaluation.",
+    "test_evaluated_at_selection": false
+  },
+  "evaluated": [
+    {
+      "variant": "pro_v01",
+      "seed": 42,
+      "test": {
+        "periodic": {
+          "mse": 0.035053956465033106,
+          "length_mse": 0.014561643626994192,
+          "angle_mse": 0.0862847385601304,
+          "mae_nm": [
+            5.185001837741583,
+            2.0644111572764814,
+            5.405178678408265,
+            7.511793332453817,
+            7.813895118702203
+          ],
+          "mae_deg": [
+            24.014134792517872,
+            22.166593180876227
+          ]
+        },
+        "mirror_equivalent": {
+          "mse": 0.021472135027710785,
+          "length_mse": 0.014561643626994192,
+          "angle_mse": 0.038748363529502276,
+          "mae_nm": [
+            5.185001837741583,
+            2.0644111572764814,
+            5.405178678408265,
+            7.511793332453817,
+            7.813895118702203
+          ],
+          "mae_deg": [
+            15.754613923374563,
+            13.743658982310444
+          ]
+        }
+      }
+    },
+    {
+      "variant": "pro_v01",
+      "seed": 43,
+      "test": {
+        "periodic": {
+          "mse": 0.031082190918437638,
+          "length_mse": 0.013944063150454485,
+          "angle_mse": 0.07392751033839551,
+          "mae_nm": [
+            4.081522890832275,
+            2.1320345285348594,
+            4.371736774966121,
+            6.652702028956265,
+            8.009104757476598
+          ],
+          "mae_deg": [
+            19.987098766397686,
+            21.971145102661104
+          ]
+        },
+        "mirror_equivalent": {
+          "mse": 0.021250376610629406,
+          "length_mse": 0.013944063150454485,
+          "angle_mse": 0.039516160261066705,
+          "mae_nm": [
+            4.081522890832275,
+            2.1320345285348594,
+            4.371736774966121,
+            6.652702028956265,
+            8.009104757476598
+          ],
+          "mae_deg": [
+            13.564441468846052,
+            15.700561096798628
+          ]
+        }
+      }
+    },
+    {
+      "variant": "pro_v01",
+      "seed": 44,
+      "test": {
+        "periodic": {
+          "mse": 0.0330307768453509,
+          "length_mse": 0.013591884741727756,
+          "angle_mse": 0.08162800710440876,
+          "mae_nm": [
+            4.381800627242773,
+            1.9888986884616315,
+            4.63800102584064,
+            7.331327425595373,
+            7.398727507609874
+          ],
+          "mae_deg": [
+            22.52582633597776,
+            21.269618685822934
+          ]
+        },
+        "mirror_equivalent": {
+          "mse": 0.020533181198712787,
+          "length_mse": 0.013591884741727756,
+          "angle_mse": 0.03788642234117536,
+          "mae_nm": [
+            4.381800627242773,
+            1.9888986884616315,
+            4.63800102584064,
+            7.331327425595373,
+            7.398727507609874
+          ],
+          "mae_deg": [
+            15.002005684096366,
+            13.325055958796293
+          ]
+        }
+      }
+    },
+    {
+      "variant": "circular",
+      "seed": 42,
+      "test": {
+        "periodic": {
+          "mse": 0.030619576935605786,
+          "length_mse": 0.013887587021099435,
+          "angle_mse": 0.07244955172187167,
+          "mae_nm": [
+            4.6077084700576965,
+            1.7364709372632205,
+            4.383146008476615,
+            7.172770025487989,
+            7.404520520288497
+          ],
+          "mae_deg": [
+            19.5244203744689,
+            21.384424193669112
+          ]
+        },
+        "mirror_equivalent": {
+          "mse": 0.022598528850892256,
+          "length_mse": 0.013887587021099435,
+          "angle_mse": 0.04437588342537431,
+          "mae_nm": [
+            4.6077084700576965,
+            1.7364709372632205,
+            4.383146008476615,
+            7.172770025487989,
+            7.404520520288497
+          ],
+          "mae_deg": [
+            14.794444615230896,
+            16.365115163382143
+          ]
+        }
+      }
+    },
+    {
+      "variant": "circular",
+      "seed": 43,
+      "test": {
+        "periodic": {
+          "mse": 0.028831836612252602,
+          "length_mse": 0.01242043950534833,
+          "angle_mse": 0.06986032937951327,
+          "mae_nm": [
+            3.621474566217512,
+            1.7641197289340198,
+            4.007938061282038,
+            6.125182214286179,
+            7.468799426872283
+          ],
+          "mae_deg": [
+            18.398541934881358,
+            20.759463488403707
+          ]
+        },
+        "mirror_equivalent": {
+          "mse": 0.019608620129273675,
+          "length_mse": 0.01242043950534833,
+          "angle_mse": 0.037579071689087036,
+          "mae_nm": [
+            3.621474566217512,
+            1.7641197289340198,
+            4.007938061282038,
+            6.125182214286179,
+            7.468799426872283
+          ],
+          "mae_deg": [
+            13.905531173106283,
+            13.952295086625963
+          ]
+        }
+      }
+    },
+    {
+      "variant": "circular",
+      "seed": 44,
+      "test": {
+        "periodic": {
+          "mse": 0.03146284860778568,
+          "length_mse": 0.014361906676913769,
+          "angle_mse": 0.07421520343496545,
+          "mae_nm": [
+            5.269849824439734,
+            2.0989593300037086,
+            5.161462011560798,
+            6.67810742771253,
+            7.7200895612128075
+          ],
+          "mae_deg": [
+            19.70250293361023,
+            21.888689814135432
+          ]
+        },
+        "mirror_equivalent": {
+          "mse": 0.02186145482395136,
+          "length_mse": 0.014361906676913769,
+          "angle_mse": 0.04061032519154534,
+          "mae_nm": [
+            5.269849824439734,
+            2.0989593300037086,
+            5.161462011560798,
+            6.67810742771253,
+            7.7200895612128075
+          ],
+          "mae_deg": [
+            13.96493054581806,
+            15.608508958294987
+          ]
+        }
+      }
+    }
+  ],
+  "test_policy": "Evaluate only frozen winner and pro_v01; original 100 test rows have been inspected in past experiments and are not a fresh blind test. No test-guided variant selection.",
+  "model_path": "D:\\projects\\MetaformerPro\\Metaformer_As2Se3\\models\\metaformerpro.pt",
+  "model_sha256": "662d610cb0c53cdf399bfd8d2f662cdd8b236afd010b41a8be8bd41729efeffd",
+  "dataset_sha256": "0a06da7b6c194fb6e3d906fa11f8ca211a236c1aa83f6703c7489ad662ed972f",
+  "quality_scope": "Existing 1.0 Au-bottom numerical dataset; known Au loss-fit limitation. Inverse model research only, no forward model or FDTD run.",
+  "fdtd_run_performed": false
+}
