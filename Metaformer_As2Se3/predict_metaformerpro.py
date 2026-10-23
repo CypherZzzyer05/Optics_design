@@ -2,6 +2,7 @@
 import argparse
 import json
 from pathlib import Path
+import webbrowser
 
 import numpy as np
 import torch
@@ -44,21 +45,37 @@ def main():
     source.add_argument('--dataset', type=Path, default=ROOT / 'examples/au100_metal8_1000/dataset.npz')
     parser.add_argument('--sample-id', type=int, default=207)
     parser.add_argument('--output', type=Path, default=ROOT / 'tmp/metaformerpro_prediction.json')
+    parser.add_argument('--show', action='store_true', help='Open the saved structure image in the default browser')
     args = parser.parse_args()
     torch.set_num_threads(4)
     if args.spectrum:
         table = np.genfromtxt(args.spectrum, delimiter=',', names=True, encoding='utf-8-sig')
         spectrum, wavelength = table['reflectance'], table['wavelength_nm']
+        source = {'type': 'csv', 'path': str(args.spectrum.resolve())}
+        source_label = args.spectrum.name
     else:
         with np.load(args.dataset, allow_pickle=False) as data:
             matches = np.flatnonzero(data['sample_ids'] == args.sample_id)
             if len(matches) != 1:
                 raise ValueError('sample-id must match one saved sample')
             spectrum, wavelength = data['spectra'][matches[0]], data['wavelength_nm']
+        source = {'type': 'dataset', 'path': str(args.dataset.resolve()), 'sample_id': args.sample_id}
+        source_label = f'固定样本 {args.sample_id}'
     result = predict(args.checkpoint, spectrum, wavelength)
+    result['input'] = source
+    result['checkpoint'] = str(args.checkpoint.resolve())
+    result['figure'] = None
+    if result['geometry_valid']:
+        from render_metaformerpro_structure import render_structure
+        figure = render_structure(result, wavelength, spectrum, args.output.with_suffix('.png'), source_label)
+        result['figure'] = str(figure)
+    else:
+        args.output.with_suffix('.png').unlink(missing_ok=True)
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(json.dumps(result, ensure_ascii=False, indent=2), encoding='utf-8')
     print(json.dumps(result, ensure_ascii=False, indent=2))
+    if args.show and result['figure']:
+        webbrowser.open(Path(result['figure']).as_uri())
 
 
 if __name__ == '__main__':

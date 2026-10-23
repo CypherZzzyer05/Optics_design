@@ -16,6 +16,22 @@ PyCharm配置为 `13 MetaformerPro train v02` / `14 MetaformerPro predict`，解
 
 选型同时约束尺寸误差：五尺寸验证MSE最多增加2%，dX验证MAE最多增加5%，之后按三种子平均镜像等价MSE排序。保留全部试验与旧权重；同一固定测试集上的后续优化不视为新的盲测。
 
+## 输入固定光谱并展示结构
+
+在 PyCharm 打开本目录，使用 `D:/Anaconda3/envs/transformer_env/python.exe`，选择运行项 **15 MetaformerPro spectrum to structure** 后点击运行。它读取已训练并选中的 `models/metaformerpro.pt`，输出七个物理参数、几何检查结果、俯视图和三维示意图，随后在默认浏览器中打开图片。此入口只做推理，更新输入光谱后无需重新训练。
+
+输入文件为 `inputs/target_spectrum.csv`，已放入此前固定的207号目标谱作为示例。替换它即可输入自己的光谱，格式为两列 `wavelength_nm,reflectance`：波长单位 nm，反射率使用0–1数值；当前权重要求700–1700 nm等间距1000点，含两个端点（步长为1000/999 nm）。不匹配的波长网格会报错，不静默插值。
+
+```powershell
+python predict_metaformerpro.py --spectrum inputs/target_spectrum.csv --output results/custom_spectrum/prediction.json --show
+```
+
+结果为 `results/custom_spectrum/prediction.json` 和同名 `.png`。命令行省略 `--show` 可只保存结果；原有 `--sample-id 207` 入口同样会自动保存配图。`geometry_valid=false` 时保留原因，不为不合法候选生成结构图。
+
+图中的曲线是输入目标谱，预测结构的实际R/T需另行FDTD回验。当前部署权重由1.0数据训练，图中层序按其数据定义绘制：自下而上Au100 nm、SiO₂350 nm、As₂Se₃四聚体；它尚不适用于2.0的厚SiO₂/Au/四聚体结构。dX/dY为旋转前的名义边缘间距；两种柱体颜色只区分奇偶象限，材料均为As₂Se₃。该入口返回一个候选，尚未对物理性能作最优性证明。
+
+![固定207号光谱的结构候选](results/custom_spectrum/prediction.png)
+
 ## 本分支：现有 1000 样本的模型与光谱特征优化
 
 独立工作树 `D:/projects/Optics_design_features1000`，分支 `codex/inverse-feature-optimization`。保留所有历史入口，新增 `spectral_inverse.py`、`optimize_spectral_inverse.py`、`predict_spectral_inverse.py`；先比较 5 个方案，在测试前补充 2 个去分支对照，共 7 个方案、每个方案 3 个随机种子。[实验记录](results/inverse_features1000/report.md)。不调用原生求解器、不更改数据标签、不添加正向网络。

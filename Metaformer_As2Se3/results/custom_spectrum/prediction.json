@@ -1,0 +1,33 @@
+{
+  "model": "MetaformerPro",
+  "version": "0.2.0",
+  "seed": 44,
+  "parameters": {
+    "p": 683.2089108228683,
+    "l": 188.4373551607132,
+    "h": 353.03712487220764,
+    "alpha_x": 141.2575650215149,
+    "alpha_y": 100.4353129863739,
+    "theta_odd_deg": -4.556729793548584,
+    "theta_even_deg": -44.723954151850194
+  },
+  "units": [
+    "nm",
+    "nm",
+    "nm",
+    "nm",
+    "nm",
+    "deg",
+    "deg"
+  ],
+  "geometry_valid": true,
+  "geometry_error": null,
+  "status": "candidate_requires_FDTD_validation",
+  "quality_scope": "Existing 1.0 Au-bottom numerical dataset; known Au loss-fit limitation. Inverse model research only, no forward model or FDTD run.",
+  "input": {
+    "type": "csv",
+    "path": "D:\\projects\\MetaformerPro\\Metaformer_As2Se3\\inputs\\target_spectrum.csv"
+  },
+  "checkpoint": "D:\\projects\\MetaformerPro\\Metaformer_As2Se3\\models\\metaformerpro.pt",
+  "figure": "D:\\projects\\MetaformerPro\\Metaformer_As2Se3\\results\\custom_spectrum\\prediction.png"
+}

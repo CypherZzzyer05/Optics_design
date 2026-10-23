@@ -8,6 +8,8 @@ MetaformerPro 是本项目的七参数光谱逆向模型名称。昨日的 `comp
 
 所有当前工作仅优化逆向模型。沿用现有1000条数值数据，固定划分，验证集选型后再评估既有测试集。未新增正向网络、ResNet或LSTM，也未将新生成器数据混入历史训练集。
 
+已在 `codex/metaformerpro-structure-view` 分支接通固定光谱输入和结构展示：PyCharm运行项 **15 MetaformerPro spectrum to structure** 读取 `inputs/target_spectrum.csv`，加载选中权重，保存七参数JSON、俯视图及三维图，并自动打开图片。示例为固定207号目标谱，使用方法见[输入说明](Metaformer_As2Se3/README.md#输入固定光谱并展示结构)。当前权重对应1.0旧层序；输入目标谱与候选回仿真光谱有明确区分。
+
 ## 历史模型记录
 
 本分支 `codex/inverse-feature-optimization` 在独立工作树中使用现有 1000 条光谱，比较小型 Transformer、斜率/曲率多尺度编码、保留相位的 Fourier token 和镜像等价联合损失。原始数据与历史训练代码、权重保持原样。
