@@ -1,0 +1,47 @@
+2026-10-23 18:28:00,179 MetaformerPro device=cuda; dataset=bc0f21a90ed7dcb3a228c81dfef023a0425cfed618a8bc275cc6487b4430621d
+2026-10-23 18:28:06,052 pro_v01 seed42 epoch1 train=0.06196 val=0.05758 lengths=0.06274 dX=15.591nm best=1
+2026-10-23 18:28:24,159 pro_v01 seed42 epoch10 train=0.02770 val=0.02719 lengths=0.02365 dX=6.088nm best=10
+2026-10-23 18:28:46,079 pro_v01 seed42 epoch20 train=0.02479 val=0.02597 lengths=0.02289 dX=5.717nm best=19
+2026-10-23 18:29:06,357 pro_v01 seed42 epoch30 train=0.02223 val=0.02525 lengths=0.02240 dX=6.192nm best=19
+2026-10-23 18:29:24,742 Finished pro_v01 seed42: val 0.024284, 81.4s
+2026-10-23 18:29:26,611 pro_v01 seed43 epoch1 train=0.05906 val=0.05079 lengths=0.05388 dX=12.575nm best=1
+2026-10-23 18:29:44,906 pro_v01 seed43 epoch10 train=0.02803 val=0.02901 lengths=0.02557 dX=6.926nm best=9
+2026-10-23 18:30:06,514 pro_v01 seed43 epoch20 train=0.02446 val=0.02590 lengths=0.02212 dX=5.641nm best=15
+2026-10-23 18:30:26,853 pro_v01 seed43 epoch30 train=0.02114 val=0.02645 lengths=0.02290 dX=5.749nm best=15
+2026-10-23 18:30:37,153 Finished pro_v01 seed43: val 0.025611, 72.1s
+2026-10-23 18:30:39,029 pro_v01 seed44 epoch1 train=0.06081 val=0.05422 lengths=0.05776 dX=14.297nm best=1
+2026-10-23 18:30:56,827 pro_v01 seed44 epoch10 train=0.02843 val=0.02856 lengths=0.02459 dX=7.238nm best=10
+2026-10-23 18:31:15,911 pro_v01 seed44 epoch20 train=0.02466 val=0.02613 lengths=0.02239 dX=6.424nm best=18
+2026-10-23 18:31:35,484 pro_v01 seed44 epoch30 train=0.02246 val=0.02632 lengths=0.02298 dX=5.890nm best=26
+2026-10-23 18:31:55,046 pro_v01 seed44 epoch40 train=0.01871 val=0.02536 lengths=0.02217 dX=5.927nm best=26
+2026-10-23 18:32:14,109 pro_v01 seed44 epoch50 train=0.01743 val=0.02620 lengths=0.02389 dX=6.015nm best=43
+2026-10-23 18:32:29,324 pro_v01 seed44 epoch60 train=0.01438 val=0.02541 lengths=0.02307 dX=6.157nm best=43
+2026-10-23 18:32:49,283 pro_v01 seed44 epoch70 train=0.01315 val=0.02678 lengths=0.02485 dX=6.247nm best=61
+2026-10-23 18:33:09,486 pro_v01 seed44 epoch80 train=0.01185 val=0.02675 lengths=0.02433 dX=6.174nm best=61
+2026-10-23 18:33:11,652 Finished pro_v01 seed44: val 0.024958, 154.2s
+2026-10-23 18:33:13,466 circular seed42 epoch1 train=0.06217 val=0.05741 lengths=0.06287 dX=15.544nm best=1
+2026-10-23 18:33:30,658 circular seed42 epoch10 train=0.02957 val=0.03071 lengths=0.02611 dX=7.051nm best=7
+2026-10-23 18:33:50,100 circular seed42 epoch20 train=0.02680 val=0.02808 lengths=0.02294 dX=6.274nm best=18
+2026-10-23 18:34:10,374 circular seed42 epoch30 train=0.02427 val=0.02560 lengths=0.02225 dX=5.767nm best=30
+2026-10-23 18:34:31,725 circular seed42 epoch40 train=0.02392 val=0.02659 lengths=0.02172 dX=5.550nm best=30
+2026-10-23 18:34:51,083 circular seed42 epoch50 train=0.02119 val=0.02544 lengths=0.02103 dX=5.592nm best=48
+2026-10-23 18:35:10,255 circular seed42 epoch60 train=0.02026 val=0.02622 lengths=0.02207 dX=5.906nm best=57
+2026-10-23 18:35:29,439 circular seed42 epoch70 train=0.01776 val=0.02508 lengths=0.02169 dX=5.573nm best=69
+2026-10-23 18:35:51,373 circular seed42 epoch80 train=0.01765 val=0.02518 lengths=0.02193 dX=5.565nm best=69
+2026-10-23 18:36:09,881 Finished circular seed42: val 0.024138, 177.9s
+2026-10-23 18:36:11,756 circular seed43 epoch1 train=0.05878 val=0.05070 lengths=0.05332 dX=11.906nm best=1
+2026-10-23 18:36:29,179 circular seed43 epoch10 train=0.02849 val=0.02945 lengths=0.02397 dX=6.673nm best=9
+2026-10-23 18:36:48,618 circular seed43 epoch20 train=0.02587 val=0.02632 lengths=0.02269 dX=5.727nm best=20
+2026-10-23 18:37:08,466 circular seed43 epoch30 train=0.02344 val=0.02582 lengths=0.02254 dX=5.839nm best=26
+2026-10-23 18:37:27,799 circular seed43 epoch40 train=0.02310 val=0.02640 lengths=0.02341 dX=5.535nm best=31
+2026-10-23 18:37:47,223 circular seed43 epoch50 train=0.01939 val=0.02689 lengths=0.02506 dX=6.277nm best=31
+2026-10-23 18:37:49,373 Finished circular seed43: val 0.025317, 99.2s
+2026-10-23 18:37:51,252 circular seed44 epoch1 train=0.06116 val=0.05414 lengths=0.05747 dX=13.868nm best=1
+2026-10-23 18:38:08,428 circular seed44 epoch10 train=0.02838 val=0.02805 lengths=0.02457 dX=6.446nm best=10
+2026-10-23 18:38:27,478 circular seed44 epoch20 train=0.02643 val=0.02810 lengths=0.02356 dX=6.259nm best=18
+2026-10-23 18:38:46,083 circular seed44 epoch30 train=0.02316 val=0.02584 lengths=0.02247 dX=6.244nm best=26
+2026-10-23 18:39:05,755 circular seed44 epoch40 train=0.01986 val=0.02389 lengths=0.02208 dX=6.097nm best=40
+2026-10-23 18:39:24,534 circular seed44 epoch50 train=0.01867 val=0.02557 lengths=0.02350 dX=6.585nm best=40
+2026-10-23 18:39:40,423 circular seed44 epoch60 train=0.01666 val=0.02551 lengths=0.02390 dX=6.357nm best=40
+2026-10-23 18:39:40,668 Finished circular seed44: val 0.023889, 111.0s
+2026-10-23 18:39:41,004 Selected MetaformerPro: circular seed42

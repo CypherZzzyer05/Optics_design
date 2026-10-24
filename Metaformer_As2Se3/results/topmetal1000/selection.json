@@ -1,0 +1,26 @@
+{
+  "selected": "circular",
+  "representative_seed": 42,
+  "ranking": [
+    {
+      "variant": "circular",
+      "mean_validation_mse": 0.02444772367504915,
+      "std_validation_mse": 0.0006229521512937506,
+      "length_mse": 0.02181976264949712,
+      "dx_mae_nm": 5.8444528598338366,
+      "parameters": 320938,
+      "eligible": true
+    },
+    {
+      "variant": "pro_v01",
+      "mean_validation_mse": 0.02495135577178978,
+      "std_validation_mse": 0.0005417298625708794,
+      "length_mse": 0.021992177629445896,
+      "dx_mae_nm": 5.941617588698864,
+      "parameters": 320552,
+      "eligible": true
+    }
+  ],
+  "rule": "Train both heads from scratch on the new top-metal data. Across three seeds, select the lowest mean validation joint-mirror MSE with length MSE <= sigmoid reference * 1.02 and dX MAE <= reference * 1.05. Select the median-validation seed; freeze before test evaluation.",
+  "test_evaluated_at_selection": false
+}

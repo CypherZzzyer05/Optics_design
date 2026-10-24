@@ -36,6 +36,7 @@ def payload(model, plan, dataset, seed, epoch, version='0.2.0'):
             'parameter_names': list(dataset.parameter_names), 'parameter_units': list(dataset.parameter_units),
             'lower_values': dataset.lower_values.tolist(), 'upper_values': dataset.upper_values.tolist(),
             'wavelength_nm': dataset.wavelength_nm.tolist(), 'quality_scope': plan['quality_scope'],
+            'simulation_settings': dataset.metadata['config']['simulation'],
             'normalization_fit_sample_ids': dataset.sample_ids.tolist()}
 
 
@@ -77,7 +78,8 @@ def train_one(name, settings, seed, plan, datasets, output, device):
     torch.manual_seed(seed)
     torch.cuda.manual_seed_all(seed)
     conversion = None
-    if name == 'pro_v01':
+    reuse_reference = name == 'pro_v01' and plan.get('reuse_reference', True)
+    if reuse_reference:
         model, history, best_epoch, seconds, conversion = reference(seed, plan, datasets, run, device)
     else:
         model = MetaformerPro(MetaformerProConfig(**settings)).to(device)
@@ -134,7 +136,7 @@ def train_one(name, settings, seed, plan, datasets, output, device):
     record = {'variant': name, 'seed': seed, 'validation': score, 'train': training_score,
               'parameters': sum(p.numel() for p in model.parameters()), 'best_epoch': best_epoch,
               'epochs': len(history), 'training_seconds': seconds,
-              'reference_reused': name == 'pro_v01', 'reference_conversion_max_difference': conversion,
+              'reference_reused': reuse_reference, 'reference_conversion_max_difference': conversion,
               'checkpoint': str(run / 'best.pt'), 'checkpoint_sha256': sha(run / 'best.pt'),
               'test_evaluated': False}
     np.savez_compressed(run / 'validation_predictions.npz', prediction=prediction,
@@ -184,7 +186,7 @@ def finalize(plan, output, results, device):
                              prediction=prediction, target=test.labels.numpy(), sample_ids=test.sample_ids)
         del model
     chosen = next(r for r in records if r['variant'] == selection['selected'] and r['seed'] == selection['representative_seed'])
-    model_path = ROOT / 'models/metaformerpro.pt'
+    model_path = Path(plan.get('model_output', ROOT / 'models/metaformerpro.pt'))
     model_path.parent.mkdir(exist_ok=True)
     shutil.copyfile(chosen['checkpoint'], model_path)
     for name in ('plan.json', 'selection.json', 'validation_results.json'):
@@ -206,8 +208,9 @@ def main():
     args = parser.parse_args()
     config = args.config.resolve()
     plan = json.loads(config.read_text(encoding='utf-8'))
-    for name in ('dataset', 'output_dir', 'results_dir', 'reference_results'):
-        plan[name] = str((config.parent / plan[name]).resolve())
+    for name in ('dataset', 'output_dir', 'results_dir', 'reference_results', 'model_output'):
+        if name in plan:
+            plan[name] = str((config.parent / plan[name]).resolve())
     plan['dataset_sha256'] = sha(plan['dataset'])
     plan['source_sha256'] = {f: sha(ROOT / f) for f in ('metaformerpro.py', 'train_metaformerpro.py', 'spectral_inverse.py')}
     plan['runtime'] = {'torch': str(torch.__version__), 'numpy': str(np.__version__)}

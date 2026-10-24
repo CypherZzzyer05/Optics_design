@@ -1,0 +1,20 @@
+{
+  "dataset": "../examples/jc220_topmetal_1000/dataset.npz",
+  "output_dir": "../runs/metaformerpro_topmetal1000",
+  "results_dir": "../results/topmetal1000",
+  "model_output": "../models/metaformerpro_topmetal.pt",
+  "reuse_reference": false,
+  "seeds": [42, 43, 44],
+  "epochs": 100,
+  "batch_size": 8,
+  "learning_rate": 0.0003,
+  "weight_decay": 0.001,
+  "patience": 20,
+  "variants": {
+    "pro_v01": {"readout": "global", "angle_head": "sigmoid", "overlap": false},
+    "circular": {"readout": "global", "angle_head": "circular", "overlap": false}
+  },
+  "selection": "Train both heads from scratch on the new top-metal data. Across three seeds, select the lowest mean validation joint-mirror MSE with length MSE <= sigmoid reference * 1.02 and dX MAE <= reference * 1.05. Select the median-validation seed; freeze before test evaluation.",
+  "test_policy": "Use the new dataset's saved 800/100/100 split. Evaluate both predeclared heads only after frozen selection. No test-guided architecture or seed changes. Sample 207 is predeclared solely for the inference illustration.",
+  "quality_scope": "Generator2 2.2.0, thick SiO2 into lower PML / 100 nm passive JC Au / As2Se3 tetramer. Metal-only 8 nm mesh, pipeline_validation. New dataset only; native termination and material-fit checks do not establish mesh convergence. Inverse training, no new FDTD run."
+}

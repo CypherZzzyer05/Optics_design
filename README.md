@@ -1,5 +1,17 @@
 # MetaformerPro
 
+## 当前分支：厚 SiO₂ / Au / 四聚体，新1000样本
+
+分支 `codex/metaformerpro-topmetal-1000`，独立项目 `D:/projects/MetaformerPro_topmetal/Metaformer_As2Se3`。使用生成器2.2.0新数据：厚SiO₂延伸至下PML、100 nm修正JC Au、As₂Se₃四聚体；金属局部8 nm网格。1000个样本全部查收核对，固定800/100/100划分，两种现有输出头各用三个种子从头训练。
+
+[本轮训练、测试和光谱覆盖报告](Metaformer_As2Se3/results/topmetal1000/report.md)。新权重单独保存为 `models/metaformerpro_topmetal.pt`；历史 `models/metaformerpro.pt` 仍对应旧层序。新数据中只有3条满足既定严格双主谷标准，没有两个严格主谷都在1000 nm以上的样本，不能将该目标视为已被训练集充分覆盖。
+
+验证选中圆周角度头，部署seed42。新批次三种子平均测试：镜像等价MSE为0.025325，比同批Sigmoid头低3.4%；五尺寸MSE低6.3%。P/L/H/dX/dY平均误差约4.41/1.43/4.11/6.39/14.53 nm，奇/偶角约12.48/12.93°。dY与角度仍需改善；部署模型的100条测试结构均通过几何检查，尚未进行新候选的FDTD回验。
+
+PyCharm打开上述内部项目，解释器 `D:/Anaconda3/envs/transformer_env/python.exe`。运行项 **16 MetaformerPro topmetal train** 重新训练；**17 MetaformerPro topmetal predict** 读取 `inputs/target_topmetal.csv`，输出七参数与正确层序的结构图。输入要求700–1700 nm等间距1000点、反射率0–1。推理图的光谱为输入目标，候选结构尚需电磁回验。训练和图表缓存位于D盘；原始数据包及旧权重保留。
+
+## 历史：旧层序 MetaformerPro 0.2
+
 MetaformerPro 是本项目的七参数光谱逆向模型名称。昨日的 `compact_raw_mirror` 记为 0.1，本轮在分支 `codex/metaformerpro` 比较圆周角度输出、参数查询池化与重叠分块，保留原模型和历史数据。[本轮结果](Metaformer_As2Se3/results/metaformerpro_v02/report.md)。
 
 本轮完成5方案×3种子对照，验证集选中圆周角度头，记为 **MetaformerPro 0.2**。三个种子平均测试：五尺寸MSE降低3.4%、原始标签周期MSE降低8.3%，镜像等价MSE略升1.3%；五个尺寸的MAE均有改善，偶数角仍退步。参数量320,938，推理输出仍为7个物理参数，内部圆周编码不是新增自由度。当前0.2权重和0.1三个基线均保留，尚无全指标一致胜出的版本。

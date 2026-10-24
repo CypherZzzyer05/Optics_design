@@ -1,0 +1,39 @@
+{
+  "reload_max_difference": 8.866190910339355e-07,
+  "normalization_training_only": true,
+  "all_checkpoints_use_new_dataset": true,
+  "all_checkpoints_use_topmetal_pml_stack": true,
+  "geometry": {
+    "pro_v01_seed42": {
+      "valid": 100,
+      "total": 100,
+      "failures": []
+    },
+    "pro_v01_seed43": {
+      "valid": 100,
+      "total": 100,
+      "failures": []
+    },
+    "pro_v01_seed44": {
+      "valid": 100,
+      "total": 100,
+      "failures": []
+    },
+    "circular_seed42": {
+      "valid": 100,
+      "total": 100,
+      "failures": []
+    },
+    "circular_seed43": {
+      "valid": 100,
+      "total": 100,
+      "failures": []
+    },
+    "circular_seed44": {
+      "valid": 100,
+      "total": 100,
+      "failures": []
+    }
+  },
+  "model_sha256": "8950779ce4fd3f467cdc4334190650963735d31c0f1c613aa2a7edc1cd549dfb"
+}

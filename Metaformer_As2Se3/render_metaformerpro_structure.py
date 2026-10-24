@@ -19,7 +19,7 @@ def prism(vertices, bottom, top):
 
 
 def render_structure(prediction, wavelength_nm, reflectance, output, source_label):
-    """The stack belongs to the deployed v0.2 checkpoint's historical 1.0 data."""
+    """Draw the checkpoint's stack; untagged historical weights use the v1 stack."""
     values = prediction['parameters']
     geometry = Geometry(*(values[name] for name in ('p', 'l', 'h', 'alpha_x', 'alpha_y')),
                         theta_odd_deg=values['theta_odd_deg'],
@@ -52,7 +52,31 @@ def render_structure(prediction, wavelength_nm, reflectance, output, source_labe
 
     view = fig.add_subplot(grid[0, 1], projection='3d')
     footprint = np.array([[-1, -1], [1, -1], [1, 1], [-1, 1]]) * p/2
-    layers = [(footprint, -450, -350, '#d9b34c'), (footprint, -350, 0, '#b6ccdd')]
+    settings = prediction.get('simulation_settings')
+    legacy = settings is None
+    settings = settings or {'metal_position': 'below_substrate',
+                            'substrate_termination': 'finite',
+                            'metal_thickness_nm': 100, 'substrate_depth_nm': 350}
+    metal_depth = float(settings['metal_thickness_nm'])
+    thick_substrate = settings.get('substrate_termination', 'finite') == 'pml'
+    # The displayed portion of a thick substrate is a cutaway, not its physical thickness.
+    substrate_depth = 350. if thick_substrate else float(settings['substrate_depth_nm'])
+    stack_bottom = -metal_depth - substrate_depth
+    if settings.get('metal_position', 'below_substrate') == 'above_substrate':
+        layers = [(footprint, stack_bottom, -metal_depth, '#b6ccdd'),
+                  (footprint, -metal_depth, 0, '#d9b34c')]
+        layer_labels = [(f'Au {metal_depth:g} nm', '#98701c'),
+                        ('厚 SiO$_2$（截示）\n↓ 延伸至下方 PML' if thick_substrate
+                         else f'SiO$_2$ {substrate_depth:g} nm', '#627f95')]
+        stack_title = '三维图：SiO$_2$ / Au / 四聚体（从下到上）'
+    else:
+        layers = [(footprint, stack_bottom, -substrate_depth, '#d9b34c'),
+                  (footprint, -substrate_depth, 0, '#b6ccdd')]
+        layer_labels = [(f'SiO$_2$ {substrate_depth:g} nm', '#627f95'),
+                        (f'Au {metal_depth:g} nm', '#98701c')]
+        stack_title = '三维图：Au / SiO$_2$ / 四聚体（从下到上）'
+    if legacy:
+        stack_title = '三维图：旧版 Au / SiO$_2$ / 四聚体'
     layers += [(vertices, 0, geometry.h, color) for vertices, color in zip(geometry.vertices(), colors)]
     faces, facecolors = [], []
     for vertices, bottom, upper, color in layers:
@@ -62,18 +86,20 @@ def render_structure(prediction, wavelength_nm, reflectance, output, source_labe
     # Sort all faces together so the substrate cannot hide a pillar above it.
     view.add_collection3d(Poly3DCollection(faces, facecolor=facecolors, zsort='average',
                                          edgecolor='#3e5264', linewidth=.5))
-    view.set(xlim=(-p/2, p/2), ylim=(-p/2, p/2), zlim=(-450, geometry.h),
+    view.set(xlim=(-p/2, p/2), ylim=(-p/2, p/2), zlim=(stack_bottom, geometry.h),
              xlabel='x (nm)', ylabel='y (nm)', zlabel='z (nm)')
-    view.set_title('三维图：旧版训练数据的实际层序', pad=8)
-    view.set_box_aspect((1, 1, (geometry.h+450)/p))
+    view.set_title(stack_title, pad=8)
+    view.set_box_aspect((1, 1, (geometry.h-stack_bottom)/p))
     view.view_init(elev=23, azim=-55)
     view.tick_params(labelsize=8)
     view.text2D(-.25, .88, r'As$_2$Se$_3$ 四聚体', transform=view.transAxes,
                 color='#287fa5', fontsize=9, zorder=100)
-    view.text2D(-.25, .43, r'SiO$_2$ 350 nm', transform=view.transAxes,
-                color='#627f95', fontsize=9, zorder=100)
-    view.text2D(-.25, .22, 'Au 100 nm', transform=view.transAxes,
-                color='#98701c', fontsize=9, zorder=100)
+    for position, (label, color) in zip((.43, .22), layer_labels):
+        view.text2D(-.25, position, label, transform=view.transAxes,
+                    color=color, fontsize=9, zorder=100)
+    if thick_substrate:
+        view.plot([-p/2, p/2], [-p/2, -p/2], [stack_bottom, stack_bottom],
+                  color='#385a72', linestyle='--', linewidth=1.5)
 
     spectrum = fig.add_subplot(grid[1, :])
     spectrum.plot(wavelength_nm, reflectance, color='#2767a3', lw=1.4,
@@ -82,6 +108,11 @@ def render_structure(prediction, wavelength_nm, reflectance, output, source_labe
                  xlabel='波长 (nm)', ylabel='反射率 R', title='输入光谱（该候选的光谱尚待回仿真）')
     spectrum.grid(alpha=.18)
     spectrum.legend(loc='lower right', fontsize=9)
+    stack_note = ('基板绘图区底面是截示边界；SiO$_2$ 在仿真中继续向下延伸至 PML。'
+                  if thick_substrate else
+                  '旧版权重：Au 100 nm / SiO$_2$ 350 nm / 四聚体。' if legacy else
+                  '基板按训练数据中的有限厚度绘制。')
+    fig.text(.075, .144, stack_note, fontsize=9, color='#5b6978')
     fig.text(.075, .105,
              f'P = {geometry.p:.2f} nm    L = {geometry.l:.2f} nm    H = {geometry.h:.2f} nm'
              f'    dX = {geometry.alpha_x:.2f} nm    dY = {geometry.alpha_y:.2f} nm', fontsize=11)

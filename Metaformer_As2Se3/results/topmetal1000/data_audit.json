@@ -1,0 +1,144 @@
+{
+  "audit_date_local": "2026-10-23",
+  "timezone": "Asia/Shanghai",
+  "source_root": "D:\\simulation\\jc220_topmetal_au100_metal8_1000_p10\\jc220_topmetal_au100_metal8_1000_p10",
+  "dataset_path": "D:\\simulation\\jc220_topmetal_au100_metal8_1000_p10\\jc220_topmetal_au100_metal8_1000_p10\\merged\\dataset.npz",
+  "dataset_sha256": "bc0f21a90ed7dcb3a228c81dfef023a0425cfed618a8bc275cc6487b4430621d",
+  "audit_mode": "read-only inspection of existing package; this summary uses completed audit results without repeating the audit",
+  "new_fdtd_run_performed": false,
+  "original_package_modified": false,
+  "training_data_integrity_passed": true,
+  "quality_level": "pipeline_validation",
+  "mesh_convergence_demonstrated": false,
+  "physical_accuracy_certified": false,
+  "samples": {
+    "planned": 1000,
+    "success": 1000,
+    "failed": 0,
+    "pending": 0,
+    "unique_sample_ids": 1000,
+    "sample_id_range": [0, 999],
+    "spectra_shape": [1000, 1000],
+    "geometry_values_shape": [1000, 7],
+    "split_counts": {"train": 800, "val": 100, "test": 100},
+    "parameter_names": ["p", "l", "h", "alpha_x", "alpha_y", "theta_odd_deg", "theta_even_deg"],
+    "parameter_units": ["nm", "nm", "nm", "nm", "nm", "deg", "deg"]
+  },
+  "file_and_merge_integrity": {
+    "raw_sample_npz_checked": 1000,
+    "merged_sample_npz_checked": 1000,
+    "manifest_sample_records_checked": 1000,
+    "raw_sha256_matches_manifest_and_merged_copy": 1000,
+    "sample_id_checks_passed": 1000,
+    "geometry_values_equal_merged": 1000,
+    "wavelength_grid_equal_merged": 1000,
+    "raw_to_merged_float32_max_abs_difference": {"reflectance": 0.0, "transmittance": 0.0, "absorptance": 0.0},
+    "issues": []
+  },
+  "batch_identity": {
+    "generator": "deta-generator2/2.2.0",
+    "fdtd_version_counts": {"8.33.3999": 1000},
+    "config_fingerprint_counts": {"f4fc2e8a9c039faa4421e33683d6e8fa677d811eb6e116b14607ccbb0e82838c": 1000},
+    "worker_manifest_fingerprint_counts": {"f4fc2e8a9c039faa4421e33683d6e8fa677d811eb6e116b14607ccbb0e82838c": 1000},
+    "worker_material_identity_sha256_counts": {"60295eabfedb703460881c39e8b84d83a14eeda79b9a8dc7b8a164c98aa40956": 1000},
+    "material_identity_hash_method": "sha256(json.dumps(material_identity, sort_keys=True).encode()) using Python default JSON separators",
+    "mixed_configuration_or_material_identity_detected": false
+  },
+  "material_preflight": {
+    "material_validation_passed": true,
+    "material_validation_errors": [],
+    "gold": {
+      "material": "Au (Gold) - JC passive NIR v1",
+      "source_material": "Au (Gold) - Johnson and Christy",
+      "gold_model_sha256": "3d99086d70e1ecfcd0475f616029318a6549961856ca3c571c74376d298171a5",
+      "material_fit_passed": true,
+      "passive_in_band": true,
+      "max_n_error": 0.01968464649697521,
+      "max_k_error": 0.04985406761136346,
+      "max_relative_real_epsilon_error": 0.01183781832057664,
+      "max_relative_imag_epsilon_error": 0.03865436969015481,
+      "raw_imag_epsilon_range": [1.0637685714545735, 16.55158010311333],
+      "fitted_imag_epsilon_range": [1.0267766699355434, 16.966909636737],
+      "accuracy_certified": false
+    },
+    "as2se3": {
+      "material": "As2Se3 - Joseph 700nm film (2020)",
+      "max_n_error": 0.006806046107783015,
+      "max_k_error": 0.001709403981953031,
+      "accuracy_certified": false
+    },
+    "sio2": {
+      "material": "SiO2 (Glass) - Palik",
+      "max_n_error": 0.008349388224864862,
+      "max_k_error": 0.0,
+      "accuracy_certified": false
+    }
+  },
+  "native_layout": {
+    "native_layout_verified_count": 1000,
+    "metal_position_counts": {"above_substrate": 1000},
+    "substrate_termination_counts": {"pml": 1000},
+    "transmission_medium_counts": {"SiO2": 1000},
+    "metal_present_count": 1000,
+    "identical_stack_interfaces_count": 1000,
+    "stack_interfaces_nm": {
+      "substrate_min": -3650,
+      "substrate_max": -100,
+      "metal_min": -100,
+      "metal_max": 0.0,
+      "stack_min": -450,
+      "domain_min": -2050,
+      "transmission_z": -1250.0
+    },
+    "metal_thickness_nm": 100,
+    "pillar_z_min_nm": 0,
+    "pillar_z_max": "geometry.h",
+    "pillar_position_evidence": "Existing native_layout_verified records plus matching generator native layout verification code, which checks each pillar z_min=0 and z_max=H, geometry, rotation and material; no new solver inspection was run.",
+    "substrate_extends_through_lower_pml": true,
+    "substrate_air_back_interface_present_in_domain": false,
+    "all_pml_monitor_planes_outside_pml_count": 1000
+  },
+  "solver_completion": {
+    "status_counts": {"2": 1000},
+    "run_attempts_counts": {"1": 1000},
+    "configured_time_limit_ps_counts": {"4": 1000},
+    "configured_time_limit_is_not_actual_simulated_duration": true,
+    "native_logs_checked": 1000,
+    "final_auto_shutoff_count": 1000,
+    "required_auto_shutoff_max": 0.00001,
+    "final_auto_shutoff_min": 0.00000670187,
+    "final_auto_shutoff_median": 0.000009170755,
+    "final_auto_shutoff_p95": 0.0000099467335,
+    "final_auto_shutoff_max": 0.0000099996,
+    "final_auto_shutoff_above_required_max_count": 0,
+    "elapsed_seconds_percentiles": {
+      "min": 207.17199999978766,
+      "p25": 502.68349999998463,
+      "median": 591.4845000000205,
+      "p75": 1596.1485000000039,
+      "p95": 2041.353550000004,
+      "max": 2719.0469999999987
+    }
+  },
+  "mesh": {
+    "mesh_policy_counts": {"metal_only": 1000},
+    "requested_metal_z_step_nm": 8,
+    "metal_region_maximum_step_nm_range": [7.7333333333333485, 7.7333333333333485],
+    "domain_z_maximum_step_nm_range": [38.46153846154503, 38.461538461546304],
+    "first_sample_coordinate_points": {"x": 84, "y": 84, "z": 194},
+    "first_sample_xy_maximum_step_nm": 7.828438646399307,
+    "first_sample_metal_z_cells": 13,
+    "whole_domain_8_nm_limit_enforced": false,
+    "whole_domain_below_10_nm": false,
+    "convergence_note": "This package contains no new controlled finer-mesh comparison establishing mesh convergence. Completion and material-fit validation do not establish grid accuracy; use as pipeline_validation data."
+  },
+  "spectral_arrays": {
+    "reflectance": {"minimum": 0.00011025664571207017, "maximum": 0.9443255066871643, "all_finite": true, "values_outside_0_1": 0},
+    "transmittance": {"minimum": 0.0000315085198963061, "maximum": 0.001479351194575429, "all_finite": true, "values_outside_0_1": 0},
+    "absorptance": {"minimum": 0.05563974753022194, "maximum": 0.9986572265625, "all_finite": true, "values_outside_0_1": 0},
+    "reflectance_plus_transmittance_range": [0.0013427585363388062, 0.9443602561950684],
+    "maximum_abs_R_plus_T_plus_A_minus_1": 0.00000005960464477539063,
+    "energy_sum_interpretation": "A is derived from R and T; this arithmetic identity is not an independent conservation or convergence validation."
+  },
+  "interpretation": "Integrity, batch consistency, recorded native layout, material fit checks and solver shutoff support training a separate top-metal model. They do not certify mesh-converged physical spectra. The original dataset was preserved and no new FDTD run was performed."
+}

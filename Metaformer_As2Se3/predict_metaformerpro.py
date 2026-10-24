@@ -34,7 +34,8 @@ def predict(checkpoint_path, reflectance, wavelength_nm):
             'parameters': dict(zip(saved['parameter_names'], physical.tolist())),
             'units': saved['parameter_units'], 'geometry_valid': valid, 'geometry_error': reason,
             'status': 'candidate_requires_FDTD_validation' if valid else 'invalid_geometry',
-            'quality_scope': saved['quality_scope']}
+            'quality_scope': saved['quality_scope'],
+            'simulation_settings': saved.get('simulation_settings')}
 
 
 def main():

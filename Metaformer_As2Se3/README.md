@@ -1,6 +1,27 @@
 # MetaformerPro：As₂Se₃ 四聚体七参数逆向设计
 
-## MetaformerPro（2026-10-23）
+## 当前：新层序1000样本（2026-10-24汇总）
+
+本分支 `codex/metaformerpro-topmetal-1000` 位于 `D:/projects/MetaformerPro_topmetal/Metaformer_As2Se3`。只使用新生成器2.2.0的1000条光谱，实际层序为**厚SiO₂ / Au 100 nm / As₂Se₃四聚体**，SiO₂延伸至下PML，采用修正的被动JC金材料。原始数据完整性、层序、材料身份、原生关断状态已核对；局部8 nm网格仍属于数值流程验证，未作为物理精度收敛证明。
+
+两个现有输出头均重新随机初始化，每个训练三个种子，固定800/100/100划分。验证集决定输出头和部署种子，测试集只作冻结后的评价。[完整结果与图表](results/topmetal1000/report.md)。新权重为 `models/metaformerpro_topmetal.pt`，旧权重 `models/metaformerpro.pt` 继续保留，二者适用不同层序。
+
+部署圆周头seed42（320,938参数）。三种子平均镜像等价测试MSE为0.025325，比同批Sigmoid头低3.4%；五尺寸MSE低6.3%。P/L/H/dX/dY的MAE约4.41/1.43/4.11/6.39/14.53 nm，奇/偶角MAE约12.48/12.93°；这里角误差采用联合镜像等价评价，原始标签周期误差在报告中同时保留。所选单模型的100条测试结构均通过几何检查。
+
+在PyCharm使用 `D:/Anaconda3/envs/transformer_env/python.exe`，运行项 **16 MetaformerPro topmetal train** 训练，**17 MetaformerPro topmetal predict** 输入固定光谱并显示结构。命令行等价操作：
+
+```powershell
+python train_metaformerpro.py all --config configs/metaformerpro_topmetal1000.json
+python predict_metaformerpro.py --checkpoint models/metaformerpro_topmetal.pt --spectrum inputs/target_topmetal.csv --output results/topmetal1000/prediction_207.json --show
+```
+
+替换 `inputs/target_topmetal.csv` 可输入自己的光谱：两列 `wavelength_nm,reflectance`，700–1700 nm等间距1000点，R为0–1。模型返回一个结构候选及几何检查；图中光谱为输入目标，尚未对候选运行新FDTD。图的层序读取权重元数据，厚SiO₂只画截示部分，不代表有限350 nm基板。
+
+这批数据中691条在1000 nm以上存在突出度≥0.1的普通谷，但严格双主谷仅3条，且没有一条两主谷均在1000 nm以上。固定207号示例约770 nm的谷最显著，不代表最佳结构。阈值、逐谱结果与分割计数见 [光谱覆盖分析](results/topmetal1000/spectral_coverage.json)。
+
+以下为保留的旧层序实验记录，旧指标和入口不代表当前新数据模型。
+
+## 历史：MetaformerPro（2026-10-23，旧层序）
 
 本轮独立工作树为 `D:/projects/MetaformerPro`，分支 `codex/metaformerpro`。模型代码 `metaformerpro.py`，训练 `train_metaformerpro.py`，推理 `predict_metaformerpro.py`。[本轮对照与结果](results/metaformerpro_v02/report.md)。昨日最优模型命名为 MetaformerPro 0.1，转换权重后预测保持一致；圆周输出、七参数查询池化及重叠分块作为0.2候选进行同一验证。
 
@@ -16,7 +37,7 @@ PyCharm配置为 `13 MetaformerPro train v02` / `14 MetaformerPro predict`，解
 
 选型同时约束尺寸误差：五尺寸验证MSE最多增加2%，dX验证MAE最多增加5%，之后按三种子平均镜像等价MSE排序。保留全部试验与旧权重；同一固定测试集上的后续优化不视为新的盲测。
 
-## 输入固定光谱并展示结构
+## 输入固定光谱并展示结构（旧层序）
 
 在 PyCharm 打开本目录，使用 `D:/Anaconda3/envs/transformer_env/python.exe`，选择运行项 **15 MetaformerPro spectrum to structure** 后点击运行。它读取已训练并选中的 `models/metaformerpro.pt`，输出七个物理参数、几何检查结果、俯视图和三维示意图，随后在默认浏览器中打开图片。此入口只做推理，更新输入光谱后无需重新训练。
 

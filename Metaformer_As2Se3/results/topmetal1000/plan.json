@@ -1,0 +1,42 @@
+{
+  "dataset": "D:\\projects\\MetaformerPro_topmetal\\Metaformer_As2Se3\\examples\\jc220_topmetal_1000\\dataset.npz",
+  "output_dir": "D:\\projects\\MetaformerPro_topmetal\\Metaformer_As2Se3\\runs\\metaformerpro_topmetal1000",
+  "results_dir": "D:\\projects\\MetaformerPro_topmetal\\Metaformer_As2Se3\\results\\topmetal1000",
+  "model_output": "D:\\projects\\MetaformerPro_topmetal\\Metaformer_As2Se3\\models\\metaformerpro_topmetal.pt",
+  "reuse_reference": false,
+  "seeds": [
+    42,
+    43,
+    44
+  ],
+  "epochs": 100,
+  "batch_size": 8,
+  "learning_rate": 0.0003,
+  "weight_decay": 0.001,
+  "patience": 20,
+  "variants": {
+    "pro_v01": {
+      "readout": "global",
+      "angle_head": "sigmoid",
+      "overlap": false
+    },
+    "circular": {
+      "readout": "global",
+      "angle_head": "circular",
+      "overlap": false
+    }
+  },
+  "selection": "Train both heads from scratch on the new top-metal data. Across three seeds, select the lowest mean validation joint-mirror MSE with length MSE <= sigmoid reference * 1.02 and dX MAE <= reference * 1.05. Select the median-validation seed; freeze before test evaluation.",
+  "test_policy": "Use the new dataset's saved 800/100/100 split. Evaluate both predeclared heads only after frozen selection. No test-guided architecture or seed changes. Sample 207 is predeclared solely for the inference illustration.",
+  "quality_scope": "Generator2 2.2.0, thick SiO2 into lower PML / 100 nm passive JC Au / As2Se3 tetramer. Metal-only 8 nm mesh, pipeline_validation. New dataset only; native termination and material-fit checks do not establish mesh convergence. Inverse training, no new FDTD run.",
+  "dataset_sha256": "bc0f21a90ed7dcb3a228c81dfef023a0425cfed618a8bc275cc6487b4430621d",
+  "source_sha256": {
+    "metaformerpro.py": "4f950aedd545168a09cbb8100e43d887e86ae0eff899d8d00bfd94ecf8bc3798",
+    "train_metaformerpro.py": "615f545252268482653fa5a0009b6d1feda41c99a1cbb4cae02f3afbf7c5fd17",
+    "spectral_inverse.py": "daf26227dfb9a40710b09ac5f16cd0e7a6cae19cd014db5773d38ea864a6ed8d"
+  },
+  "runtime": {
+    "torch": "2.5.1+cu121",
+    "numpy": "2.2.6"
+  }
+}
