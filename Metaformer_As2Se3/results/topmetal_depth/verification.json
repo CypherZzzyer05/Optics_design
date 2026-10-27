@@ -1,0 +1,38 @@
+{
+  "normalization_training_only": true,
+  "cpu_prediction_max_difference": 1.0728836059570312e-06,
+  "geometry": {
+    "baseline_seed42": {
+      "valid": 100,
+      "total": 100,
+      "failures": []
+    },
+    "baseline_seed43": {
+      "valid": 100,
+      "total": 100,
+      "failures": []
+    },
+    "baseline_seed44": {
+      "valid": 100,
+      "total": 100,
+      "failures": []
+    },
+    "depth12_seed42": {
+      "valid": 100,
+      "total": 100,
+      "failures": []
+    },
+    "depth12_seed43": {
+      "valid": 100,
+      "total": 100,
+      "failures": []
+    },
+    "depth12_seed44": {
+      "valid": 100,
+      "total": 100,
+      "failures": []
+    }
+  },
+  "existing_test_set_reused": true,
+  "new_fdtd_run_performed": false
+}

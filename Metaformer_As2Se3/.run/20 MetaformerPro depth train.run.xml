@@ -1,0 +1,22 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="20 MetaformerPro depth train" type="PythonConfigurationType" factoryName="Python">
+    <option name="PARENT_ENVS" value="true" />
+    <envs>
+      <env name="OMP_NUM_THREADS" value="4" />
+      <env name="MKL_NUM_THREADS" value="4" />
+      <env name="TEMP" value="$PROJECT_DIR$/tmp" />
+      <env name="TMP" value="$PROJECT_DIR$/tmp" />
+      <env name="MPLCONFIGDIR" value="$PROJECT_DIR$/tmp/matplotlib" />
+      <env name="CUDA_CACHE_PATH" value="$PROJECT_DIR$/tmp/cuda_cache" />
+    </envs>
+    <option name="SDK_HOME" value="D:/Anaconda3/envs/transformer_env/python.exe" />
+    <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+    <option name="IS_MODULE_SDK" value="false" />
+    <option name="ADD_CONTENT_ROOTS" value="true" />
+    <option name="ADD_SOURCE_ROOTS" value="true" />
+    <option name="SCRIPT_NAME" value="$PROJECT_DIR$/train_metaformerpro_refine.py" />
+    <option name="PARAMETERS" value="all --config configs/metaformerpro_topmetal_depth.json" />
+    <option name="MODULE_MODE" value="false" />
+    <method v="2" />
+  </configuration>
+</component>

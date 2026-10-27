@@ -1,0 +1,56 @@
+{
+  "dataset": "D:\\projects\\MetaformerPro_depth\\Metaformer_As2Se3\\examples\\jc220_topmetal_1000\\dataset.npz",
+  "output_dir": "D:\\projects\\MetaformerPro_depth\\Metaformer_As2Se3\\runs\\metaformerpro_topmetal_depth",
+  "results_dir": "D:\\projects\\MetaformerPro_depth\\Metaformer_As2Se3\\results\\topmetal_depth",
+  "model_output": "D:\\projects\\MetaformerPro_depth\\Metaformer_As2Se3\\models\\metaformerpro_depth.pt",
+  "seed_model_prefix": "metaformerpro_depth_seed",
+  "model_version": "0.3.1",
+  "baseline_results": "D:\\projects\\MetaformerPro_depth\\Metaformer_As2Se3\\results\\topmetal1000\\validation_results.json",
+  "baseline_archive": "D:\\projects\\MetaformerPro_depth\\Metaformer_As2Se3\\results\\topmetal1000\\validation_runs",
+  "baseline_checkpoints": {
+    "42": "D:\\projects\\MetaformerPro_depth\\Metaformer_As2Se3\\models\\metaformerpro_topmetal.pt",
+    "43": "D:\\projects\\MetaformerPro_depth\\Metaformer_As2Se3\\models\\metaformerpro_topmetal_seed43.pt",
+    "44": "D:\\projects\\MetaformerPro_depth\\Metaformer_As2Se3\\models\\metaformerpro_topmetal_seed44.pt"
+  },
+  "seeds": [
+    42,
+    43,
+    44
+  ],
+  "epochs": 100,
+  "batch_size": 8,
+  "learning_rate": 0.0003,
+  "weight_decay": 0.001,
+  "patience": 20,
+  "reuse_reference": false,
+  "variants": {
+    "depth8": {
+      "readout": "global",
+      "angle_head": "circular",
+      "encoder_layers": 8,
+      "embedding_dim": 96,
+      "normalization_floor": 0.02
+    },
+    "depth12": {
+      "readout": "global",
+      "angle_head": "circular",
+      "encoder_layers": 12,
+      "embedding_dim": 96,
+      "normalization_floor": 0.02
+    }
+  },
+  "selection": "Depth-only comparison: reuse the three trained 4-layer circular baseline runs; train 8 and 12 encoder layers from random initialization using seeds 42/43/44. Keep width 96, normalization floor 0.02, tokenizer, head, loss and training schedule unchanged. Replacement requires >=1% lower mean joint-mirror validation MSE; mean length MSE may increase at most 2%, dX MAE 5%, dY MAE 2%. Choose minimum eligible validation MSE or keep 4 layers; deploy the median-validation seed. Freeze before test.",
+  "test_policy": "Only the baseline and validation-frozen winner are evaluated on the same previously inspected 100 test IDs, each with three seeds. This is repeated evaluation, not a new blind test. Do not select a different depth or seed from test results. Sample 207 remains the fixed inference illustration.",
+  "quality_scope": "Corrected generator2 2.2.0 top-metal 1000: thick SiO2 into lower PML / passive JC Au 100 nm / As2Se3 tetramer. Metal-only 8 nm, pipeline_validation. Inverse-model depth study; no forward network, data regeneration or new FDTD run.",
+  "dataset_sha256": "bc0f21a90ed7dcb3a228c81dfef023a0425cfed618a8bc275cc6487b4430621d",
+  "source_sha256": {
+    "metaformerpro.py": "47c6f2b497f0dde4344a64e437ef2c45ca3f12079e9b2391d2eb02bdd1ac2e91",
+    "train_metaformerpro.py": "ac255e4b9b7b2d6fe9dbf937216da8d11755d857ed59256d1e5ad60e7ac50e39",
+    "train_metaformerpro_refine.py": "c9a96d2523d93cd0f37922be8016735d1ca56b9283284ce8fc125c2d67be4712",
+    "spectral_inverse.py": "daf26227dfb9a40710b09ac5f16cd0e7a6cae19cd014db5773d38ea864a6ed8d"
+  },
+  "runtime": {
+    "torch": "2.5.1+cu121",
+    "numpy": "2.2.6"
+  }
+}

@@ -1,0 +1,146 @@
+{
+  "selection": {
+    "selected": "depth12",
+    "representative_seed": 44,
+    "ranking": [
+      {
+        "variant": "depth12",
+        "mean_validation_mse": 0.02377368847869578,
+        "std_validation_mse": 0.0007083435681536866,
+        "length_mse": 0.0217804193109707,
+        "mae_nm": [
+          4.5394303372905895,
+          1.4703147479643424,
+          4.981014730401027,
+          5.935893812030554,
+          13.68075961121358
+        ],
+        "mae_deg": [
+          12.299993883131537,
+          12.322135525918567
+        ],
+        "parameters": 919210,
+        "eligible": true,
+        "replacement_threshold_passed": true
+      },
+      {
+        "variant": "depth8",
+        "mean_validation_mse": 0.024403581135906047,
+        "std_validation_mse": 0.0003744855717257073,
+        "length_mse": 0.021691666051075312,
+        "mae_nm": [
+          4.598618190626925,
+          1.3217312625298898,
+          4.27524739142973,
+          6.21725164949894,
+          13.557681856537236
+        ],
+        "mae_deg": [
+          13.088444011949468,
+          12.774364699912256
+        ],
+        "parameters": 620074,
+        "eligible": false,
+        "replacement_threshold_passed": false
+      },
+      {
+        "variant": "baseline",
+        "mean_validation_mse": 0.02444772367504915,
+        "std_validation_mse": 0.0006229521512937506,
+        "length_mse": 0.02181976264949712,
+        "mae_nm": [
+          4.608191703647996,
+          1.265723330900073,
+          4.076868405557859,
+          5.8444528598338366,
+          13.791297868872059
+        ],
+        "mae_deg": [
+          13.210307277704123,
+          12.553704779398686
+        ],
+        "parameters": 320938,
+        "eligible": true,
+        "replacement_threshold_passed": false
+      }
+    ],
+    "rule": "Depth-only comparison: reuse the three trained 4-layer circular baseline runs; train 8 and 12 encoder layers from random initialization using seeds 42/43/44. Keep width 96, normalization floor 0.02, tokenizer, head, loss and training schedule unchanged. Replacement requires >=1% lower mean joint-mirror validation MSE; mean length MSE may increase at most 2%, dX MAE 5%, dY MAE 2%. Choose minimum eligible validation MSE or keep 4 layers; deploy the median-validation seed. Freeze before test.",
+    "test_evaluated_at_selection": false
+  },
+  "test_mean": {
+    "baseline": {
+      "periodic": {
+        "mse": 0.034444245144537484,
+        "length_mse": 0.0229490684388439,
+        "angle_mse": 0.06318218690877146,
+        "mae_nm": [
+          4.412070467105756,
+          1.4340830521347623,
+          4.109296453123291,
+          6.393735982384533,
+          14.526552805770189
+        ],
+        "mae_deg": [
+          17.868989411112853,
+          19.10890776682645
+        ]
+      },
+      "mirror_equivalent": {
+        "mse": 0.025325316370405578,
+        "length_mse": 0.0229490684388439,
+        "angle_mse": 0.03126593619930978,
+        "mae_nm": [
+          4.412070467105756,
+          1.4340830521347623,
+          4.109296453123291,
+          6.393735982384533,
+          14.526552805770189
+        ],
+        "mae_deg": [
+          12.4757307266118,
+          12.930505426414308
+        ]
+      }
+    },
+    "depth12": {
+      "periodic": {
+        "mse": 0.03553966244963767,
+        "length_mse": 0.024225381472370622,
+        "angle_mse": 0.06382536489280527,
+        "mae_nm": [
+          4.919104416823636,
+          1.6188663217859964,
+          4.315835787231723,
+          6.583582040574401,
+          14.624987075198442
+        ],
+        "mae_deg": [
+          19.40254707846616,
+          18.376758852798957
+        ]
+      },
+      "mirror_equivalent": {
+        "mse": 0.026910681432724962,
+        "length_mse": 0.024225381472370622,
+        "angle_mse": 0.03362393133361082,
+        "mae_nm": [
+          4.919104416823636,
+          1.6188663217859964,
+          4.315835787231723,
+          6.583582040574401,
+          14.624987075198442
+        ],
+        "mae_deg": [
+          13.670790822195704,
+          12.760396406811196
+        ]
+      }
+    }
+  },
+  "dataset_sha256": "bc0f21a90ed7dcb3a228c81dfef023a0425cfed618a8bc275cc6487b4430621d",
+  "model_path": "D:\\projects\\MetaformerPro_depth\\Metaformer_As2Se3\\models\\metaformerpro_depth.pt",
+  "model_sha256": "6c6c8c4f659c26b3f0c3f65dbeb7ed3d0f92fc8bfc8d031b4f136253642468fe",
+  "quality_scope": "Corrected generator2 2.2.0 top-metal 1000: thick SiO2 into lower PML / passive JC Au 100 nm / As2Se3 tetramer. Metal-only 8 nm, pipeline_validation. Inverse-model depth study; no forward network, data regeneration or new FDTD run.",
+  "test_policy": "Only the baseline and validation-frozen winner are evaluated on the same previously inspected 100 test IDs, each with three seeds. This is repeated evaluation, not a new blind test. Do not select a different depth or seed from test results. Sample 207 remains the fixed inference illustration.",
+  "new_fdtd_run_performed": false
+}

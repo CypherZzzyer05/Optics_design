@@ -1,6 +1,22 @@
 # MetaformerPro：As₂Se₃ 四聚体七参数逆向设计
 
-## 当前：继续优化新层序模型（2026-10-27）
+## 当前：增加编码器层数（2026-10-27）
+
+工作树 `D:/projects/MetaformerPro_depth/Metaformer_As2Se3`，分支 `codex/metaformerpro-depth-study`。比较4层、8层、12层编码器，每个深度3个种子；宽度96、圆周头、0.02归一化下限、数据、优化器及训练预算相同，仅层数不同。4层的三个已有基线权重重载验证后复用，8/12层从随机初始化训练。
+
+PyCharm运行项 **20 MetaformerPro depth train** 执行深度对照，**21 MetaformerPro depth spectrum to structure** 加载冻结选择并展示结构。解释器 `D:/Anaconda3/envs/transformer_env/python.exe`。本轮输出是 `models/metaformerpro_depth.pt` 和独立种子权重，旧输出文件保留。[结果与训练曲线](results/topmetal_depth/report.md)。
+
+实测结果：4/8/12层三种子平均验证MSE为0.024448/0.024404/0.023774。12层通过验证门槛，固定输出seed44（919,210参数，实验版本0.3.1），但三种子平均测试MSE反而由0.025325升至0.026911。12层只作为实验候选保留；原4层 `models/metaformerpro_topmetal.pt` 和运行项17继续可用。运行项21专门查看12层候选，JSON同时记录实际层数、宽度和输出头。
+
+```powershell
+python train_metaformerpro_refine.py all --config configs/metaformerpro_topmetal_depth.json
+python summarize_metaformerpro_depth.py
+python predict_metaformerpro.py --checkpoint models/metaformerpro_depth.pt --spectrum inputs/target_topmetal.csv --output results/topmetal_depth/prediction_207.json --show
+```
+
+输入仍要求700–1700 nm等间距1000点、R在0–1。只优化逆向模型；本轮未生成新FDTD数据。验证选型后只比较基线和冻结选择的测试结果，既有100条测试集不视为新盲测。结构图中的光谱是输入目标，候选实际光谱仍待后续回验。
+
+## 历史：继续优化新层序模型（2026-10-27）
 
 工作树 `D:/projects/MetaformerPro_refine/Metaformer_As2Se3`，分支 `codex/metaformerpro-topmetal-refine`。在同一800/100/100划分上，对标准化下限、保留分块位置的读出、更宽编码器做三个种子的有限对照。[结果、收敛和逐参数误差](results/topmetal_refine/report.md)。新权重单独保存为 `models/metaformerpro_refined.pt`，此前的 `models/metaformerpro_topmetal.pt` 保留。
 

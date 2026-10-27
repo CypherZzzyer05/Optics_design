@@ -1,6 +1,16 @@
 # MetaformerPro
 
-## 当前分支：按新数据和误差继续优化（2026-10-27）
+## 当前：4／8／12层编码器对照（2026-10-27）
+
+独立工作树 `D:/projects/MetaformerPro_depth/Metaformer_As2Se3`，分支 `codex/metaformerpro-depth-study`。仅改变编码器深度：4层320,938参数为已有基线，8层620,074参数、12层919,210参数分别重新训练三个种子。保持96维宽度、原0.02标准化下限、圆周输出头、镜像损失和训练配方一致；数据仍为同一修正材料及层序的1000样本。
+
+[本轮深度对照结果](Metaformer_As2Se3/results/topmetal_depth/report.md)。PyCharm使用 `D:/Anaconda3/envs/transformer_env/python.exe`：运行项 **20 MetaformerPro depth train** 做对照，**21 MetaformerPro depth spectrum to structure** 使用本轮冻结权重 `models/metaformerpro_depth.pt`，输入 `inputs/target_topmetal.csv` 并显示结构。旧项目和此前权重保留。
+
+六次新训练已完成，共24.5分钟。4/8/12层平均镜像验证MSE分别为0.024448/0.024404/0.023774。验证按预设规则选中12层seed44，但其三种子平均测试MSE从4层0.025325升至0.026911（增加6.3%），未复现验证改善。12层保存为实验候选；现用4层权重继续保留，日常推理仍可使用运行项17。运行项21用于查看12层实验输出，JSON的 `model_config.encoder_layers` 为12。
+
+每个深度使用42/43/44三个种子，固定800/100/100划分。替换门槛沿用上一轮：平均镜像验证MSE至少下降1%，同时保护五尺寸、dX、dY误差。先冻结验证选择，只对基线与选中深度评估既有测试集，不将其称为新增盲测。
+
+## 历史：按新数据和误差继续优化（2026-10-27）
 
 独立工作树 `D:/projects/MetaformerPro_refine/Metaformer_As2Se3`，分支 `codex/metaformerpro-topmetal-refine`。沿用厚SiO₂ / Au100 / As₂Se₃新1000样本，比较标准化下限、保留100个波长分块位置的输出层、192维编码器；每个候选三个种子，旧圆周头作为固定基线。只优化逆向网络。
 

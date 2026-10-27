@@ -31,6 +31,7 @@ def predict(checkpoint_path, reflectance, wavelength_nm):
     except ValueError as error:
         valid, reason = False, str(error)
     return {'model': 'MetaformerPro', 'version': saved['version'], 'seed': saved['seed'],
+            'model_config': saved['model_config'],
             'parameters': dict(zip(saved['parameter_names'], physical.tolist())),
             'units': saved['parameter_units'], 'geometry_valid': valid, 'geometry_error': reason,
             'status': 'candidate_requires_FDTD_validation' if valid else 'invalid_geometry',

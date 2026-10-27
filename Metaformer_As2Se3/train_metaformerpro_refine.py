@@ -109,7 +109,8 @@ def finalize(plan, records, selection, device):
                 failures.append({'sample_id': int(sample_id), 'error': str(error)})
         geometry[name] = {'valid': len(test)-len(failures), 'total': len(test), 'failures': failures}
         if row['variant'] == selected:
-            destination = ROOT/f'models/metaformerpro_refine_seed{row["seed"]}.pt'
+            prefix = plan.get('seed_model_prefix', 'metaformerpro_refine_seed')
+            destination = ROOT/f'models/{prefix}{row["seed"]}.pt'
             shutil.copyfile(row['checkpoint'], destination)
         if row['variant'] == selected and row['seed'] == selection['representative_seed']:
             cpu, _ = evaluate(model.to('cpu'), test, torch.device('cpu'))
