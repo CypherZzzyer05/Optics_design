@@ -1,7 +1,9 @@
 """Plot the frozen resonance-tokenization study; never trains or runs FDTD."""
 import argparse
+import hashlib
 import json
 from pathlib import Path
+import shutil
 
 import matplotlib
 matplotlib.use('Agg')
@@ -174,6 +176,19 @@ def summarize():
     verification = read(OUT / 'verification.json')
     selection = read(OUT / 'selection.json')
     selected, seed = selection['selected'], selection['representative_seed']
+    candidates = sorted((r for r in records if r['variant'] == 'resonance'),
+                        key=lambda r: r['validation']['mirror_equivalent']['mse'])
+    candidate = candidates[len(candidates) // 2]
+    candidate_path = ROOT / 'models/metaformerpro_resonance_candidate.pt'
+    shutil.copyfile(candidate['checkpoint'], candidate_path)
+    candidate_info = {'variant': 'resonance', 'seed': candidate['seed'],
+                      'selection': 'median validation seed; experimental, not a deployment override',
+                      'checkpoint': str(candidate_path),
+                      'sha256': hashlib.sha256(candidate_path.read_bytes()).hexdigest(),
+                      'full_test_evaluated': selected == 'resonance',
+                      'fdtd_run_performed': False}
+    (OUT / 'experimental_candidate.json').write_text(
+        json.dumps(candidate_info, ensure_ascii=False, indent=2), encoding='utf-8')
     histories = {(r['variant'], r['seed']): read(OUT / 'validation_runs' /
                     f'{r["variant"]}_seed{r["seed"]}' / 'history.json') for r in records}
     plot_comparison(plan, records, selection, histories)
@@ -200,6 +215,8 @@ def summarize():
         f'{change(uniform_validation["mean_validation_mse"], local_validation["mean_validation_mse"])}；'
         f'相对原100个token基线{change(baseline_validation["mean_validation_mse"], local_validation["mean_validation_mse"])}。'
         '这是当前数据和固定配方上的观察，不能仅凭单个种子或总loss判断其稳定优越性。')
+    if not selection['resonance_vs_uniform']['mechanism_threshold_passed']:
+        direct_comparison += ' 本轮未通过预设的共振取样机制门槛，尚未证实按谷分配优于均匀附加取样。'
     train_means = {name: float(np.mean([r['train']['mirror_equivalent']['mse']
                                       for r in records if r['variant'] == name]))
                    for name in LABELS}
@@ -236,6 +253,8 @@ def summarize():
 现用100个全谱token保留；新增两种132-token输入进行对照：均匀加密组在全波段附加32个token，共振组在输入谱的可信谷附近附加32个token。二者共用原Conv10投影和同一个4层编码器，均无新增可训练参数。每个附加token保留实际波长中心、覆盖宽度的固定位置编码。没有外接ResNet、LSTM或正向神经网络。
 
 仅在平滑副本上定位谷和窗口；窗口内取原反射率。窗口最多围绕两个可信谷，不强制所有谱都有两个谷；缺谷时按预定均匀规则补足token。连续插值用于固定输入形状，不会增加原始约1 nm采样的物理分辨率。局部细分是假设能帮助有限网络提取已有形状差异，不能创造缺失信息或打破镜像同谱。
+
+固定定位规则为11点三阶SG、谷显著度≥0.01、间隔≥20个原网格点；按显著度选最多两谷后按波长排序。窗口总跨度为半突出度宽度的4倍，截在16–240个原网格间隔内，边界仅裁剪。单谷的另一块为全域16token，无谷为全域32token。原始反射率不做局部深度归一化；中心、跨度及附加类型使用固定编码。算法选出的谷不等于已确认的物理模式，宽度也不作为Q值。
 
 ![固定207号输入的全谱与附加token位置](sampling_207.png)
 
@@ -283,10 +302,19 @@ def summarize():
 
 冻结输出：`{summary['model_path']}`，SHA256：`{summary['model_sha256']}`。现用原权重不覆盖。输入仍为700–1700 nm、1000个等间距反射率点；同一输入定位规则用于训练与推理。
 
+共振方案另保留验证表现居中的seed {candidate['seed']}，文件为 `models/metaformerpro_resonance_candidate.pt`，仅供实验查看，不自动替换现用权重。该文件的身份及是否进入完整测试见 [experimental_candidate.json](experimental_candidate.json)。PyCharm运行项23加载此实验候选；运行项17继续加载现用模型。
+
+本轮18项定向程序测试通过，覆盖采样/缺谷回退、绝对位置与跨度、梯度、132-token集成、旧模型兼容和权重重载。实验候选训练归一化与固定207号CPU/CUDA推理检查见 [candidate_verification.json](candidate_verification.json)。
+
 ```powershell
 python train_metaformerpro_refine.py all --config configs/metaformerpro_topmetal_resonance.json
 python summarize_resonance_study.py
+python predict_metaformerpro.py --checkpoint models/metaformerpro_resonance_candidate.pt --spectrum inputs/target_topmetal.csv --output results/topmetal_resonance/prediction_207.json --show
 ```
+
+![共振实验候选的固定207号推理示意，图中光谱为输入目标](prediction_207.png)
+
+此图读取另行保留的共振实验权重，不代表验证冻结方案已切换。输入谱来自已有数值数据，图中没有候选的FDTD回验曲线。
 
 逐运行记录见 [validation_results.json](validation_results.json)、[selection.json](selection.json)、[test_metrics.json](test_metrics.json)、[verification.json](verification.json)。
 '''

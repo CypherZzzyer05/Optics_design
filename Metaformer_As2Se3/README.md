@@ -6,15 +6,17 @@
 
 取样规则在训练前固定：11点三阶SG副本定位，显著度0.01、最小间隔20个原网格点；最多两谷，各16个附加token，窗口跨度为半突出宽度的4倍，截在16–240个原网格间隔内。无谷回退全域均匀32token，单谷时第二块为全域均匀16token。定位不读取结构标签，实际输入仍为原反射率，不做局部深度归一化。绝对波长中心、覆盖跨度和附加类型标记采用固定编码，不增加可训练参数。连续插值不增加数据的实际分辨率。
 
-PyCharm运行项 **22 MetaformerPro resonance train** 完成3种子对照，**23 MetaformerPro resonance spectrum to structure** 读取验证冻结输出并展示结构。解释器仍为 `D:/Anaconda3/envs/transformer_env/python.exe`。结果保存在独立的 [输入编码试验目录](results/topmetal_resonance/README.md)。`models/metaformerpro_resonance.pt` 是按验证规则冻结的输出；需查看结果中的 `selected` 与推理JSON里的 `model_config.sampling`，不能仅凭文件名认定共振方案已胜出。
+PyCharm运行项 **22 MetaformerPro resonance train** 完成3种子对照，**23 MetaformerPro resonance spectrum to structure** 读取另行保留的共振实验候选并展示结构。解释器仍为 `D:/Anaconda3/envs/transformer_env/python.exe`。结果保存在独立的 [输入编码试验目录](results/topmetal_resonance/README.md)。`models/metaformerpro_resonance.pt` 是按验证规则冻结的输出；需查看结果中的 `selected` 与推理JSON里的 `model_config.sampling`，不能仅凭文件名认定共振方案已胜出。实验候选文件 `models/metaformerpro_resonance_candidate.pt` 不会覆盖现用模型，运行项17继续使用现用权重。
 
 ```powershell
 python train_metaformerpro_refine.py all --config configs/metaformerpro_topmetal_resonance.json
 python summarize_resonance_study.py
-python predict_metaformerpro.py --checkpoint models/metaformerpro_resonance.pt --spectrum inputs/target_topmetal.csv --output results/topmetal_resonance/prediction_207.json --show
+python predict_metaformerpro.py --checkpoint models/metaformerpro_resonance_candidate.pt --spectrum inputs/target_topmetal.csv --output results/topmetal_resonance/prediction_207.json --show
 ```
 
 沿用同一1000条修正材料/层序数据及800/100/100划分，仅训练逆向模型，无新增FDTD。训练输入统计只由训练集拟合；阈值和窗口规则不根据验证或测试结果调整。测试仍为已查看过的既有集合，不是新盲测。现用100-token基线的三个已有运行重载核对后复用；两种132-token方案从相同种子随机初始化，训练预算与现用基线相同。
+
+实测完成6次新训练，合计9.4分钟。原基线、均匀加密、共振局部细分的三种子平均镜像验证MSE为0.024448、0.024301、0.024347。共振组比基线降低0.41%，但比相同token数的均匀加密增加0.19%，两种新编码均未达到1%替换门槛。冻结选择仍为原4层seed42；共振实验seed42单独保留，未据测试结果再选方案。18项相关程序测试通过。
 
 ## 历史：增加编码器层数（2026-10-27）
 

@@ -1,0 +1,72 @@
+{
+  "selected": "baseline",
+  "representative_seed": 42,
+  "ranking": [
+    {
+      "variant": "uniform_extra",
+      "mean_validation_mse": 0.024300535804355542,
+      "std_validation_mse": 0.0007519487938973256,
+      "length_mse": 0.021878599742196848,
+      "mae_nm": [
+        4.771166475008552,
+        1.307206545645992,
+        4.310293479628551,
+        6.1106710359454155,
+        13.703619949007406
+      ],
+      "mae_deg": [
+        13.369683656771665,
+        12.020397194602992
+      ],
+      "parameters": 320938,
+      "eligible": true,
+      "replacement_threshold_passed": false
+    },
+    {
+      "variant": "resonance",
+      "mean_validation_mse": 0.02434682503303943,
+      "std_validation_mse": 0.0006806519386136303,
+      "length_mse": 0.02174641040493859,
+      "mae_nm": [
+        4.219498978074019,
+        1.3390253043423097,
+        4.490308564893591,
+        5.980595771223307,
+        13.45916078784503
+      ],
+      "mae_deg": [
+        12.757859105670649,
+        12.780912185262423
+      ],
+      "parameters": 320938,
+      "eligible": true,
+      "replacement_threshold_passed": false
+    },
+    {
+      "variant": "baseline",
+      "mean_validation_mse": 0.02444772367504915,
+      "std_validation_mse": 0.0006229521512937506,
+      "length_mse": 0.02181976264949712,
+      "mae_nm": [
+        4.608191703647996,
+        1.265723330900073,
+        4.076868405557859,
+        5.8444528598338366,
+        13.791297868872059
+      ],
+      "mae_deg": [
+        13.210307277704123,
+        12.553704779398686
+      ],
+      "parameters": 320938,
+      "eligible": true,
+      "replacement_threshold_passed": false
+    }
+  ],
+  "rule": "Reuse the existing three 4-layer circular baseline runs (100 tokens). Train uniform_extra and resonance (132 tokens each) with identical 320938 parameter backbone, same shared Conv10, absolute center/span encoding and extra-token indicator. Fixed input-only SG11/poly3, prominence 0.01, distance20; at most two valleys, 16 tokens/window, total window span four half-prominence widths clipped to 16..240 original grid intervals; no-valley fallback is uniform32; single-valley second window is uniform16. Original R is never smoothed or locally depth-normalized. These rules are frozen before validation. All three seeds use identical initialization and training recipe. Replacement requires >=1% lower mean joint-mirror validation MSE than the current baseline, length MSE at most +2%, dX MAE +5%, dY MAE +2%. Attribute benefit to valley selection only if resonance also beats matched uniform_extra mean validation MSE by >=1% with the same dimension safeguards. Otherwise report that mechanism unestablished. Minimum eligible validation MSE wins, median-validation seed retained; freeze before test.",
+  "test_evaluated_at_selection": false,
+  "resonance_vs_uniform": {
+    "relative_validation_mse_change": 0.0019048645287726984,
+    "mechanism_threshold_passed": false
+  }
+}

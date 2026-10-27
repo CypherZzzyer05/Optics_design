@@ -1,0 +1,9 @@
+{
+  "variant": "resonance",
+  "seed": 42,
+  "selection": "median validation seed; experimental, not a deployment override",
+  "checkpoint": "D:\\projects\\MetaformerPro_resonance\\Metaformer_As2Se3\\models\\metaformerpro_resonance_candidate.pt",
+  "sha256": "c16acfe5dbe420500f0ad4f34b2ea75509fabcdba8a07c8ac971a9ad34b668bd",
+  "full_test_evaluated": false,
+  "fdtd_run_performed": false
+}

@@ -1,0 +1,737 @@
+[
+  {
+    "variant": "baseline",
+    "seed": 42,
+    "validation": {
+      "periodic": {
+        "mse": 0.031544881336713904,
+        "length_mse": 0.021279447567532202,
+        "angle_mse": 0.057208465759668155,
+        "mae_nm": [
+          4.714319506427273,
+          1.1528221406042576,
+          3.124263031152077,
+          5.719648053869605,
+          13.029759273910894
+        ],
+        "mae_deg": [
+          17.88502348655602,
+          17.747361740889026
+        ]
+      },
+      "mirror_equivalent": {
+        "mse": 0.024137621317570246,
+        "length_mse": 0.021279447567532202,
+        "angle_mse": 0.031283055692665346,
+        "mae_nm": [
+          4.714319506427273,
+          1.1528221406042576,
+          3.124263031152077,
+          5.719648053869605,
+          13.029759273910894
+        ],
+        "mae_deg": [
+          14.018903707328718,
+          11.702727509010582
+        ]
+      }
+    },
+    "train": {
+      "periodic": {
+        "mse": 0.026569957676341197,
+        "length_mse": 0.014995476680449945,
+        "angle_mse": 0.05550616016606932,
+        "mae_nm": [
+          3.994926780402966,
+          1.0693078866388532,
+          3.1562888089181795,
+          4.353824711241759,
+          11.979432013111
+        ],
+        "mae_deg": [
+          17.404927668928575,
+          17.068691151132224
+        ]
+      },
+      "mirror_equivalent": {
+        "mse": 0.01665086789618155,
+        "length_mse": 0.014995476680449945,
+        "angle_mse": 0.020789345935510562,
+        "mae_nm": [
+          3.994926780402966,
+          1.0693078866388532,
+          3.1562888089181795,
+          4.353824711241759,
+          11.979432013111
+        ],
+        "mae_deg": [
+          10.510851427252055,
+          10.698223033739486
+        ]
+      }
+    },
+    "parameters": 320938,
+    "best_epoch": 69,
+    "epochs": 89,
+    "training_seconds": 177.90560699999696,
+    "reference_reused": false,
+    "reference_conversion_max_difference": null,
+    "checkpoint": "D:\\projects\\MetaformerPro_resonance\\Metaformer_As2Se3\\models\\metaformerpro_topmetal.pt",
+    "checkpoint_sha256": "8950779ce4fd3f467cdc4334190650963735d31c0f1c613aa2a7edc1cd549dfb",
+    "test_evaluated": false,
+    "reused_existing_run": true,
+    "history_directory": "D:\\projects\\MetaformerPro_resonance\\Metaformer_As2Se3\\results\\topmetal1000\\validation_runs\\circular_seed42"
+  },
+  {
+    "variant": "baseline",
+    "seed": 43,
+    "validation": {
+      "periodic": {
+        "mse": 0.03195415935879311,
+        "length_mse": 0.022099485932351223,
+        "angle_mse": 0.05659084292489783,
+        "mae_nm": [
+          4.72420241474174,
+          1.1955183204263449,
+          4.70207817715127,
+          5.716891790181398,
+          14.327495555067435
+        ],
+        "mae_deg": [
+          16.74894235973479,
+          19.04445513286628
+        ]
+      },
+      "mirror_equivalent": {
+        "mse": 0.02531690472301183,
+        "length_mse": 0.022099485932351223,
+        "angle_mse": 0.03336045169966335,
+        "mae_nm": [
+          4.72420241474174,
+          1.1955183204263449,
+          4.70207817715127,
+          5.716891790181398,
+          14.327495555067435
+        ],
+        "mae_deg": [
+          13.125729931890964,
+          13.34864684570348
+        ]
+      }
+    },
+    "train": {
+      "periodic": {
+        "mse": 0.031545184869207536,
+        "length_mse": 0.02016096830807166,
+        "angle_mse": 0.06000572627204722,
+        "mae_nm": [
+          4.822984996984087,
+          1.2718732217254,
+          4.869518451726617,
+          5.497522517829202,
+          13.924958104679172
+        ],
+        "mae_deg": [
+          18.233709213661495,
+          18.184934021378286
+        ]
+      },
+      "mirror_equivalent": {
+        "mse": 0.02228091866286781,
+        "length_mse": 0.02016096830807166,
+        "angle_mse": 0.027580794549858182,
+        "mae_nm": [
+          4.822984996984087,
+          1.2718732217254,
+          4.869518451726617,
+          5.497522517829202,
+          13.924958104679172
+        ],
+        "mae_deg": [
+          12.162662770602036,
+          12.2380396759836
+        ]
+      }
+    },
+    "parameters": 320938,
+    "best_epoch": 31,
+    "epochs": 51,
+    "training_seconds": 99.18901339999866,
+    "reference_reused": false,
+    "reference_conversion_max_difference": null,
+    "checkpoint": "D:\\projects\\MetaformerPro_resonance\\Metaformer_As2Se3\\models\\metaformerpro_topmetal_seed43.pt",
+    "checkpoint_sha256": "b092b7db6bba79a43ecdfaeadd2ee995dcb753b2a1d35c3c3f205d2d9ecd122d",
+    "test_evaluated": false,
+    "reused_existing_run": true,
+    "history_directory": "D:\\projects\\MetaformerPro_resonance\\Metaformer_As2Se3\\results\\topmetal1000\\validation_runs\\circular_seed43"
+  },
+  {
+    "variant": "baseline",
+    "seed": 44,
+    "validation": {
+      "periodic": {
+        "mse": 0.031178460757383352,
+        "length_mse": 0.022080354448607935,
+        "angle_mse": 0.0539237265293219,
+        "mae_nm": [
+          4.386053189774975,
+          1.4488295316696167,
+          4.4042640083702285,
+          6.096818735450507,
+          14.016638777637855
+        ],
+        "mae_deg": [
+          16.484102817729582,
+          18.460584853442562
+        ]
+      },
+      "mirror_equivalent": {
+        "mse": 0.023888644984565367,
+        "length_mse": 0.022080354448607935,
+        "angle_mse": 0.02840937132445894,
+        "mae_nm": [
+          4.386053189774975,
+          1.4488295316696167,
+          4.4042640083702285,
+          6.096818735450507,
+          14.016638777637855
+        ],
+        "mae_deg": [
+          12.486288193892687,
+          12.609739983481996
+        ]
+      }
+    },
+    "train": {
+      "periodic": {
+        "mse": 0.027486813322546086,
+        "length_mse": 0.01616165372943573,
+        "angle_mse": 0.055799712305321984,
+        "mae_nm": [
+          3.4236034128221946,
+          1.2318534332953277,
+          3.540784229462588,
+          4.6413400345249105,
+          12.75649612065572
+        ],
+        "mae_deg": [
+          17.112351125417625,
+          17.36915035498969
+        ]
+      },
+      "mirror_equivalent": {
+        "mse": 0.017922167415239665,
+        "length_mse": 0.01616165372943573,
+        "angle_mse": 0.02232345162974952,
+        "mae_nm": [
+          3.4236034128221946,
+          1.2318534332953277,
+          3.540784229462588,
+          4.6413400345249105,
+          12.75649612065572
+        ],
+        "mae_deg": [
+          10.94382358737057,
+          10.785823272366542
+        ]
+      }
+    },
+    "parameters": 320938,
+    "best_epoch": 40,
+    "epochs": 60,
+    "training_seconds": 111.03561539999646,
+    "reference_reused": false,
+    "reference_conversion_max_difference": null,
+    "checkpoint": "D:\\projects\\MetaformerPro_resonance\\Metaformer_As2Se3\\models\\metaformerpro_topmetal_seed44.pt",
+    "checkpoint_sha256": "94ff7f013bc4256d334b8959ccd048f416f5ec58574fa81125c4262e3b40661a",
+    "test_evaluated": false,
+    "reused_existing_run": true,
+    "history_directory": "D:\\projects\\MetaformerPro_resonance\\Metaformer_As2Se3\\results\\topmetal1000\\validation_runs\\circular_seed44"
+  },
+  {
+    "variant": "uniform_extra",
+    "seed": 42,
+    "validation": {
+      "periodic": {
+        "mse": 0.031364389863091445,
+        "length_mse": 0.021418590935195315,
+        "angle_mse": 0.056228887182831776,
+        "mae_nm": [
+          4.971343684336171,
+          1.1542601808905602,
+          3.952148176101036,
+          6.1768545627594,
+          13.554282859945669
+        ],
+        "mae_deg": [
+          17.89016472635558,
+          17.23316132761538
+        ]
+      },
+      "mirror_equivalent": {
+        "mse": 0.024004806639996924,
+        "length_mse": 0.021418590935195315,
+        "angle_mse": 0.030470345902000942,
+        "mae_nm": [
+          4.971343684336171,
+          1.1542601808905602,
+          3.952148176101036,
+          6.1768545627594,
+          13.554282859945669
+        ],
+        "mae_deg": [
+          13.907459430559538,
+          11.417609499057289
+        ]
+      }
+    },
+    "train": {
+      "periodic": {
+        "mse": 0.027587821448975255,
+        "length_mse": 0.016249610377086006,
+        "angle_mse": 0.05593334912869835,
+        "mae_nm": [
+          3.8224698963447734,
+          1.0306441561479005,
+          3.3501674770923273,
+          4.752185660856776,
+          12.659634877780263
+        ],
+        "mae_deg": [
+          17.476796594864755,
+          17.13307406285021
+        ]
+      },
+      "mirror_equivalent": {
+        "mse": 0.018419190257843315,
+        "length_mse": 0.016249610377086006,
+        "angle_mse": 0.023843139959736578,
+        "mae_nm": [
+          3.8224698963447734,
+          1.0306441561479005,
+          3.3501674770923273,
+          4.752185660856776,
+          12.659634877780263
+        ],
+        "mae_deg": [
+          11.106554508833323,
+          11.353029086964671
+        ]
+      }
+    },
+    "parameters": 320938,
+    "best_epoch": 54,
+    "epochs": 74,
+    "training_seconds": 101.80476389999967,
+    "reference_reused": false,
+    "reference_conversion_max_difference": null,
+    "checkpoint": "D:\\projects\\MetaformerPro_resonance\\Metaformer_As2Se3\\runs\\metaformerpro_topmetal_resonance\\uniform_extra\\seed42\\best.pt",
+    "checkpoint_sha256": "d088fc7235896181f0d133bb805d31db4e28dfcee53f5536df36b39be00c2bc1",
+    "test_evaluated": false
+  },
+  {
+    "variant": "uniform_extra",
+    "seed": 43,
+    "validation": {
+      "periodic": {
+        "mse": 0.032411929410007284,
+        "length_mse": 0.022237695926488714,
+        "angle_mse": 0.057847513118803706,
+        "mae_nm": [
+          4.350623385002836,
+          1.1539583653211594,
+          4.621551994350739,
+          5.894296856224537,
+          14.336413059616461
+        ],
+        "mae_deg": [
+          16.433077076927294,
+          19.69829997117631
+        ]
+      },
+      "mirror_equivalent": {
+        "mse": 0.025333018201738843,
+        "length_mse": 0.022237695926488714,
+        "angle_mse": 0.033071323889864154,
+        "mae_nm": [
+          4.350623385002836,
+          1.1539583653211594,
+          4.621551994350739,
+          5.894296856224537,
+          14.336413059616461
+        ],
+        "mae_deg": [
+          13.631414990779012,
+          12.72165160359582
+        ]
+      }
+    },
+    "train": {
+      "periodic": {
+        "mse": 0.030023518500427743,
+        "length_mse": 0.01912798277928956,
+        "angle_mse": 0.05726235780327322,
+        "mae_nm": [
+          4.351556571141191,
+          1.1318571828232962,
+          4.224139599044429,
+          5.396247461414896,
+          13.653094431424325
+        ],
+        "mae_deg": [
+          17.78956324403698,
+          17.576276255595076
+        ]
+      },
+      "mirror_equivalent": {
+        "mse": 0.02088135105634139,
+        "length_mse": 0.01912798277928956,
+        "angle_mse": 0.025264771748970967,
+        "mae_nm": [
+          4.351556571141191,
+          1.1318571828232962,
+          4.224139599044429,
+          5.396247461414896,
+          13.653094431424325
+        ],
+        "mae_deg": [
+          11.407305585386348,
+          11.688371694514718
+        ]
+      }
+    },
+    "parameters": 320938,
+    "best_epoch": 35,
+    "epochs": 55,
+    "training_seconds": 75.25265090000175,
+    "reference_reused": false,
+    "reference_conversion_max_difference": null,
+    "checkpoint": "D:\\projects\\MetaformerPro_resonance\\Metaformer_As2Se3\\runs\\metaformerpro_topmetal_resonance\\uniform_extra\\seed43\\best.pt",
+    "checkpoint_sha256": "4aa3cc194cfd7d9f14ac9761684ce1b1f3a208b0e48c031eb85cdf25109cacc0",
+    "test_evaluated": false
+  },
+  {
+    "variant": "uniform_extra",
+    "seed": 44,
+    "validation": {
+      "periodic": {
+        "mse": 0.0308812396391697,
+        "length_mse": 0.021979512364906514,
+        "angle_mse": 0.053135557824827664,
+        "mae_nm": [
+          4.991532355686649,
+          1.6134010907262564,
+          4.3571802684338765,
+          6.2608616888523105,
+          13.220163927460089
+        ],
+        "mae_deg": [
+          16.869771948934066,
+          17.494629377732053
+        ]
+      },
+      "mirror_equivalent": {
+        "mse": 0.023563782571330866,
+        "length_mse": 0.021979512364906514,
+        "angle_mse": 0.027524458087391727,
+        "mae_nm": [
+          4.991532355686649,
+          1.6134010907262564,
+          4.3571802684338765,
+          6.2608616888523105,
+          13.220163927460089
+        ],
+        "mae_deg": [
+          12.570176548976452,
+          11.921930481155869
+        ]
+      }
+    },
+    "train": {
+      "periodic": {
+        "mse": 0.026279572940162695,
+        "length_mse": 0.015416128515907459,
+        "angle_mse": 0.05343818400080078,
+        "mae_nm": [
+          3.9878657130397186,
+          1.3446844194477308,
+          3.839332147742243,
+          4.470435826177709,
+          12.053411033602242
+        ],
+        "mae_deg": [
+          17.021820375422614,
+          16.65494729315542
+        ]
+      },
+      "mirror_equivalent": {
+        "mse": 0.017249157324463273,
+        "length_mse": 0.015416128515907459,
+        "angle_mse": 0.02183172934585281,
+        "mae_nm": [
+          3.9878657130397186,
+          1.3446844194477308,
+          3.839332147742243,
+          4.470435826177709,
+          12.053411033602242
+        ],
+        "mae_deg": [
+          10.785147766908995,
+          10.67383963213797
+        ]
+      }
+    },
+    "parameters": 320938,
+    "best_epoch": 41,
+    "epochs": 61,
+    "training_seconds": 84.08550359999936,
+    "reference_reused": false,
+    "reference_conversion_max_difference": null,
+    "checkpoint": "D:\\projects\\MetaformerPro_resonance\\Metaformer_As2Se3\\runs\\metaformerpro_topmetal_resonance\\uniform_extra\\seed44\\best.pt",
+    "checkpoint_sha256": "832222375f0ba723d26ab2a564513eeae82c0a1cf026aba26b005aa6976a1b66",
+    "test_evaluated": false
+  },
+  {
+    "variant": "resonance",
+    "seed": 42,
+    "validation": {
+      "periodic": {
+        "mse": 0.032683656889311824,
+        "length_mse": 0.0215571603234797,
+        "angle_mse": 0.06049989830389212,
+        "mae_nm": [
+          4.303779629385099,
+          1.3196247946470976,
+          4.759743778523989,
+          6.002072292566299,
+          13.06319342055358
+        ],
+        "mae_deg": [
+          17.13628007358784,
+          19.449933271994816
+        ]
+      },
+      "mirror_equivalent": {
+        "mse": 0.0248039223234557,
+        "length_mse": 0.0215571603234797,
+        "angle_mse": 0.032920827323395685,
+        "mae_nm": [
+          4.303779629385099,
+          1.3196247946470976,
+          4.759743778523989,
+          6.002072292566299,
+          13.06319342055358
+        ],
+        "mae_deg": [
+          14.115209332270023,
+          12.161788762814831
+        ]
+      }
+    },
+    "train": {
+      "periodic": {
+        "mse": 0.02543997427463305,
+        "length_mse": 0.01394670073425988,
+        "angle_mse": 0.054173158125565966,
+        "mae_nm": [
+          3.3717950355599897,
+          1.111857699106622,
+          3.885659328111069,
+          4.322362619801424,
+          11.40345406480301
+        ],
+        "mae_deg": [
+          17.37366886457712,
+          16.42067301879579
+        ]
+      },
+      "mirror_equivalent": {
+        "mse": 0.015855890481680807,
+        "length_mse": 0.01394670073425988,
+        "angle_mse": 0.02062886485023312,
+        "mae_nm": [
+          3.3717950355599897,
+          1.111857699106622,
+          3.885659328111069,
+          4.322362619801424,
+          11.40345406480301
+        ],
+        "mae_deg": [
+          10.803793345174563,
+          10.023963990129413
+        ]
+      }
+    },
+    "parameters": 320938,
+    "best_epoch": 57,
+    "epochs": 77,
+    "training_seconds": 119.2667347999959,
+    "reference_reused": false,
+    "reference_conversion_max_difference": null,
+    "checkpoint": "D:\\projects\\MetaformerPro_resonance\\Metaformer_As2Se3\\runs\\metaformerpro_topmetal_resonance\\resonance\\seed42\\best.pt",
+    "checkpoint_sha256": "c16acfe5dbe420500f0ad4f34b2ea75509fabcdba8a07c8ac971a9ad34b668bd",
+    "test_evaluated": false
+  },
+  {
+    "variant": "resonance",
+    "seed": 43,
+    "validation": {
+      "periodic": {
+        "mse": 0.031770832745755845,
+        "length_mse": 0.02195946058819299,
+        "angle_mse": 0.05629926313966298,
+        "mae_nm": [
+          4.2384341725613925,
+          1.2392888963222504,
+          4.1314030845882375,
+          5.915855218470097,
+          14.063170535350219
+        ],
+        "mae_deg": [
+          15.88623125088634,
+          18.953121351124718
+        ]
+      },
+      "mirror_equivalent": {
+        "mse": 0.02485191604231319,
+        "length_mse": 0.02195946058819299,
+        "angle_mse": 0.032083054677613694,
+        "mae_nm": [
+          4.2384341725613925,
+          1.2392888963222504,
+          4.1314030845882375,
+          5.915855218470097,
+          14.063170535350219
+        ],
+        "mae_deg": [
+          12.456119217351079,
+          13.344177938473877
+        ]
+      }
+    },
+    "train": {
+      "periodic": {
+        "mse": 0.029013781786299743,
+        "length_mse": 0.018323232327808536,
+        "angle_mse": 0.055740155432527756,
+        "mae_nm": [
+          3.820347611546822,
+          1.1716012851029518,
+          4.171465222126426,
+          5.238843584130518,
+          13.266038519928042
+        ],
+        "mae_deg": [
+          17.09439308185538,
+          17.44888007128757
+        ]
+      },
+      "mirror_equivalent": {
+        "mse": 0.01990868603498812,
+        "length_mse": 0.018323232327808536,
+        "angle_mse": 0.02387232030293707,
+        "mae_nm": [
+          3.820347611546822,
+          1.1716012851029518,
+          4.171465222126426,
+          5.238843584130518,
+          13.266038519928042
+        ],
+        "mae_deg": [
+          11.31337749583181,
+          11.280708949260589
+        ]
+      }
+    },
+    "parameters": 320938,
+    "best_epoch": 35,
+    "epochs": 55,
+    "training_seconds": 86.04721079999581,
+    "reference_reused": false,
+    "reference_conversion_max_difference": null,
+    "checkpoint": "D:\\projects\\MetaformerPro_resonance\\Metaformer_As2Se3\\runs\\metaformerpro_topmetal_resonance\\resonance\\seed43\\best.pt",
+    "checkpoint_sha256": "43ea22bf164054718cd516168db606ec544f4c6241c50fa03adbaf8397579cdd",
+    "test_evaluated": false
+  },
+  {
+    "variant": "resonance",
+    "seed": 44,
+    "validation": {
+      "periodic": {
+        "mse": 0.03214060456811103,
+        "length_mse": 0.021722610303143083,
+        "angle_mse": 0.05818559023053087,
+        "mae_nm": [
+          4.116283132275567,
+          1.458162222057581,
+          4.579778831568547,
+          6.023859802633524,
+          13.251118407631292
+        ],
+        "mae_deg": [
+          16.903662745293694,
+          19.855936228903012
+        ]
+      },
+      "mirror_equivalent": {
+        "mse": 0.023384636733349395,
+        "length_mse": 0.021722610303143083,
+        "angle_mse": 0.027539702808865165,
+        "mae_nm": [
+          4.116283132275567,
+          1.458162222057581,
+          4.579778831568547,
+          6.023859802633524,
+          13.251118407631292
+        ],
+        "mae_deg": [
+          11.702248767390847,
+          12.836769854498561
+        ]
+      }
+    },
+    "train": {
+      "periodic": {
+        "mse": 0.027580084064334574,
+        "length_mse": 0.015851490751056484,
+        "angle_mse": 0.05690156734752978,
+        "mae_nm": [
+          3.613325091112711,
+          1.470809372367512,
+          4.144532499936031,
+          4.840326181962155,
+          12.257771710438465
+        ],
+        "mae_deg": [
+          17.506867000343753,
+          17.41675557021845
+        ]
+      },
+      "mirror_equivalent": {
+        "mse": 0.01783569154190206,
+        "length_mse": 0.015851490751056484,
+        "angle_mse": 0.022796193519015996,
+        "mae_nm": [
+          3.613325091112711,
+          1.470809372367512,
+          4.144532499936031,
+          4.840326181962155,
+          12.257771710438465
+        ],
+        "mae_deg": [
+          11.043143440523545,
+          10.710165671195501
+        ]
+      }
+    },
+    "parameters": 320938,
+    "best_epoch": 41,
+    "epochs": 61,
+    "training_seconds": 95.35531730001094,
+    "reference_reused": false,
+    "reference_conversion_max_difference": null,
+    "checkpoint": "D:\\projects\\MetaformerPro_resonance\\Metaformer_As2Se3\\runs\\metaformerpro_topmetal_resonance\\resonance\\seed44\\best.pt",
+    "checkpoint_sha256": "e242b27583119770515f07285dc587020a60d41c1be21a526d2f6179fe85f04e",
+    "test_evaluated": false
+  }
+]

@@ -1,0 +1,53 @@
+{
+  "dataset": "D:\\projects\\MetaformerPro_resonance\\Metaformer_As2Se3\\examples\\jc220_topmetal_1000\\dataset.npz",
+  "output_dir": "D:\\projects\\MetaformerPro_resonance\\Metaformer_As2Se3\\runs\\metaformerpro_topmetal_resonance",
+  "results_dir": "D:\\projects\\MetaformerPro_resonance\\Metaformer_As2Se3\\results\\topmetal_resonance",
+  "model_output": "D:\\projects\\MetaformerPro_resonance\\Metaformer_As2Se3\\models\\metaformerpro_resonance.pt",
+  "seed_model_prefix": "metaformerpro_resonance_seed",
+  "model_version": "0.4.0-experimental",
+  "baseline_results": "D:\\projects\\MetaformerPro_resonance\\Metaformer_As2Se3\\results\\topmetal1000\\validation_results.json",
+  "baseline_archive": "D:\\projects\\MetaformerPro_resonance\\Metaformer_As2Se3\\results\\topmetal1000\\validation_runs",
+  "baseline_checkpoints": {
+    "42": "D:\\projects\\MetaformerPro_resonance\\Metaformer_As2Se3\\models\\metaformerpro_topmetal.pt",
+    "43": "D:\\projects\\MetaformerPro_resonance\\Metaformer_As2Se3\\models\\metaformerpro_topmetal_seed43.pt",
+    "44": "D:\\projects\\MetaformerPro_resonance\\Metaformer_As2Se3\\models\\metaformerpro_topmetal_seed44.pt"
+  },
+  "seeds": [
+    42,
+    43,
+    44
+  ],
+  "epochs": 100,
+  "batch_size": 8,
+  "learning_rate": 0.0003,
+  "weight_decay": 0.001,
+  "patience": 20,
+  "reuse_reference": false,
+  "variants": {
+    "uniform_extra": {
+      "readout": "global",
+      "angle_head": "circular",
+      "sampling": "uniform_extra"
+    },
+    "resonance": {
+      "readout": "global",
+      "angle_head": "circular",
+      "sampling": "resonance"
+    }
+  },
+  "selection": "Reuse the existing three 4-layer circular baseline runs (100 tokens). Train uniform_extra and resonance (132 tokens each) with identical 320938 parameter backbone, same shared Conv10, absolute center/span encoding and extra-token indicator. Fixed input-only SG11/poly3, prominence 0.01, distance20; at most two valleys, 16 tokens/window, total window span four half-prominence widths clipped to 16..240 original grid intervals; no-valley fallback is uniform32; single-valley second window is uniform16. Original R is never smoothed or locally depth-normalized. These rules are frozen before validation. All three seeds use identical initialization and training recipe. Replacement requires >=1% lower mean joint-mirror validation MSE than the current baseline, length MSE at most +2%, dX MAE +5%, dY MAE +2%. Attribute benefit to valley selection only if resonance also beats matched uniform_extra mean validation MSE by >=1% with the same dimension safeguards. Otherwise report that mechanism unestablished. Minimum eligible validation MSE wins, median-validation seed retained; freeze before test.",
+  "test_policy": "Only existing baseline and validation-frozen winner evaluated on the same previously inspected 100 test IDs, each with three seeds. No test-guided reselection. This is repeated test comparison, not a new blind test. Sample207 is fixed only for inference and sampling illustration, not window tuning.",
+  "quality_scope": "Corrected generator2 2.2.0, thick SiO2 / passive JC Au100 / As2Se3; 1000 samples fixed 800/100/100; metal-only 8nm pipeline_validation. Inverse tokenization study only. No new FDTD, no forward network, no fabrication guarantee. Linear interpolation adds no underlying spectral resolution.",
+  "dataset_sha256": "bc0f21a90ed7dcb3a228c81dfef023a0425cfed618a8bc275cc6487b4430621d",
+  "source_sha256": {
+    "metaformerpro.py": "94eae96d51af2d46ebe9128878331c48037e638bb008f35077e31057decfb4a0",
+    "train_metaformerpro.py": "ac255e4b9b7b2d6fe9dbf937216da8d11755d857ed59256d1e5ad60e7ac50e39",
+    "train_metaformerpro_refine.py": "62822d6867fc2da22beecadafd23074259da6d605d2a0c03d075b8c7ec12d7cf",
+    "spectral_inverse.py": "daf26227dfb9a40710b09ac5f16cd0e7a6cae19cd014db5773d38ea864a6ed8d",
+    "resonance_sampling.py": "9d0112187568bbee68c0e8cf8ca7fda53f5ca6e1b8ab5111d32479c1002540bc"
+  },
+  "runtime": {
+    "torch": "2.5.1+cu121",
+    "numpy": "2.2.6"
+  }
+}

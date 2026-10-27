@@ -1,0 +1,73 @@
+{
+  "model": "MetaformerPro",
+  "version": "0.4.0-experimental",
+  "seed": 42,
+  "model_config": {
+    "readout": "global",
+    "angle_head": "circular",
+    "overlap": false,
+    "embedding_dim": 96,
+    "encoder_layers": 4,
+    "dropout": 0.1,
+    "normalization_floor": 0.02,
+    "sampling": "resonance"
+  },
+  "parameters": {
+    "p": 683.430044054985,
+    "l": 191.02277517318726,
+    "h": 363.85084867477417,
+    "alpha_x": 138.7749981880188,
+    "alpha_y": 118.8267195224762,
+    "theta_odd_deg": -28.110650181770325,
+    "theta_even_deg": -2.016710042953491
+  },
+  "units": [
+    "nm",
+    "nm",
+    "nm",
+    "nm",
+    "nm",
+    "deg",
+    "deg"
+  ],
+  "geometry_valid": true,
+  "geometry_error": null,
+  "status": "candidate_requires_FDTD_validation",
+  "quality_scope": "Corrected generator2 2.2.0, thick SiO2 / passive JC Au100 / As2Se3; 1000 samples fixed 800/100/100; metal-only 8nm pipeline_validation. Inverse tokenization study only. No new FDTD, no forward network, no fabrication guarantee. Linear interpolation adds no underlying spectral resolution.",
+  "simulation_settings": {
+    "wavelength_start_nm": 700,
+    "wavelength_stop_nm": 1700,
+    "spectrum_points": 1000,
+    "mesh_accuracy": 4,
+    "mesh_refinement": "conformal variant 1",
+    "mesh_nm": 8,
+    "simulation_time_ps": 4,
+    "auto_shutoff_min": 1e-05,
+    "air_padding_nm": 3000,
+    "substrate_depth_nm": 350,
+    "background_index": 1,
+    "silicon_material": "Si (Silicon) - Palik",
+    "substrate_material": "SiO2 (Glass) - Palik",
+    "quality_tolerance": 0.03,
+    "require_auto_shutoff": true,
+    "resonator_material": "As2Se3 - Joseph 700nm film (2020)",
+    "resonator_nk_csv": "content-addressed:resonator_nk_sha256",
+    "material_max_extension_nm": 12,
+    "metal_material": "Au (Gold) - JC passive NIR v1",
+    "remove_metal": false,
+    "metal_thickness_nm": 100,
+    "metal_position": "above_substrate",
+    "substrate_termination": "pml",
+    "metal_mesh_nm": 8,
+    "bottom_padding_nm": 1600,
+    "material_fit_tolerance": 0,
+    "material_imaginary_weight": 2,
+    "mesh_policy": "metal_only"
+  },
+  "input": {
+    "type": "csv",
+    "path": "D:\\projects\\MetaformerPro_resonance\\Metaformer_As2Se3\\inputs\\target_topmetal.csv"
+  },
+  "checkpoint": "D:\\projects\\MetaformerPro_resonance\\Metaformer_As2Se3\\models\\metaformerpro_resonance_candidate.pt",
+  "figure": "D:\\projects\\MetaformerPro_resonance\\Metaformer_As2Se3\\results\\topmetal_resonance\\prediction_207.png"
+}
