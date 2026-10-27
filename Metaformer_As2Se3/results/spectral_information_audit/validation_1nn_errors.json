@@ -1,0 +1,107 @@
+{
+  "split": "validation only; no test data consumed",
+  "distance_metrics": {
+    "raw": {
+      "train_1nn_distance_quantiles": {
+        "0": 0.005443336823427764,
+        "0.01": 0.006795898336992052,
+        "0.05": 0.009597496369226436,
+        "0.5": 0.018987369308996326,
+        "0.95": 0.0356820640614179,
+        "1": 0.08072570461840496
+      },
+      "validation_1nn_distance_quantiles": {
+        "0": 0.005506141451424395,
+        "0.01": 0.0072701757601781715,
+        "0.05": 0.010205512675861226,
+        "0.5": 0.01953752820576204,
+        "0.95": 0.03316294355416978,
+        "1": 0.03983448027623039
+      },
+      "validation_joint_mirror_normalized_mse": 0.052626769667160594,
+      "validation_mae_nm": [
+        12.237490967220346,
+        3.531549865828108,
+        11.525788120403531,
+        9.181989295690295,
+        19.425264813211605
+      ],
+      "validation_mae_deg": [
+        15.930103497603152,
+        15.172290512681919
+      ]
+    },
+    "train_standardized": {
+      "train_1nn_distance_quantiles": {
+        "0": 0.058025086629272124,
+        "0.01": 0.08454156605417351,
+        "0.05": 0.10824407564580317,
+        "0.5": 0.20679965461442998,
+        "0.95": 0.41118949543442646,
+        "1": 0.9585335043149493
+      },
+      "validation_1nn_distance_quantiles": {
+        "0": 0.0581918161461735,
+        "0.01": 0.07138535429218369,
+        "0.05": 0.11480149736951896,
+        "0.5": 0.21061662295110406,
+        "0.95": 0.39721793521751636,
+        "1": 0.4730549234584434
+      },
+      "validation_joint_mirror_normalized_mse": 0.04516465216688961,
+      "validation_mae_nm": [
+        9.160234423586655,
+        2.1955675212978276,
+        7.953113154274986,
+        9.281980058318544,
+        17.862538948698326
+      ],
+      "validation_mae_deg": [
+        15.652917264376867,
+        14.40352955718822
+      ]
+    }
+  },
+  "error_convention_checks": {
+    "raw": {
+      "train_1nn": {
+        "rows": 800,
+        "normalized_max_abs_difference": 2.220446049250313e-16,
+        "passed": true
+      },
+      "validation_1nn": {
+        "rows": 100,
+        "normalized_max_abs_difference": 2.7755575615628914e-16,
+        "passed": true
+      }
+    },
+    "train_standardized": {
+      "train_1nn": {
+        "rows": 800,
+        "normalized_max_abs_difference": 2.220446049250313e-16,
+        "passed": true
+      },
+      "validation_1nn": {
+        "rows": 100,
+        "normalized_max_abs_difference": 2.7755575615628914e-16,
+        "passed": true
+      }
+    }
+  },
+  "network_three_seed_mean_validation": {
+    "mse": 0.02444772367504915,
+    "mae_nm": [
+      4.608191703647996,
+      1.265723330900073,
+      4.076868405557859,
+      5.8444528598338366,
+      13.791297868872059
+    ],
+    "mae_deg": [
+      13.210307277704123,
+      12.553704779398686
+    ]
+  },
+  "network_source": "D:\\projects\\MetaformerPro_resonance\\Metaformer_As2Se3\\results\\topmetal1000\\validation_results.json",
+  "nearest_neighbor_role": "diagnostic, not a deployed inverse predictor or error lower bound"
+}

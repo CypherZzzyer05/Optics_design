@@ -1,5 +1,7 @@
 # MetaformerPro：As₂Se₃ 四聚体七参数逆向设计
 
+补充的[光谱近邻诊断](results/spectral_information_audit/README.md)保存在 `codex/metaformerpro-information-audit`：仅用800条训练与100条既有验证，比较原谱/训练集标准化两种固定距离。现用网络dY验证MAE为13.79 nm，两种1NN为19.43/17.86 nm；相近光谱仍存在局部数个百分点差异，不能据平均RMSE断定同谱。该诊断不替换直接逆向模型，不新增训练或FDTD，可用 `python diagnose_spectral_neighbors.py` 复现。
+
 ## 当前：共振局部细分输入编码（2026-10-27）
 
 独立工作树 `D:/projects/MetaformerPro_resonance/Metaformer_As2Se3`，分支 `codex/metaformerpro-resonance-tokenization`。保留原100个全谱token，再附加32个token；比较全域均匀附加与按输入谱可信谷取样，两组共用原Conv10和4层、96维、圆周头骨干，均为320,938参数。原模型文件继续保留。

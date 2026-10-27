@@ -1,0 +1,216 @@
+{
+  "scope": "read-only dataset diagnostic; no training, FDTD or deployed model changes",
+  "dataset": "D:\\projects\\MetaformerPro_resonance\\Metaformer_As2Se3\\examples\\jc220_topmetal_1000\\dataset.npz",
+  "dataset_sha256": "bc0f21a90ed7dcb3a228c81dfef023a0425cfed618a8bc275cc6487b4430621d",
+  "source_sha256": "c0d792e3972342aad62352a8794a8f8a0097b0ccd8d0b8dd408a44dd20f1dff7",
+  "split_counts": {
+    "train": 800,
+    "validation": 100,
+    "test_consumed": 0
+  },
+  "parameter_names": [
+    "P",
+    "L",
+    "H",
+    "dX",
+    "dY",
+    "theta_odd",
+    "theta_even"
+  ],
+  "normalization": "train float64 std(ddof=0), clipped below at 0.02; no fitted validation statistics",
+  "threshold_policy": "only descriptive distance quantiles; no physical/numerical noise floor claimed",
+  "angle_policy": "mirror target jointly, retain prediction odd/even coordinates, then square 90-degree periodic errors; matches spectral_inverse.parameter_errors",
+  "distance_metrics": {
+    "raw": {
+      "train_1nn_distance_quantiles": {
+        "0": 0.005443336823427764,
+        "0.01": 0.006795898336992052,
+        "0.05": 0.009597496369226436,
+        "0.5": 0.018987369308996326,
+        "0.95": 0.0356820640614179,
+        "1": 0.08072570461840496
+      },
+      "validation_1nn_distance_quantiles": {
+        "0": 0.005506141451424395,
+        "0.01": 0.0072701757601781715,
+        "0.05": 0.010205512675861226,
+        "0.5": 0.01953752820576204,
+        "0.95": 0.03316294355416978,
+        "1": 0.03983448027623039
+      },
+      "validation_joint_mirror_normalized_mse": 0.052626769667160594,
+      "validation_mae_nm": [
+        12.237490967220346,
+        3.531549865828108,
+        11.525788120403531,
+        9.181989295690295,
+        19.425264813211605
+      ],
+      "validation_mae_deg": [
+        15.930103497603152,
+        15.172290512681919
+      ]
+    },
+    "train_standardized": {
+      "train_1nn_distance_quantiles": {
+        "0": 0.058025086629272124,
+        "0.01": 0.08454156605417351,
+        "0.05": 0.10824407564580317,
+        "0.5": 0.20679965461442998,
+        "0.95": 0.41118949543442646,
+        "1": 0.9585335043149493
+      },
+      "validation_1nn_distance_quantiles": {
+        "0": 0.0581918161461735,
+        "0.01": 0.07138535429218369,
+        "0.05": 0.11480149736951896,
+        "0.5": 0.21061662295110406,
+        "0.95": 0.39721793521751636,
+        "1": 0.4730549234584434
+      },
+      "validation_joint_mirror_normalized_mse": 0.04516465216688961,
+      "validation_mae_nm": [
+        9.160234423586655,
+        2.1955675212978276,
+        7.953113154274986,
+        9.281980058318544,
+        17.862538948698326
+      ],
+      "validation_mae_deg": [
+        15.652917264376867,
+        14.40352955718822
+      ]
+    }
+  },
+  "network_three_seed_mean_validation": {
+    "mse": 0.02444772367504915,
+    "mae_nm": [
+      4.608191703647996,
+      1.265723330900073,
+      4.076868405557859,
+      5.8444528598338366,
+      13.791297868872059
+    ],
+    "mae_deg": [
+      13.210307277704123,
+      12.553704779398686
+    ]
+  },
+  "error_convention_checks": {
+    "raw": {
+      "train_1nn": {
+        "rows": 800,
+        "normalized_max_abs_difference": 2.220446049250313e-16,
+        "passed": true
+      },
+      "validation_1nn": {
+        "rows": 100,
+        "normalized_max_abs_difference": 2.7755575615628914e-16,
+        "passed": true
+      }
+    },
+    "train_standardized": {
+      "train_1nn": {
+        "rows": 800,
+        "normalized_max_abs_difference": 2.220446049250313e-16,
+        "passed": true
+      },
+      "validation_1nn": {
+        "rows": 100,
+        "normalized_max_abs_difference": 2.7755575615628914e-16,
+        "passed": true
+      }
+    }
+  },
+  "examples": [
+    {
+      "sample_ids": [
+        244,
+        877
+      ],
+      "selection_rule": "all_train_pairs_minimum_raw_rmse",
+      "raw_rmse": 0.0054433368234454325,
+      "raw_max_abs_difference": 0.04191151261329651,
+      "max_difference_wavelength_nm": 776.0760760760761,
+      "joint_mirror_applied": true,
+      "joint_mirror_absolute_parameter_differences": [
+        5.51970678466364,
+        0.24748340165314175,
+        1.0021416452636345,
+        2.705536431846099,
+        9.994777669114086,
+        5.216269763912976,
+        6.577170872685883
+      ],
+      "joint_mirror_normalized_mse": 0.006396492182549374,
+      "geometry_values": [
+        [
+          655.8686375728072,
+          199.68790768956242,
+          328.30898384637845,
+          129.99767701412782,
+          149.79321366319803,
+          -43.076713230093134,
+          -19.131809188310758
+        ],
+        [
+          661.3883443574708,
+          199.93539109121556,
+          327.3068422011148,
+          127.29214058228172,
+          139.79843599408395,
+          24.34807895222373,
+          -40.34611589722098
+        ]
+      ],
+      "figure": "pair_244_877.png",
+      "parameters_csv": "pair_244_877_parameters.csv"
+    },
+    {
+      "sample_ids": [
+        80,
+        925
+      ],
+      "selection_rule": "minimum_raw_rmse_among_train_pairs_with_abs_dY_difference_ge_20_nm",
+      "raw_rmse": 0.006171949345026084,
+      "raw_max_abs_difference": 0.03422015905380249,
+      "max_difference_wavelength_nm": 800.1001001001001,
+      "joint_mirror_applied": true,
+      "joint_mirror_absolute_parameter_differences": [
+        1.03686975525045,
+        1.7481742991530496,
+        2.5067059252618265,
+        2.8331825748489337,
+        36.96726091519683,
+        38.937762474039125,
+        10.40120865725919
+      ],
+      "joint_mirror_normalized_mse": 0.08344748174518128,
+      "geometry_values": [
+        [
+          678.8430331047067,
+          204.84025555186727,
+          363.5334742532634,
+          135.07664395788044,
+          94.11739495648577,
+          43.58238560717142,
+          -7.312806175498189
+        ],
+        [
+          679.8799028599572,
+          206.58842985102032,
+          366.04018017852525,
+          132.2434613830315,
+          131.0846558716826,
+          -31.624956298540937,
+          36.01640573556939
+        ]
+      ],
+      "figure": "pair_80_925.png",
+      "parameters_csv": "pair_80_925_parameters.csv"
+    }
+  ],
+  "analytic_self_checks_passed": true,
+  "new_training_performed": false,
+  "new_fdtd_run_performed": false
+}
