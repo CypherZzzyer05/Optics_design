@@ -84,6 +84,38 @@ class MetaformerProTests(unittest.TestCase):
         self.assertEqual(selected['selected'], 'eligible')
         self.assertFalse(next(r for r in selected['ranking'] if r['variant'] == 'bad_dx')['eligible'])
 
+    def test_extra_sampling_keeps_parameters_and_reload_inference(self):
+        x = torch.linspace(0, 999, 1000)
+        spectra = (.85 - .5 * torch.exp(-((x - 250) / 8).square())
+                   - .3 * torch.exp(-((x - 700) / 20).square()))[None].repeat(3, 1)
+        states = []
+        parameter_counts = []
+        for sampling in ('uniform', 'uniform_extra', 'resonance'):
+            torch.manual_seed(9)
+            config = MetaformerProConfig(sampling=sampling, angle_head='circular',
+                                        embedding_dim=16, encoder_layers=1, dropout=0)
+            model = MetaformerPro(config)
+            model.fit_input_normalization(spectra)
+            states.append(model.state_dict())
+            parameter_counts.append(sum(p.numel() for p in model.parameters()))
+            token_counts = []
+            handle = model.blocks[0].register_forward_pre_hook(
+                lambda module, inputs: token_counts.append(inputs[0].shape[1]))
+            prediction = model(spectra)
+            inverse_loss(prediction, torch.full((3, 7), .4), True).backward()
+            handle.remove()
+            self.assertEqual(token_counts, [100 if sampling == 'uniform' else 132])
+            self.assertTrue(torch.isfinite(model.tokenizer.weight.grad).all())
+            self.assertGreater(model.tokenizer.weight.grad.abs().sum().item(), 0)
+            restored = MetaformerPro(config)
+            restored.load_state_dict(model.state_dict(), strict=True)
+            model.eval(), restored.eval()
+            torch.testing.assert_close(model(spectra), restored(spectra), atol=0, rtol=0)
+        self.assertEqual(len(set(parameter_counts)), 1)
+        for key in states[0]:
+            for state in states[1:]:
+                torch.testing.assert_close(states[0][key], state[key], atol=0, rtol=0)
+
 
 if __name__ == '__main__':
     unittest.main()

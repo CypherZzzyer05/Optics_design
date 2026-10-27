@@ -18,12 +18,17 @@ class MetaformerProConfig:
     encoder_layers: int = 4
     dropout: float = .1
     normalization_floor: float = .02
+    sampling: str = 'uniform'
 
     def __post_init__(self):
         if self.readout not in ('global', 'queries', 'flatten') or self.angle_head not in ('sigmoid', 'circular'):
             raise ValueError('Unknown MetaformerPro readout or angle head')
         if self.normalization_floor <= 0:
             raise ValueError('Normalization floor must be positive')
+        if self.sampling not in ('uniform', 'uniform_extra', 'resonance'):
+            raise ValueError('Unknown spectral sampling policy')
+        if self.sampling != 'uniform' and (self.overlap or self.readout != 'global'):
+            raise ValueError('Extra spectral samples use nonoverlapping patches and global readout')
 
 
 def decode_circular(raw):
@@ -70,6 +75,10 @@ class MetaformerPro(nn.Module):
         self.tokenizer = nn.Conv1d(1, dim, kernel_size=20 if c.overlap else 10, stride=10)
         self.positions = SinusoidalPositionEncoding(100, dim)
         self.token_type = nn.Parameter(torch.zeros(1, 1, dim))
+        if c.sampling != 'uniform':
+            marker = torch.zeros(1, 1, dim)
+            marker[..., 0] = 1.
+            self.register_buffer('extra_token_marker', marker, persistent=False)
         block_config = MetaformerConfig(embedding_dim=dim, attention_heads=4, head_dim=dim // 4,
                          encoder_layers=c.encoder_layers, mlp_dim=dim * 2, dropout=c.dropout)
         self.blocks = nn.ModuleList(EncoderBlock(block_config) for _ in range(c.encoder_layers))
@@ -103,6 +112,17 @@ class MetaformerPro(nn.Module):
         if self.config.overlap:
             normalized = F.pad(normalized, (5, 5), mode='replicate')
         tokens = self.positions(self.tokenizer(normalized).transpose(1, 2)) + self.token_type
+        if self.config.sampling != 'uniform':
+            from resonance_sampling import (build_extra_sampling_grid, linear_sample,
+                                             continuous_position_embedding)
+            grid = build_extra_sampling_grid(spectrum, self.config.sampling)
+            with torch.autocast(device_type=spectrum.device.type, enabled=False):
+                patches = linear_sample(normalized, grid)
+                coordinates = continuous_position_embedding(
+                    grid.mean(-1), grid[..., -1] - grid[..., 0], self.config.embedding_dim)
+            extra = self.tokenizer(patches.reshape(len(spectrum), 1, -1)).transpose(1, 2)
+            extra = extra + coordinates.to(extra.dtype) + self.token_type + self.extra_token_marker
+            tokens = torch.cat((tokens, extra), dim=1)
         for block in self.blocks:
             tokens = block(tokens)
         tokens = self.norm(tokens)

@@ -1,6 +1,22 @@
 # MetaformerPro：As₂Se₃ 四聚体七参数逆向设计
 
-## 当前：增加编码器层数（2026-10-27）
+## 当前：共振局部细分输入编码（2026-10-27）
+
+独立工作树 `D:/projects/MetaformerPro_resonance/Metaformer_As2Se3`，分支 `codex/metaformerpro-resonance-tokenization`。保留原100个全谱token，再附加32个token；比较全域均匀附加与按输入谱可信谷取样，两组共用原Conv10和4层、96维、圆周头骨干，均为320,938参数。原模型文件继续保留。
+
+取样规则在训练前固定：11点三阶SG副本定位，显著度0.01、最小间隔20个原网格点；最多两谷，各16个附加token，窗口跨度为半突出宽度的4倍，截在16–240个原网格间隔内。无谷回退全域均匀32token，单谷时第二块为全域均匀16token。定位不读取结构标签，实际输入仍为原反射率，不做局部深度归一化。绝对波长中心、覆盖跨度和附加类型标记采用固定编码，不增加可训练参数。连续插值不增加数据的实际分辨率。
+
+PyCharm运行项 **22 MetaformerPro resonance train** 完成3种子对照，**23 MetaformerPro resonance spectrum to structure** 读取验证冻结输出并展示结构。解释器仍为 `D:/Anaconda3/envs/transformer_env/python.exe`。结果保存在独立的 [输入编码试验目录](results/topmetal_resonance/README.md)。`models/metaformerpro_resonance.pt` 是按验证规则冻结的输出；需查看结果中的 `selected` 与推理JSON里的 `model_config.sampling`，不能仅凭文件名认定共振方案已胜出。
+
+```powershell
+python train_metaformerpro_refine.py all --config configs/metaformerpro_topmetal_resonance.json
+python summarize_resonance_study.py
+python predict_metaformerpro.py --checkpoint models/metaformerpro_resonance.pt --spectrum inputs/target_topmetal.csv --output results/topmetal_resonance/prediction_207.json --show
+```
+
+沿用同一1000条修正材料/层序数据及800/100/100划分，仅训练逆向模型，无新增FDTD。训练输入统计只由训练集拟合；阈值和窗口规则不根据验证或测试结果调整。测试仍为已查看过的既有集合，不是新盲测。现用100-token基线的三个已有运行重载核对后复用；两种132-token方案从相同种子随机初始化，训练预算与现用基线相同。
+
+## 历史：增加编码器层数（2026-10-27）
 
 工作树 `D:/projects/MetaformerPro_depth/Metaformer_As2Se3`，分支 `codex/metaformerpro-depth-study`。比较4层、8层、12层编码器，每个深度3个种子；宽度96、圆周头、0.02归一化下限、数据、优化器及训练预算相同，仅层数不同。4层的三个已有基线权重重载验证后复用，8/12层从随机初始化训练。
 

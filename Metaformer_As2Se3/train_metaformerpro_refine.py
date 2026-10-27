@@ -154,6 +154,8 @@ def main():
     plan['dataset_sha256'] = sha(plan['dataset'])
     plan['source_sha256'] = {name:sha(ROOT/name) for name in
                            ('metaformerpro.py', 'train_metaformerpro.py', 'train_metaformerpro_refine.py', 'spectral_inverse.py')}
+    if any(s.get('sampling', 'uniform') != 'uniform' for s in plan['variants'].values()):
+        plan['source_sha256']['resonance_sampling.py'] = sha(ROOT/'resonance_sampling.py')
     plan['runtime'] = {'torch': str(torch.__version__), 'numpy': str(np.__version__)}
     output, results = Path(plan['output_dir']), Path(plan['results_dir'])
     output.mkdir(parents=True, exist_ok=True)
@@ -182,6 +184,16 @@ def main():
                 records.append(train_one(name, settings, seed, plan, datasets, output, device))
                 write_json(results/'validation_results.json', records)
         selection = select_validation(records, plan['selection'])
+        if set(plan['variants']) == {'uniform_extra', 'resonance'}:
+            comparison = {r['variant']: r for r in selection['ranking']}
+            uniform, local = comparison['uniform_extra'], comparison['resonance']
+            selection['resonance_vs_uniform'] = {
+                'relative_validation_mse_change': local['mean_validation_mse']/uniform['mean_validation_mse']-1,
+                'mechanism_threshold_passed': bool(
+                    local['mean_validation_mse'] <= uniform['mean_validation_mse']*.99
+                    and local['length_mse'] <= uniform['length_mse']*1.02
+                    and local['mae_nm'][3] <= uniform['mae_nm'][3]*1.05
+                    and local['mae_nm'][4] <= uniform['mae_nm'][4]*1.02)}
         write_json(results/'selection.json', selection)
         write_json(output/'status.json', {'state': 'validation_complete', **selection})
         LOG.info('Validation selection frozen: %s seed%d', selection['selected'], selection['representative_seed'])

@@ -1,0 +1,29 @@
+{
+  "dataset": "../examples/jc220_topmetal_1000/dataset.npz",
+  "output_dir": "../runs/metaformerpro_topmetal_resonance",
+  "results_dir": "../results/topmetal_resonance",
+  "model_output": "../models/metaformerpro_resonance.pt",
+  "seed_model_prefix": "metaformerpro_resonance_seed",
+  "model_version": "0.4.0-experimental",
+  "baseline_results": "../results/topmetal1000/validation_results.json",
+  "baseline_archive": "../results/topmetal1000/validation_runs",
+  "baseline_checkpoints": {
+    "42": "../models/metaformerpro_topmetal.pt",
+    "43": "../models/metaformerpro_topmetal_seed43.pt",
+    "44": "../models/metaformerpro_topmetal_seed44.pt"
+  },
+  "seeds": [42, 43, 44],
+  "epochs": 100,
+  "batch_size": 8,
+  "learning_rate": 0.0003,
+  "weight_decay": 0.001,
+  "patience": 20,
+  "reuse_reference": false,
+  "variants": {
+    "uniform_extra": {"readout": "global", "angle_head": "circular", "sampling": "uniform_extra"},
+    "resonance": {"readout": "global", "angle_head": "circular", "sampling": "resonance"}
+  },
+  "selection": "Reuse the existing three 4-layer circular baseline runs (100 tokens). Train uniform_extra and resonance (132 tokens each) with identical 320938 parameter backbone, same shared Conv10, absolute center/span encoding and extra-token indicator. Fixed input-only SG11/poly3, prominence 0.01, distance20; at most two valleys, 16 tokens/window, total window span four half-prominence widths clipped to 16..240 original grid intervals; no-valley fallback is uniform32; single-valley second window is uniform16. Original R is never smoothed or locally depth-normalized. These rules are frozen before validation. All three seeds use identical initialization and training recipe. Replacement requires >=1% lower mean joint-mirror validation MSE than the current baseline, length MSE at most +2%, dX MAE +5%, dY MAE +2%. Attribute benefit to valley selection only if resonance also beats matched uniform_extra mean validation MSE by >=1% with the same dimension safeguards. Otherwise report that mechanism unestablished. Minimum eligible validation MSE wins, median-validation seed retained; freeze before test.",
+  "test_policy": "Only existing baseline and validation-frozen winner evaluated on the same previously inspected 100 test IDs, each with three seeds. No test-guided reselection. This is repeated test comparison, not a new blind test. Sample207 is fixed only for inference and sampling illustration, not window tuning.",
+  "quality_scope": "Corrected generator2 2.2.0, thick SiO2 / passive JC Au100 / As2Se3; 1000 samples fixed 800/100/100; metal-only 8nm pipeline_validation. Inverse tokenization study only. No new FDTD, no forward network, no fabrication guarantee. Linear interpolation adds no underlying spectral resolution."
+}
