@@ -30,7 +30,7 @@ def load_pro(path, device='cpu'):
 
 
 def payload(model, plan, dataset, seed, epoch, version='0.2.0'):
-    return {'family': 'MetaformerPro', 'version': version, 'model_config': asdict(model.config),
+    return {'family': 'MetaformerPro', 'version': plan.get('model_version', version), 'model_config': asdict(model.config),
             'model_state': model.state_dict(), 'seed': seed, 'epoch': epoch,
             'dataset_sha256': plan['dataset_sha256'], 'source_sha256': plan['source_sha256'],
             'parameter_names': list(dataset.parameter_names), 'parameter_units': list(dataset.parameter_units),

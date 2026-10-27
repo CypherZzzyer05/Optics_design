@@ -1,6 +1,22 @@
 # MetaformerPro：As₂Se₃ 四聚体七参数逆向设计
 
-## 当前：新层序1000样本（2026-10-24汇总）
+## 当前：继续优化新层序模型（2026-10-27）
+
+工作树 `D:/projects/MetaformerPro_refine/Metaformer_As2Se3`，分支 `codex/metaformerpro-topmetal-refine`。在同一800/100/100划分上，对标准化下限、保留分块位置的读出、更宽编码器做三个种子的有限对照。[结果、收敛和逐参数误差](results/topmetal_refine/report.md)。新权重单独保存为 `models/metaformerpro_refined.pt`，此前的 `models/metaformerpro_topmetal.pt` 保留。
+
+本轮九次新训练共15.1分钟。三个候选平均镜像验证MSE分别为0.024715、0.026661、0.025442，均未优于基线0.024448；冻结选择继续采用原0.2.0圆周头seed42。`metaformerpro_refined.pt` 与原部署权重逐字节相同，参数预测和结构示意图保持一致。新增的215万参数读出与127万参数编码器保留为实验选项，未作为性能升级部署。
+
+PyCharm选择 **18 MetaformerPro refine train** 做训练对照，或 **19 MetaformerPro refined spectrum to structure** 直接推理。解释器仍是 `D:/Anaconda3/envs/transformer_env/python.exe`。输入格式与之前一致，替换 `inputs/target_topmetal.csv` 即可；候选结构的光谱仍须后续电磁回验。
+
+```powershell
+python train_metaformerpro_refine.py all
+python summarize_topmetal_refine.py
+python predict_metaformerpro.py --checkpoint models/metaformerpro_refined.pt --spectrum inputs/target_topmetal.csv --output results/topmetal_refine/prediction_207.json --show
+```
+
+基线三个已有运行随项目保存，检查点身份、归一化训练ID和验证预测均会核对。新候选只用训练谱拟合预处理，验证结果决定是否替换；要求综合验证MSE至少改善1%，且五尺寸MSE、dX MAE、dY MAE不超过预先设定的退步门槛。冻结选择后只测试基线和选中方案，已有测试集的重复比较不作为新盲测。
+
+## 历史：新层序1000样本（2026-10-24汇总）
 
 本分支 `codex/metaformerpro-topmetal-1000` 位于 `D:/projects/MetaformerPro_topmetal/Metaformer_As2Se3`。只使用新生成器2.2.0的1000条光谱，实际层序为**厚SiO₂ / Au 100 nm / As₂Se₃四聚体**，SiO₂延伸至下PML，采用修正的被动JC金材料。原始数据完整性、层序、材料身份、原生关断状态已核对；局部8 nm网格仍属于数值流程验证，未作为物理精度收敛证明。
 

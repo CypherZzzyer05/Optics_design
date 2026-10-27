@@ -1,0 +1,60 @@
+2026-10-27 13:47:15,502 Top-metal refinement device=cuda; data=bc0f21a90ed7dcb3a228c81dfef023a0425cfed618a8bc275cc6487b4430621d
+2026-10-27 13:47:22,897 standardized seed42 epoch1 train=0.06224 val=0.05730 lengths=0.06261 dX=15.507nm best=1
+2026-10-27 13:47:45,856 standardized seed42 epoch10 train=0.02953 val=0.02865 lengths=0.02418 dX=6.857nm best=10
+2026-10-27 13:48:14,031 standardized seed42 epoch20 train=0.02731 val=0.02834 lengths=0.02425 dX=6.605nm best=18
+2026-10-27 13:48:42,443 standardized seed42 epoch30 train=0.02423 val=0.02982 lengths=0.02499 dX=6.321nm best=18
+2026-10-27 13:49:07,765 standardized seed42 epoch40 train=0.02194 val=0.02614 lengths=0.02260 dX=6.183nm best=35
+2026-10-27 13:49:33,627 standardized seed42 epoch50 train=0.01978 val=0.02610 lengths=0.02341 dX=5.890nm best=35
+2026-10-27 13:49:43,860 Finished standardized seed42: val 0.025105, 144.4s
+2026-10-27 13:49:45,289 standardized seed43 epoch1 train=0.05880 val=0.05127 lengths=0.05403 dX=12.310nm best=1
+2026-10-27 13:50:00,827 standardized seed43 epoch10 train=0.02840 val=0.02853 lengths=0.02466 dX=7.139nm best=8
+2026-10-27 13:50:22,443 standardized seed43 epoch20 train=0.02479 val=0.02619 lengths=0.02266 dX=6.007nm best=20
+2026-10-27 13:50:43,193 standardized seed43 epoch30 train=0.02329 val=0.02586 lengths=0.02310 dX=5.613nm best=27
+2026-10-27 13:51:03,349 standardized seed43 epoch40 train=0.02088 val=0.02568 lengths=0.02298 dX=5.493nm best=27
+2026-10-27 13:51:18,197 Finished standardized seed43: val 0.025632, 94.1s
+2026-10-27 13:51:19,735 standardized seed44 epoch1 train=0.06106 val=0.05406 lengths=0.05735 dX=13.982nm best=1
+2026-10-27 13:51:38,498 standardized seed44 epoch10 train=0.03016 val=0.02885 lengths=0.02440 dX=6.246nm best=10
+2026-10-27 13:52:03,242 standardized seed44 epoch20 train=0.02563 val=0.02643 lengths=0.02288 dX=6.558nm best=17
+2026-10-27 13:52:24,694 standardized seed44 epoch30 train=0.02351 val=0.02663 lengths=0.02357 dX=5.798nm best=26
+2026-10-27 13:52:42,754 standardized seed44 epoch40 train=0.02126 val=0.02606 lengths=0.02338 dX=5.692nm best=36
+2026-10-27 13:53:03,659 standardized seed44 epoch50 train=0.02009 val=0.02729 lengths=0.02398 dX=5.958nm best=42
+2026-10-27 13:53:23,434 standardized seed44 epoch60 train=0.01676 val=0.02476 lengths=0.02301 dX=6.245nm best=42
+2026-10-27 13:53:28,609 Finished standardized seed44: val 0.023409, 130.2s
+2026-10-27 13:53:31,180 position_readout seed42 epoch1 train=0.04912 val=0.03374 lengths=0.02997 dX=7.879nm best=1
+2026-10-27 13:53:50,947 position_readout seed42 epoch10 train=0.02763 val=0.02846 lengths=0.02424 dX=6.534nm best=6
+2026-10-27 13:54:10,231 position_readout seed42 epoch20 train=0.02364 val=0.02859 lengths=0.02578 dX=6.500nm best=18
+2026-10-27 13:54:24,577 position_readout seed42 epoch30 train=0.01962 val=0.02954 lengths=0.02574 dX=6.450nm best=18
+2026-10-27 13:54:36,152 Finished position_readout seed42: val 0.027146, 67.3s
+2026-10-27 13:54:37,530 position_readout seed43 epoch1 train=0.04718 val=0.03465 lengths=0.03216 dX=9.032nm best=1
+2026-10-27 13:54:50,133 position_readout seed43 epoch10 train=0.02752 val=0.02873 lengths=0.02556 dX=6.655nm best=8
+2026-10-27 13:55:05,245 position_readout seed43 epoch20 train=0.02412 val=0.02730 lengths=0.02377 dX=6.348nm best=18
+2026-10-27 13:55:18,952 position_readout seed43 epoch30 train=0.01838 val=0.02826 lengths=0.02578 dX=6.211nm best=18
+2026-10-27 13:55:29,833 Finished position_readout seed43: val 0.026863, 53.5s
+2026-10-27 13:55:31,207 position_readout seed44 epoch1 train=0.05855 val=0.03392 lengths=0.02969 dX=8.002nm best=1
+2026-10-27 13:55:43,361 position_readout seed44 epoch10 train=0.02772 val=0.02903 lengths=0.02585 dX=7.089nm best=8
+2026-10-27 13:55:57,001 position_readout seed44 epoch20 train=0.02339 val=0.02840 lengths=0.02604 dX=6.927nm best=19
+2026-10-27 13:56:11,343 position_readout seed44 epoch30 train=0.01956 val=0.02989 lengths=0.02892 dX=6.468nm best=23
+2026-10-27 13:56:24,932 position_readout seed44 epoch40 train=0.01516 val=0.03041 lengths=0.02873 dX=6.071nm best=23
+2026-10-27 13:56:28,965 Finished position_readout seed44: val 0.025974, 59.0s
+2026-10-27 13:56:30,334 encoder192 seed42 epoch1 train=0.05750 val=0.04963 lengths=0.05202 dX=13.517nm best=1
+2026-10-27 13:56:43,745 encoder192 seed42 epoch10 train=0.02842 val=0.02873 lengths=0.02497 dX=6.270nm best=8
+2026-10-27 13:56:57,883 encoder192 seed42 epoch20 train=0.02464 val=0.02524 lengths=0.02283 dX=6.117nm best=20
+2026-10-27 13:57:17,613 encoder192 seed42 epoch30 train=0.02359 val=0.02722 lengths=0.02506 dX=6.951nm best=26
+2026-10-27 13:57:48,758 encoder192 seed42 epoch40 train=0.01810 val=0.02591 lengths=0.02413 dX=6.381nm best=26
+2026-10-27 13:57:58,024 Finished encoder192 seed42: val 0.024404, 88.8s
+2026-10-27 13:57:59,442 encoder192 seed43 epoch1 train=0.05848 val=0.04727 lengths=0.04883 dX=10.968nm best=1
+2026-10-27 13:58:14,312 encoder192 seed43 epoch10 train=0.02808 val=0.03009 lengths=0.02770 dX=8.493nm best=8
+2026-10-27 13:58:42,176 encoder192 seed43 epoch20 train=0.02549 val=0.02906 lengths=0.02471 dX=6.641nm best=19
+2026-10-27 13:59:11,525 encoder192 seed43 epoch30 train=0.02293 val=0.02643 lengths=0.02319 dX=6.078nm best=30
+2026-10-27 13:59:39,644 encoder192 seed43 epoch40 train=0.02120 val=0.02794 lengths=0.02599 dX=6.575nm best=30
+2026-10-27 14:00:04,928 encoder192 seed43 epoch50 train=0.01711 val=0.02833 lengths=0.02590 dX=6.692nm best=30
+2026-10-27 14:00:05,236 Finished encoder192 seed43: val 0.026429, 126.9s
+2026-10-27 14:00:07,753 encoder192 seed44 epoch1 train=0.06027 val=0.05487 lengths=0.05885 dX=14.388nm best=1
+2026-10-27 14:00:29,431 encoder192 seed44 epoch10 train=0.02873 val=0.02762 lengths=0.02339 dX=6.514nm best=10
+2026-10-27 14:00:53,095 encoder192 seed44 epoch20 train=0.02611 val=0.02812 lengths=0.02420 dX=6.254nm best=14
+2026-10-27 14:01:17,410 encoder192 seed44 epoch30 train=0.02376 val=0.02584 lengths=0.02306 dX=6.317nm best=30
+2026-10-27 14:01:41,369 encoder192 seed44 epoch40 train=0.02212 val=0.02610 lengths=0.02409 dX=6.112nm best=30
+2026-10-27 14:02:05,952 encoder192 seed44 epoch50 train=0.01845 val=0.02684 lengths=0.02426 dX=5.815nm best=45
+2026-10-27 14:02:20,496 encoder192 seed44 epoch60 train=0.01455 val=0.02793 lengths=0.02703 dX=6.930nm best=45
+2026-10-27 14:02:27,093 Finished encoder192 seed44: val 0.025494, 141.6s
+2026-10-27 14:02:27,099 Validation selection frozen: baseline seed42

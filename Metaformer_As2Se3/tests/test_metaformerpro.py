@@ -34,7 +34,8 @@ class MetaformerProTests(unittest.TestCase):
     def test_all_readouts_update_reload_and_token_count(self):
         x, y = torch.rand(4, 1000), torch.rand(4, 7)
         for readout, angle, overlap in [('global', 'circular', False), ('queries', 'sigmoid', False),
-                                        ('queries', 'circular', False), ('queries', 'circular', True)]:
+                                        ('queries', 'circular', False), ('queries', 'circular', True),
+                                        ('flatten', 'circular', False)]:
             with self.subTest(readout=readout, angle=angle, overlap=overlap):
                 config = MetaformerProConfig(readout=readout, angle_head=angle, overlap=overlap,
                                              embedding_dim=16, encoder_layers=1, dropout=0)
@@ -55,6 +56,19 @@ class MetaformerProTests(unittest.TestCase):
                 copy.load_state_dict(model.state_dict())
                 model.eval(), copy.eval()
                 torch.testing.assert_close(model(x), copy(x), atol=0, rtol=0)
+
+    def test_lower_floor_preserves_weak_band_variation_and_reloads(self):
+        from dataclasses import asdict
+        spectra = torch.linspace(-1, 1, 8)[:, None].repeat(1, 1000) * .01 + .9
+        original = MetaformerPro(MetaformerProConfig(embedding_dim=16, encoder_layers=1))
+        config = MetaformerProConfig(embedding_dim=16, encoder_layers=1, normalization_floor=.005)
+        adjusted = MetaformerPro(config)
+        original.fit_input_normalization(spectra)
+        adjusted.fit_input_normalization(spectra)
+        self.assertGreater(adjusted.normalizer(spectra).std().item(), original.normalizer(spectra).std().item())
+        restored = MetaformerPro(MetaformerProConfig(**asdict(config)))
+        restored.load_state_dict(adjusted.state_dict())
+        torch.testing.assert_close(adjusted.normalizer(spectra), restored.normalizer(spectra), atol=0, rtol=0)
 
     def test_selection_rejects_lower_total_error_with_worse_dimensions(self):
         from train_metaformerpro import selection_from_validation

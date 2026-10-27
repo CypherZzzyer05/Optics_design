@@ -1,0 +1,29 @@
+{
+  "dataset": "../examples/jc220_topmetal_1000/dataset.npz",
+  "output_dir": "../runs/metaformerpro_topmetal_refine",
+  "results_dir": "../results/topmetal_refine",
+  "model_output": "../models/metaformerpro_refined.pt",
+  "model_version": "0.3.0",
+  "baseline_results": "../results/topmetal1000/validation_results.json",
+  "baseline_archive": "../results/topmetal1000/validation_runs",
+  "baseline_checkpoints": {
+    "42": "../models/metaformerpro_topmetal.pt",
+    "43": "../models/metaformerpro_topmetal_seed43.pt",
+    "44": "../models/metaformerpro_topmetal_seed44.pt"
+  },
+  "seeds": [42, 43, 44],
+  "epochs": 100,
+  "batch_size": 8,
+  "learning_rate": 0.0003,
+  "weight_decay": 0.001,
+  "patience": 20,
+  "reuse_reference": false,
+  "variants": {
+    "standardized": {"readout": "global", "angle_head": "circular", "normalization_floor": 0.005},
+    "position_readout": {"readout": "flatten", "angle_head": "circular", "normalization_floor": 0.005},
+    "encoder192": {"readout": "global", "angle_head": "circular", "normalization_floor": 0.005, "embedding_dim": 192}
+  },
+  "selection": "Reuse the three already-trained circular baseline runs on this same dataset. Train the three declared candidates with the same seeds and training schedule. To replace baseline, mean joint-mirror validation MSE must improve by at least 1%; mean length MSE may increase at most 2%, dX MAE 5%, and dY MAE 2%. Choose the eligible candidate with minimum mean validation MSE; otherwise keep baseline. Deploy the median-validation seed. Freeze before test evaluation.",
+  "test_policy": "Evaluate only the frozen selected variant and the baseline on the existing 100 test IDs, all three seeds. This test set has been examined in earlier rounds and is not a new blind holdout. Do not choose a different variant or seed from these test results. Sample 207 stays the fixed UI illustration, not a best-error selection.",
+  "quality_scope": "Corrected generator2 2.2.0 top-metal 1000: thick SiO2 into lower PML / passive JC Au 100 nm / As2Se3 tetramer. Metal-only 8 nm, pipeline_validation. Train/validation-led inverse-model refinement; no forward network or new FDTD run."
+}

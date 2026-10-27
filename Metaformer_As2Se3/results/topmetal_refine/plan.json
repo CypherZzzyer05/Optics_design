@@ -1,0 +1,57 @@
+{
+  "dataset": "D:\\projects\\MetaformerPro_refine\\Metaformer_As2Se3\\examples\\jc220_topmetal_1000\\dataset.npz",
+  "output_dir": "D:\\projects\\MetaformerPro_refine\\Metaformer_As2Se3\\runs\\metaformerpro_topmetal_refine",
+  "results_dir": "D:\\projects\\MetaformerPro_refine\\Metaformer_As2Se3\\results\\topmetal_refine",
+  "model_output": "D:\\projects\\MetaformerPro_refine\\Metaformer_As2Se3\\models\\metaformerpro_refined.pt",
+  "model_version": "0.3.0",
+  "baseline_results": "D:\\projects\\MetaformerPro_refine\\Metaformer_As2Se3\\results\\topmetal1000\\validation_results.json",
+  "baseline_archive": "D:\\projects\\MetaformerPro_refine\\Metaformer_As2Se3\\results\\topmetal1000\\validation_runs",
+  "baseline_checkpoints": {
+    "42": "D:\\projects\\MetaformerPro_refine\\Metaformer_As2Se3\\models\\metaformerpro_topmetal.pt",
+    "43": "D:\\projects\\MetaformerPro_refine\\Metaformer_As2Se3\\models\\metaformerpro_topmetal_seed43.pt",
+    "44": "D:\\projects\\MetaformerPro_refine\\Metaformer_As2Se3\\models\\metaformerpro_topmetal_seed44.pt"
+  },
+  "seeds": [
+    42,
+    43,
+    44
+  ],
+  "epochs": 100,
+  "batch_size": 8,
+  "learning_rate": 0.0003,
+  "weight_decay": 0.001,
+  "patience": 20,
+  "reuse_reference": false,
+  "variants": {
+    "standardized": {
+      "readout": "global",
+      "angle_head": "circular",
+      "normalization_floor": 0.005
+    },
+    "position_readout": {
+      "readout": "flatten",
+      "angle_head": "circular",
+      "normalization_floor": 0.005
+    },
+    "encoder192": {
+      "readout": "global",
+      "angle_head": "circular",
+      "normalization_floor": 0.005,
+      "embedding_dim": 192
+    }
+  },
+  "selection": "Reuse the three already-trained circular baseline runs on this same dataset. Train the three declared candidates with the same seeds and training schedule. To replace baseline, mean joint-mirror validation MSE must improve by at least 1%; mean length MSE may increase at most 2%, dX MAE 5%, and dY MAE 2%. Choose the eligible candidate with minimum mean validation MSE; otherwise keep baseline. Deploy the median-validation seed. Freeze before test evaluation.",
+  "test_policy": "Evaluate only the frozen selected variant and the baseline on the existing 100 test IDs, all three seeds. This test set has been examined in earlier rounds and is not a new blind holdout. Do not choose a different variant or seed from these test results. Sample 207 stays the fixed UI illustration, not a best-error selection.",
+  "quality_scope": "Corrected generator2 2.2.0 top-metal 1000: thick SiO2 into lower PML / passive JC Au 100 nm / As2Se3 tetramer. Metal-only 8 nm, pipeline_validation. Train/validation-led inverse-model refinement; no forward network or new FDTD run.",
+  "dataset_sha256": "bc0f21a90ed7dcb3a228c81dfef023a0425cfed618a8bc275cc6487b4430621d",
+  "source_sha256": {
+    "metaformerpro.py": "47c6f2b497f0dde4344a64e437ef2c45ca3f12079e9b2391d2eb02bdd1ac2e91",
+    "train_metaformerpro.py": "ac255e4b9b7b2d6fe9dbf937216da8d11755d857ed59256d1e5ad60e7ac50e39",
+    "train_metaformerpro_refine.py": "4e094611114915b37fb50e4e7c37db948e3b9649d6fc515c19220b9a0b8a79d5",
+    "spectral_inverse.py": "daf26227dfb9a40710b09ac5f16cd0e7a6cae19cd014db5773d38ea864a6ed8d"
+  },
+  "runtime": {
+    "torch": "2.5.1+cu121",
+    "numpy": "2.2.6"
+  }
+}

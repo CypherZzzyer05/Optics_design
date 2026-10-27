@@ -1,6 +1,16 @@
 # MetaformerPro
 
-## 当前分支：厚 SiO₂ / Au / 四聚体，新1000样本
+## 当前分支：按新数据和误差继续优化（2026-10-27）
+
+独立工作树 `D:/projects/MetaformerPro_refine/Metaformer_As2Se3`，分支 `codex/metaformerpro-topmetal-refine`。沿用厚SiO₂ / Au100 / As₂Se₃新1000样本，比较标准化下限、保留100个波长分块位置的输出层、192维编码器；每个候选三个种子，旧圆周头作为固定基线。只优化逆向网络。
+
+[本轮结果](Metaformer_As2Se3/results/topmetal_refine/report.md)。PyCharm解释器仍为 `D:/Anaconda3/envs/transformer_env/python.exe`，运行项 **18 MetaformerPro refine train** 执行对照，**19 MetaformerPro refined spectrum to structure** 使用本轮冻结权重。输入仍为 `inputs/target_topmetal.csv`，输出JSON和正确层序的结构图。旧权重保留，新输出单独放在 `models/metaformerpro_refined.pt`。
+
+九次新训练已完成，三个方案均未通过替换门槛，继续采用0.2.0圆周头seed42。三种子平均镜像验证MSE：基线0.024448、调整标准化0.024715、保留分块位置0.026661、192维编码器0.025442。两种扩大容量方案分别为215万和127万参数，在本批数据上未改善验证结果。新输出文件与原部署权重逐字节相同。
+
+替换要求在训练前固定：三种子平均镜像验证MSE至少降低1%，同时保护五尺寸、dX和dY误差；验证选型后只评估基线与被选中的方案。既有100条测试此前已被查看，本轮是重复比较，不是新增盲测。
+
+## 历史：厚 SiO₂ / Au / 四聚体，新1000样本
 
 分支 `codex/metaformerpro-topmetal-1000`，独立项目 `D:/projects/MetaformerPro_topmetal/Metaformer_As2Se3`。使用生成器2.2.0新数据：厚SiO₂延伸至下PML、100 nm修正JC Au、As₂Se₃四聚体；金属局部8 nm网格。1000个样本全部查收核对，固定800/100/100划分，两种现有输出头各用三个种子从头训练。
 

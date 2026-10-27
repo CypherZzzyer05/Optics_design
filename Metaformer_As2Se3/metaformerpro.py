@@ -17,10 +17,13 @@ class MetaformerProConfig:
     embedding_dim: int = 96
     encoder_layers: int = 4
     dropout: float = .1
+    normalization_floor: float = .02
 
     def __post_init__(self):
-        if self.readout not in ('global', 'queries') or self.angle_head not in ('sigmoid', 'circular'):
+        if self.readout not in ('global', 'queries', 'flatten') or self.angle_head not in ('sigmoid', 'circular'):
             raise ValueError('Unknown MetaformerPro readout or angle head')
+        if self.normalization_floor <= 0:
+            raise ValueError('Normalization floor must be positive')
 
 
 def decode_circular(raw):
@@ -36,8 +39,9 @@ def decode_circular(raw):
 
 
 class ReflectanceNormalizer(nn.Module):
-    def __init__(self):
+    def __init__(self, floor=.02):
         super().__init__()
+        self.floor = floor
         self.register_buffer('mean', torch.zeros(1, 1, 1000))
         self.register_buffer('scale', torch.ones(1, 1, 1000))
         self.register_buffer('fitted', torch.tensor(False))
@@ -46,7 +50,7 @@ class ReflectanceNormalizer(nn.Module):
     def fit(self, spectra):
         spectra = spectra.float()[:, None]
         self.mean.copy_(spectra.mean(0, keepdim=True))
-        self.scale.copy_(spectra.std(0, unbiased=False, keepdim=True).clamp_min(.02))
+        self.scale.copy_(spectra.std(0, unbiased=False, keepdim=True).clamp_min(self.floor))
         self.fitted.fill_(True)
 
     def forward(self, spectra):
@@ -62,7 +66,7 @@ class MetaformerPro(nn.Module):
         super().__init__()
         self.config = config or MetaformerProConfig()
         c, dim = self.config, self.config.embedding_dim
-        self.normalizer = ReflectanceNormalizer()
+        self.normalizer = ReflectanceNormalizer(c.normalization_floor)
         self.tokenizer = nn.Conv1d(1, dim, kernel_size=20 if c.overlap else 10, stride=10)
         self.positions = SinusoidalPositionEncoding(100, dim)
         self.token_type = nn.Parameter(torch.zeros(1, 1, dim))
@@ -70,9 +74,11 @@ class MetaformerPro(nn.Module):
                          encoder_layers=c.encoder_layers, mlp_dim=dim * 2, dropout=c.dropout)
         self.blocks = nn.ModuleList(EncoderBlock(block_config) for _ in range(c.encoder_layers))
         self.norm = nn.LayerNorm(dim)
-        if c.readout == 'global':
-            self.pool = nn.Linear(dim, 1)
-            self.head = nn.Sequential(nn.Linear(dim, dim * 2), nn.GELU(), nn.Dropout(c.dropout),
+        if c.readout in ('global', 'flatten'):
+            if c.readout == 'global':
+                self.pool = nn.Linear(dim, 1)
+            head_input = dim if c.readout == 'global' else 100 * dim
+            self.head = nn.Sequential(nn.Linear(head_input, dim * 2), nn.GELU(), nn.Dropout(c.dropout),
                                      nn.Linear(dim * 2, 9 if c.angle_head == 'circular' else 7))
             if c.angle_head == 'sigmoid':
                 self.head.append(nn.Sigmoid())
@@ -103,6 +109,9 @@ class MetaformerPro(nn.Module):
         if self.config.readout == 'global':
             pooled = (self.pool(tokens).softmax(1) * tokens).sum(1)
             raw = self.head(pooled)
+            return decode_circular(raw) if self.config.angle_head == 'circular' else raw
+        if self.config.readout == 'flatten':
+            raw = self.head(tokens.flatten(1))
             return decode_circular(raw) if self.config.angle_head == 'circular' else raw
         weights = torch.einsum('bnd,pd->bpn', tokens, self.queries) / math.sqrt(tokens.shape[-1])
         pooled = torch.einsum('bpn,bnd->bpd', weights.softmax(-1), tokens)

@@ -1,0 +1,132 @@
+{
+  "selection": {
+    "selected": "baseline",
+    "representative_seed": 42,
+    "ranking": [
+      {
+        "variant": "baseline",
+        "mean_validation_mse": 0.02444772367504915,
+        "std_validation_mse": 0.0006229521512937506,
+        "length_mse": 0.02181976264949712,
+        "mae_nm": [
+          4.608191703647996,
+          1.265723330900073,
+          4.076868405557859,
+          5.8444528598338366,
+          13.791297868872059
+        ],
+        "mae_deg": [
+          13.210307277704123,
+          12.553704779398686
+        ],
+        "parameters": 320938,
+        "eligible": true,
+        "replacement_threshold_passed": false
+      },
+      {
+        "variant": "standardized",
+        "mean_validation_mse": 0.024715123968520384,
+        "std_validation_mse": 0.0009485529527203415,
+        "length_mse": 0.022236005088149543,
+        "mae_nm": [
+          5.11186727498037,
+          1.3630238796273868,
+          4.456952436136392,
+          6.092781112343073,
+          13.974353946233167
+        ],
+        "mae_deg": [
+          12.549087748595047,
+          12.798216836736538
+        ],
+        "parameters": 320938,
+        "eligible": true,
+        "replacement_threshold_passed": false
+      },
+      {
+        "variant": "encoder192",
+        "mean_validation_mse": 0.025442193634312157,
+        "std_validation_mse": 0.00082726068236249,
+        "length_mse": 0.022831964179861775,
+        "mae_nm": [
+          5.046551204364126,
+          1.4513807818293571,
+          4.65300056647975,
+          6.039413201063872,
+          13.859788234019653
+        ],
+        "mae_deg": [
+          13.09315037624765,
+          12.825172759738052
+        ],
+        "parameters": 1268554,
+        "eligible": false,
+        "replacement_threshold_passed": false
+      },
+      {
+        "variant": "position_readout",
+        "mean_validation_mse": 0.02666114434807135,
+        "std_validation_mse": 0.0004994322515201171,
+        "length_mse": 0.023779771193412624,
+        "mae_nm": [
+          5.788979097098732,
+          1.9332802401234706,
+          5.328628734118927,
+          6.093154507130385,
+          14.446751035237684
+        ],
+        "mae_deg": [
+          14.039710829628168,
+          12.72148028500378
+        ],
+        "parameters": 2145609,
+        "eligible": false,
+        "replacement_threshold_passed": false
+      }
+    ],
+    "rule": "Reuse the three already-trained circular baseline runs on this same dataset. Train the three declared candidates with the same seeds and training schedule. To replace baseline, mean joint-mirror validation MSE must improve by at least 1%; mean length MSE may increase at most 2%, dX MAE 5%, and dY MAE 2%. Choose the eligible candidate with minimum mean validation MSE; otherwise keep baseline. Deploy the median-validation seed. Freeze before test evaluation.",
+    "test_evaluated_at_selection": false
+  },
+  "test_mean": {
+    "baseline": {
+      "periodic": {
+        "mse": 0.034444245144537484,
+        "length_mse": 0.0229490684388439,
+        "angle_mse": 0.06318218690877146,
+        "mae_nm": [
+          4.412070467105756,
+          1.4340830521347623,
+          4.109296453123291,
+          6.393735982384533,
+          14.526552805770189
+        ],
+        "mae_deg": [
+          17.868989411112853,
+          19.10890776682645
+        ]
+      },
+      "mirror_equivalent": {
+        "mse": 0.025325316370405578,
+        "length_mse": 0.0229490684388439,
+        "angle_mse": 0.03126593619930978,
+        "mae_nm": [
+          4.412070467105756,
+          1.4340830521347623,
+          4.109296453123291,
+          6.393735982384533,
+          14.526552805770189
+        ],
+        "mae_deg": [
+          12.4757307266118,
+          12.930505426414308
+        ]
+      }
+    }
+  },
+  "dataset_sha256": "bc0f21a90ed7dcb3a228c81dfef023a0425cfed618a8bc275cc6487b4430621d",
+  "model_path": "D:\\projects\\MetaformerPro_refine\\Metaformer_As2Se3\\models\\metaformerpro_refined.pt",
+  "model_sha256": "8950779ce4fd3f467cdc4334190650963735d31c0f1c613aa2a7edc1cd549dfb",
+  "quality_scope": "Corrected generator2 2.2.0 top-metal 1000: thick SiO2 into lower PML / passive JC Au 100 nm / As2Se3 tetramer. Metal-only 8 nm, pipeline_validation. Train/validation-led inverse-model refinement; no forward network or new FDTD run.",
+  "test_policy": "Evaluate only the frozen selected variant and the baseline on the existing 100 test IDs, all three seeds. This test set has been examined in earlier rounds and is not a new blind holdout. Do not choose a different variant or seed from these test results. Sample 207 stays the fixed UI illustration, not a best-error selection.",
+  "new_fdtd_run_performed": false
+}
